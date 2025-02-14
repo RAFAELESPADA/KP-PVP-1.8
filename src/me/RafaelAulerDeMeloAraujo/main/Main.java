@@ -169,6 +169,9 @@ SettingsManager settings = SettingsManager.getInstance();
 
 /*     */   public void onEnable()
 /*     */   {
+	//REGISTER
+	/* 121 */     instance = this;
+	/* 122 */     plugin = this;
 	  ConsoleCommandSender cmd = Bukkit.getConsoleSender();
 	  new BukkitRunnable() {
 
@@ -236,8 +239,6 @@ if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
 /* 118 */     
 /* 119 */    
 
-/* 121 */     instance = this;
-/* 122 */     plugin = this;
 /*     */     
 /* 124 */     cH = new ConfigUtils();
 /*     */     
