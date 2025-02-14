@@ -47,8 +47,8 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Gladiator;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
 import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
 import me.RafaelAulerDeMeloAraujo.X1.X1;
-import net.helix.core.bukkit.HelixBukkit;
-import net.helix.core.bukkit.account.HelixPlayer;
+import net.wavemc.core.bukkit.WaveBukkit;
+import net.wavemc.core.bukkit.account.WavePlayer;
 
 
 /*     */ public class Menu2
@@ -95,7 +95,7 @@ if (!Main.plugin.getConfig().getBoolean("bungeemode")) {
 /*     */     
 /*     */ 
 /*     */ 
-/*  79 */    HelixPlayer Sun8oxData = HelixBukkit.getInstance().getPlayerManager().getPlayer(e.getPlayer().getName());
+/*  79 */    WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(e.getPlayer().getName());
 int ks = Sun8oxData.getPvp().getKillstreak();
 Sun8oxData.getPvp().setKillstreak(0);
 /*     */     

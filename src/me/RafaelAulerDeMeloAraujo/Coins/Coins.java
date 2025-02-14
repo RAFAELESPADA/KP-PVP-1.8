@@ -9,10 +9,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 import me.RafaelAulerDeMeloAraujo.main.Main;
-import net.helix.core.bukkit.HelixBukkit;
-import net.helix.core.bukkit.account.HelixPlayer;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
+import net.wavemc.core.bukkit.WaveBukkit;
+import net.wavemc.core.bukkit.account.WavePlayer;
 
 public class Coins
 {
@@ -49,7 +49,7 @@ public static HashMap<String, Double> bal = new HashMap();
   public static void addCoins(Player player, int amount)
   {
 if (!VAULTON) {
-      HelixPlayer Sun8oxData = HelixBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
+      WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
 		
 	  Sun8oxData.getPvp().addCoins(amount); 
 } else {
@@ -61,7 +61,7 @@ if (!VAULTON) {
   public static int getCoins(Player player)
   {
 
-     HelixPlayer Sun8oxData = HelixBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
+     WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
 		
 		if (Sun8oxData == null) {
 		  return 0;
@@ -77,7 +77,7 @@ return (int) econ.getBalance(player);
   public static void removeCoins(Player player, int amount)
   {
 	  if (!VAULTON) {
-      HelixPlayer Sun8oxData = HelixBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
+      WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
 		if (Sun8oxData.getPvp().getCoins() > amount) {
 	  Sun8oxData.getPvp().removeCoins(amount);
   }

@@ -1,8 +1,5 @@
 package me.RafaelAulerDeMeloAraujo.main;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -71,8 +68,23 @@ public class Warp implements CommandExecutor {
                 double y = settings.getData().getDouble("warps." + args[0] + ".y");
                 double z = settings.getData().getDouble("warps." + args[0] + ".z");
                 p.teleport(new Location(w, x, y, z));
-                warp(p);
-                API.give(p);
+                warp(p);	  	
+                ItemStack sopas = new ItemStack(Material.BOWL, 64);
+                ItemMeta ksopas = sopas.getItemMeta();
+                ksopas.setDisplayName("§eBowl");
+                sopas.setItemMeta(ksopas);
+                
+                ItemStack cogur = new ItemStack(Material.RED_MUSHROOM, 64);
+                ItemMeta kcogur = cogur.getItemMeta();
+                kcogur.setDisplayName("§3--> §cRed §3<--");
+                cogur.setItemMeta(kcogur);
+                ItemStack cogum = new ItemStack(Material.BROWN_MUSHROOM, 64);
+                ItemMeta kcogum = cogum.getItemMeta();
+                kcogum.setDisplayName("§3--> §8Brown §3<--");
+                cogum.setItemMeta(kcogum);
+               p.getInventory().setItem(14, cogum);
+               p.getInventory().setItem(15, cogur);
+               p.getInventory().setItem(13, sopas);
                 API.sopa(p);
                 p.sendMessage(ChatColor.GREEN + "Teleported to " + args[0] + "!");
             }
@@ -84,13 +96,6 @@ public class Warp implements CommandExecutor {
                p.teleport(new Location(w, x, y, z));
                warp(p);
                API.sopa(p);
-               ItemStack marrom21 = new ItemStack(Material.COMPASS);
-               ItemMeta marrom211 = marrom21.getItemMeta();
-               marrom211.setDisplayName("§eCompass");
-               List<String> itemlorem11 = new ArrayList();
-               itemlorem11.add("§cFind enemies near you!");
-               marrom211.setLore(itemlorem11);
-               marrom21.setItemMeta(marrom211);
             	  	
                ItemStack sopas = new ItemStack(Material.BOWL, 64);
                ItemMeta ksopas = sopas.getItemMeta();

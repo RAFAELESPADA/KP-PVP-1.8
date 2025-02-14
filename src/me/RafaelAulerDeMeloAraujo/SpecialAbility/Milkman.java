@@ -8,7 +8,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import me.RafaelAulerDeMeloAraujo.main.Main;
-import net.helix.core.bukkit.item.ItemBuilder;
+import net.wavemc.core.bukkit.item.ItemBuilder;
 
 public class Milkman extends API implements Listener {
 

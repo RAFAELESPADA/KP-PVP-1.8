@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import net.helix.core.bukkit.account.HelixPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -29,7 +28,8 @@ import me.RafaelAulerDeMeloAraujo.Coins.XP;
 import me.RafaelAulerDeMeloAraujo.ScoreboardManager.Level;
 import me.RafaelAulerDeMeloAraujo.main.AntiDeathDrop;
 import me.RafaelAulerDeMeloAraujo.main.Main;
-import net.helix.core.bukkit.HelixBukkit;
+import net.wavemc.core.bukkit.WaveBukkit;
+import net.wavemc.core.bukkit.account.WavePlayer;
 
 public class StatusGUI implements Listener {
 
@@ -65,7 +65,7 @@ public class StatusGUI implements Listener {
     	else if (event.getWhoClicked() instanceof Player && event.getCurrentItem().getItemMeta().getDisplayName().equals("§6Display status in chat")) {
         	int kills = AntiDeathDrop.GetKills(p);
             int deaths = AntiDeathDrop.GetDeaths(p);
-            HelixPlayer Sun8oxData = HelixBukkit.getInstance().getPlayerManager().getPlayer(event.getWhoClicked().getName());
+            WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(event.getWhoClicked().getName());
     		int ks = Sun8oxData.getPvp().getKillstreak();
             p.sendMessage(Main.messages.getString("Status").replace("&", "§").replace("%player%", p.getName()));
             p.sendMessage("");
@@ -96,7 +96,7 @@ public class StatusGUI implements Listener {
         inv.setItem(12, glass);
         inv.setItem(14, glass);
         inv.setItem(15, glass);
-        HelixPlayer Sun8oxData = HelixBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
+        WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
 		int ks = Sun8oxData.getPvp().getKillstreak();
         for (int i = 17; i > 0; i--) {
             inv.addItem(editItemStack(new ItemStack(Material.STAINED_GLASS_PANE , 1,  (short)Main.messages.getInt("StatusGuiGlassLevelID")), "§7(" + "§6§lLEVEL" + "§7) §b§l" + i, Arrays.asList("§a" + player.getName() + " You are currently in Level: §b" + Level.getLevel(player),  "§fYou Reached the Level §b" + i  + "§f? " + (Level.getLevel(player) >= i ? Main.messages.getString("StatusGuiYes").replace("&", "§") : Main.messages.getString("StatusGuiNo").replace("&", "§")))));

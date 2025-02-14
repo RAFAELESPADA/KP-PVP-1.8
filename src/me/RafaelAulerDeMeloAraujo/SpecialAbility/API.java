@@ -15,21 +15,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Scoreboard;
 
-import me.RafaelAulerDeMeloAraujo.Coins.Coins;
-import me.RafaelAulerDeMeloAraujo.Coins.XP;
-import me.RafaelAulerDeMeloAraujo.ScoreboardManager.FastBoard;
-import me.RafaelAulerDeMeloAraujo.ScoreboardManager.Level;
-import me.RafaelAulerDeMeloAraujo.ScoreboardManager.WaveAnimation;
-import me.RafaelAulerDeMeloAraujo.main.AntiDeathDrop;
 import me.RafaelAulerDeMeloAraujo.main.Main;
-import net.helix.core.bukkit.HelixBukkit;
-import net.helix.core.bukkit.account.HelixPlayer;
-import net.helix.core.util.HelixCooldown2;
+import net.wavemc.core.util.WaveCooldown2;
 
 
 
@@ -74,83 +62,7 @@ public class API
     	    
     	    
     	   }
-    	   public static void init() {
-    		   waveAnimation = new WaveAnimation(Main.messages.getString("ScoreBoardTitle"), Main.messages.getString("ScoreBoardWaveColor1").replace("&", "§"), Main.messages.getString("ScoreBoardWaveColor2").replace("&", "§"), Main.messages.getString("ScoreBoardWaveColor3").replace("&", "§"), 3);
-    		   text = waveAnimation.next();
-    		      for (Player p : Bukkit.getOnlinePlayers()) {
-    		      new BukkitRunnable() {	
-    		    		@Override
-    		    			public void run() {
-    		    	/*     */         if (!Main.getInstance().getConfig().getBoolean("ScoreBoardEnabled")) {
-    		    		return;
-    		    	}
-    		    	/*     */               else if (!Join.game.contains(p.getName())) {
-    		    		return;
-    		    	}
-    		    	/*     */ 	/*     */       FastBoard board = new FastBoard(p);
-
-    		    				 board.updateTitle(Main.messages.getString("ScoreBoardTitle").replace("&", "§"));
-    		    	String l10 = "§3";
-    		    	String l9 = Main.messages.getString("ScoreBoardKit").replace("&", "§") + Habilidade.getAbility(p);
-    		    	String l8 = "§2";
-    		    	String l7 = Main.messages.getString("ScoreBoardKills").replace("&", "§") + AntiDeathDrop.GetKills(p);
-    		    	String l6 = Main.messages.getString("ScoreBoardDeaths").replace("&", "§") + AntiDeathDrop.GetDeaths(p);
-    		    	HelixPlayer Sun8oxData = HelixBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
-    	    		int ks = Sun8oxData.getPvp().getKillstreak();
-    		    	String l5 = Main.messages.getString("ScoreBoardKS").replace("&", "§") + ks;
-    		    	String l4 = "§1";
-    		    	String l3 = Main.messages.getString("ScoreBoardCoins").replace("&", "§") + Coins.getCoins(p);
-    		    	String l2 = Main.messages.getString("ScoreBoardXP").replace("&", "§") + XP.getXP(p);
-    		    	String l1 = "§0";
-    		    	String l0 = Main.messages.getString("ScoreBoardLevel").replace("&", "§") + Level.getLevel(p);
-    		    	String lxp = Main.messages.getString("ScoreBoardNeedXP").replace("&", "§");
-
-    		    	board.updateLines(
-    		    	        l10,
-    		    	        l9,
-    		    	        l8,
-    		    	        l7,
-    		    	        l6,
-    		    	        l5,
-    		    	        l4,
-    		    	        l3,
-    		    	        l2,
-    		    	        l1,
-    		    	        l0,
-    		    	        lxp,
-    		    	        String.valueOf(Level.getXPToLevelUp(p)
-    		    	));
-    		    		}}.runTaskTimer(Main.getInstance(), 1 * 20L, 20L * Main.getInstance().getConfig().getInt("ScoreBoard-Interval-Update"));
-    			Bukkit.getScheduler().runTaskTimer(Main.getInstance(), new Runnable() {
-    				public void run() {
-    					text = waveAnimation.next();
-    					
-    					for (Player onlines : Bukkit.getOnlinePlayers()) {
-    						 if (onlines == null) {
-    							 continue;
-    						 }
-    						 if (!onlines.isOnline()) {
-    							 continue;
-    						 }
-    						 if (onlines.isDead()) {
-    							 continue;
-    						 }
-    					 	 Scoreboard score = onlines.getScoreboard();
-    						 if (score == null) {
-    							 continue;
-    						 }
-    						 Objective objective = score.getObjective(DisplaySlot.SIDEBAR);
-    						 if (objective == null) {
-    							 continue;
-    						 }
-    						 objective.setDisplayName(text);
-    						 
-    					}
-    				}
-    			}, 40, 2L);
-    		}
-    		      }
-    		      
+    	       		      
     		      
     	   public static void sopa(final Player p) {
     		   ItemStack sopa = new ItemStack(Material.MUSHROOM_SOUP);
@@ -174,48 +86,48 @@ public class API
 	        p.getInventory().setBoots(new ItemStack(Material.IRON_BOOTS));
 	    }
 	    protected boolean hasCooldown(Player player) {
-	        return HelixCooldown2.hasCooldown(player, "Kit");
+	        return WaveCooldown2.hasCooldown(player, "Kit");
 	    }
 
 	    protected boolean hasCooldown(Player player, String cooldown) {
-	        return HelixCooldown2.hasCooldown(player, cooldown);
+	        return WaveCooldown2.hasCooldown(player, cooldown);
 	    }
 
 	    protected boolean inCooldown(Player player, String cooldown) {
-	        return HelixCooldown2.inCooldown(player, cooldown);
+	        return WaveCooldown2.inCooldown(player, cooldown);
 	    }
 
 	    protected boolean inCooldown(Player player) {
-	        return HelixCooldown2.inCooldown(player, "Kit");
+	        return WaveCooldown2.inCooldown(player, "Kit");
 	    }
 
 	    protected static void sendMessageCooldown(Player player) {
-	    	HelixCooldown2.sendMessage(player, "Kit");
+	    	WaveCooldown2.sendMessage(player, "Kit");
 	    }
 
 	    protected void sendMessageCooldown(Player player, String cooldown) {
-	    	HelixCooldown2.sendMessage(player, cooldown);
+	     WaveCooldown2.sendMessage(player, cooldown);
 	    }
 
 	    protected void addCooldown(Player player, String cooldownName, long time) {
-	        if (HelixCooldown2.hasCooldown(player, cooldownName)) {
-	            HelixCooldown2.removeCooldown(player, cooldownName);
+	        if (WaveCooldown2.hasCooldown(player, cooldownName)) {
+	            WaveCooldown2.removeCooldown(player, cooldownName);
 	        }
-	        HelixCooldown2.addCooldown(player, new net.helix.core.util.HelixCooldownAPI(cooldownName, time));
+	        WaveCooldown2.addCooldown(player, new net.wavemc.core.util.WaveCooldownAPI(cooldownName, time));
 	    }
 
 	    protected static void addCooldown(Player player, long time) {
-	        if (HelixCooldown2.hasCooldown(player, "Kit")) {
-	            HelixCooldown2.removeCooldown(player, "Kit");
+	        if (WaveCooldown2.hasCooldown(player, "Kit")) {
+	            WaveCooldown2.removeCooldown(player, "Kit");
 	        }
-	        HelixCooldown2.addCooldown(player, new net.helix.core.util.HelixCooldownAPI("Kit", time));
+	        WaveCooldown2.addCooldown(player, new net.wavemc.core.util.WaveCooldownAPI("Kit", time));
 	    }
 
 	    protected void addItemCooldown(Player player, ItemStack item, String cooldownName, long time) {
-	        if (HelixCooldown2.hasCooldown(player, cooldownName)) {
-	            HelixCooldown2.removeCooldown(player, cooldownName);
+	        if (WaveCooldown2.hasCooldown(player, cooldownName)) {
+	            WaveCooldown2.removeCooldown(player, cooldownName);
 	        }
-	        HelixCooldown2.addCooldown(player, new net.helix.core.util.ItemCooldown(item, cooldownName, time));
+	        WaveCooldown2.addCooldown(player, new net.wavemc.core.util.ItemCooldown(item, cooldownName, time));
 	    }
 
 	    public static ItemStack darArmadura(final Material material, final Color cor) {

@@ -49,6 +49,7 @@ import me.RafaelAulerDeMeloAraujo.Listeners.ArrowMessage;
 import me.RafaelAulerDeMeloAraujo.Listeners.CombatLog;
 /*     */ import me.RafaelAulerDeMeloAraujo.Listeners.CommandsSounds;
 /*     */ import me.RafaelAulerDeMeloAraujo.Listeners.ConfigUtils;
+import me.RafaelAulerDeMeloAraujo.Listeners.DamageNerf;
 /*     */ import me.RafaelAulerDeMeloAraujo.Listeners.Fisherman;
 /*     */ import me.RafaelAulerDeMeloAraujo.Listeners.JoinSign;
 /*     */ import me.RafaelAulerDeMeloAraujo.Listeners.LeaveSign;
@@ -118,7 +119,7 @@ import me.RafaelAulerDeMeloAraujo.X1.SetSumo;
 /*     */ import me.RafaelAulerDeMeloAraujo.X1.SetX1;
 import me.RafaelAulerDeMeloAraujo.X1.Sumo;
 /*     */ import me.RafaelAulerDeMeloAraujo.X1.X1;
-import net.helix.core.bukkit.HelixBukkit;
+import net.wavemc.core.bukkit.WaveBukkit;
 import us.ajg0702.leaderboards.LeaderboardPlugin;
 
 
@@ -163,7 +164,8 @@ SettingsManager settings = SettingsManager.getInstance();
 /*     */   }
 
 
-/*     */   
+/*     */  
+ 
 
 /*     */   public void onEnable()
 /*     */   {
@@ -289,7 +291,7 @@ loadTopPlayersHologram();
 Bukkit.getConsoleSender().sendMessage("§e[KP-PVP] §aTopKills Initilizated");
 
 Bukkit.getConsoleSender().sendMessage("§e[KP-PVP] §aSetupping warps");
-Bukkit.getConsoleSender().sendMessage("§e[KP-PVP] §aStorage: " + HelixBukkit.getInstance().getStorage().getName());
+Bukkit.getConsoleSender().sendMessage("§e[KP-PVP] §aStorage: " + WaveBukkit.getStorage().getName());
 settings.setup(this);
 Bukkit.getConsoleSender().sendMessage("§e[KP-PVP] §aWarps Loaded");
 if (getConfig().get("KitsItem") == null) {
@@ -558,6 +560,7 @@ public static void loadTopPlayersHologram() {
               this.pm.registerEvents(new StatusGUI(), this);
               this.pm.registerEvents(new MenuListener(), this);
               this.pm.registerEvents(new Monk(), this);
+              this.pm.registerEvents(new DamageNerf(), this);
               this.pm.registerEvents(new Sumo(this), this);
               this.pm.registerEvents(new WarpMenu(), this);
               this.pm.registerEvents(new ConfuserHability(this), this);

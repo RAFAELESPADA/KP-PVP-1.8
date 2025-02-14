@@ -12,8 +12,8 @@ import me.RafaelAulerDeMeloAraujo.Coins.XP;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.API;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
 /*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
-import net.helix.core.bukkit.HelixBukkit;
-/*     */ import net.helix.core.bukkit.account.HelixPlayer;
+import net.wavemc.core.bukkit.WaveBukkit;
+/*     */ import net.wavemc.core.bukkit.account.WavePlayer;
 /*     */ 
 /*     */ 
 /*     */ 
@@ -54,7 +54,7 @@ if (!Join.game.contains(k.getName())) {
 	return;
 }
 
-HelixPlayer Sun8oxData2 = HelixBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
+WavePlayer Sun8oxData2 = WaveBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
 if (isCitizensNPC && Main.getInstance().getConfig().getBoolean("BotsKillsAllowed")) {
 	Sun8oxData2.getPvp().addKills(1);
 	if (killstreak % Main.customization.getInt("XP-Required-To-LevelUP") == 0) {
@@ -65,13 +65,13 @@ if (isCitizensNPC && Main.getInstance().getConfig().getBoolean("BotsKillsAllowed
 	Coins.addCoins(k, Main.customization.getInt("Earned-Coins-Per-Kill"));               
 	k.sendMessage("§a+" + Main.customization.getInt("XPEarned-OnKill") + "XP");
 	k.sendMessage("§a+" + Main.customization.getInt("Earned-Coins-Per-Kill")  + "COINS");
-     HelixBukkit.getInstance().getPlayerManager().getController().save(Sun8oxData2);
+     WaveBukkit.getInstance().getPlayerManager().getController().save(Sun8oxData2);
 }
 }
   else if (!isCitizensNPC) {
 
-	  HelixPlayer Sun8oxData = HelixBukkit.getInstance().getPlayerManager().getPlayer(k.getName());
-	  HelixPlayer Sun8oxData2 = HelixBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
+	  WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(k.getName());
+	  WavePlayer Sun8oxData2 = WaveBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
 {
 /*  52 */       p.sendMessage(API.NomeServer + "" + (Main.messages.getString("StreakDestroyed").replace("&", "§").replace("%player%", k.getName()))); }
 /*  53 */       addtokillstreak(k);
@@ -95,9 +95,9 @@ Coins.removeCoins(p, Main.customization.getInt("Lost-Coins-Per-Death"));
 p.sendMessage("§cYou died to " + k.getName());
 k.sendMessage("§a+" + Main.customization.getInt("XPEarned-OnKill") + "XP");
 k.sendMessage("§a+" + Main.customization.getInt("Earned-Coins-Per-Kill")  + "COINS");
-HelixBukkit.getInstance().getPlayerManager().getController().save(Sun8oxData);
+WaveBukkit.getInstance().getPlayerManager().getController().save(Sun8oxData);
 
-		HelixBukkit.getInstance().getPlayerManager().getController().save(Sun8oxData2);
+		WaveBukkit.getInstance().getPlayerManager().getController().save(Sun8oxData2);
 
 Bukkit.getConsoleSender().sendMessage("§e" + p.getName() + " (" +  ev.getEntityType() + ")" + " has been killed by " + k.getName() + " (" +  ev.getEntity().getKiller().getType() + ")" + " on kitpvp");
 /*     */     
@@ -114,7 +114,7 @@ Bukkit.getConsoleSender().sendMessage("§e" + p.getName() + " (" +  ev.getEntity
 /*  62 */     if (Join.game.contains(name))
 /*     */     {
 
-	HelixPlayer Sun8oxData = HelixBukkit.getInstance().getPlayerManager().getPlayer(killer.getName());
+	WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(killer.getName());
 /*  64 */       int kills = Sun8oxData.getPvp().getKillstreak();
 /*     */      Sun8oxData.getPvp().addKillstreak(1);
 if (kills != 0) {

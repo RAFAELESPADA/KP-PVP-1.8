@@ -36,8 +36,8 @@ import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
 import me.RafaelAulerDeMeloAraujo.main.AntiDeathDrop;
 /*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
 import me.RockinChaos.itemjoin.api.ItemJoinAPI;
-import net.helix.core.bukkit.HelixBukkit;
-import net.helix.core.bukkit.account.HelixPlayer;
+import net.wavemc.core.bukkit.WaveBukkit;
+import net.wavemc.core.bukkit.account.WavePlayer;
 /*     */ 
 /*    */ public class Sumo
 /*    */   implements Listener
@@ -251,8 +251,8 @@ public void onMove(PlayerMoveEvent event) {
     /* 272 */           morreu.updateInventory();
     /* 273 */           matou.updateInventory();
    int addkill = AntiDeathDrop.GetKills(player);
-   HelixPlayer Sun8oxData = HelixBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
-   HelixPlayer Sun8oxData2 = HelixBukkit.getInstance().getPlayerManager().getPlayer(matou.getName());
+   WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
+   WavePlayer Sun8oxData2 = WaveBukkit.getInstance().getPlayerManager().getPlayer(matou.getName());
    Sun8oxData.getPvp().addKills(1);
    Sun8oxData2.getPvp().addDeaths(1);
    Sun8oxData2.getPvp().setKillstreak(0);

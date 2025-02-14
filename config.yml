@@ -22,6 +22,20 @@ UseVault: false
 #This changes a lot of items on set to false
 FullIron: true
 
+#Enable the damage nerf system
+#If this is enabled the total damage done is divided by the number
+#You specify below
+#Thus decreasing the total damage done
+#This only works if the player is on KITPVP
+#Recommended to enable this if FullIron above is false
+EnableDamageNerf: false
+
+#The amount to divide the total damage
+#In this example if the original damage gives 2.5 hearts of damage
+#It will give just 2 of damage
+#Because 2.5/1.5=2
+DamageNerfAmount: 1.5
+
 #Disable Compass
 DisableCompassItem: false
 
