@@ -69,7 +69,7 @@ if (isCitizensNPC && Main.getInstance().getConfig().getBoolean("BotsKillsAllowed
 }
 }
   else if (!isCitizensNPC) {
-
+if (p.getKiller() != null) {
 	  WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(k.getName());
 	  WavePlayer Sun8oxData2 = WaveBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
 {
@@ -101,6 +101,7 @@ WaveBukkit.getInstance().getPlayerManager().getController().save(Sun8oxData);
 
 Bukkit.getConsoleSender().sendMessage("§e" + p.getName() + " (" +  ev.getEntityType() + ")" + " has been killed by " + k.getName() + " (" +  ev.getEntity().getKiller().getType() + ")" + " on kitpvp");
 /*     */     
+  }
   }
 }
 /*     */   

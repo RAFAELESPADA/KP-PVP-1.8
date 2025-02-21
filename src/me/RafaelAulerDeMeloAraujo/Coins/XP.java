@@ -3,6 +3,7 @@ package me.RafaelAulerDeMeloAraujo.Coins;
 
 import java.util.HashMap;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import me.RafaelAulerDeMeloAraujo.main.Main;
@@ -32,6 +33,10 @@ public static HashMap<Player, Integer> bal = new HashMap();
   
   public static int getXP(Player player)
   {
+	  if (player == null) {
+		  Bukkit.getConsoleSender().sendMessage("Could not get a player XP");
+		  return 0;
+	  }
 	  WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
 	  
 	  if (Sun8oxData == null) {

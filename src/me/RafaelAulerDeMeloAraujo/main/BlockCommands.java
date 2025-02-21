@@ -33,7 +33,7 @@ public void onPlayerCommandPreproctess(PlayerCommandPreprocessEvent e) {
   if (!list.contains(e.getMessage())) {
           e.setCancelled(true);
           e.getPlayer().closeInventory();
-          e.getPlayer().sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "�")) + String.valueOf(this.main.getConfig().getString("Message.BlockedCMD-OnKitPvP").replace("&", "�")));
+          e.getPlayer().sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + String.valueOf(this.main.getConfig().getString("Message.BlockedCMD-OnKitPvP").replace("&", "§")));
   }
   } 
 }

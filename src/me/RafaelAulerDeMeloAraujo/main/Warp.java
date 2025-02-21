@@ -86,6 +86,12 @@ public class Warp implements CommandExecutor {
                p.getInventory().setItem(15, cogur);
                p.getInventory().setItem(13, sopas);
                 API.sopa(p);
+                ItemStack espada = new ItemStack(Material.STONE_SWORD);
+                ItemMeta kespada = espada.getItemMeta();
+                kespada.setDisplayName("§eSword");
+                espada.setItemMeta(kespada);
+                p.getInventory().setItem(0, espada);
+                 
                 p.sendMessage(ChatColor.GREEN + "Teleported to " + args[0] + "!");
             }
             else if (args[0].equalsIgnoreCase("Challenge")) {
