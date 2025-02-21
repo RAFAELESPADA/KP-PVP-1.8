@@ -4,19 +4,22 @@ package me.RafaelAulerDeMeloAraujo.Listeners;
 
 
 
-import java.util.*;
-import org.bukkit.entity.*;
-import org.bukkit.*;
-import org.bukkit.plugin.*;
+import java.util.HashMap;
 
-import me.RafaelAulerDeMeloAraujo.ScoreboardManager.Streak;
+import org.bukkit.Bukkit;
+import org.bukkit.Sound;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.plugin.Plugin;
+
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
 import me.RafaelAulerDeMeloAraujo.main.Main;
-
-import org.bukkit.event.*;
-import org.bukkit.event.entity.*;
-import org.bukkit.event.player.*;
+import me.RafaelAulerDeMeloAraujo.main.Menu;
 
 public class CombatLog implements Listener
 {
@@ -79,7 +82,7 @@ public class CombatLog implements Listener
 					Player p2 = Bukkit.getPlayer(p3);				
 				p2.playSound(p2.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.Respawn")), 4.0F, 4.0F);
 			}
-            Streak.sendToGame("§e[KitPvP] §7 " + p.getName() + "§c logget out in combat and is killed!");
+				Menu.sendToGame("§e[KitPvP] §7 " + p.getName() + "§c logget out in combat and is killed!");
         }
         }
         

@@ -607,7 +607,7 @@ this.pm.registerEvents(new Sonic(), this);
 /* 282 */     this.pm.registerEvents(new Snail(this), this);
 /* 283 */     this.pm.registerEvents(new X1(this), this);
 this.pm.registerEvents(new Milkman(), this);
-/* 284 */     this.pm.registerEvents(new Streak(), this);
+/* 284 */    Bukkit.getPluginManager().registerEvents(new Streak(), this);
 /* 285 */     this.pm.registerEvents(new NoExplosion(), this);
 /* 286 */     this.pm.registerEvents(new AntiDeathDrop(this), this);
 /* 287 */     this.pm.registerEvents(new WallClamber(this), this);

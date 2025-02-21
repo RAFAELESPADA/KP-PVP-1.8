@@ -30,11 +30,11 @@ public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent e) {
 public void onPlayerCommandPreproctess(PlayerCommandPreprocessEvent e) {
   if (!e.getPlayer().hasPermission("kitpvp.unblockedcmds") && !e.getPlayer().hasPermission("kitpvp.*") && !e.getPlayer().isOp() && (me.RafaelAulerDeMeloAraujo.SpecialAbility.Join.game.contains(e.getPlayer().getName()) && (Main.getInstace().getConfig().getString("EnableOnlyCommandsAllowedInKitPvP").equalsIgnoreCase("true")))) {
 	  java.util.List<String> list = Main.plugin.getConfig().getStringList("ALLOWED_COMMANDS");
-  if (!list.contains(e.getMessage())) {
+	  list.stream().filter(cmd -> !e.getMessage().toLowerCase().contains(cmd.toLowerCase())).forEach(msg -> {
           e.setCancelled(true);
           e.getPlayer().closeInventory();
           e.getPlayer().sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + String.valueOf(this.main.getConfig().getString("Message.BlockedCMD-OnKitPvP").replace("&", "§")));
-  }
+	  });
   } 
 }
 

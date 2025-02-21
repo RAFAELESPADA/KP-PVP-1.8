@@ -2,13 +2,9 @@ package me.RafaelAulerDeMeloAraujo.Listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.Server;
-import org.bukkit.Sound;
 import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,15 +12,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import me.RafaelAulerDeMeloAraujo.Coins.Coins;
-import me.RafaelAulerDeMeloAraujo.ScoreboardManager.Streak;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
 import me.RafaelAulerDeMeloAraujo.Warps.SettingsManager;
 import me.RafaelAulerDeMeloAraujo.main.Main;
+import me.RafaelAulerDeMeloAraujo.main.Menu;
 
 
 @SuppressWarnings("unused")
@@ -140,7 +133,7 @@ public void onSignOpen(PlayerInteractEvent event) {
         // I think players do not need to know that someone passed lava challenge
         // Bukkit.broadcastMessage("§5§lCHALLENGE §7" + player.getName() + " passed the lava challenge! §5§l(LEVEL " + level + ")");
         // Or this method can be used:
-         Streak.sendToGame("§5§lCHALLENGE §7" + player.getName() + " passed the lava challenge! §5§l(LEVEL " + level + ")");
+         Menu.sendToGame("§5§lCHALLENGE §7" + player.getName() + " passed the lava challenge! §5§l(LEVEL " + level + ")");
         // but i think that its better if its only send to player (not everyone)
 
         World w = Bukkit.getServer().getWorld(settings.getData().getString("warps." + "challenge" + ".world"));
