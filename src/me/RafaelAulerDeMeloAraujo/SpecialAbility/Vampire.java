@@ -1,29 +1,23 @@
 
 /*     */ package me.RafaelAulerDeMeloAraujo.SpecialAbility;
-/*     */ 
-/*     */ import java.util.ArrayList;
 /*     */ import java.util.Random;
-/*     */ import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
-/*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
-import me.RafaelAulerDeMeloAraujo.main.RTP;
 
-/*     */ import org.bukkit.ChatColor;
-/*     */ import org.bukkit.Effect;
 /*     */ import org.bukkit.Material;
 /*     */ import org.bukkit.Sound;
-/*     */ import org.bukkit.World;
 /*     */ import org.bukkit.command.Command;
 /*     */ import org.bukkit.command.CommandExecutor;
 /*     */ import org.bukkit.command.CommandSender;
-/*     */ import org.bukkit.configuration.file.FileConfiguration;
 /*     */ import org.bukkit.entity.Player;
 /*     */ import org.bukkit.event.EventHandler;
 /*     */ import org.bukkit.event.Listener;
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /*     */ import org.bukkit.inventory.ItemStack;
-/*     */ import org.bukkit.inventory.PlayerInventory;
 /*     */ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffectType;
+
+/*     */ import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
+/*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
+import me.RafaelAulerDeMeloAraujo.main.RTP;
 /*     */ 
 /*     */ 
 /*     */ public class Vampire
@@ -45,6 +39,8 @@ import org.bukkit.potion.PotionEffectType;
 /*     */     {
 /*  42 */       Player p = (Player)e.getEntity();
 /*  43 */       Player d = (Player)e.getDamager();
+/*  42 */       Player target = (Player)e.getEntity();
+/*  43 */       Player damager = (Player)e.getDamager();
 
 /*  44 */       if (Habilidade.getAbility(d) == "Vampire")
 /*     */       {
@@ -53,12 +49,16 @@ import org.bukkit.potion.PotionEffectType;
 /*  48 */       if (c <= Main.kits.getInt("VampireChance"))
 /*     */         {
 /*  50 */           
+    if (damager.getHealth() + 1.5 < 20) {
+        damager.setHealth(damager.getHealth() + 1.5);
+        if (target.getHealth() - 1.5 > 0) target.setHealth(target.getHealth() - 1.5);
                     API.darEfeito(d, PotionEffectType.REGENERATION, 4, 2);
                     d.sendMessage("§cYou ingest " + p.getName() + " blood and receive");
                     d.sendMessage("§cA regeneration effect!");
 /*     */         }
 /*     */       }
 /*     */     }
+}
 /*     */   }
 /*     */   
 /*     */ 

@@ -187,7 +187,9 @@ public static void sendToGame(String message) {
     for(String player : Join.game) {
         if(player != null) {
             Player p = Bukkit.getPlayer(player);
+            if (p != null) {
             p.sendMessage(message);
+        }
         }
     }
     }
