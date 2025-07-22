@@ -14,7 +14,7 @@
 	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/KOMBO-BACKUP-TOTAL/KITPVP 1.21/plugins/ajLeaderboards-2.9.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/KOMBO-BACKUP-TOTAL/BEDWARS/plugins/ItemJoin (1).jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Downloads/json-simple-1.1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Downloads/KP-CORE-v3.5.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Downloads/spigot-api-1.12.2-R0.1-20180712.012057-156.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/eclipse-workspace/WaveCore/target/KP-CORE-v4.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

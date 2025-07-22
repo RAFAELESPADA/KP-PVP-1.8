@@ -33,7 +33,6 @@ import org.bukkit.scheduler.BukkitTask;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
 import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
-import me.RafaelAulerDeMeloAraujo.main.AntiDeathDrop;
 /*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
 import me.RockinChaos.itemjoin.api.ItemJoinAPI;
 import net.wavemc.core.bukkit.WaveBukkit;
@@ -250,7 +249,6 @@ public void onMove(PlayerMoveEvent event) {
     /* 271 */           Sumo.entrar1v1(player);
     /* 272 */           morreu.updateInventory();
     /* 273 */           matou.updateInventory();
-   int addkill = AntiDeathDrop.GetKills(player);
    WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
    WavePlayer Sun8oxData2 = WaveBukkit.getInstance().getPlayerManager().getPlayer(matou.getName());
    Sun8oxData.getPvp().addKills(1);

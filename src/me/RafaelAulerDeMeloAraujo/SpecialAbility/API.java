@@ -165,6 +165,8 @@ public static void tirarEfeitos(final Player p) {
     p.removePotionEffect(PotionEffectType.SATURATION);
     p.removePotionEffect(PotionEffectType.SLOW);
     p.removePotionEffect(PotionEffectType.SLOW_DIGGING);
+
+    p.removePotionEffect(PotionEffectType.INVISIBILITY);
     p.removePotionEffect(PotionEffectType.SPEED);
     p.removePotionEffect(PotionEffectType.WATER_BREATHING);
     p.removePotionEffect(PotionEffectType.WEAKNESS);

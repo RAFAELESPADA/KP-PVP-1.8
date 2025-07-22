@@ -21,6 +21,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
@@ -106,10 +107,10 @@ public class Gladiator implements Listener {
         }
             p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 110, 5));
             r.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 110, 5));
-            p.sendMessage(API.NomeServer + "Â§7You challenged "  + r.getName() + "! You have five seconds of invencibility!");
-            p.sendMessage(API.NomeServer + "Â§7If dont have a winner in five minutes you will return to your previous location!");
-            r.sendMessage(API.NomeServer + "Â§7You have been challenged by a gladiator! You have five seconds of invencibility!");
-            r.sendMessage(API.NomeServer + "Â§7If dont have a winner in five minutes you will return to your previous location!");
+            p.sendMessage(API.NomeServer + "§7You challenged "  + r.getName() + "! You have five seconds of invencibility!");
+            p.sendMessage(API.NomeServer + "§7If dont have a winner in five minutes you will return to your previous location!");
+            r.sendMessage(API.NomeServer + "§7You have been challenged by a gladiator! You have five seconds of invencibility!");
+            r.sendMessage(API.NomeServer + "§7If dont have a winner in five minutes you will return to your previous location!");
             Gladiator.lutando.put(p.getName(), r.getName());
             Gladiator.lutando.put(r.getName(), p.getName());
             Gladiator.gladgladiator.add(p.getName());
@@ -142,7 +143,7 @@ public class Gladiator implements Listener {
     public void onTeleportENDER(PlayerTeleportEvent e) {
     	Player p = e.getPlayer();
     	if (e.getCause() == TeleportCause.ENDER_PEARL && Gladiator.lutando.containsKey(p.getName())) {
-    		p.sendMessage(API.NomeServer + "Â§7You cannot use enderpearls on gladiator!");
+    		p.sendMessage(API.NomeServer + "§7You cannot use enderpearls on gladiator!");
     		e.setCancelled(true);
     	}   	
     }
@@ -186,6 +187,19 @@ public class Gladiator implements Listener {
                 }
             }, 30L);
         }
+    }
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onBlockBrea(final PlayerMoveEvent e) {
+
+        if (Gladiator.lutando.containsKey(e.getPlayer().getName())) {
+        	Player p = e.getPlayer();
+
+            final Player t = Bukkit.getServer().getPlayer((String)Gladiator.lutando.get(p.getName()));
+            if (t.getLocation().distance(p.getLocation()) >= 50) {
+            	 removeGlad(p);
+                 	p.setHealth(0.0);
+                 }
+            }	
     }
     
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -263,8 +277,8 @@ public class Gladiator implements Listener {
                 for (int blockY = -1; blockY <= 10; ++blockY) {
                     final Block b = loc2.clone().add((double)blockX, (double)blockY, (double)blockZ).getBlock();
                     if (!b.isEmpty()) {
-                        x = random.nextInt(-55600);
-                        z = random.nextInt(99954);
+                        x = random.nextInt(-550);
+                        z = random.nextInt(994);
                         final Location newLoc = new Location(p1.getWorld(), loc2.getBlockX() + x, 50.0, loc2.getBlockZ() + z);
                         return newGladiatorArena(p1, p2, newLoc);
                     }
@@ -287,10 +301,10 @@ public class Gladiator implements Listener {
         Gladiator.oldLocation.put(p2.getName(), p2.getLocation());
         Gladiator.blocks.put(p1.getName(), location);
         Gladiator.blocks.put(p2.getName(), location);
-        p1.teleport(new Location(p1.getWorld(), loc3.getX() + 7.5, loc3.getY() + 1.0, loc3.getZ(), 140.0f, 0.0f));
-        p2.teleport(new Location(p2.getWorld(), loc4.getX() + 0.5, loc4.getY() + 1.0, loc2.getZ() - 7.5, -40.0f, 0.0f));
-        p1.sendMessage(String.valueOf(Gladiator.prefix) + "Â§fYou challenged Â§e" + p2.getName() + " Â§fto gladiator!");
-        p2.sendMessage(String.valueOf(Gladiator.prefix) + "Â§fYou gets challenged by Â§e" + p1.getName() + " Â§f!to gladiator");
+        p1.teleport(new Location(p1.getWorld(), loc3.getX() + 7.5, loc3.getY() + 2.0, loc3.getZ(), 140.0f, 0.0f));
+        p2.teleport(new Location(p2.getWorld(), loc4.getX() + 0.5, loc4.getY() + 2.0, loc2.getZ() - 7.5, -40.0f, 0.0f));
+        p1.sendMessage(String.valueOf(Gladiator.prefix) + "§fYou challenged §e" + p2.getName() + " §fto gladiator!");
+        p2.sendMessage(String.valueOf(Gladiator.prefix) + "§fYou gets challenged by §e" + p1.getName() + " §f!to gladiator");
         showPlayer(p1, p2);
         return null;
     }
