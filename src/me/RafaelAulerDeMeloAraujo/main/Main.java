@@ -659,7 +659,7 @@ this.pm.registerEvents(new Protection(), this);
 /*     */   
 /*     */   public static void darEfeito(Player p, PotionEffectType tipo, int duracao, int level)
 /*     */   {
-/* 349 */     p.addPotionEffect(new PotionEffect(tipo, duracao , level));
+/* 349 */     p.addPotionEffect(new PotionEffect(tipo, 20 * duracao , level));
 /*     */   }
 /*     */   
 /*     */   public void save()
