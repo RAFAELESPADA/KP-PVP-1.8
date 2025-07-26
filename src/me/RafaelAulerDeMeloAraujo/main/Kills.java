@@ -42,6 +42,7 @@ public class Kills implements CommandExecutor {
 					killerHelixPlayer.getPvp().addKills(tanto);
 					sender.sendMessage("§aYou give " + tanto + " Kills to the player " + t.getName());
 					t.sendMessage("§e" + tanto + " §aKills has been added to your account!");
+					WaveBukkit.getInstance().getPlayerManager().getController().save(killerHelixPlayer);
 				}catch(Exception e){
 					sender.sendMessage("§cUse only numbers!");
 				}
@@ -56,6 +57,8 @@ public class Kills implements CommandExecutor {
 					killerHelixPlayer.getPvp().setKills(killerHelixPlayer.getPvp().getKills() - tanto);
 					sender.sendMessage("§aYou remove " + tanto + " Kills of the player " + t.getName());
 					t.sendMessage("§e" + tanto + " §aKills has been removed from your account!");
+
+					WaveBukkit.getInstance().getPlayerManager().getController().save(killerHelixPlayer);
 				}catch(Exception e){
 					sender.sendMessage("§cUse only numbers!");
 				}

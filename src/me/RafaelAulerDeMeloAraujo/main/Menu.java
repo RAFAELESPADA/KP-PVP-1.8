@@ -106,7 +106,7 @@ if (!Join.game.contains(k.getName())) {
 WavePlayer Sun8oxData2 = WaveBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
 if (isCitizensNPC && Main.getInstance().getConfig().getBoolean("BotsKillsAllowed")) {
 	Sun8oxData2.getPvp().addKills(1);
-	if (killstreak % Main.customization.getInt("XP-Required-To-LevelUP") == 0) {
+	if (killstreak % Main.customization.getInt("XP-Required-To-LevelUP") == 0 && Level.getLevel(k) != 0) {
 		sendToGame(String.valueOf(API.NomeServer + Main.messages.getString("LevelUP").replaceAll("%player%", k.getName()).replaceAll("%level%", Integer.toString(Level.getLevel(k)))).replaceAll("&", "§"));
 	}
 	k.sendMessage(String.valueOf(API.NomeServer + Main.getInstace().getConfig().getString("Kill.Tell").replaceAll("%player%", p.getName())));
@@ -125,7 +125,7 @@ Sun8oxData.getPvp().addKills(1);
 Sun8oxData2.getPvp().addDeaths(1);
 
 Sun8oxData2.getPvp().setKillstreak(0);
-if (killstreak % Main.customization.getInt("XP-Required-To-LevelUP") == 0) {
+if (killstreak % Main.customization.getInt("XP-Required-To-LevelUP") == 0 && Level.getLevel(k) != 0) {
 	sendToGame(String.valueOf(API.NomeServer + Main.messages.getString("LevelUP").replaceAll("%player%", k.getName()).replaceAll("%level%", Integer.toString(Level.getLevel(k)))).replaceAll("&", "§"));
 }
 /*  64 */       int kills2 = Sun8oxData2.getPvp().getKillstreak();

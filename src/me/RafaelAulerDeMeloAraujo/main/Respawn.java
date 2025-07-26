@@ -64,7 +64,7 @@ public class Respawn implements Listener {
 			if (X1.inx1.contains(p)) {
 				new BukkitRunnable() {
 					
-					int time = 5;
+					int time = 1;
 					
 					@Override
 					public void run() {
@@ -105,7 +105,7 @@ public class Respawn implements Listener {
 			} else {
 				new BukkitRunnable() {
 					
-					int time = 2;
+					int time = 1;
 					
 					@Override
 					public void run() {

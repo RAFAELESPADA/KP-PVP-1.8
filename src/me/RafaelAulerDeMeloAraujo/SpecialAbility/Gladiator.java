@@ -301,8 +301,8 @@ public class Gladiator implements Listener {
         Gladiator.oldLocation.put(p2.getName(), p2.getLocation());
         Gladiator.blocks.put(p1.getName(), location);
         Gladiator.blocks.put(p2.getName(), location);
-        p1.teleport(new Location(p1.getWorld(), loc3.getX() + 7.5, loc3.getY() + 2.0, loc3.getZ(), 140.0f, 0.0f));
-        p2.teleport(new Location(p2.getWorld(), loc4.getX() + 0.5, loc4.getY() + 2.0, loc2.getZ() - 7.5, -40.0f, 0.0f));
+        p1.teleport(new Location(p1.getWorld(), loc3.getX() + 7.5, loc3.getY() + 4.0, loc3.getZ(), 140.0f, 0.0f));
+        p2.teleport(new Location(p2.getWorld(), loc4.getX() + 0.5, loc4.getY() + 4.0, loc2.getZ() - 7.5, -40.0f, 0.0f));
         p1.sendMessage(String.valueOf(Gladiator.prefix) + "§fYou challenged §e" + p2.getName() + " §fto gladiator!");
         p2.sendMessage(String.valueOf(Gladiator.prefix) + "§fYou gets challenged by §e" + p1.getName() + " §f!to gladiator");
         showPlayer(p1, p2);

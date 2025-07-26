@@ -82,8 +82,9 @@ public class CombatLog implements Listener
 					Player p2 = Bukkit.getPlayer(p3);				
 				p2.playSound(p2.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.Respawn")), 4.0F, 4.0F);
 			}
+            }
 				Menu.sendToGame("§e[KitPvP] §7 " + p.getName() + "§c logget out in combat and is killed!");
-        }
+        
         }
         
     }
