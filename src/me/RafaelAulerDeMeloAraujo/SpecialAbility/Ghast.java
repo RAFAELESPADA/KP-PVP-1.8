@@ -79,7 +79,6 @@ public void onInteract(PlayerInteractEvent event) {
 	                fireballs++;
 	    	        Fireball h = ( Fireball)p.launchProjectile(Fireball.class);
 	    	        h.setMetadata("GGG", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
-	                p.launchProjectile(Fireball.class);
 	                if ((Bukkit.getVersion().contains("1.9") || (Bukkit.getVersion().contains("1.10") || (Bukkit.getVersion().contains("1.11") || (Bukkit.getVersion().contains("1.12") || (Bukkit.getVersion().contains("1.13") || (Bukkit.getVersion().contains("1.14") || (Bukkit.getVersion().contains("1.15") || (Bukkit.getVersion().contains("1.16") || (Bukkit.getVersion().contains("1.17") || (Bukkit.getVersion().contains("1.18") || (Bukkit.getVersion().contains("1.19") || (Bukkit.getVersion().contains("1.20") || (Bukkit.getVersion().contains("1.21") || (Bukkit.getVersion().contains("1.22"))))))))))))))))
 	                /*     */     
 	                p.playSound(p.getLocation(), Sound.ENTITY_GHAST_SCREAM, 1F, 1F);
