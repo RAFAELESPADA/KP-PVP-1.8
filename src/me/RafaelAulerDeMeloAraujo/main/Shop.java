@@ -381,7 +381,7 @@ public class Shop
       }
     }
 
-    if ((clicked.getType() == Material.GHAST_TEAR)) {
+    if ((inv.getName().equals(shop.getName())) && (clicked.getType() == Material.GHAST_TEAR)) {
         if (Coins.getCoins(p) >= 18000)
         {
       	  if (p.hasPermission("kitpvp.kit.ghast")) {
@@ -408,7 +408,7 @@ public class Shop
       }
 
 
-    if ((clicked.getType() == Material.MILK_BUCKET)) {
+    if ((inv.getName().equals(shop.getName())) && (clicked.getType() == Material.MILK_BUCKET)) {
         if (Coins.getCoins(p) >= 6000)
         {
       	  if (p.hasPermission("kitpvp.kit.milkman")) {

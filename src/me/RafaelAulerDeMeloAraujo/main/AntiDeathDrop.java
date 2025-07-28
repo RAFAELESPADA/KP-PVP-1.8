@@ -86,6 +86,67 @@ public class AntiDeathDrop
       
     return killerHelixPlayer.getPvp().getKills();
   }
+  public static int GetSumoK(Player p)
+  {
+	  if (p == null) {
+		  return 0;
+	  }
+	  WavePlayer killerHelixPlayer = WaveBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
+		
+      
+    return killerHelixPlayer.getPvp().getWinssumo();
+  }
+  public static int GetSumoD(Player p)
+  {
+	  if (p == null) {
+		  return 0;
+	  }
+	  WavePlayer killerHelixPlayer = WaveBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
+		
+      
+    return killerHelixPlayer.getPvp().getDeathssumo();
+  }
+
+  public static int GetSumoWin(Player p)
+  {
+	  if (p == null) {
+		  return 0;
+	  }
+	  WavePlayer killerHelixPlayer = WaveBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
+		
+      
+    return killerHelixPlayer.getPvp().getWinstreaksumo();
+  }
+  public static int GetX1K(Player p)
+  {
+	  if (p == null) {
+		  return 0;
+	  }
+	  WavePlayer killerHelixPlayer = WaveBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
+		
+      
+    return killerHelixPlayer.getPvp().getWinsx1();
+  }
+  public static int GetX1D(Player p)
+  {
+	  if (p == null) {
+		  return 0;
+	  }
+	  WavePlayer killerHelixPlayer = WaveBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
+		
+      
+    return killerHelixPlayer.getPvp().getDeathsx1();
+  }
+  public static int GetX1W(Player p)
+  {
+	  if (p == null) {
+		  return 0;
+	  }
+	  WavePlayer killerHelixPlayer = WaveBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
+		
+      
+    return killerHelixPlayer.getPvp().getWinstreakx1();
+  }
  
   
   public static int GetDeaths(Player p)

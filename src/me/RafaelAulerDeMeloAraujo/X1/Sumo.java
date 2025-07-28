@@ -249,12 +249,13 @@ public void onMove(PlayerMoveEvent event) {
     /* 271 */           Sumo.entrar1v1(player);
     /* 272 */           morreu.updateInventory();
     /* 273 */           matou.updateInventory();
-   WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
-   WavePlayer Sun8oxData2 = WaveBukkit.getInstance().getPlayerManager().getPlayer(matou.getName());
-   Sun8oxData.getPvp().addKills(1);
-   Sun8oxData2.getPvp().addDeaths(1);
-   Sun8oxData2.getPvp().setKillstreak(0);
-	Sun8oxData.getPvp().addKillstreak(1);
+
+WavePlayer k = WaveBukkit.getInstance().getPlayerManager().getPlayer(matou.getName());
+WavePlayer m = WaveBukkit.getInstance().getPlayerManager().getPlayer(morreu.getName());
+k.getPvp().addWinsSumo(1);
+m.getPvp().setDeathssumo(m.getPvp().getDeathssumo() + 1);
+WaveBukkit.getInstance().getPlayerManager().getController().save(m);
+WaveBukkit.getInstance().getPlayerManager().getController().save(k);
     /* 274 */           for (Player online : Bukkit.getOnlinePlayers()) {
     /* 275 */             morreu.showPlayer(online);
     /* 276 */             matou.showPlayer(online);

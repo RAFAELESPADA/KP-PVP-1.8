@@ -33,6 +33,8 @@ import org.bukkit.scheduler.BukkitTask;
 import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
 /*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
 import me.RockinChaos.itemjoin.api.ItemJoinAPI;
+import net.wavemc.core.bukkit.WaveBukkit;
+import net.wavemc.core.bukkit.account.WavePlayer;
 /*     */ 
 /*    */ public class X1
 /*    */   implements Listener
@@ -399,6 +401,12 @@ Bukkit.getConsoleSender().sendMessage("§b" + morreu.getName() + " has been kill
 /* 269 */           X1.hide.remove(morreu);
 /* 270 */           X1.entrar1v1(matou);
 /* 271 */           X1.entrar1v1(morreu);
+WavePlayer k = WaveBukkit.getInstance().getPlayerManager().getPlayer(matou.getName());
+WavePlayer m = WaveBukkit.getInstance().getPlayerManager().getPlayer(morreu.getName());
+k.getPvp().addWinsX1(1);
+m.getPvp().setDeathsx1(m.getPvp().getDeathsx1() + 1);
+WaveBukkit.getInstance().getPlayerManager().getController().save(m);
+WaveBukkit.getInstance().getPlayerManager().getController().save(k);
 /* 272 */           morreu.updateInventory();
 /* 273 */           matou.updateInventory();
 /* 274 */           for (Player online : Bukkit.getOnlinePlayers()) {

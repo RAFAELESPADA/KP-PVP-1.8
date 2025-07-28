@@ -131,6 +131,29 @@ import net.wavemc.core.bukkit.account.WavePlayer;
     if (indentifier.equals("player_levelprefix")) {
         return String.valueOf(Level.getPlayerLevelPrefix(p));
       }
+
+    if (indentifier.equals("player_x1_wins")) {
+      return String.valueOf(AntiDeathDrop.GetX1K(p));
+    }
+
+    if (indentifier.equals("player_x1_losses")) {
+      return String.valueOf(AntiDeathDrop.GetX1D(p));
+    }
+
+    if (indentifier.equals("player_x1_winstreak")) {
+      return String.valueOf(AntiDeathDrop.GetX1W(p));
+    }
+    if (indentifier.equals("player_sumo_wins")) {
+        return String.valueOf(AntiDeathDrop.GetSumoK(p));
+      }
+
+      if (indentifier.equals("player_sumo_losses")) {
+        return String.valueOf(AntiDeathDrop.GetSumoD(p));
+      }
+
+      if (indentifier.equals("player_sumo_winstreak")) {
+        return String.valueOf(AntiDeathDrop.GetSumoWin(p));
+      }
     if (indentifier.equals("player_streak"))
     {
     	WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer((p.getName()));
