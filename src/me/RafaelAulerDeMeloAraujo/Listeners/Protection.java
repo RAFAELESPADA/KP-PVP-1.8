@@ -45,10 +45,10 @@ public void onEntityDamageByEntity(final EntityDamageByEntityEvent event) {
 
 		final Player damaged = (Player) event.getEntity();
 		final Player damager = (Player) event.getDamager();
-		if (Habilidade.getAbility(damaged) == "None") {
+		if (Habilidade.getAbility(damaged) == Main.getInstance().getConfig().getString("NoKit-DefaultName")) {
 			event.setCancelled(true);
 		}
-		if (Habilidade.getAbility(damager) == "None") {
+		if (Habilidade.getAbility(damager) == Main.getInstance().getConfig().getString("NoKit-DefaultName")) {
 			event.setCancelled(true);
 		}
 		if (Habilidade.getAbility(damaged) == Main.cfg_x1.getString("x1.ability")) {

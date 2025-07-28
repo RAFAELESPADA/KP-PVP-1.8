@@ -1,14 +1,13 @@
 /*     */ package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 /*     */ 
 /*     */ import java.util.ArrayList;
-/*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
+
 /*     */ import org.bukkit.Bukkit;
 /*     */ import org.bukkit.Material;
 /*     */ import org.bukkit.Sound;
 /*     */ import org.bukkit.command.Command;
 /*     */ import org.bukkit.command.CommandExecutor;
 /*     */ import org.bukkit.command.CommandSender;
-/*     */ import org.bukkit.configuration.file.FileConfiguration;
 /*     */ import org.bukkit.entity.Player;
 /*     */ import org.bukkit.event.EventHandler;
 /*     */ import org.bukkit.event.Listener;
@@ -16,6 +15,8 @@
 /*     */ import org.bukkit.inventory.Inventory;
 /*     */ import org.bukkit.inventory.ItemStack;
 /*     */ import org.bukkit.inventory.meta.ItemMeta;
+
+/*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
 /*     */ 
 /*     */ 
 /*     */ 
@@ -171,6 +172,11 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lMilkM
 /* 156 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lBomber"))
 /*     */         {
 /* 158 */           Bukkit.dispatchCommand(p, "bomber");
+/* 159 */           p.closeInventory();
+/*     */         }
+if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lGhast"))
+/*     */         {
+/* 158 */           Bukkit.dispatchCommand(p, "kghast");
 /* 159 */           p.closeInventory();
 /*     */         }
 /* 161 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lBasic"))
@@ -745,7 +751,18 @@ if (p.hasPermission("kitpvp.kit.milkman"))
 /* 562 */         pyro.setItemMeta(metapyro);
 /* 563 */         kits.addItem(new ItemStack[] { pyro });
 /*     */       }
-
+if (p.hasPermission("kitpvp.kit.ghast"))
+/*     */       {
+/* 555 */         ItemStack pyro = new ItemStack(Material.GHAST_TEAR);
+/* 556 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 557 */         metapyro.setDisplayName("§7Kit §e§lGhast");
+/* 558 */         ArrayList indiob = new ArrayList();
+/* 559 */         indiob.add((Main.kits.getString("GhastLore")).replace("&", "§"));
+/* 560 */         
+/* 561 */         metapyro.setLore(indiob);
+/* 562 */         pyro.setItemMeta(metapyro);
+/* 563 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       }
 /*     */       ItemStack[] arrayOfItemStack;
 /* 566 */       int descpyro1 = (arrayOfItemStack = kits.getContents()).length;
 /* 567 */       for (int metapyro1 = 0; metapyro1 < descpyro1; metapyro1++)

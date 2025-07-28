@@ -84,6 +84,8 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Cooldown;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Dublejump;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Fireman;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.FiremanCMD;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Ghast;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.GhastKIT;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.GladCMD;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Gladiator;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
@@ -443,6 +445,7 @@ getCommand("kresouper").setExecutor(new ResouperCMD(this));
 /* 243 */     getCommand("critical").setExecutor(new Critical(this));
 /* 244 */     getCommand("kitpvp").setExecutor(new Join(this));
 /* 245 */     getCommand("naruto").setExecutor(new Naruto(this));
+getCommand("kghast").setExecutor(new GhastKIT(this));
 getCommand("kphantom").setExecutor(new PhantomCMD(this));
 getCommand("sonic").setExecutor(new Sonic());
 this.pm.registerEvents(new ClickTest(), this);
@@ -590,6 +593,9 @@ if (Main.getInstace().getConfig().getString("DisableCombatLog").equalsIgnoreCase
 /* 266 */     this.pm.registerEvents(new SoupSign(), this);
 /* 267 */     this.pm.registerEvents(new Deshfire(), this);
 /* 268 */     this.pm.registerEvents(new Thor(this), this);
+
+/* 268 */     this.pm.registerEvents(new Ghast(), this);
+/* 268 */     this.pm.registerEvents(new Recraft(), this);
 /* 269 */     this.pm.registerEvents(new Ninja(this), this);
 /* 270 */     this.pm.registerEvents(new JoinSign(this), this);
 /* 271 */     this.pm.registerEvents(new LeaveSign(this), this);

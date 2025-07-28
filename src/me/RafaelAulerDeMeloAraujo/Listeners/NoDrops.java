@@ -1,14 +1,13 @@
 /*    */ package me.RafaelAulerDeMeloAraujo.Listeners;
-/*    */ 
-/*    */ import java.util.ArrayList;
-/*    */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
-/*    */ import me.RafaelAulerDeMeloAraujo.main.Main;
 /*    */ import org.bukkit.Material;
 /*    */ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /*    */ import org.bukkit.event.player.PlayerDropItemEvent;
 /*    */ import org.bukkit.event.player.PlayerPickupItemEvent;
+
+/*    */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
+/*    */ import me.RafaelAulerDeMeloAraujo.main.Main;
 /*    */ 
 /*    */ public class NoDrops implements org.bukkit.event.Listener
 /*    */ {
@@ -28,15 +27,15 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /* 26 */     if (!Join.game.contains(paramPlayerPickupItemEvent.getPlayer().getName()) || (Main.getInstace().getConfig().getString("DisableDropsOnKitPvP").equalsIgnoreCase("false"))) {
 /* 27 */       return;
 /*    */     }
+if (paramPlayerPickupItemEvent.getItemDrop().getItemStack().getItemMeta().hasDisplayName()) {
+	paramPlayerPickupItemEvent.setCancelled(true);	
+}
 /* 29 */     if (Join.game.contains(paramPlayerPickupItemEvent.getPlayer().getName()) && (Main.getInstace().getConfig().getString("DisableDropsOnKitPvP").equalsIgnoreCase("true")))
 /*    */     {
 /* 31 */       if (paramPlayerPickupItemEvent.getItemDrop().getItemStack().getType() == Material.BOWL)
 /*    */       {
 /* 33 */         paramPlayerPickupItemEvent.setCancelled(false);
 /* 34 */         paramPlayerPickupItemEvent.getPlayer().playSound(paramPlayerPickupItemEvent.getPlayer().getLocation(), org.bukkit.Sound.valueOf(this.main.getConfig().getString("Sound.BowlDrop")), 1.0F, 1.0F);
-/*    */       }
-/*    */       else {
-/* 37 */         paramPlayerPickupItemEvent.setCancelled(true);
 /*    */       }
 /*    */     }
 /*    */   }

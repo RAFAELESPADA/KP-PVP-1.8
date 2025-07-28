@@ -7,6 +7,8 @@ import java.util.Map;
 
 import org.bukkit.entity.Player;
 
+import me.RafaelAulerDeMeloAraujo.main.Main;
+
 public class Habilidade
 {
     public static Map<String, String> powerMap;
@@ -24,7 +26,7 @@ public class Habilidade
     
     public static String getAbility(final Player player) {
         if (!Habilidade.powerMap.containsKey(player.getName())) {
-            Habilidade.powerMap.put(player.getName(), "None");
+            Habilidade.powerMap.put(player.getName(), Main.getInstance().getConfig().getString("NoKit-DefaultName"));
         }
         return Habilidade.powerMap.get(player.getName());
     }
@@ -36,7 +38,7 @@ public class Habilidade
     }
     public static boolean ContainsAbility(final Player player) {
     
-    		 if (Habilidade.getAbility(player) != "None") {
+    		 if (Habilidade.getAbility(player) != Main.getInstance().getConfig().getString("NoKit-DefaultName")) {
     			 return true;
     	            
     	        }

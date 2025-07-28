@@ -38,6 +38,7 @@ RyuLore: '&7Shoots a hadouken!'
 MonkLore: '&7Swaps item on enemy inventory'
 FiremanLore: '&7Dont receive damage from fire or lava'
 MilkmanLore: '&7Get stronger with your milk'
+GhastLore: '&7Throw fireballs'
 
 #Modify the cooldown of some kits
 #They are in seconds
@@ -52,6 +53,7 @@ NarutoCooldown: 40
 RyuCooldown: 25
 NinjaCooldown: 10
 MonkCooldown: 25
+GhastCooldown: 30
 
 
 #Disable kits here
@@ -72,12 +74,14 @@ PvPDisabled: false
 DeshfireDisabled: false
 SonicDisabled: false
 NarutoDisabled: false
+GhastDisabled: false
 
 #Edit some kits ability options
 #Edit the chance of the kit working on each hit (Viper , Snail, Vampire , Confuser)
 #And edit some other kit options
 #0 in the amplifier means that the effect is level 1
 
+GhastFireballs: 6
 ViperChance: 33
 SnailChance: 33
 VampireChance: 27

@@ -69,7 +69,7 @@ import net.wavemc.core.bukkit.item.ItemBuilder;
 		return true;
 	}
 	/* 218 */       p.getInventory().clear();
-	/* 219 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Phantom").replace("&", "§"));
+	/* 219 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "MilkMan").replace("&", "§"));
 	/* 220 */       p.setGameMode(GameMode.ADVENTURE);
 	/*     */       
 	/* 222 */       Habilidade.setAbility(p, "Milkman");

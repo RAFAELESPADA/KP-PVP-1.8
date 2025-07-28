@@ -69,6 +69,8 @@ public class Shop
     createButton(Material.BEACON, shop, 34, "§6-> §cRyu", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 5000");
     createButton(Material.BLAZE_ROD, shop, 35, "§6-> §cMonk", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 6000");
     createButton(Material.LAVA_BUCKET, shop, 36, "§6-> §cFireman", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 6000");
+    createButton(Material.MILK_BUCKET, shop, 38, "§6-> §cMilkMan", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 6000");   
+    createButton(Material.GHAST_TEAR, shop, 37, "§6-> §cGhast", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 18000");
     createButton(Material.BARRIER, shop, 53, "§4§l-> §cClose", Main.messages.getString("CloseShopLore").replace("&", "§"));
   }
   
@@ -378,6 +380,56 @@ public class Shop
         p.closeInventory();
       }
     }
+
+    if ((clicked.getType() == Material.GHAST_TEAR)) {
+        if (Coins.getCoins(p) >= 18000)
+        {
+      	  if (p.hasPermission("kitpvp.kit.ghast")) {
+      		  p.sendMessage("§e[KitPvP] §cYou already have the Kit Ghast!");
+          		p.closeInventory();
+          		return;
+        	}
+      	if (Main.kits.getBoolean("GhastDisabled")) {
+      		p.sendMessage(API.NomeServer + ChatColor.RED + "The Ghast kit is disabled, sorry");
+      		return;
+      	}
+      	Coins.perms.playerAdd(p, "kitpvp.kit.ghast");
+          p.sendMessage("§6-> §cYou buy the Ghast kit §e-18000 coins");
+          Coins.removeCoins(p, 18000);
+          e.setCancelled(true);
+          p.closeInventory();
+        }
+        else if (Coins.getCoins(p) < 18000)
+        {
+          p.sendMessage(Main.messages.getString("NoFundsShop").replace("&", "§"));
+          e.setCancelled(true);
+          p.closeInventory();
+        }
+      }
+
+
+    if ((clicked.getType() == Material.MILK_BUCKET)) {
+        if (Coins.getCoins(p) >= 6000)
+        {
+      	  if (p.hasPermission("kitpvp.kit.milkman")) {
+      		  p.sendMessage("§e[KitPvP] §cYou already have the Kit Milkman!");
+          		p.closeInventory();
+          		return;
+        	}
+      	
+      	Coins.perms.playerAdd(p, "kitpvp.kit.milkman");
+          p.sendMessage("§6-> §cYou buy the MilkMan kit §e-6000 coins");
+          Coins.removeCoins(p, 6000);
+          e.setCancelled(true);
+          p.closeInventory();
+        }
+        else if (Coins.getCoins(p) < 6000)
+        {
+          p.sendMessage(Main.messages.getString("NoFundsShop").replace("&", "§"));
+          e.setCancelled(true);
+          p.closeInventory();
+        }
+      }
     if ((inv.getName().equals(shop.getName())) && (clicked.getType() == Material.GOLD_NUGGET)) {
       if (Coins.getCoins(p) >= 10000)
       {

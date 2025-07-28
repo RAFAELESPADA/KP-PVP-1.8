@@ -1,0 +1,83 @@
+package me.RafaelAulerDeMeloAraujo.SpecialAbility;
+
+
+
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.entity.Fireball;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import me.RafaelAulerDeMeloAraujo.main.Main;
+
+public class Ghast implements Listener {
+
+
+	   
+@EventHandler(priority = EventPriority.HIGH)
+public void onInteract(EntityDamageEvent event) {
+	if (!(event.getEntity() instanceof Player)) {
+		return;
+	}
+	Player p = (Player)event.getEntity();
+	if (!(Habilidade.getAbility(p) == "Ghast")) {
+		return;
+	}	
+	if (event.getCause() == DamageCause.ENTITY_EXPLOSION) {
+		event.setCancelled(true);
+	}
+}
+@EventHandler(priority = EventPriority.LOWEST)
+public void onInteract(PlayerInteractEvent event) {
+	Player p = event.getPlayer();
+	if (event.getItem() == null) {
+		return;
+	}
+	if (!(Habilidade.getAbility(p) == "Ghast")) {
+		return;
+	}	
+
+	if (!event.hasItem() || !event.getItem().equals(new ItemStack(Material.FIREBALL))) return; 
+	if (!event.getAction().equals(Action.RIGHT_CLICK_AIR)) 
+	return; {
+		event.setCancelled(true);
+		 if (Cooldown.add(p)) {
+             API.MensagemCooldown(p);
+             return;
+         }
+			new BukkitRunnable() {
+	            int fireballs = 0;
+	            int total = Main.kits.getInt("GhastFireballs"); // total de bolas de fogo
+
+	            @Override
+	            public void run() {
+	                fireballs++;
+	                p.launchProjectile(Fireball.class);
+	                if ((Bukkit.getVersion().contains("1.9") || (Bukkit.getVersion().contains("1.10") || (Bukkit.getVersion().contains("1.11") || (Bukkit.getVersion().contains("1.12") || (Bukkit.getVersion().contains("1.13") || (Bukkit.getVersion().contains("1.14") || (Bukkit.getVersion().contains("1.15") || (Bukkit.getVersion().contains("1.16") || (Bukkit.getVersion().contains("1.17") || (Bukkit.getVersion().contains("1.18") || (Bukkit.getVersion().contains("1.19") || (Bukkit.getVersion().contains("1.20") || (Bukkit.getVersion().contains("1.21") || (Bukkit.getVersion().contains("1.22"))))))))))))))))
+	                /*     */     
+	                p.playSound(p.getLocation(), Sound.ENTITY_GHAST_SCREAM, 1F, 1F);
+	                else {
+
+		                p.playSound(p.getLocation(), Sound.valueOf("GHAST_SCREAM"), 1F, 1F);
+	                }
+	                if(fireballs >= total) {
+	                    cancel();
+	                }
+	            }
+	        }.runTaskTimer(Main.getInstance(), 0, 40);
+
+/*  74 */     Cooldown.add(p, Main.kits.getInt("GhastCooldown"));
+}
+}
+}
+
+

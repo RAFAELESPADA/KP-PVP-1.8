@@ -21,7 +21,7 @@ public class SetArena implements CommandExecutor
         	  	  return true;
         	    }
                 if (args.length == 0) {
-                    p.sendMessage(String.valueOf(API.NomeServer) + "Write: /setarena (1|4)");
+                    p.sendMessage(String.valueOf(API.NomeServer) + "Write: /setarena (1|12)");
                     return true;
                 }
                 if (args[0].equalsIgnoreCase("1")) {
@@ -62,6 +62,86 @@ public class SetArena implements CommandExecutor
                     Main.plugin.getConfig().set("arena4.pitch", (Object)p.getLocation().getPitch());
                     Main.plugin.getConfig().set("arena4.yaw", (Object)p.getLocation().getYaw());
                     Main.plugin.getConfig().set("arena4.world", (Object)p.getLocation().getWorld().getName());
+                    Main.plugin.saveConfig();
+                }
+                if (args[0].equalsIgnoreCase("5")) {
+                    p.sendMessage(String.valueOf(API.NomeServer) + "§aYou seted the ARENA 5");
+                    Main.plugin.getConfig().set("arena5.x", (Object)p.getLocation().getX());
+                    Main.plugin.getConfig().set("arena5.y", (Object)p.getLocation().getY());
+                    Main.plugin.getConfig().set("arena5.z", (Object)p.getLocation().getZ());
+                    Main.plugin.getConfig().set("arena5.pitch", (Object)p.getLocation().getPitch());
+                    Main.plugin.getConfig().set("arena5.yaw", (Object)p.getLocation().getYaw());
+                    Main.plugin.getConfig().set("arena5.world", (Object)p.getLocation().getWorld().getName());
+                    Main.plugin.saveConfig();
+                }
+                if (args[0].equalsIgnoreCase("6")) {
+                    p.sendMessage(String.valueOf(API.NomeServer) + "§aYou seted the ARENA 6");
+                    Main.plugin.getConfig().set("arena6.x", (Object)p.getLocation().getX());
+                    Main.plugin.getConfig().set("arena6.y", (Object)p.getLocation().getY());
+                    Main.plugin.getConfig().set("arena6.z", (Object)p.getLocation().getZ());
+                    Main.plugin.getConfig().set("arena6.pitch", (Object)p.getLocation().getPitch());
+                    Main.plugin.getConfig().set("arena6.yaw", (Object)p.getLocation().getYaw());
+                    Main.plugin.getConfig().set("arena6.world", (Object)p.getLocation().getWorld().getName());
+                    Main.plugin.saveConfig();
+                }
+                if (args[0].equalsIgnoreCase("7")) {
+                    p.sendMessage(String.valueOf(API.NomeServer) + "§aYou seted the ARENA 5");
+                    Main.plugin.getConfig().set("arena7.x", (Object)p.getLocation().getX());
+                    Main.plugin.getConfig().set("arena7.y", (Object)p.getLocation().getY());
+                    Main.plugin.getConfig().set("arena7.z", (Object)p.getLocation().getZ());
+                    Main.plugin.getConfig().set("arena7.pitch", (Object)p.getLocation().getPitch());
+                    Main.plugin.getConfig().set("arena7.yaw", (Object)p.getLocation().getYaw());
+                    Main.plugin.getConfig().set("arena7.world", (Object)p.getLocation().getWorld().getName());
+                    Main.plugin.saveConfig();
+                }
+                if (args[0].equalsIgnoreCase("8")) {
+                    p.sendMessage(String.valueOf(API.NomeServer) + "§aYou seted the ARENA 8");
+                    Main.plugin.getConfig().set("arena8.x", (Object)p.getLocation().getX());
+                    Main.plugin.getConfig().set("arena8.y", (Object)p.getLocation().getY());
+                    Main.plugin.getConfig().set("arena8.z", (Object)p.getLocation().getZ());
+                    Main.plugin.getConfig().set("arena8.pitch", (Object)p.getLocation().getPitch());
+                    Main.plugin.getConfig().set("arena8.yaw", (Object)p.getLocation().getYaw());
+                    Main.plugin.getConfig().set("arena8.world", (Object)p.getLocation().getWorld().getName());
+                    Main.plugin.saveConfig();
+                }
+                if (args[0].equalsIgnoreCase("9")) {
+                    p.sendMessage(String.valueOf(API.NomeServer) + "§aYou seted the ARENA 9");
+                    Main.plugin.getConfig().set("arena9.x", (Object)p.getLocation().getX());
+                    Main.plugin.getConfig().set("arena9.y", (Object)p.getLocation().getY());
+                    Main.plugin.getConfig().set("arena9.z", (Object)p.getLocation().getZ());
+                    Main.plugin.getConfig().set("arena9.pitch", (Object)p.getLocation().getPitch());
+                    Main.plugin.getConfig().set("arena9.yaw", (Object)p.getLocation().getYaw());
+                    Main.plugin.getConfig().set("arena9.world", (Object)p.getLocation().getWorld().getName());
+                    Main.plugin.saveConfig();
+                }
+                if (args[0].equalsIgnoreCase("10")) {
+                    p.sendMessage(String.valueOf(API.NomeServer) + "§aYou seted the ARENA 10");
+                    Main.plugin.getConfig().set("arena10.x", (Object)p.getLocation().getX());
+                    Main.plugin.getConfig().set("arena10.y", (Object)p.getLocation().getY());
+                    Main.plugin.getConfig().set("arena10.z", (Object)p.getLocation().getZ());
+                    Main.plugin.getConfig().set("arena10.pitch", (Object)p.getLocation().getPitch());
+                    Main.plugin.getConfig().set("arena10.yaw", (Object)p.getLocation().getYaw());
+                    Main.plugin.getConfig().set("arena10.world", (Object)p.getLocation().getWorld().getName());
+                    Main.plugin.saveConfig();
+                }
+                if (args[0].equalsIgnoreCase("11")) {
+                    p.sendMessage(String.valueOf(API.NomeServer) + "§aYou seted the ARENA 11");
+                    Main.plugin.getConfig().set("arena11.x", (Object)p.getLocation().getX());
+                    Main.plugin.getConfig().set("arena11.y", (Object)p.getLocation().getY());
+                    Main.plugin.getConfig().set("arena11.z", (Object)p.getLocation().getZ());
+                    Main.plugin.getConfig().set("arena11.pitch", (Object)p.getLocation().getPitch());
+                    Main.plugin.getConfig().set("arena11.yaw", (Object)p.getLocation().getYaw());
+                    Main.plugin.getConfig().set("arena11.world", (Object)p.getLocation().getWorld().getName());
+                    Main.plugin.saveConfig();
+                }
+                if (args[0].equalsIgnoreCase("12")) {
+                    p.sendMessage(String.valueOf(API.NomeServer) + "§aYou seted the ARENA 12");
+                    Main.plugin.getConfig().set("arena12.x", (Object)p.getLocation().getX());
+                    Main.plugin.getConfig().set("arena12.y", (Object)p.getLocation().getY());
+                    Main.plugin.getConfig().set("arena12.z", (Object)p.getLocation().getZ());
+                    Main.plugin.getConfig().set("arena12.pitch", (Object)p.getLocation().getPitch());
+                    Main.plugin.getConfig().set("arena12.yaw", (Object)p.getLocation().getYaw());
+                    Main.plugin.getConfig().set("arena12.world", (Object)p.getLocation().getWorld().getName());
                     Main.plugin.saveConfig();
                 }
             }

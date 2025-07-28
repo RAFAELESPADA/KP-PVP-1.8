@@ -25,6 +25,7 @@
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.Scoreboard;
 
+import me.RafaelAulerDeMeloAraujo.Listeners.UpdateUtil;
 import me.RafaelAulerDeMeloAraujo.ScoreboardManager.WaveAnimation;
 /*     */ import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
 /*     */ import me.RafaelAulerDeMeloAraujo.X1.X1;
@@ -166,13 +167,16 @@ public static ArrayList<Player> player = new ArrayList();
 /* 146 */           return true;
 /*     */         }
 /*     */         
-/* 149 */         sender.sendMessage("§c[KitPvP] §eThe plugin may has a update.");
-/* 150 */         sender.sendMessage("§c[KitPvP] §eVerify it here.");
-/* 151 */         sender.sendMessage("§c[KitPvP] §eYour version: " + Main.getInstance().getDescription().getVersion());
-/* 152 */         sender.sendMessage("§c[KitPvP] §eIf your version is lower than the last update");
-/* 153 */         sender.sendMessage("§c[KitPvP] §eYou should update your plugin");
-/* 154 */         sender.sendMessage("§c[KitPvP] §eLink: http://bit.ly/2tIEzvJ");
-/*     */         
+/* 149 */         UpdateUtil updateChecker = new UpdateUtil(Main.getInstance(), true);
+/*     */         switch (updateChecker.check()) {
+case OUT_OF_DATE:
+    sender.sendMessage("§c[KitPvP] §fAn update for KP-PVP (" + updateChecker.getNewVersion() + ") was found. Please update at: https://www.spigotmc.org/resources/kp-pvp-the-ultimate-kitpvp-plugin.50969/");
+    break;
+case UP_TO_DATE:
+	sender.sendMessage("§c[KitPvP] §fYou are on the very latest version of KP-PVP.");
+default:
+    break;
+}
 /*     */ 
 /*     */ 
 /*     */ 

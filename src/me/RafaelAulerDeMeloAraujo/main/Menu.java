@@ -132,6 +132,11 @@ if (killstreak % Main.customization.getInt("XP-Required-To-LevelUP") == 0 && Lev
 if (kills2 >= 3) {
 	broadcast(API.NomeServer + "" + Main.messages.getString("KillStreakLostBroadcast").replace("&", "§").replace("%killstreak%", String.valueOf(kills2)).replace("%player%", p.getName()).replace("%killer%", k.getName()) , p.getWorld());
 }
+if (Main.getInstance().getConfig().getBoolean("Commands-ON-KILL-Enabled")) {
+	  for (String commands : Main.getInstance().getConfig().getStringList("Commands-Executed-On-Kill")) {
+	  Bukkit.dispatchCommand(Bukkit.getConsoleSender(), commands.replace("%killer%", k.getName()).replace("%killed%", p.getName()));
+}
+}
 p.sendMessage(String.valueOf(API.NomeServer + Main.getInstace().getConfig().getString("Death.Tell").replaceAll("%player%", k.getName())));
 k.sendMessage(String.valueOf(API.NomeServer + Main.getInstace().getConfig().getString("Kill.Tell").replaceAll("%player%", p.getName())));
 XP.addXP(k, Main.customization.getInt("XPEarned-OnKill"));
