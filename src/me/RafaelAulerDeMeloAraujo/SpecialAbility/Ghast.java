@@ -16,7 +16,6 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
 
 import me.RafaelAulerDeMeloAraujo.main.Main;
 
@@ -79,8 +78,6 @@ public void onInteract(PlayerInteractEvent event) {
 	            public void run() {
 	                fireballs++;
 	    	        Fireball h = ( Fireball)p.launchProjectile(Fireball.class);
-	    	        Vector velo1 = p.getLocation().getDirection().normalize().multiply(6);
-	    	        h.setVelocity(velo1);
 	    	        h.setMetadata("GGG", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
 	                p.launchProjectile(Fireball.class);
 	                if ((Bukkit.getVersion().contains("1.9") || (Bukkit.getVersion().contains("1.10") || (Bukkit.getVersion().contains("1.11") || (Bukkit.getVersion().contains("1.12") || (Bukkit.getVersion().contains("1.13") || (Bukkit.getVersion().contains("1.14") || (Bukkit.getVersion().contains("1.15") || (Bukkit.getVersion().contains("1.16") || (Bukkit.getVersion().contains("1.17") || (Bukkit.getVersion().contains("1.18") || (Bukkit.getVersion().contains("1.19") || (Bukkit.getVersion().contains("1.20") || (Bukkit.getVersion().contains("1.21") || (Bukkit.getVersion().contains("1.22"))))))))))))))))
@@ -94,7 +91,7 @@ public void onInteract(PlayerInteractEvent event) {
 	                    cancel();
 	                }
 	            }
-	        }.runTaskTimer(Main.getInstance(), 0, 10);
+	        }.runTaskTimer(Main.getInstance(), 0, 40);
 
 /*  74 */     Cooldown.add(p, Main.kits.getInt("GhastCooldown"));
 }
