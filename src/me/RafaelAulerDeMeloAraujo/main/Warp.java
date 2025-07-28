@@ -53,7 +53,7 @@ public class Warp implements CommandExecutor {
                 return true;
         }
             Player p = (Player)sender;
-            if (Habilidade.getAbility(p) != "None") {
+            if (Habilidade.getAbility(p) != Main.getInstance().getConfig().getString("NoKit-DefaultName")) {
                 sender.sendMessage(ChatColor.RED + "[KITPVP] You cannot go to a warp with a kit selected!");
                 return true;
         }

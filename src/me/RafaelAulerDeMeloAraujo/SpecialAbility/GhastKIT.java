@@ -68,7 +68,7 @@ if (Main.kits.getBoolean("GhastDisabled")) {
 /*    */       
 /* 65 */       
 /*    */       
-/* 78 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Thor").replace("&", "§"));
+/* 78 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Ghast").replace("&", "§"));
 /* 79 */       Habilidade.setAbility(p, "Ghast");
 /* 80 */       
 /* 81 */       
@@ -79,7 +79,7 @@ RTP.TeleportArenaRandom(p);
 /* 85 */       for (int i = 0; i <= 34; i++) {
 /* 86 */         p.getInventory().addItem(new ItemStack[] { sopa });
 /* 87 */         p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.KitUse")), 1.0F, 1.0F);
-/* 88 */         me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Thor"));
+/* 88 */         me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Ghast"));
 /*    */       }
 p.getInventory().setItem(1, especial);
 /*    */     }

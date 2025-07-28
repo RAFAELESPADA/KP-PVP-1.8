@@ -114,8 +114,27 @@ private void Jumps(PlayerMoveEvent e) {
 		{
 			this.fall2.remove(p.getName());
 			e.setCancelled(true);
+			if (!Habilidade.ContainsAbility(p)) {
+				/* 44 */       p.getInventory().clear();
+				   /* 45 */       
+				   /*    */       
+				   /*    */ 
+				   /* 67 */       Habilidade.setAbility(p, "Basic");
+				   /* 68 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Basic").replace("&", "§"));
+				   /*    */       
+				   /* 70 */       ItemStack sopa = new ItemStack(Material.MUSHROOM_SOUP);
+				   /* 50 */       ItemMeta sopas = sopa.getItemMeta();
+				   /* 51 */       sopas.setDisplayName("§6Soup");
+				   /* 52 */       sopa.setItemMeta(sopas);
+				   /*    */       API.give(p);
+				   for (int i = 0; i <= 34; i++) {
+				   	/* 76 */         p.getInventory().addItem(new ItemStack[] { sopa });
+				   }
+				   /* 77 */         me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Basic"));
+				   /*    */       }
+			}
 
-		}
+		
 		else if(e.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK)
 		{
 			this.fall.remove(p.getName());
