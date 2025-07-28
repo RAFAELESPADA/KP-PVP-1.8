@@ -110,9 +110,17 @@ private void Jumps(PlayerMoveEvent e) {
 			e.setCancelled(true);
 
 		}
+		if (e.getCause() == EntityDamageEvent.DamageCause.FALL && this.fall2.contains(p.getName())) 
+		{
+			this.fall2.remove(p.getName());
+			e.setCancelled(true);
+
+		}
 		else if(e.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK)
 		{
 			this.fall.remove(p.getName());
+
+			this.fall2.remove(p.getName());
 		}
 	}
 	
