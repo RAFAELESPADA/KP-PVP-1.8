@@ -1,7 +1,6 @@
 package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
 
-
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -14,7 +13,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import me.RafaelAulerDeMeloAraujo.main.Main;
@@ -46,9 +44,13 @@ public void onInteract(PlayerInteractEvent event) {
 		return;
 	}	
 
-	if (!event.hasItem() || !event.getItem().equals(new ItemStack(Material.FIREBALL))) return; 
-	if (!event.getAction().equals(Action.RIGHT_CLICK_AIR)) 
-	return; {
+	
+	if (!event.getAction().equals(Action.RIGHT_CLICK_AIR)) {
+	return;
+	}
+	if ((p.getItemInHand().getType() == Material.FIREBALL) && 
+			/*  63 */       (Habilidade.getAbility(p) == "Ghast"))
+			/*     */     {
 		event.setCancelled(true);
 		 if (Cooldown.add(p)) {
              API.MensagemCooldown(p);
@@ -73,11 +75,10 @@ public void onInteract(PlayerInteractEvent event) {
 	                    cancel();
 	                }
 	            }
-	        }.runTaskTimer(Main.getInstance(), 0, 40);
+	        }.runTaskTimer(Main.getInstance(), 0, 10);
 
 /*  74 */     Cooldown.add(p, Main.kits.getInt("GhastCooldown"));
 }
 }
 }
-
 

@@ -305,7 +305,6 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lGhast
 /* 240 */       
 /* 241 */       
 /* 242 */      
-/* 245 */       kits.setItem(39, vidro1);
 /* 246 */       kits.setItem(40, vidro1);
 /* 247 */       kits.setItem(41, vidro1);
 /* 248 */       kits.setItem(42, vidro1);
