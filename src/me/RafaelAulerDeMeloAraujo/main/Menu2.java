@@ -376,8 +376,8 @@ killer.sendMessage(API.NomeServer + "" + Main.messages.getString("KillStreakEarn
 }
 /*  69 */       if (kills % 3 == 0 && kills != 0) {
 	broadcast(API.NomeServer + "" + Main.messages.getString("KillStreakBroadcast").replace("&", "§").replace("%killstreak%", String.valueOf(kills)).replace("%player%", name) , killer.getWorld());
-/*  73 */         killer.sendMessage(API.NomeServer + "" + ChatColor.GOLD + "You have been awarded " + Main.customization.getDouble("KS-3") + " Coins!");
-/*  74 */         Coins.addCoins(killer, Main.customization.getInt("KS-3"));
+/*  73 */         killer.sendMessage(API.NomeServer + "" + ChatColor.GOLD + "You have been awarded " + Main.customization.getDouble("KS-3") + ( kills * 3 ) + " Coins!");
+/*  74 */         Coins.addCoins(killer, Main.customization.getInt("KS-3") + ( kills * 3 ));
 /*     */       }
 /*  76 */      
 /*     */     

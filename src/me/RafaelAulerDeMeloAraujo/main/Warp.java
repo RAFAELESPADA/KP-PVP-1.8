@@ -35,12 +35,12 @@ public class Warp implements CommandExecutor {
                     return true;
             }
             Player p = (Player)sender;
-            settings.getData().set("warps." + args[0] + ".world", p.getLocation().getWorld().getName());
-            settings.getData().set("warps." + args[0] + ".x", p.getLocation().getX());
-            settings.getData().set("warps." + args[0] + ".y", p.getLocation().getY());
-            settings.getData().set("warps." + args[0] + ".z", p.getLocation().getZ());
+            settings.getData().set("warps." + args[0].toLowerCase() + ".world", p.getLocation().getWorld().getName());
+            settings.getData().set("warps." + args[0].toLowerCase() + ".x", p.getLocation().getX());
+            settings.getData().set("warps." + args[0].toLowerCase() + ".y", p.getLocation().getY());
+            settings.getData().set("warps." + args[0].toLowerCase() + ".z", p.getLocation().getZ());
             settings.saveData();
-            p.sendMessage(ChatColor.GREEN + "Seted warp " + args[0] + " with sucess!");
+            p.sendMessage(ChatColor.GREEN + "Seted warp " + args[0].toLowerCase() + " with sucess!");
     }
    
     if (cmd.getName().equalsIgnoreCase("kpwarp")) {
@@ -58,22 +58,23 @@ public class Warp implements CommandExecutor {
                 return true;
         }
             
-            if (settings.getData().getConfigurationSection("warps." + args[0]) == null) {
-                    p.sendMessage(ChatColor.YELLOW + "Warp " + args[0] + " is not seted yet!");
+            if (settings.getData().getConfigurationSection("warps." + args[0].toLowerCase()) == null) {
+                    p.sendMessage(ChatColor.YELLOW + "Warp " + args[0].toLowerCase() + " is not seted yet!");
                     return true;
             }
             if (args[0].equalsIgnoreCase("FPS")) {
-            	 World w = Bukkit.getServer().getWorld(settings.getData().getString("warps." + args[0] + ".world"));
-            	double x = settings.getData().getDouble("warps." + args[0] + ".x");
-                double y = settings.getData().getDouble("warps." + args[0] + ".y");
-                double z = settings.getData().getDouble("warps." + args[0] + ".z");
+            	 World w = Bukkit.getServer().getWorld(settings.getData().getString("warps." + args[0].toLowerCase() + ".world"));
+            	double x = settings.getData().getDouble("warps." + args[0].toLowerCase() + ".x");
+                double y = settings.getData().getDouble("warps." + args[0].toLowerCase() + ".y");
+                double z = settings.getData().getDouble("warps." + args[0].toLowerCase() + ".z");
                 p.teleport(new Location(w, x, y, z));
                 warp(p);	  	
                 ItemStack sopas = new ItemStack(Material.BOWL, 64);
                 ItemMeta ksopas = sopas.getItemMeta();
                 ksopas.setDisplayName("§eBowl");
                 sopas.setItemMeta(ksopas);
-                
+
+              	Habilidade.setAbility(p, "FPS");
                 ItemStack cogur = new ItemStack(Material.RED_MUSHROOM, 64);
                 ItemMeta kcogur = cogur.getItemMeta();
                 kcogur.setDisplayName("§3--> §cRed §3<--");
@@ -92,17 +93,18 @@ public class Warp implements CommandExecutor {
                 espada.setItemMeta(kespada);
                 p.getInventory().setItem(0, espada);
                  
-                p.sendMessage(ChatColor.GREEN + "Teleported to " + args[0] + "!");
+                p.sendMessage(ChatColor.GREEN + "Teleported to " + args[0].toLowerCase() + "!");
             }
             else if (args[0].equalsIgnoreCase("Challenge")) {
-           	 World w = Bukkit.getServer().getWorld(settings.getData().getString("warps." + args[0] + ".world"));
-           	double x = settings.getData().getDouble("warps." + args[0] + ".x");
-               double y = settings.getData().getDouble("warps." + args[0] + ".y");
-               double z = settings.getData().getDouble("warps." + args[0] + ".z");
+           	 World w = Bukkit.getServer().getWorld(settings.getData().getString("warps." + args[0].toLowerCase() + ".world"));
+           	double x = settings.getData().getDouble("warps." + args[0].toLowerCase() + ".x");
+               double y = settings.getData().getDouble("warps." + args[0].toLowerCase() + ".y");
+               double z = settings.getData().getDouble("warps." + args[0].toLowerCase() + ".z");
                p.teleport(new Location(w, x, y, z));
                warp(p);
                API.sopa(p);
-            	  	
+
+             	Habilidade.setAbility(p, "LAVA");
                ItemStack sopas = new ItemStack(Material.BOWL, 64);
                ItemMeta ksopas = sopas.getItemMeta();
                ksopas.setDisplayName("§eBowl");
@@ -119,7 +121,7 @@ public class Warp implements CommandExecutor {
               p.getInventory().setItem(14, cogum);
               p.getInventory().setItem(15, cogur);
               p.getInventory().setItem(13, sopas);
-               p.sendMessage(ChatColor.GREEN + "Teleported to " + args[0] + "!");
+               p.sendMessage(ChatColor.GREEN + "Teleported to " + args[0].toLowerCase() + "!");
            }
             else if (args[0].equalsIgnoreCase("Sumo")) {
             Sumo.entrar1v1(p);
@@ -134,7 +136,6 @@ private void warp(Player player) {
 	player.getInventory().clear();
 	player.getInventory().setArmorContents(null);
 	player.setAllowFlight(false);
-	Habilidade.setAbility(player, "Warp");
 	Cooldown.remove(player);
 	  /* 280 */       Deshfire.Armadura.remove(player);
 	  /* 281 */       Deshfire.Armadura2.remove(player);

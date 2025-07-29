@@ -48,7 +48,7 @@ public static HashMap<Player, Integer> bal = new HashMap();
   public static void removeXP(Player player, int amount)
   {
 	  WavePlayer Sun8oxData = WaveBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
-	  if (amount < Sun8oxData.getPvp().getCoins()) {
+	  if (amount < Sun8oxData.getPvp().getXp()) {
 	  setXP(player, Sun8oxData.getPvp().getXp() - amount);
 	  } else {
 		Sun8oxData.getPvp().setXp(Main.customization.getInt("MinimiumAmountOfXP"));  

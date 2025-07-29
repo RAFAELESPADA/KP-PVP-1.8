@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,17 +17,20 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.API;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Cooldown;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Deshfire;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
 import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
+import me.RafaelAulerDeMeloAraujo.Warps.SettingsManager;
 import me.RafaelAulerDeMeloAraujo.X1.X1;
 import me.RockinChaos.itemjoin.api.ItemJoinAPI;
 
 
 public class Respawn implements Listener {
-	
+
+	SettingsManager settings = SettingsManager.getInstance();
 	private static ItemJoinAPI item; {
 	if(Bukkit.getPluginManager().getPlugin("ItemJoin") != null) {
 		item = new ItemJoinAPI();
@@ -102,7 +106,75 @@ public class Respawn implements Listener {
 						}
 					}}	
 				.runTaskTimer(Main.getInstance(), 0L, 20L);
-			} else {
+			}
+			else if (Habilidade.getAbility(p) == "FPS") {
+			new BukkitRunnable() {
+				
+				int time = 1;
+				
+				@Override
+				public void run() {
+					
+					
+					
+					if (time != 0) {
+
+						TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(40), Integer.valueOf(20), Main.getInstace().getConfig().getString("Title.DeathTitle"), Main.getInstace().getConfig().getString("Title.DeathSubTitle"));
+						p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.Respawning")), 3.0F, 3.0F);
+						time--;
+						
+					} else {
+				Player player = p;
+				
+           	 World w = Bukkit.getServer().getWorld(settings.getData().getString("warps."  + "fps" + ".world"));
+           	double x = settings.getData().getDouble("warps." + "fps" + ".x");
+               double y = settings.getData().getDouble("warps."  + "fps" + ".y");
+               double z = settings.getData().getDouble("warps."  + "fps" + ".z");
+               p.teleport(new Location(w, x, y, z));
+           	player.setGameMode(GameMode.ADVENTURE);
+        	player.getInventory().clear();
+        	player.getInventory().setArmorContents(null);
+        	player.setAllowFlight(false);
+        	Cooldown.remove(player);
+        	  /* 280 */       Deshfire.Armadura.remove(player);
+        	  /* 281 */       Deshfire.Armadura2.remove(player);
+        	  /* 282 */       Deshfire.cooldownm.remove(player);
+        	player.setFlying(false);
+        	player.getInventory().setHeldItemSlot(0);
+        	player.getActivePotionEffects().forEach(potion -> player.removePotionEffect(potion.getType()));	
+               ItemStack sopas = new ItemStack(Material.BOWL, 64);
+               ItemMeta ksopas = sopas.getItemMeta();
+               ksopas.setDisplayName("§eBowl");
+               sopas.setItemMeta(ksopas);
+
+             	Habilidade.setAbility(p, "FPS");
+               ItemStack cogur = new ItemStack(Material.RED_MUSHROOM, 64);
+               ItemMeta kcogur = cogur.getItemMeta();
+               kcogur.setDisplayName("§3--> §cRed §3<--");
+               cogur.setItemMeta(kcogur);
+               ItemStack cogum = new ItemStack(Material.BROWN_MUSHROOM, 64);
+               ItemMeta kcogum = cogum.getItemMeta();
+               kcogum.setDisplayName("§3--> §8Brown §3<--");
+               cogum.setItemMeta(kcogum);
+              p.getInventory().setItem(14, cogum);
+              p.getInventory().setItem(15, cogur);
+              p.getInventory().setItem(13, sopas);
+               API.sopa(p);
+               ItemStack espada = new ItemStack(Material.STONE_SWORD);
+               ItemMeta kespada = espada.getItemMeta();
+               kespada.setDisplayName("§eSword");
+               espada.setItemMeta(kespada);
+               p.getInventory().setItem(0, espada);
+                
+               p.sendMessage(ChatColor.GREEN + "Teleported to FPS!");	
+               cancel();
+				
+					}
+				}}	
+			.runTaskTimer(Main.getInstance(), 0L, 20L);
+		}
+			 else {
+				
 				new BukkitRunnable() {
 					
 					int time = 1;

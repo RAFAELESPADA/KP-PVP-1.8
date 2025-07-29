@@ -53,6 +53,8 @@ import net.wavemc.core.bukkit.account.WavePlayer;
 /*  47 */   
 /*  48 */   public static Map<String, String> lutadores = new HashMap();
 /*  49 */   public static ArrayList<Player> hide = new ArrayList();
+
+/*  50 */   public static ArrayList<Player> frezze = new ArrayList();
 /*  50 */   public static ArrayList<Player> insumo = new ArrayList();
 private BukkitTask runTaskLater;
 private static ItemJoinAPI item; {
@@ -228,6 +230,14 @@ public void onMove(PlayerMoveEvent event) {
     /*     */ 
     /*     */ 
     /*     */ 
+    WavePlayer k1 = WaveBukkit.getInstance().getPlayerManager().getPlayer(matou.getName());
+    WavePlayer m = WaveBukkit.getInstance().getPlayerManager().getPlayer(player.getName());
+    k1.getPvp().addWinsSumo(1);
+    m.getPvp().setWinstreaksumo(0);
+    k1.getPvp().addWinstreakSumo(1);
+    m.getPvp().setDeathssumo(m.getPvp().getDeathssumo() + 1);
+    WaveBukkit.getInstance().getPlayerManager().getController().save(m);
+    WaveBukkit.getInstance().getPlayerManager().getController().save(k1);
     /*     */ 
     /*     */ 
     /*     */ 
@@ -249,13 +259,6 @@ public void onMove(PlayerMoveEvent event) {
     /* 271 */           Sumo.entrar1v1(player);
     /* 272 */           morreu.updateInventory();
     /* 273 */           matou.updateInventory();
-
-WavePlayer k = WaveBukkit.getInstance().getPlayerManager().getPlayer(matou.getName());
-WavePlayer m = WaveBukkit.getInstance().getPlayerManager().getPlayer(morreu.getName());
-k.getPvp().addWinsSumo(1);
-m.getPvp().setDeathssumo(m.getPvp().getDeathssumo() + 1);
-WaveBukkit.getInstance().getPlayerManager().getController().save(m);
-WaveBukkit.getInstance().getPlayerManager().getController().save(k);
     /* 274 */           for (Player online : Bukkit.getOnlinePlayers()) {
     /* 275 */             morreu.showPlayer(online);
     /* 276 */             matou.showPlayer(online);
@@ -342,11 +345,70 @@ Habilidade.setAbility(p, "SumoFight");
 /* 173 */     p2.showPlayer(p1);
 /* 174 */     p1.updateInventory();
 /* 175 */     p2.updateInventory();
+
+/* 171 */     frezze.add(p1);
+/* 171 */     frezze.add(p2);
 /* 176 */     p2.sendMessage(Main.cfg_x1.getString("sumo.msg.invite_accept").replace("$player$", p1.getName()).replace("&", "§"));
 /* 177 */     p1.sendMessage(Main.cfg_x1.getString("sumo.msg.guest_accept").replace("$player$", p2.getName()).replace("&", "§"));
 p1.playSound(p1.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.1v1")), 5.0F, 5.0F);
 p2.playSound(p2.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.1v1")), 5.0F, 5.0F);
+/* 280 */       new BukkitRunnable()
+/*     */       {
+/*     */         public void run()
+/*     */         {
+                   TitleAPI.sendTitle(p1, 10, 10, 10, "§4§l3");
+                   p1.playSound(p1.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.1v1")), 5.0F, 5.0F);
+                   p2.playSound(p2.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.1v1")), 5.0F, 5.0F);
+                   TitleAPI.sendTitle(p2, 10, 10, 10, "§4§l3");
+/*     */         }
+/* 280 */       }.runTaskLater(Main.plugin, 20L);
+/* 280 */       new BukkitRunnable()
+/*     */       {
+/*     */         public void run()
+/*     */         {
+                   TitleAPI.sendTitle(p1, 10, 10, 10, "§6§l2");
+                   p1.playSound(p1.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.1v1")), 5.0F, 5.0F);
+                   p2.playSound(p2.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.1v1")), 5.0F, 5.0F);
+
+                   TitleAPI.sendTitle(p2, 10, 10, 10, "§6§l2");
+/*     */         }
+/* 280 */       }.runTaskLater(Main.plugin, 40L);
+/*     */     /* 280 */       new BukkitRunnable()
+/*     */       {
+/*     */         public void run()
+/*     */         {
+                   TitleAPI.sendTitle(p1, 10, 10, 10, "§a§l1");
+                   p1.playSound(p1.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.1v1")), 5.0F, 5.0F);
+                   p2.playSound(p2.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.1v1")), 5.0F, 5.0F);
+
+                   TitleAPI.sendTitle(p2, 10, 10, 10, "§a§l1");
+                   p1.playSound(p1.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.1v1")), 5.0F, 5.0F);
+                   p2.playSound(p2.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.1v1")), 5.0F, 5.0F);
+/*     */         }
+/* 280 */       }.runTaskLater(Main.plugin, 60L);
+/*     */     /* 280 */       new BukkitRunnable()
+/*     */       {
+/*     */         public void run()
+/*     */         {
+                   TitleAPI.sendTitle(p1, 10, 10, 10, "§2§lGO!");
+                   p1.playSound(p1.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.1v1")), 5.0F, 5.0F);
+                   p2.playSound(p2.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.1v1")), 5.0F, 5.0F);
+                   TitleAPI.sendTitle(p2, 10, 10, 10, "§2§lGO!");
+                   frezze.remove(p1);
+                   frezze.remove(p2);
+/*     */         }
+/* 280 */       }.runTaskLater(Main.plugin, 80L);
+/*     */     
+/*     */     }
+
+@EventHandler
+/*     */   public void entrar(PlayerMoveEvent e)
+/*     */   {
+/* 193 */     if (frezze.contains(e.getPlayer())) {
+	e.setCancelled(true);
+/*     */     }
 /*     */   }
+/*     */   
 /*     */   
 /*     */   @EventHandler
 /*     */   public void interact(PlayerInteractEvent e) {
