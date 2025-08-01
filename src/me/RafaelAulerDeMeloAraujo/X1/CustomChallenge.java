@@ -47,14 +47,14 @@ public class CustomChallenge implements Listener {
 		book2.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		 ArrayList eindiob2 = new ArrayList();
 		 /* 277 */         eindiob2.add("§fHere you can");
-                           eindiob2.add("challenge others players");
+                           eindiob2.add("§fchallenge others players");
 		 /* 277 */         eindiob2.add("§fTo a Customizated Battle!");
 
 		 /* 277 */         eindiob2.add("§fChoose between the options");
-		                   eindiob2.add("below to customize your battle to your liking");
+		                   eindiob2.add("§fbelow to customize your battle to your liking");
 
 		 /* 277 */         eindiob2.add("§fAnd after that click");
-		 eindiob2.add("the green dye to challenge this player to 1v1!");
+		 eindiob2.add("§fthe green dye to challenge this player to 1v1!");
 		 book2.setLore(eindiob2);
 		/* 198 */     book.setItemMeta(book2);
 		i.setItem(4, book
