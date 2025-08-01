@@ -46,13 +46,15 @@ public class CustomChallenge implements Listener {
 		/* 197 */     book2.setDisplayName("§eInformation");
 		book2.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		 ArrayList eindiob2 = new ArrayList();
-		 /* 277 */         eindiob2.add("§fHere you can challenge others players");
-
+		 /* 277 */         eindiob2.add("§fHere you can");
+                           eindiob2.add("challenge others players");
 		 /* 277 */         eindiob2.add("§fTo a Customizated Battle!");
 
-		 /* 277 */         eindiob2.add("§fChoose between the options below to customize your battle to your liking");
+		 /* 277 */         eindiob2.add("§fChoose between the options");
+		                   eindiob2.add("below to customize your battle to your liking");
 
-		 /* 277 */         eindiob2.add("§fAnd after that click the green dye to challenge this player to 1v1!");
+		 /* 277 */         eindiob2.add("§fAnd after that click");
+		 eindiob2.add("the green dye to challenge this player to 1v1!");
 		 book2.setLore(eindiob2);
 		/* 198 */     book.setItemMeta(book2);
 		i.setItem(4, book
@@ -573,10 +575,10 @@ i.setItem(9, monk
 	    		}
 	    		if (CM.isFullSopa()) {
 	    	        for (ItemStack is : inv.getContents()) {
-	    	             if (is == null)
+	    	             if (is == null) {
 	    	                inv.addItem(new ItemStack(Material.MUSHROOM_SOUP));
 	    	        }
-	    		} else {
+	    	        }} else {
 	    	    	for (int i = 1; i < 9; i++) {
 	    	    		 inv.addItem(new ItemStack(Material.MUSHROOM_SOUP));
 	    	    	}
@@ -584,14 +586,14 @@ i.setItem(9, monk
 	    		if (CM.isRecraft()) {
 	    	    	inv.setItem(13, new ItemStack(Material.BOWL, 64));
 	    	    	inv.setItem(14, new ItemStack(Material.RED_MUSHROOM, 64));
-	    	    	inv.setItem(13, new ItemStack(Material.BROWN_MUSHROOM, 64));
+	    	    	inv.setItem(15, new ItemStack(Material.BROWN_MUSHROOM, 64));
 	    		}
 	    		
 	    		p.updateInventory();
 	    	}
 	    	
-		
-	}
+	        
+	        }
 
 
 	
