@@ -117,6 +117,7 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Sonic;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Vampire;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Viper;
 import me.RafaelAulerDeMeloAraujo.Warps.SettingsManager;
+import me.RafaelAulerDeMeloAraujo.X1.CustomChallenge;
 import me.RafaelAulerDeMeloAraujo.X1.SetSumo;
 /*     */ import me.RafaelAulerDeMeloAraujo.X1.SetX1;
 import me.RafaelAulerDeMeloAraujo.X1.Sumo;
@@ -563,6 +564,8 @@ public static void loadTopPlayersHologram() {
               this.pm.registerEvents(new Fireman(), this);
               this.pm.registerEvents(new StatusGUI(), this);
               this.pm.registerEvents(new MenuListener(), this);
+
+              this.pm.registerEvents(new CustomChallenge(), this);
               this.pm.registerEvents(new Monk(), this);
               this.pm.registerEvents(new DamageNerf(), this);
               this.pm.registerEvents(new Sumo(this), this);

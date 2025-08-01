@@ -185,8 +185,12 @@ org.bukkit.World w = Bukkit.getServer().getWorld(Main.cfg_x1.getString("x1.coord
 /* 108 */     ItemMeta rd12 = rd1.getItemMeta();
 /* 109 */     rd12.setDisplayName(Main.messages.getString("1v1LeaveItemName").replace("&", "§"));
 /* 110 */     rd1.setItemMeta(rd12);
-/*     */     
+ItemStack rd1222 = new ItemStack(Material.ITEM_FRAME);
+/* 108 */     ItemMeta rd12222 = rd1222.getItemMeta();
+/* 109 */     rd12222.setDisplayName("§e1V1 Custom");
+/* 110 */     rd1222.setItemMeta(rd12222);
 /* 112 */     p.getInventory().setItem(0, v1);
+p.getInventory().setItem(4, rd1222 );
 /* 113 */     p.getInventory().setItem(8, rd1);
 /*     */     
 /* 115 */     
@@ -524,6 +528,57 @@ Bukkit.getConsoleSender().sendMessage("§b" + morreu.getName() + " has been kill
 /*     */     }
 /*     */   }
 /*     */   
+@EventHandler
+public void desafiar(PlayerInteractEntityEvent event) {
+	if (event.getRightClicked() instanceof Player) {	
+        Player player = event.getPlayer(),
+        		clicado = (Player) event.getRightClicked();
+        
+        if ((Habilidade.getAbility(event.getPlayer()).equalsIgnoreCase(Main.cfg_x1.getString("x1.ability"))) && 
+        		/* 288 */       ((event.getRightClicked() instanceof Player)) && 
+        		/* 289 */       (event.getPlayer().getItemInHand().getType() == Material.ITEM_FRAME)) {
+        
+    	if (X1.lutadores.containsKey(event.getPlayer())) {
+    		return;
+    	}
+        
+		event.setCancelled(true);
+
+        if (player.getItemInHand().getType() == Material.ITEM_FRAME) {
+        	if (X1.lutadores.containsKey(clicado)) {
+        		player.sendMessage("This player is already fighting");
+        		return;
+        	}
+        	if (CustomChallenge.customizing != null) {
+			if (CustomChallenge.customizing.contains(clicado)) {
+				player.sendMessage("§cThe player is customizing a battle.");
+				return;
+			}
+        	}
+			if (CustomChallenge.convites.containsKey(player.getName())) {
+				player.sendMessage("§cWait to challenge again.");
+				 BukkitTask runTaskLater = Bukkit.getServer().getScheduler().runTaskLater(Main.plugin, new BukkitRunnable()
+						 /*     */         {
+						 /*     */           public void run()
+						 /*     */           {
+						 /* 321 */             if (CustomChallenge.convites.containsKey(player.getName())) {
+						 /* 322 */               CustomChallenge.convites.remove(player.getName());
+						 /*     */             }
+						 /*     */           }
+						 /* 325 */         }, 200L);
+				return;
+			}
+        	 /* 317 */       
+        	 if (CustomChallenge.convites.containsKey(clicado.getName()) &&
+        			/* 293 */          (((String)CustomChallenge.convites.get(clicado.getName())).equalsIgnoreCase(player.getName()))) {
+        			/* 294 */           CustomChallenge.aceitar(clicado, player);
+        			/* 295 */         } else {
+        				
+        			
+	        	CustomChallenge.customInv(player, clicado);
+        }}}}
+        }
+
 /*     */ 
 /*     */ 
 /*     */   private static ItemStack make(Material material, int amount, int shrt, String displayName, List<String> lore)
