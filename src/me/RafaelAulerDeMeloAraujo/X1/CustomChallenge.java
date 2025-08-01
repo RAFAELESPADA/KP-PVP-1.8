@@ -38,7 +38,26 @@ public class CustomChallenge implements Listener {
 	public static void openi(Player p, Player t) {
 		
 		Inventory i = Bukkit.createInventory(p, 54, "- " + t.getName());
-		/*     */       
+		/*     */  
+		
+		
+		ItemStack book = new ItemStack(Material.BOOK);
+		/* 196 */     ItemMeta book2 = book.getItemMeta();
+		/* 197 */     book2.setDisplayName("§eInformation");
+		book2.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		 ArrayList eindiob2 = new ArrayList();
+		 /* 277 */         eindiob2.add("§fHere you can challenge others players");
+
+		 /* 277 */         eindiob2.add("§fTo a Customizated Battle!");
+
+		 /* 277 */         eindiob2.add("§fChoose between the options below to customize your battle to your liking");
+
+		 /* 277 */         eindiob2.add("§fAnd after that click the green dye to challenge this player to 1v1!");
+		 book2.setLore(eindiob2);
+		/* 198 */     book.setItemMeta(book2);
+		i.setItem(4, book
+				);
+		
 /* 195 */     ItemStack monk = new ItemStack(Material.DIAMOND_SWORD);
 /* 196 */     ItemMeta ims = monk.getItemMeta();
 /* 197 */     ims.setDisplayName("§aDiamond Sword");
@@ -233,7 +252,7 @@ i.setItem(9, monk
 			 efims2.setLore(eindiob2);
 			 efims2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			 /* 198 */     ef2.setItemMeta(efims2);
-	    	
+				customManager.setEfeitos(1);
 			 inv.setItem(15, ef2);
 		} else if (customManager.getEfeitos() == 1 && e.getSlot() == 24) {
 			ItemStack ef2 = new ItemStack(Material.POTION, 1, (short)8194);
@@ -244,7 +263,7 @@ i.setItem(9, monk
 			 efims2.setLore(eindiob2);
 			 efims2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			 /* 198 */     ef2.setItemMeta(efims2);
-	    	
+				customManager.setEfeitos(2);
 			 inv.setItem(15, ef2);
 		}  else if (customManager.getEfeitos() == 2 && e.getSlot() == 24) {
 			ItemStack ef2 = new ItemStack(Material.POTION, 1, (short)8201);
@@ -255,6 +274,7 @@ i.setItem(9, monk
 			 efims2.setLore(eindiob2);
 			 efims2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			 /* 198 */     ef2.setItemMeta(efims2);
+				customManager.setEfeitos(3);
 			 inv.setItem(15, ef2);
 		} else if (customManager.getEfeitos() == 3 && e.getSlot() == 24) {
 			ItemStack ef2 = new ItemStack(Material.POTION, 1, (short)8227);
@@ -263,6 +283,7 @@ i.setItem(9, monk
 			 /* 276 */         ArrayList eindiob2 = new ArrayList();
 			 /* 277 */         eindiob2.add("§fEffects: §bStrenght and Speed");
 			 efims2.setLore(eindiob2);
+				customManager.setEfeitos(0);
 			 efims2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			 /* 198 */     ef2.setItemMeta(efims2);
 			 inv.setItem(15, ef2);
