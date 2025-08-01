@@ -24,6 +24,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
 import me.RafaelAulerDeMeloAraujo.main.Main;
 
@@ -463,14 +464,14 @@ i.setItem(9, monk
 	        /* 155 */     p2.teleport(new Location(w2, Main.cfg_x1.getDouble("x1.coords.loc_2.x"), 
 	        /* 156 */       Main.cfg_x1.getDouble("x1.coords.loc_2.y"), Main.cfg_x1.getDouble("x1.coords.loc_2.z"), 
 	        /* 157 */       Float.valueOf((float)Main.cfg_x1.getDouble("x1.coords.loc_2.yaw")).floatValue(), Float.valueOf((float)Main.cfg_x1.getDouble("x1.coords.loc_2.pitch")).floatValue()));
-	        /* 161 */     X1.lutadores.put(p1.getName(), p2.getName());
-	        /* 162 */     X1.lutadores.put(p2.getName(), p1.getName());
 	        /* 163 */     convites.remove(p1.getName());
 	        /* 164 */     for (Player pp : Bukkit.getOnlinePlayers()) {
 	        /* 165 */       p1.hidePlayer(pp);
 	        /*     */     }
 	        /* 167 */     X1.hide.add(p1);
 	        X1.frezze.add(p1);
+	        Habilidade.setAbility(p1, "1v1Fight");
+	        Habilidade.setAbility(p2, "1v1Fight");
 	        X1.frezze.add(p2);
 	        /* 168 */     for (Player pp : Bukkit.getOnlinePlayers()) {
 	        /* 169 */       p2.hidePlayer(pp);
