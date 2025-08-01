@@ -24,6 +24,7 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
 import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
 import me.RafaelAulerDeMeloAraujo.Warps.SettingsManager;
+import me.RafaelAulerDeMeloAraujo.X1.CustomChallenge;
 import me.RafaelAulerDeMeloAraujo.X1.X1;
 import me.RockinChaos.itemjoin.api.ItemJoinAPI;
 
@@ -66,6 +67,48 @@ public class Respawn2 implements Listener {
 			
 
 			if (X1.inx1.contains(p)) {
+				new BukkitRunnable() {
+					
+					int time = 1;
+					
+					@Override
+					public void run() {
+						
+						
+						
+						if (time != 0) {
+
+							TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(40), Integer.valueOf(20), Main.getInstace().getConfig().getString("Title.DeathTitle"), Main.getInstace().getConfig().getString("Title.DeathSubTitle"));
+							p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.Respawning")), 3.0F, 3.0F);
+							time--;
+							
+						} else {
+							/* 191 */       p.getInventory().setArmorContents(null);
+							/*     */       
+							/* 193 */       p.updateInventory();
+							/* 194 */       Habilidade.removeAbility(p);
+							/* 195 */       Deshfire.Armadura.remove(p);
+							/* 196 */       Deshfire.Armadura2.remove(p);
+							/* 197 */       Deshfire.cooldownm.remove(p);
+							/*     */       p.setGameMode(GameMode.SURVIVAL);
+							/* 199 */       Cooldown.remove(p);
+							
+							  X1.entrar1v1(p);
+							  
+							  /*     */     
+								Bukkit.getConsoleSender().sendMessage("[KP-PVP] " + p.getName() + " Respawned on 1V1.");
+							p.sendMessage(ChatColor.YELLOW + "You respawned");
+							p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 30, 0));
+							p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.RespawnSucess")), 3.0F, 3.0F);
+							
+							
+							cancel();
+							
+						}
+					}}	
+				.runTaskTimer(Main.getInstance(), 0L, 20L);
+			}
+			if (CustomChallenge.lutadores.containsKey(p.getName())) {
 				new BukkitRunnable() {
 					
 					int time = 1;
