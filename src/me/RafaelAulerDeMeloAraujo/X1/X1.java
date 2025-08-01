@@ -403,6 +403,92 @@ entrar1v1(matou);
 	}}
 /*     */     }
 /*     */   }
+/*     */   /*     */   @EventHandler
+/*     */   public void morrear(final PlayerDeathEvent e) {
+/* 241 */     Player p = e.getEntity().getPlayer();
+/* 242 */     Player k = p.getKiller();
+if (p == null || k == null) {
+	return;
+}
+/* 243 */     if (!Habilidade.getAbility(p).equalsIgnoreCase("1v1Fight") && !Habilidade.getAbility(k).equalsIgnoreCase("1v1Fight")) {
+/* 244 */       return;
+}
+/* 245 */     if ((e.getEntity() instanceof Player)) {
+/* 246 */       
+/* 247 */       p.setFireTicks(0);
+/* 248 */       for (PotionEffect effect : p.getActivePotionEffects())
+/* 249 */         p.removePotionEffect(effect.getType());
+/*     */     }
+/* 251 */     if (((p instanceof Player)) && ((k instanceof Player))) {
+/* 252 */       
+/* 253 */       p.setFireTicks(0);
+/* 254 */       for (PotionEffect effect : p.getActivePotionEffects())
+/* 255 */         p.removePotionEffect(effect.getType());
+/*     */     }
+/* 257 */     
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */if (!CustomChallenge.lutadores.containsKey(p.getName())) {
+	return;
+}
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+WavePlayer k1 = WaveBukkit.getInstance().getPlayerManager().getPlayer(k.getName());
+WavePlayer m = WaveBukkit.getInstance().getPlayerManager().getPlayer(p.getName());
+k1.getPvp().addWinsX1(1);
+m.getPvp().setWinstreakx1(0);
+k1.getPvp().setWinstreakx1(k1.getPvp().getWinstreakx1() + 1);
+m.getPvp().setDeathsx1(m.getPvp().getDeathsx1() + 1);
+WaveBukkit.getInstance().getPlayerManager().getController().save(m);
+WaveBukkit.getInstance().getPlayerManager().getController().save(k1);
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/* 280 */       new BukkitRunnable()
+/*     */       {
+/*     */         public void run()
+/*     */         {
+/* 262 */           Player matou = Bukkit.getServer()
+/* 263 */             .getPlayerExact((String)CustomChallenge.lutadores.get(e.getEntity().getPlayer().getName()));
+if (matou == null) {
+	return;
+}
+/* 264 */           Player morreu = e.getEntity().getPlayer();
+/* 265 */           morreu.spigot().respawn();
+/* 266 */           X1.lutadores.remove(morreu.getName());
+/* 267 */           X1.lutadores.remove(matou.getName());
+CustomChallenge.lutadores.remove(matou.getName());
+CustomChallenge.lutadores.remove(morreu.getName());
+Bukkit.getConsoleSender().sendMessage("§b" + morreu.getName() + " has been killed by " + matou.getName() + " on kitpvp 1v1");
+/* 268 */           X1.hide.remove(matou);
+/* 269 */           X1.hide.remove(morreu);
+/* 270 */           X1.entrar1v1(matou);
+/* 271 */           X1.entrar1v1(morreu);
+/* 272 */           morreu.updateInventory();
+/* 273 */           matou.updateInventory();
+/* 274 */           for (Player online : Bukkit.getOnlinePlayers()) {
+/* 275 */             morreu.showPlayer(online);
+/* 276 */             matou.showPlayer(online);
+/*     */           }
+/*     */           
+/*     */         }
+/* 280 */       }.runTaskLater(Main.plugin, 5L);
+/*     */     }
 /*     */   
 /*     */   @EventHandler
 /*     */   public void morrer(final PlayerDeathEvent e) {

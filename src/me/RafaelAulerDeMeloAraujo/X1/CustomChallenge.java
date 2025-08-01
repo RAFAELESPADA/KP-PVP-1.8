@@ -220,7 +220,7 @@ i.setItem(9, monk
 	    				if (customs.get(player.getUniqueId()) == null) {
 	    					return;
 	    				}
-		    	        CustomManager customManager = new CustomManager(player.getUniqueId());
+	    		    	CustomManager customManager = CustomChallenge.customs.get(player.getUniqueId());
 
  
 
