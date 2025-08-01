@@ -32,6 +32,7 @@ public class CustomChallenge implements Listener {
 	public static ArrayList<Player> customizing = new ArrayList();
 	/*     */ public static Map<String, String> convites = new HashMap();
 
+/*  48 */   public static Map<String, String> lutadores = new HashMap();
 	/*     */ public static Map<String, String> who = new HashMap();
 	
 	public static void openi(Player p, Player t) {
@@ -279,7 +280,6 @@ i.setItem(9, monk
 			 inv. setItem(17, monkB);
 		} else if (e.getSlot() == 26) {
 			customManager.setRecraft(true);
-
     		ItemStack monkC = new ItemStack(Material.BROWN_MUSHROOM);
 			 /* 196 */     ItemMeta imsC = monkC.getItemMeta();
 			 /* 197 */     imsC.setDisplayName("§eRecraft");
@@ -303,6 +303,8 @@ i.setItem(9, monk
 					 /* 197 */     ims.setDisplayName("§eLeather Armor");
 					 /* 276 */         ArrayList indiob = new ArrayList();
 					 /* 277 */         indiob.add("§fThe fight will have leather armor");
+
+						customManager.setArmadura(Material.LEATHER_CHESTPLATE);
 					 ims.setLore(indiob);
 					 ims.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 					 /* 198 */     monk.setItemMeta(ims);
@@ -315,6 +317,8 @@ i.setItem(9, monk
 					 /* 197 */     ims.setDisplayName("§eIron Armor");
 					 /* 276 */         ArrayList indiob = new ArrayList();
 					 /* 277 */         indiob.add("§fThe fight will have iron armor");
+
+						customManager.setArmadura(Material.IRON_CHESTPLATE);
 					 ims.setLore(indiob);
 					 ims.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 					 /* 198 */     monk.setItemMeta(ims);
@@ -327,6 +331,8 @@ i.setItem(9, monk
 					 /* 197 */     ims.setDisplayName("§eDiamond Armor");
 					 /* 276 */         ArrayList indiob = new ArrayList();
 					 /* 277 */         indiob.add("§fThe fight will have diamond armor");
+
+						customManager.setArmadura(Material.DIAMOND_CHESTPLATE);
 					 ims.setLore(indiob);
 					 ims.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 					 /* 198 */     monk.setItemMeta(ims);
@@ -342,7 +348,7 @@ i.setItem(9, monk
 					 ims.setLore(indiob);
 					 ims.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 					 /* 198 */     monk.setItemMeta(ims);
-					
+						customManager.setArmadura(Material.GLASS);
 					inv.setItem(13, monk);
 				}
 				if (customManager.isFullSopa()&& e.getSlot() == 20) {
@@ -449,6 +455,9 @@ i.setItem(9, monk
 	        /* 171 */     X1.hide.add(p2);
 	        /* 172 */     p1.showPlayer(p2);
 	        /* 173 */     p2.showPlayer(p1);
+
+/* 161 */     lutadores.put(p1.getName(), p2.getName());
+/* 162 */     lutadores.put(p2.getName(), p1.getName());
 	        /* 174 */     p1.updateInventory();
 	        /* 175 */     p2.updateInventory();
 	        /* 176 */     p2.sendMessage(Main.cfg_x1.getString("x1.msg.invite_accept").replace("$player$", p1.getName()).replace("&", "§"));

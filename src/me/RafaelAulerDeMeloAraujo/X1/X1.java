@@ -370,6 +370,7 @@ p2.playSound(p2.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getS
 /* 209 */     if (lutadores.containsKey(e.getPlayer().getName())) {
 /* 210 */       Player matou = Bukkit.getServer().getPlayerExact((String)lutadores.get(e.getPlayer().getName()));
 /* 211 */       Player perdedor = e.getPlayer();
+if (matou != null ) {
 /* 212 */       matou.sendMessage(Main.cfg_x1.getString("x1.msg.disconect").replace("&", "§"));
 /* 213 */       hide.remove(perdedor);
 /* 214 */       hide.remove(matou);
@@ -377,8 +378,10 @@ p2.playSound(p2.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getS
 /* 216 */         matou.showPlayer(pp);
 /* 217 */         perdedor.showPlayer(pp);
 lutadores.remove(e.getPlayer().getName());
+entrar1v1(matou);
+}
 /*     */       }
-/* 219 */       entrar1v1(matou);
+/* 219 */       
 /*     */     }
 /*     */   }
 
@@ -388,15 +391,16 @@ lutadores.remove(e.getPlayer().getName());
 /* 225 */     if (lutadores.containsKey(e.getPlayer().getName())) {
 /* 226 */       Player matou = Bukkit.getServer().getPlayerExact((String)lutadores.get(e.getPlayer().getName()));
 /* 227 */       Player perdedor = e.getPlayer();
-/* 228 */       matou.sendMessage(Main.cfg_x1.getString("x1.msg.disconect").replace("&", "§"));
-/* 229 */       hide.remove(perdedor);
-/* 230 */       hide.remove(matou);
-/* 231 */       for (Player pp : Bukkit.getOnlinePlayers()) {
-/* 232 */         matou.showPlayer(pp);
-/* 233 */         perdedor.showPlayer(pp);
-lutadores.remove(e.getPlayer().getName());
-/*     */       }
-/* 235 */       entrar1v1(matou);
+/* 228 */       if (matou != null ) {
+	/* 212 */       matou.sendMessage(Main.cfg_x1.getString("x1.msg.disconect").replace("&", "§"));
+	/* 213 */       hide.remove(perdedor);
+	/* 214 */       hide.remove(matou);
+	/* 215 */       for (Player pp : Bukkit.getOnlinePlayers()) {
+	/* 216 */         matou.showPlayer(pp);
+	/* 217 */         perdedor.showPlayer(pp);
+	lutadores.remove(e.getPlayer().getName());
+	entrar1v1(matou);
+	}}
 /*     */     }
 /*     */   }
 /*     */   
@@ -464,6 +468,8 @@ WaveBukkit.getInstance().getPlayerManager().getController().save(k1);
 /* 265 */           morreu.spigot().respawn();
 /* 266 */           X1.lutadores.remove(morreu.getName());
 /* 267 */           X1.lutadores.remove(matou.getName());
+CustomChallenge.lutadores.remove(matou.getName());
+CustomChallenge.lutadores.remove(morreu.getName());
 Bukkit.getConsoleSender().sendMessage("§b" + morreu.getName() + " has been killed by " + matou.getName() + " on kitpvp 1v1");
 /* 268 */           X1.hide.remove(matou);
 /* 269 */           X1.hide.remove(morreu);
@@ -538,14 +544,14 @@ public void desafiar(PlayerInteractEntityEvent event) {
         		/* 288 */       ((event.getRightClicked() instanceof Player)) && 
         		/* 289 */       (event.getPlayer().getItemInHand().getType() == Material.ITEM_FRAME)) {
         
-    	if (X1.lutadores.containsKey(event.getPlayer())) {
+    	if (X1.lutadores.containsKey(event.getPlayer().getName())) {
     		return;
     	}
         
 		event.setCancelled(true);
 
         if (player.getItemInHand().getType() == Material.ITEM_FRAME) {
-        	if (X1.lutadores.containsKey(clicado)) {
+        	if (X1.lutadores.containsKey(clicado.getName())) {
         		player.sendMessage("This player is already fighting");
         		return;
         	}

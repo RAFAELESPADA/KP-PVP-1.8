@@ -47,6 +47,7 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Gladiator;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
 import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
+import me.RafaelAulerDeMeloAraujo.X1.CustomChallenge;
 import me.RafaelAulerDeMeloAraujo.X1.X1;
 import me.RockinChaos.itemjoin.api.ItemJoinAPI;
 import net.wavemc.core.bukkit.WaveBukkit;
@@ -616,6 +617,14 @@ if (Main.getInstance().getConfig().getBoolean("DisableWorldLeaveKitPvPEvent")) {
 /* 404 */       if (Join.game.contains(p.getName()))
 /*     */       {
 	if (CombatLog.emCombate(p)) {
+		p.sendMessage("§cYou are in combat!");
+		return;
+	}
+	if (X1.lutadores.containsKey(p.getName())) {
+		p.sendMessage("§cYou are in combat!");
+		return;
+	}
+	if (CustomChallenge.lutadores.containsKey(p.getName())) {
 		p.sendMessage("§cYou are in combat!");
 		return;
 	}
