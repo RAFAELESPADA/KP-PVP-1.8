@@ -552,6 +552,9 @@ WaveBukkit.getInstance().getPlayerManager().getController().save(k1);
 /* 263 */             .getPlayerExact((String)X1.lutadores.get(e.getEntity().getPlayer().getName()));
 /* 264 */           Player morreu = e.getEntity().getPlayer();
 /* 265 */           morreu.spigot().respawn();
+if (matou == null) {
+	return;
+}
 /* 266 */           X1.lutadores.remove(morreu.getName());
 /* 267 */           X1.lutadores.remove(matou.getName());
 CustomChallenge.lutadores.remove(matou.getName());

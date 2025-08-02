@@ -101,7 +101,7 @@ i.setItem(9, monk
 		i.setItem(17, monk24
 				);
 
-        ItemStack cf = new ItemStack(Material.INK_SACK, 1, (short)8);
+        ItemStack cf = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short)14);
 		/* 196 */     ItemMeta cf2 = cf.getItemMeta();
 		/* 197 */     cf2.setDisplayName(apply(Main.messages.getString("ConfigureSword")));
 		cf2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -321,7 +321,12 @@ i.setItem(9, monk
 	    	if (customManager == null) {
 	    		return;
 	    	}
-				if (customManager.getArmadura().equals(Material.GLASS) && e.getSlot() == 22 && e.getCurrentItem() == new ItemStack(Material.INK_SACK, 1, (short)8)) {
+				switch (customManager.getArmadura()) {
+				case GLASS:
+					if (!(e.getSlot() == 22 && e.getCurrentItem().getType() == Material.INK_SACK && e.getCurrentItem().getDurability() == 8)) {
+						break;	
+						}
+						
 					customManager.setArmadura(Material.LEATHER_CHESTPLATE);
 					ItemStack monk = new ItemStack(Material.LEATHER_CHESTPLATE);
 					 /* 196 */     ItemMeta ims = monk.getItemMeta();
@@ -335,59 +340,108 @@ i.setItem(9, monk
 					 /* 198 */     monk.setItemMeta(ims);
 					
 					inv.setItem(13, monk);
-				} else if (customManager.getArmadura().equals(Material.LEATHER_CHESTPLATE)&& e.getSlot() == 22 && e.getCurrentItem() == new ItemStack(Material.INK_SACK, 1, (short)8)) {
+					break;
+				case LEATHER_CHESTPLATE:
+					if (!(e.getSlot() == 22 && e.getCurrentItem().getType() == Material.INK_SACK && e.getCurrentItem().getDurability() == 8)) {
+						break;
+						}
 					customManager.setArmadura(Material.IRON_CHESTPLATE);
-					ItemStack monk = new ItemStack(Material.IRON_CHESTPLATE);
-					 /* 196 */     ItemMeta ims = monk.getItemMeta();
-					 /* 197 */     ims.setDisplayName(apply(Main.messages.getString("IronArmorCustom1v1Name")));
-					 /* 276 */         ArrayList indiob = new ArrayList();
-					 /* 277 */         indiob.add("§fThe fight will have iron armor");
+					ItemStack monk2 = new ItemStack(Material.IRON_CHESTPLATE);
+					 /* 196 */     ItemMeta ims2 = monk2.getItemMeta();
+					 /* 197 */     ims2.setDisplayName(apply(Main.messages.getString("IronArmorCustom1v1Name")));
+					 /* 276 */         ArrayList indiob2 = new ArrayList();
+					 /* 277 */         indiob2.add("§fThe fight will have iron armor");
 
 						customManager.setArmadura(Material.IRON_CHESTPLATE);
-					 ims.setLore(indiob);
-					 ims.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-					 /* 198 */     monk.setItemMeta(ims);
+					 ims2.setLore(indiob2);
+					 ims2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+					 /* 198 */     monk2.setItemMeta(ims2);
 					
-					inv.setItem(13, monk);
-				} else if (customManager.getArmadura().equals(Material.IRON_CHESTPLATE)&& e.getSlot() == 22 && e.getCurrentItem() == new ItemStack(Material.INK_SACK, 1, (short)8)) {
+					inv.setItem(13, monk2);
+					break;
+				case IRON_CHESTPLATE:
+					if (!(e.getSlot() == 22 && e.getCurrentItem().getType() == Material.INK_SACK && e.getCurrentItem().getDurability() == 8)) {
+						break;
+						}
 					customManager.setArmadura(Material.DIAMOND_CHESTPLATE);
-					ItemStack monk = new ItemStack(Material.DIAMOND_CHESTPLATE);
-					 /* 196 */     ItemMeta ims = monk.getItemMeta();
-					 /* 197 */     ims.setDisplayName(apply(Main.messages.getString("DiamondArmorCustom1v1Name")));
-					 /* 276 */         ArrayList indiob = new ArrayList();
-					 /* 277 */         indiob.add("§fThe fight will have diamond armor");
+					ItemStack monk3 = new ItemStack(Material.DIAMOND_CHESTPLATE);
+					 /* 196 */     ItemMeta ims3 = monk3.getItemMeta();
+					 /* 197 */     ims3.setDisplayName(apply(Main.messages.getString("DiamondArmorCustom1v1Name")));
+					 /* 276 */         ArrayList indiob3 = new ArrayList();
+					 /* 277 */         indiob3.add("§fThe fight will have diamond armor");
 
 						customManager.setArmadura(Material.DIAMOND_CHESTPLATE);
-					 ims.setLore(indiob);
-					 ims.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-					 /* 198 */     monk.setItemMeta(ims);
+					 ims3.setLore(indiob3);
+					 ims3.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+					 /* 198 */     monk3.setItemMeta(ims3);
 				
-					inv.setItem(13, monk);
-				} else if (customManager.getArmadura().equals(Material.DIAMOND_CHESTPLATE)&& e.getSlot() == 22 && e.getCurrentItem() == new ItemStack(Material.INK_SACK, 1, (short)8)) {
+					inv.setItem(13, monk3);
+					break;
+	    	case DIAMOND_CHESTPLATE:
+				if (!(e.getSlot() == 22 && e.getCurrentItem().getType() == Material.INK_SACK && e.getCurrentItem().getDurability() == 8)) {
+					break;	
+					}
 					customManager.setArmadura(Material.GOLD_CHESTPLATE);
-					ItemStack monk = new ItemStack(Material.GOLD_CHESTPLATE);
-					 /* 196 */     ItemMeta ims = monk.getItemMeta();
-					 /* 197 */     ims.setDisplayName(apply(Main.messages.getString("GoldArmorCustom1v1Name")));
-					 /* 276 */         ArrayList indiob = new ArrayList();
-					 /* 277 */         indiob.add("§fThe fight will have Gold Armor");
-					 ims.setLore(indiob);
-					 ims.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-					 /* 198 */     monk.setItemMeta(ims);
+						ItemStack monk4 = new ItemStack(Material.GOLD_CHESTPLATE);
+						 /* 196 */     ItemMeta ims4 = monk4.getItemMeta();
+						 /* 197 */     ims4.setDisplayName(apply(Main.messages.getString("GoldArmorCustom1v1Name")));
+						 /* 276 */         ArrayList indiob4 = new ArrayList();
+						 /* 277 */         indiob4.add("§fThe fight will have Gold Armor");
+						 ims4.setLore(indiob4);
+						 ims4.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+						 /* 198 */     monk4.setItemMeta(ims4);
+						inv.setItem(13, monk4);
+						break;
+				
+	    	case GOLD_CHESTPLATE:
+				if (!(e.getSlot() == 22 && e.getCurrentItem().getType() == Material.INK_SACK && e.getCurrentItem().getDurability() == 8)) {
+					break;
+					}
+				customManager.setArmadura(Material.CHAINMAIL_CHESTPLATE);
+						ItemStack monk22 = new ItemStack(Material.CHAINMAIL_CHESTPLATE);
+						 /* 196 */     ItemMeta ims22 = monk22.getItemMeta();
+						 /* 197 */     ims22.setDisplayName(apply(Main.messages.getString("ChainCustom1v1Name")));
+						 /* 276 */         ArrayList indiob22 = new ArrayList();
+						 /* 277 */         indiob22.add("§fThe fight will have Chain armor");
+						 ims22.setLore(indiob22);
+						 ims22.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+						 /* 198 */     monk22.setItemMeta(ims22);
+						inv.setItem(13, monk22);
+						break;
+	    	case CHAINMAIL_CHESTPLATE:
+				if (!(e.getSlot() == 22 && e.getCurrentItem().getType() == Material.INK_SACK && e.getCurrentItem().getDurability() == 8)) {
+					break;
+					}
+				customManager.setArmadura(Material.GLASS);
+					ItemStack NADA = new ItemStack(Material.GLASS);
+					 /* 196 */     ItemMeta NADA2 = NADA.getItemMeta();
+					 /* 197 */     NADA2.setDisplayName(apply(Main.messages.getString("NoArmorCustom1v1Name")));
+					 /* 276 */         ArrayList indiobNADA = new ArrayList();
+					 /* 277 */         indiobNADA.add("§fThe fight will have NO armor");
+					 NADA2.setLore(indiobNADA);
+					 NADA2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+					 /* 198 */     NADA.setItemMeta(NADA2);
 						customManager.setArmadura(Material.GLASS);
-					inv.setItem(13, monk);
-				}
-				else if (customManager.getArmadura().equals(Material.GOLD_CHESTPLATE)&& e.getSlot() == 22 && e.getCurrentItem() == new ItemStack(Material.INK_SACK, 1, (short)8)) {
+					inv.setItem(13, NADA);
+					break;
+				default:
+					if (!(e.getSlot() == 22 && e.getCurrentItem().getType() == Material.INK_SACK && e.getCurrentItem().getDurability() == 8)) {
+						break;
+						}
 					customManager.setArmadura(Material.GLASS);
-					ItemStack monk = new ItemStack(Material.GLASS);
-					 /* 196 */     ItemMeta ims = monk.getItemMeta();
-					 /* 197 */     ims.setDisplayName(apply(Main.messages.getString("NoArmorCustom1v1Name")));
-					 /* 276 */         ArrayList indiob = new ArrayList();
-					 /* 277 */         indiob.add("§fThe fight will have NO armor");
-					 ims.setLore(indiob);
-					 ims.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-					 /* 198 */     monk.setItemMeta(ims);
+					ItemStack NADA4 = new ItemStack(Material.GLASS);
+					 /* 196 */     ItemMeta NADA42 = NADA4.getItemMeta();
+					 /* 197 */     NADA42.setDisplayName(apply(Main.messages.getString("NoArmorCustom1v1Name")));
+					 /* 276 */         ArrayList indiobNADA4 = new ArrayList();
+					 /* 277 */         indiobNADA4.add("§fThe fight will have NO armor");
+					 NADA42.setLore(indiobNADA4);
+					 NADA42.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+					 /* 198 */     NADA4.setItemMeta(NADA42);
 						customManager.setArmadura(Material.GLASS);
-					inv.setItem(13, monk);
+					inv.setItem(13, NADA4);
+					break;
+					
+				
 				}
 				if (customManager.isFullSopa()&& e.getSlot() == 20) {
 	        		customManager.setFullSopa(false);
@@ -577,10 +631,13 @@ i.setItem(9, monk
 	    	    	inv.setItem(0, new ItemStack(Material.WOOD_SWORD));
 	    		} else if (CM.getEspada().equals(Material.STONE_SWORD)) {
 	    	    	inv.setItem(0, new ItemStack(Material.STONE_SWORD));
+	    		}
+	    	    	else if (CM.getEspada().equals(Material.GOLD_SWORD)) {
+		    	    	inv.setItem(0, new ItemStack(Material.GOLD_SWORD));
 	    		} else if (CM.getEspada().equals(Material.IRON_SWORD)) {
 	    	    	inv.setItem(0, new ItemStack(Material.IRON_SWORD));
 	    		} else {
-	    	    	inv.setItem(0, new ItemStack(Material.DIAMOND_SWORD));
+	    	    	inv.setItem(0, new ItemStack(Material.STONE_SWORD));
 	    		}
 	    		if (!CM.getArmadura().equals(Material.GLASS)) {
 	    			if (CM.getArmadura().equals(Material.LEATHER_CHESTPLATE)) {
@@ -593,13 +650,26 @@ i.setItem(9, monk
 	    				inv.setChestplate(new ItemStack(Material.IRON_CHESTPLATE));
 	    				inv.setLeggings(new ItemStack(Material.IRON_LEGGINGS));
 	    				inv.setBoots(new ItemStack(Material.IRON_BOOTS));
+	    			}
+	    				else if (CM.getArmadura().equals(Material.GOLD_CHESTPLATE)) {
+		    				inv.setHelmet(new ItemStack(Material.GOLD_HELMET));
+		    				inv.setChestplate(new ItemStack(Material.GOLD_CHESTPLATE));
+		    				inv.setLeggings(new ItemStack(Material.GOLD_LEGGINGS));
+		    				inv.setBoots(new ItemStack(Material.GOLD_BOOTS));
+	    				}
+	    				else if (CM.getArmadura().equals(Material.CHAINMAIL_CHESTPLATE)) {
+		    				inv.setHelmet(new ItemStack(Material.CHAINMAIL_HELMET));
+		    				inv.setChestplate(new ItemStack(Material.CHAINMAIL_CHESTPLATE));
+		    				inv.setLeggings(new ItemStack(Material.CHAINMAIL_LEGGINGS));
+		    				inv.setBoots(new ItemStack(Material.CHAINMAIL_BOOTS));
+	    				}
 	    			} else if (CM.getArmadura().equals(Material.DIAMOND_CHESTPLATE)) {
 	    				inv.setHelmet(new ItemStack(Material.DIAMOND_HELMET));
 	    				inv.setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE));
 	    				inv.setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS));
 	    				inv.setBoots(new ItemStack(Material.DIAMOND_BOOTS));
 	    			}
-	    		}
+	    		
 	    		if (CM.isFullSopa()) {
 	    	        for (ItemStack is : inv.getContents()) {
 	    	             if (is == null) {
