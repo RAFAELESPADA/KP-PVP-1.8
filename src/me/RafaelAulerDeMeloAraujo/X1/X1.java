@@ -380,9 +380,40 @@ if (matou != null ) {
 lutadores.remove(e.getPlayer().getName());
 entrar1v1(matou);
 }
-/*     */       }
+/*     */       }}
 /* 219 */       
 /*     */     }
+/*     */   @EventHandler
+/*     */   public void kick2(PlayerQuitEvent e) {
+/* 209 */     if (CustomChallenge.lutadores.containsKey(e.getPlayer().getName())) {
+/* 210 */       Player matou = Bukkit.getServer().getPlayerExact((String)CustomChallenge.lutadores.get(e.getPlayer().getName()));
+/* 211 */       Player perdedor = e.getPlayer();
+if (matou != null ) {
+/* 212 */       matou.sendMessage(Main.cfg_x1.getString("x1.msg.disconect").replace("&", "§"));
+/* 213 */       hide.remove(perdedor);
+/* 214 */       hide.remove(matou);
+/* 215 */       for (Player pp : Bukkit.getOnlinePlayers()) {
+/* 216 */         matou.showPlayer(pp);
+/* 217 */         perdedor.showPlayer(pp);
+lutadores.remove(e.getPlayer().getName());
+entrar1v1(matou);
+}}}
+/*     */   }
+@EventHandler
+/*     */   public void kick2(PlayerKickEvent e) {
+/* 209 */     if (CustomChallenge.lutadores.containsKey(e.getPlayer().getName())) {
+/* 210 */       Player matou = Bukkit.getServer().getPlayerExact((String)CustomChallenge.lutadores.get(e.getPlayer().getName()));
+/* 211 */       Player perdedor = e.getPlayer();
+if (matou != null ) {
+/* 212 */       matou.sendMessage(Main.cfg_x1.getString("x1.msg.disconect").replace("&", "§"));
+/* 213 */       hide.remove(perdedor);
+/* 214 */       hide.remove(matou);
+/* 215 */       for (Player pp : Bukkit.getOnlinePlayers()) {
+/* 216 */         matou.showPlayer(pp);
+/* 217 */         perdedor.showPlayer(pp);
+lutadores.remove(e.getPlayer().getName());
+entrar1v1(matou);
+}}}
 /*     */   }
 
 /*     */   
