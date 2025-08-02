@@ -49,7 +49,7 @@ public class StatusGUI implements Listener {
     	if (!event.getInventory().getName().equals(Main.messages.getString("StatusGuiInventory").replace("&", "§"))) {
     		return;
     	}
-    	else if (event.getWhoClicked() instanceof Player && event.getCurrentItem() != null && event.getCurrentItem().hasItemMeta() && !event.getCurrentItem().getItemMeta().getDisplayName().equals("§6Display status in chat")) {
+    	else if (event.getWhoClicked() instanceof Player && event.getCurrentItem() != null && event.getCurrentItem().hasItemMeta() && !event.getCurrentItem().getItemMeta().getDisplayName().equals(Main.messages.getString("StatusGuiDisplayInChat").replace("&", "§"))) {
             event.setCancelled(true);
         }
     }
@@ -105,7 +105,7 @@ public class StatusGUI implements Listener {
         inv.setItem(10, getCustomItemStack(Material.DIAMOND_SWORD, Main.messages.getString("StatusGuiPlayerStats").replace("&", "§"), Arrays.asList("§fKills: §a" + AntiDeathDrop.GetKills(player), "§fDeaths: §a" + AntiDeathDrop.GetDeaths(player), "§fWins ( Sumo ): §a" + AntiDeathDrop.GetSumoK(player), "§fLosses ( Sumo ): §a" + AntiDeathDrop.GetSumoD(player) , "§fWinstreak ( Sumo ): §a" + AntiDeathDrop.GetSumoWin(player) , "§fWins ( 1V1 ): §a" + AntiDeathDrop.GetX1K(player) , "§fLosses ( 1V1 ): §a" + AntiDeathDrop.GetSumoD(player) , "§fWinStreak ( 1V1 ): §a" + AntiDeathDrop.GetX1W(player), "§fKDR: §a" + String.format("%.2f",kdr),"§fKillstreak: §a" + ks)));
         inv.setItem(13, getCustomItemStack(Material.EYE_OF_ENDER, Main.messages.getString("StatusGuiBoosters").replace("&", "§"), Arrays.asList("§fXP Boost: §a" + (player.hasPermission("kitpvp.doublexp") ? "Yes" : "No"), "§fCoins Boost: §a" + (player.hasPermission("kitpvp.doublecoins") ? Main.messages.getString("StatusGuiYes").replace("&", "§") : Main.messages.getString("StatusGuiNo").replace("&", "§")))));
         inv.setItem(16, getCustomItemStack(Material.EXP_BOTTLE, Main.messages.getString("StatusGuiLevel").replace("&", "§"), Arrays.asList("§fLevel: §7(" + "§6§lLEVEL" + "§7) §b" + Level.getLevel(player), "§fNext Level: §b" + (Level.getLevel(player) + 1), "§fXP Necessary to Next Level: §b" + Level.getXPToLevelUp(player) + "XP")));
-        inv.setItem(22, getCustomItemStack(Material.DIAMOND_AXE, "§6Display status in chat", Arrays.asList(Main.messages.getString("StatusGuiYourStatsLore").replace("&", "§"))));
+        inv.setItem(22, getCustomItemStack(Material.DIAMOND_AXE, Main.messages.getString("StatusGuiDisplayInChat").replace("&", "§"), Arrays.asList(Main.messages.getString("StatusGuiYourStatsLore").replace("&", "§"))));
         target.openInventory(inv);
     }
 

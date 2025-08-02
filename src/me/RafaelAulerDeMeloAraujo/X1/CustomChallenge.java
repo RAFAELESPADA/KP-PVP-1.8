@@ -3,10 +3,12 @@ package me.RafaelAulerDeMeloAraujo.X1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -35,7 +37,9 @@ public class CustomChallenge implements Listener {
 
 /*  48 */   public static Map<String, String> lutadores = new HashMap();
 	/*     */ public static Map<String, String> who = new HashMap();
-	
+	 public static String apply(String str) {
+	      return str.replaceAll("&" , "§");
+	   }
 	public static void openi(Player p, Player t) {
 		
 		Inventory i = Bukkit.createInventory(p, 54, "- " + t.getName());
@@ -44,33 +48,30 @@ public class CustomChallenge implements Listener {
 		
 		ItemStack book = new ItemStack(Material.BOOK);
 		/* 196 */     ItemMeta book2 = book.getItemMeta();
-		/* 197 */     book2.setDisplayName("§eInformation");
+		/* 197 */     book2.setDisplayName(apply(Main.messages.getString("Custom1v1InfoName")));
 		book2.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		 ArrayList eindiob2 = new ArrayList();
-		 /* 277 */         eindiob2.add("§fHere you can");
-                           eindiob2.add("§fchallenge others players");
-		 /* 277 */         eindiob2.add("§fTo a Customizated Battle!");
-
-		 /* 277 */         eindiob2.add("§fChoose between the options");
-		                   eindiob2.add("§fbelow to customize your battle to your liking");
-
-		 /* 277 */         eindiob2.add("§fAnd after that click");
-		 eindiob2.add("§fthe green dye to challenge this player to 1v1!");
-		 book2.setLore(eindiob2);
+		 ArrayList indiob = new ArrayList();
+		   
+		    	 List<String> rawList = Main.messages.getStringList("Custom1v1InfoLore");
+		    	    List<String> coloredList = new ArrayList<>();
+		    	 for (String s : rawList) {
+		    	        coloredList.add(ChatColor.translateAlternateColorCodes('&', s));
+		    	        book2.setLore(coloredList);
+		    	 }
 		/* 198 */     book.setItemMeta(book2);
 		i.setItem(4, book
 				);
 		
 /* 195 */     ItemStack monk = new ItemStack(Material.DIAMOND_SWORD);
 /* 196 */     ItemMeta ims = monk.getItemMeta();
-/* 197 */     ims.setDisplayName("§aDiamond Sword");
+/* 197 */     ims.setDisplayName(apply(Main.messages.getString("Custom1v1DiamondSword")));
 ims.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 /* 198 */     monk.setItemMeta(ims);
 i.setItem(9, monk
 		);
 		ItemStack monk2 = new ItemStack(Material.BOWL);
 		/* 196 */     ItemMeta ims2 = monk2.getItemMeta();
-		/* 197 */     ims2.setDisplayName("§bRefill");
+		/* 197 */     ims2.setDisplayName(apply(Main.messages.getString("NoRefill")));
 		ims2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		/* 198 */     monk2.setItemMeta(ims2);
 		i.setItem(11, monk2
@@ -78,7 +79,7 @@ i.setItem(9, monk
 
 		ItemStack monk22 = new ItemStack(Material.GLASS);
 		/* 196 */     ItemMeta ims22 = monk22.getItemMeta();
-		/* 197 */     ims22.setDisplayName("§bArmor");
+		/* 197 */     ims22.setDisplayName(apply(Main.messages.getString("NoArmor")));
 		ims22.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		/* 198 */     monk22.setItemMeta(ims22);
 		i.setItem(13, monk22
@@ -86,7 +87,7 @@ i.setItem(9, monk
 
 		ItemStack monk23 = new ItemStack(Material.POTION);
 		/* 196 */     ItemMeta ims23 = monk23.getItemMeta();
-		/* 197 */     ims23.setDisplayName("§bEffects");
+		/* 197 */     ims23.setDisplayName(apply(Main.messages.getString("NoEffects")));
 		ims23.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		/* 198 */     monk23.setItemMeta(ims23);
 		i.setItem(15, monk23
@@ -94,7 +95,7 @@ i.setItem(9, monk
 
 		ItemStack monk24 = new ItemStack(Material.THIN_GLASS);
 		/* 196 */     ItemMeta ims24 = monk24.getItemMeta();
-		/* 197 */     ims24.setDisplayName("§bRecraft");
+		/* 197 */     ims24.setDisplayName(apply(Main.messages.getString("NoRecraft")));
 		ims24.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		/* 198 */     monk24.setItemMeta(ims24);
 		i.setItem(17, monk24
@@ -102,7 +103,7 @@ i.setItem(9, monk
 
         ItemStack cf = new ItemStack(Material.INK_SACK, 1, (short)8);
 		/* 196 */     ItemMeta cf2 = cf.getItemMeta();
-		/* 197 */     cf2.setDisplayName("§eConfigure your Sword in the item Above");
+		/* 197 */     cf2.setDisplayName(apply(Main.messages.getString("ConfigureSword")));
 		cf2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		/* 198 */     cf.setItemMeta(cf2);
 		i.setItem(18, cf
@@ -110,7 +111,7 @@ i.setItem(9, monk
 
 		ItemStack cfb2 = new ItemStack(Material.INK_SACK, 1, (short)8);
 		/* 196 */     ItemMeta cf22 = cfb2.getItemMeta();
-		/* 197 */     cf22.setDisplayName("§eConfigure Refill here (CLICK)");
+		/* 197 */     cf22.setDisplayName(apply(Main.messages.getString("ConfigureRefill")));
 		cf22.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		/* 198 */     cfb2.setItemMeta(cf22);
 		i.setItem(20, cfb2
@@ -118,7 +119,7 @@ i.setItem(9, monk
 
 		ItemStack cfc2 = new ItemStack(Material.INK_SACK, 1, (short)8);
 		/* 196 */     ItemMeta cfc22 = cfc2.getItemMeta();
-		/* 197 */     cfc22.setDisplayName("§eConfigure Armor here (CLICK)");
+		/* 197 */     cfc22.setDisplayName(apply(Main.messages.getString("ConfigureArmor")));
 		cfc22.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		/* 198 */     cfc2.setItemMeta(cfc22);
 		i.setItem(22, cfc2
@@ -126,7 +127,7 @@ i.setItem(9, monk
 
 		ItemStack cfce2 = new ItemStack(Material.INK_SACK, 1, (short)8);
 		/* 196 */     ItemMeta cfce22 = cfce2.getItemMeta();
-		/* 197 */     cfce22.setDisplayName("§eConfigure Effects (CLICK)");
+		/* 197 */     cfce22.setDisplayName(apply(Main.messages.getString("ConfigureEffects")));
 		cfce22.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		/* 198 */     cfce2.setItemMeta(cfce22);
 		i.setItem(24, cfce2
@@ -134,7 +135,7 @@ i.setItem(9, monk
 
 		ItemStack cfce212 = new ItemStack(Material.INK_SACK, 1, (short)8);
 		/* 196 */     ItemMeta cfce222 = cfce212.getItemMeta();
-		/* 197 */     cfce222.setDisplayName("§eConfigure Recraft (CLICK)");
+		/* 197 */     cfce222.setDisplayName(apply(Main.messages.getString("ConfigureRecraft")));
 		cfce222.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		/* 198 */     cfce212.setItemMeta(cfce222);
 		i.setItem(26, cfce212
@@ -142,7 +143,7 @@ i.setItem(9, monk
 
 		ItemStack penis = new ItemStack(Material.INK_SACK, 1, (short)10);
 		/* 196 */     ItemMeta penis2 = penis.getItemMeta();
-		/* 197 */     penis2.setDisplayName("§eInvite player");
+		/* 197 */     penis2.setDisplayName(apply(Main.messages.getString("InvitePlayerCustom1V1")));
 		penis2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		/* 198 */     penis.setItemMeta(penis2);
 		i.setItem(31, penis
@@ -249,7 +250,7 @@ i.setItem(9, monk
 	    if (customManager.getEfeitos() == 0 && e.getSlot() == 24) {
 	    	ItemStack ef2 = new ItemStack(Material.POTION);
 			 /* 196 */     ItemMeta efims2 = ef2.getItemMeta();
-			 /* 197 */     efims2.setDisplayName("§eEffects");
+			 /* 197 */     efims2.setDisplayName(apply(Main.messages.getString("EffectsCustom1v1Name")));
 			 /* 276 */         ArrayList eindiob2 = new ArrayList();
 			 /* 277 */         eindiob2.add("§fEffects: §bNone");
 			 efims2.setLore(eindiob2);
@@ -260,7 +261,7 @@ i.setItem(9, monk
 		} else if (customManager.getEfeitos() == 1 && e.getSlot() == 24) {
 			ItemStack ef2 = new ItemStack(Material.POTION, 1, (short)8194);
 			 /* 196 */     ItemMeta efims2 = ef2.getItemMeta();
-			 /* 197 */     efims2.setDisplayName("§eEffects");
+			 /* 197 */     efims2.setDisplayName(apply(Main.messages.getString("EffectsCustom1v1Name")));
 			 /* 276 */         ArrayList eindiob2 = new ArrayList();
 			 /* 277 */         eindiob2.add("§fEffects: §bSpeed");
 			 efims2.setLore(eindiob2);
@@ -271,7 +272,7 @@ i.setItem(9, monk
 		}  else if (customManager.getEfeitos() == 2 && e.getSlot() == 24) {
 			ItemStack ef2 = new ItemStack(Material.POTION, 1, (short)8201);
 			 /* 196 */     ItemMeta efims2 = ef2.getItemMeta();
-			 /* 197 */     efims2.setDisplayName("§eEffects");
+			 /* 197 */     efims2.setDisplayName(apply(Main.messages.getString("EffectsCustom1v1Name")));
 			 /* 276 */         ArrayList eindiob2 = new ArrayList();
 			 /* 277 */         eindiob2.add("§fEffects: §bStrenght");
 			 efims2.setLore(eindiob2);
@@ -282,7 +283,7 @@ i.setItem(9, monk
 		} else if (customManager.getEfeitos() == 3 && e.getSlot() == 24) {
 			ItemStack ef2 = new ItemStack(Material.POTION, 1, (short)8227);
 			 /* 196 */     ItemMeta efims2 = ef2.getItemMeta();
-			 /* 197 */     efims2.setDisplayName("§eEffects");
+			 /* 197 */     efims2.setDisplayName(apply(Main.messages.getString("EffectsCustom1v1Name")));
 			 /* 276 */         ArrayList eindiob2 = new ArrayList();
 			 /* 277 */         eindiob2.add("§fEffects: §bStrenght and Speed");
 			 efims2.setLore(eindiob2);
@@ -295,7 +296,7 @@ i.setItem(9, monk
 			customManager.setRecraft(false);
     		ItemStack monkB = new ItemStack(Material.THIN_GLASS);
 			 /* 196 */     ItemMeta imsB = monkB.getItemMeta();
-			 /* 197 */     imsB.setDisplayName("§eRecraft");
+			 /* 197 */     imsB.setDisplayName(apply(Main.messages.getString("RecraftCustom1v1Name")));
 			  ArrayList indiobB = new ArrayList();
 				 /* 277 */         indiobB.add("§dNo Recraft");
 				 imsB.setLore(indiobB);
@@ -306,7 +307,7 @@ i.setItem(9, monk
 			customManager.setRecraft(true);
     		ItemStack monkC = new ItemStack(Material.BROWN_MUSHROOM);
 			 /* 196 */     ItemMeta imsC = monkC.getItemMeta();
-			 /* 197 */     imsC.setDisplayName("§eRecraft");
+			 /* 197 */     imsC.setDisplayName(apply(Main.messages.getString("RecraftCustom1v1Name")));
 			 ArrayList indiobC = new ArrayList();
 			 /* 277 */         indiobC.add("§dThe fight will have Recraft");
 			 imsC.setLore(indiobC);
@@ -320,11 +321,11 @@ i.setItem(9, monk
 	    	if (customManager == null) {
 	    		return;
 	    	}
-				if (customManager.getArmadura().equals(Material.GLASS) && e.getSlot() == 22) {
+				if (customManager.getArmadura().equals(Material.GLASS) && e.getSlot() == 22 && e.getCurrentItem() == new ItemStack(Material.INK_SACK, 1, (short)8)) {
 					customManager.setArmadura(Material.LEATHER_CHESTPLATE);
 					ItemStack monk = new ItemStack(Material.LEATHER_CHESTPLATE);
 					 /* 196 */     ItemMeta ims = monk.getItemMeta();
-					 /* 197 */     ims.setDisplayName("§eLeather Armor");
+					 /* 197 */     ims.setDisplayName(apply(Main.messages.getString("LeatherArmorCustom1v1Name")));
 					 /* 276 */         ArrayList indiob = new ArrayList();
 					 /* 277 */         indiob.add("§fThe fight will have leather armor");
 
@@ -334,11 +335,11 @@ i.setItem(9, monk
 					 /* 198 */     monk.setItemMeta(ims);
 					
 					inv.setItem(13, monk);
-				} else if (customManager.getArmadura().equals(Material.LEATHER_CHESTPLATE)&& e.getSlot() == 22) {
+				} else if (customManager.getArmadura().equals(Material.LEATHER_CHESTPLATE)&& e.getSlot() == 22 && e.getCurrentItem() == new ItemStack(Material.INK_SACK, 1, (short)8)) {
 					customManager.setArmadura(Material.IRON_CHESTPLATE);
 					ItemStack monk = new ItemStack(Material.IRON_CHESTPLATE);
 					 /* 196 */     ItemMeta ims = monk.getItemMeta();
-					 /* 197 */     ims.setDisplayName("§eIron Armor");
+					 /* 197 */     ims.setDisplayName(apply(Main.messages.getString("IronArmorCustom1v1Name")));
 					 /* 276 */         ArrayList indiob = new ArrayList();
 					 /* 277 */         indiob.add("§fThe fight will have iron armor");
 
@@ -348,11 +349,11 @@ i.setItem(9, monk
 					 /* 198 */     monk.setItemMeta(ims);
 					
 					inv.setItem(13, monk);
-				} else if (customManager.getArmadura().equals(Material.IRON_CHESTPLATE)&& e.getSlot() == 22) {
+				} else if (customManager.getArmadura().equals(Material.IRON_CHESTPLATE)&& e.getSlot() == 22 && e.getCurrentItem() == new ItemStack(Material.INK_SACK, 1, (short)8)) {
 					customManager.setArmadura(Material.DIAMOND_CHESTPLATE);
 					ItemStack monk = new ItemStack(Material.DIAMOND_CHESTPLATE);
 					 /* 196 */     ItemMeta ims = monk.getItemMeta();
-					 /* 197 */     ims.setDisplayName("§eDiamond Armor");
+					 /* 197 */     ims.setDisplayName(apply(Main.messages.getString("DiamondArmorCustom1v1Name")));
 					 /* 276 */         ArrayList indiob = new ArrayList();
 					 /* 277 */         indiob.add("§fThe fight will have diamond armor");
 
@@ -362,11 +363,24 @@ i.setItem(9, monk
 					 /* 198 */     monk.setItemMeta(ims);
 				
 					inv.setItem(13, monk);
-				} else if (customManager.getArmadura().equals(Material.DIAMOND_CHESTPLATE)&& e.getSlot() == 22) {
+				} else if (customManager.getArmadura().equals(Material.DIAMOND_CHESTPLATE)&& e.getSlot() == 22 && e.getCurrentItem() == new ItemStack(Material.INK_SACK, 1, (short)8)) {
+					customManager.setArmadura(Material.GOLD_CHESTPLATE);
+					ItemStack monk = new ItemStack(Material.GOLD_CHESTPLATE);
+					 /* 196 */     ItemMeta ims = monk.getItemMeta();
+					 /* 197 */     ims.setDisplayName(apply(Main.messages.getString("GoldArmorCustom1v1Name")));
+					 /* 276 */         ArrayList indiob = new ArrayList();
+					 /* 277 */         indiob.add("§fThe fight will have Gold Armor");
+					 ims.setLore(indiob);
+					 ims.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+					 /* 198 */     monk.setItemMeta(ims);
+						customManager.setArmadura(Material.GLASS);
+					inv.setItem(13, monk);
+				}
+				else if (customManager.getArmadura().equals(Material.GOLD_CHESTPLATE)&& e.getSlot() == 22 && e.getCurrentItem() == new ItemStack(Material.INK_SACK, 1, (short)8)) {
 					customManager.setArmadura(Material.GLASS);
 					ItemStack monk = new ItemStack(Material.GLASS);
 					 /* 196 */     ItemMeta ims = monk.getItemMeta();
-					 /* 197 */     ims.setDisplayName("§eNo Armor");
+					 /* 197 */     ims.setDisplayName(apply(Main.messages.getString("NoArmorCustom1v1Name")));
 					 /* 276 */         ArrayList indiob = new ArrayList();
 					 /* 277 */         indiob.add("§fThe fight will have NO armor");
 					 ims.setLore(indiob);
@@ -379,7 +393,7 @@ i.setItem(9, monk
 	        		customManager.setFullSopa(false);
 	        		ItemStack monk = new ItemStack(Material.BOWL);
 					 /* 196 */     ItemMeta ims = monk.getItemMeta();
-					 /* 197 */     ims.setDisplayName("§cRefill OFF");
+					 /* 197 */     ims.setDisplayName(apply(Main.messages.getString("NoArmorCustom1v1Name")));
 					 ims.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 					 /* 198 */     monk.setItemMeta(ims);
 					
@@ -389,18 +403,18 @@ i.setItem(9, monk
 	        		customManager.setFullSopa(true);
 	        		ItemStack monk = new ItemStack(Material.MUSHROOM_SOUP);
 					 /* 196 */     ItemMeta ims = monk.getItemMeta();
-					 /* 197 */     ims.setDisplayName("§aRefill ON");
+					 /* 197 */     ims.setDisplayName(apply(Main.messages.getString("NoRefill")));
 					 ims.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 					 /* 198 */     monk.setItemMeta(ims);
 					
 						inv.setItem(11, monk);
 	        	}
 			
-				if (e.getCurrentItem().getType() == Material.DIAMOND_SWORD && e.getSlot() == 9) {
+				if (e.getCurrentItem().getType() == Material.GOLD_SWORD && e.getSlot() == 9) {
 					customManager.setEspada(Material.WOOD_SWORD);
 					 ItemStack monk = new ItemStack(Material.WOOD_SWORD);
 					 /* 196 */     ItemMeta ims = monk.getItemMeta();
-					 /* 197 */     ims.setDisplayName("§bWood Sword");
+					 /* 197 */     ims.setDisplayName(apply(Main.messages.getString("WoodSwordCustom1v1")));
 					 ims.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 					 /* 198 */     monk.setItemMeta(ims);
 					
@@ -411,7 +425,7 @@ i.setItem(9, monk
 					customManager.setEspada(Material.STONE_SWORD);
 					 ItemStack monk2 = new ItemStack(Material.STONE_SWORD);
 					 /* 196 */     ItemMeta ims2 = monk2.getItemMeta();
-					 /* 197 */     ims2.setDisplayName("§bStone Sword");
+					 /* 197 */     ims2.setDisplayName(apply(Main.messages.getString("StoneSwordCustom1v1")));
 					 ims2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 					 /* 198 */     monk2.setItemMeta(ims2);
 					 
@@ -422,7 +436,7 @@ i.setItem(9, monk
 
 					 ItemStack monk3 = new ItemStack(Material.IRON_SWORD);
 					 /* 196 */     ItemMeta ims3 = monk3.getItemMeta();
-					 /* 197 */     ims3.setDisplayName("§bIron Sword");
+					 /* 197 */     ims3.setDisplayName(apply(Main.messages.getString("IronSwordCustom1v1")));
 					 ims3.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 					 /* 198 */     monk3.setItemMeta(ims3);
 					 
@@ -433,7 +447,19 @@ i.setItem(9, monk
 
 					 ItemStack monk4 = new ItemStack(Material.DIAMOND_SWORD);
 					 /* 196 */     ItemMeta ims4 = monk4.getItemMeta();
-					 /* 197 */     ims4.setDisplayName("§bDiamond Sword");
+					 /* 197 */     ims4.setDisplayName(apply(Main.messages.getString("DiamondSwordCustom1v1")));
+					 ims4.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+					 /* 198 */     monk4.setItemMeta(ims4);
+					
+					inv.setItem(9, monk4);
+					
+				}
+				else if (e.getCurrentItem().getType() == Material.DIAMOND_SWORD && e.getSlot() == 9) {
+					customManager.setEspada(Material.GOLD_SWORD);
+
+					 ItemStack monk4 = new ItemStack(Material.GOLD_SWORD);
+					 /* 196 */     ItemMeta ims4 = monk4.getItemMeta();
+					 /* 197 */     ims4.setDisplayName(apply(Main.messages.getString("GoldSwordCustom1v1")));
 					 ims4.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 					 /* 198 */     monk4.setItemMeta(ims4);
 					
