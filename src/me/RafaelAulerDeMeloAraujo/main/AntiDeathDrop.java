@@ -65,8 +65,8 @@ public class AntiDeathDrop
 
 				/*     */           {
 					World w = Bukkit.getServer().getWorld(Main.plugin.getConfig().getString("Spawn.World"));
-		  if (e.getEntity().getWorld().getName().equals(w) && (Main.getInstace().getConfig().getString("ClearItemsOnGround").equalsIgnoreCase("true"))) {
-		e.getEntity().remove();
+					  if (e.getEntity().getWorld().getName().equals(w.getName()) && (Main.getInstace().getConfig().getString("ClearItemsOnGround").equalsIgnoreCase("true"))) {
+								e.getEntity().remove();
 		e.getEntity().getWorld().playEffect(e.getEntity().getLocation(), Effect.SMOKE, 2);
 		e.getEntity().getWorld().playSound(e.getEntity().getLocation(), Sound.valueOf(Main.getInstace().getConfig().getString("Sound.ItemDespawn")), 2.0F, 2.0F);
 		  /*     */           }

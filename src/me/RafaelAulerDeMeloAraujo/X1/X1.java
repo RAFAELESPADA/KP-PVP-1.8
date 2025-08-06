@@ -16,6 +16,7 @@ import org.bukkit.entity.HumanEntity;
 /*     */ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 /*     */ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 /*     */ import org.bukkit.event.player.PlayerInteractEntityEvent;
 /*     */ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
@@ -225,7 +226,14 @@ Habilidade.setAbility(p, "1v1Fight");
 /* 142 */       p.getInventory().addItem(new ItemStack[] { sopa });
 /* 143 */       p.updateInventory();
 /*     */     }
-/*     */   }
+/*     */   }@EventHandler
+/*     */   public void cmfdT(PlayerDropItemEvent  e) {
+	if (e.getItemDrop() == new ItemStack(Material.DIAMOND_SWORD) || e.getItemDrop() == new ItemStack(Material.IRON_SWORD) || e.getItemDrop() == new ItemStack(Material.STONE_SWORD) || e.getItemDrop() == new ItemStack(Material.WOOD_SWORD) || e.getItemDrop() == new ItemStack(Material.GOLD_SWORD)) {
+		if (inx1.contains(e.getPlayer())) {
+			e.setCancelled(true);
+		}
+	}
+}
 /*     */   @EventHandler
 /*     */   public void cmdT(PrepareItemCraftEvent  e) {
 	 for (HumanEntity entity : e.getViewers()) {
