@@ -309,10 +309,14 @@ public class Meteor implements Listener {
 
 	/* 106 */           if (Habilidade.getAbility(p) == "Meteor") {
 	    p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.AnchorHit")), 4.0F, 4.0F);
-
-		Vector l = p.getLocation().getDirection().multiply(0.7).add(new Vector(0, 0, 0));
-		p.setVelocity(l);
-		/* 107 */           p.sendMessage(ChatColor.RED + "PRESS SHIFT WHEN YOU ARE IN THE SKY!");
+		/* 107 */           p.sendMessage(ChatColor.RED + "WAIT TO GO UP AGAIN!");
+		Bukkit.getScheduler().runTaskLater(Main.getInstance() , new Runnable() {
+		    @Override
+		    public void run() {
+		   	subiu.remove(p);
+		        }
+		    }
+		, 9 * 20);
 	/* 107 */         }
 	}
 

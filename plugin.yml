@@ -16,6 +16,7 @@ commands:
         description: Gets Soups
    kmilkman:     
    kpsetlevel:
+   kmeteor:
    kghast:         
    kpeditmode:
         description: Enables or Disables Build on kitpvp
