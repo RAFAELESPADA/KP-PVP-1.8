@@ -134,7 +134,7 @@ public class Phantom implements Listener
 		if (emphantom.contains(ghosts.getName())) {
 			Location l = ghosts.getLocation();
 
-			l.getWorld().playEffect(l, Effect.PORTAL_TRAVEL, 20);
+			l.getWorld().playEffect(l, Effect.CLOUD, 20);
 			
 		}
     }

@@ -64,6 +64,7 @@ import me.RafaelAulerDeMeloAraujo.main.RTP;
 		p2.playSound(p2.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.NarutoAbility")), 1.0F, 1.0F);
 		  /*  62 */       
 	}
+}
 /*  57 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§") + ChatColor.RED + Main.messages.getString("NarutoUse").replace("&", "§")));
 API.darEfeito(p, PotionEffectType.REGENERATION, Main.kits.getInt("NarutoRegenTime"), Main.kits.getInt("NarutoRegenAmplifier"));
 API.darEfeito(p, PotionEffectType.SPEED, Main.kits.getInt("NarutoSpeedTime"), Main.kits.getInt("NarutoSpeedAmplifier"));
@@ -75,7 +76,7 @@ API.darEfeito(p, PotionEffectType.INCREASE_DAMAGE, Main.kits.getInt("NarutoStren
 /*  65 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§") + ChatColor.RED + " You need to wait " + TimeUnit.MILLISECONDS.toSeconds(((Long)cooldown.get(p.getName())).longValue() - System.currentTimeMillis()) + " seconds to use your ability again."));
 /*     */     }
 }
-/*     */   }
+/*     */   
 /*     */   
 /*     */ 
 /*     */ 
