@@ -1,20 +1,28 @@
 package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
-import org.bukkit.inventory.*;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-import java.util.*;
-import org.bukkit.event.player.*;
-import org.bukkit.event.block.*;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Color;
+import org.bukkit.Effect;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.*;
-import org.bukkit.plugin.*;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.plugin.Plugin;
 
+import me.RafaelAulerDeMeloAraujo.Listeners.ServerTimerEvent;
 import me.RafaelAulerDeMeloAraujo.main.Main;
-
-import org.bukkit.event.*;
-import org.bukkit.event.inventory.*;
 
 public class Phantom implements Listener
 {
@@ -34,7 +42,8 @@ public class Phantom implements Listener
                 API.MensagemCooldown(p);
                 return;
             }
-
+   		 p.playSound(p.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.Respawn")), 1.0F, 1.0F);
+			
             Phantom.salvararmor.put(p.getName(), p.getInventory().getArmorContents());
             API.tirarArmadura(p);
             /*  88 */       ItemStack Capacete = new ItemStack(Material.LEATHER_HELMET);
@@ -116,6 +125,18 @@ public class Phantom implements Listener
                 }
             }, Main.kits.getInt("PhantomCooldown") * 20);
         }
+    }
+    @EventHandler
+	public void onUpdate(ServerTimerEvent event) {
+		if (event.getCurrentTick() % 2 > 0)
+			return;
+		for (Player ghosts : Bukkit.getOnlinePlayers())
+		if (emphantom.contains(ghosts.getName())) {
+			Location l = ghosts.getLocation();
+
+			l.getWorld().playEffect(l, Effect.PORTAL_TRAVEL, 20);
+			
+		}
     }
     
     @EventHandler

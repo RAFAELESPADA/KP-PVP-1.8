@@ -1,5 +1,7 @@
 package me.RafaelAulerDeMeloAraujo.ScoreboardManager;
 
+import java.util.List;
+
 import org.bukkit.entity.Player;
 
 import me.RafaelAulerDeMeloAraujo.Coins.XP;
@@ -23,6 +25,13 @@ public class Level
         // How much XP is needed to level?
        return (Main.customization.getInt("XP-Required-To-LevelUP") - (XP.getXP(p) - Main.customization.getInt("XP-Required-To-LevelUP") * getLevel(p))); // 600XP for lvl1, 700XP for lvl2, 800XP for lvl3 ...
    }
+    
+    public static final List<Integer> getXPAllLevels() {
+        // How much XP is needed to level?
+       return (Main.customization.getIntegerList("Levels.Levels.")); // 600XP for lvl1, 700XP for lvl2, 800XP for lvl3 ...
+   }
+    
+    
     public static String getPlayerLevelPrefix(Player username) {
         String playerLevel = String.valueOf(getLevel(username));
         return Main.customization.getString("Levels.Levels." + playerLevel + ".Prefix")

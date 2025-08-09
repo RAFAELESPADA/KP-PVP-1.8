@@ -49,6 +49,7 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.API;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Gladiator;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.PlayerLevelUPEvent;
 import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
 import me.RafaelAulerDeMeloAraujo.X1.CustomChallenge;
 import me.RafaelAulerDeMeloAraujo.X1.X1;
@@ -84,6 +85,17 @@ private static String text = "";
 	}
 	}
 	}
+@EventHandler
+/*  45 */   public void playerdeath(PlayerLevelUPEvent ev) { 
+	   int playerLevel = Level.getLevel(ev.getPlayer());
+	for (Integer level : Level.getXPAllLevels()) {
+		if (playerLevel == level) {
+				  for (String commands : Main.customization.getStringList("Levels.Levels." + playerLevel + ".commands")) {
+				  Bukkit.dispatchCommand(Bukkit.getConsoleSender(), commands.replace("%player%", ev.getPlayer().getName()));
+			}
+		}
+	}
+}
 
 /*     */   @EventHandler
 /*     */   public void onJoin(PlayerJoinEvent e) {
@@ -205,8 +217,11 @@ new BukkitRunnable() {
 	p.getInventory().setItem(Main.getInstance().getConfig().getInt("KitsItemSlot"), kitsr);
 	/* 103 */     	if (!Main.getInstance().getConfig().getBoolean("DisableShop")) {
 		p.getInventory().setItem(Main.getInstance().getConfig().getInt("ShopItemSlot"), kits);
-		}p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
-	/*     */       
+		}
+
+if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
+/* 104 */       	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
+/*     */       }
 	/*     */ 
 	/* 107 */     	/* 107 */       p.updateInventory();
 	p.getInventory().setArmorContents(null);
@@ -310,6 +325,10 @@ if (isCitizensNPC && Main.getInstance().getConfig().getBoolean("BotsKillsAllowed
 	Sun8oxData2.getPvp().addKills(1);
 	if (killstreak % Main.customization.getInt("XP-Required-To-LevelUP") == 0 && Level.getLevel(k) != 0) {
 		sendToGame(String.valueOf(API.NomeServer + Main.messages.getString("LevelUP").replaceAll("%player%", k.getName()).replaceAll("%level%", Integer.toString(Level.getLevel(k)))).replaceAll("&", "§"));
+		PlayerLevelUPEvent helixPlayerDeathEvent = new me.RafaelAulerDeMeloAraujo.SpecialAbility.PlayerLevelUPEvent(
+				k
+		);
+		Bukkit.getPluginManager().callEvent(helixPlayerDeathEvent);
 	}
 	k.sendMessage(String.valueOf(API.NomeServer + Main.getInstace().getConfig().getString("Kill.Tell").replaceAll("%player%", p.getName())));
 	XP.addXP(k, Main.customization.getInt("XPEarned-OnKill"));
@@ -327,6 +346,9 @@ API.tirarEfeitos(p);
 Sun8oxData.getPvp().addKills(1);
 Sun8oxData2.getPvp().addDeaths(1);
 
+if (Main.getInstance().getConfig().getBoolean("ThrowFireworksOnKill")) {
+	Menu.throwRandomFirework(p);
+}
 Sun8oxData2.getPvp().setKillstreak(0);
 if (killstreak % Main.customization.getInt("XP-Required-To-LevelUP") == 0 && Level.getLevel(k) != 0) {
 	sendToGame(String.valueOf(API.NomeServer + Main.messages.getString("LevelUP").replaceAll("%player%", k.getName()).replaceAll("%level%", Integer.toString(Level.getLevel(k)))).replaceAll("&", "§"));
@@ -671,9 +693,11 @@ public static void sendToGame(String message) {
 	p.getInventory().setItem(Main.getInstance().getConfig().getInt("KitsItemSlot"), kitsr);
 	/* 103 */     	if (!Main.getInstance().getConfig().getBoolean("DisableShop")) {
 		p.getInventory().setItem(Main.getInstance().getConfig().getInt("ShopItemSlot"), kits);
-		}	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
-	/*     */       
-	/*     */ 
+		}	
+
+if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
+/* 104 */       	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
+/*     */       }
 	/* 107 */       p.updateInventory();
 	/*     */       
 	/*     */ 

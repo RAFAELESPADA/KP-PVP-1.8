@@ -266,8 +266,11 @@ default:
 	p.getInventory().setItem(Main.getInstance().getConfig().getInt("KitsItemSlot"), kitsr);
 	/* 103 */     if (!Main.getInstance().getConfig().getBoolean("DisableShop")) {
 		p.getInventory().setItem(Main.getInstance().getConfig().getInt("ShopItemSlot"), kits);
-		}  	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
-	/*     */       
+		}  	
+
+if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
+/* 104 */       	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
+/*     */       }
 	/*     */ 
 	/* 107 */       p.updateInventory();
 	/*     */       p.setAllowFlight(false);
@@ -396,7 +399,10 @@ if (!Main.getInstance().getConfig().getBoolean("DisableClickTestItem")) {
 p.getInventory().setItem(Main.getInstance().getConfig().getInt("KitsItemSlot"), kitsr);
 /* 103 */     	if (!Main.getInstance().getConfig().getBoolean("DisableShop")) {
 	p.getInventory().setItem(Main.getInstance().getConfig().getInt("ShopItemSlot"), kits);
-	}	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
+}
+if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
+/* 104 */       	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
+/*     */       }
 /*     */       
 /*     */ 
 /* 107 */       p.updateInventory();

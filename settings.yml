@@ -31,52 +31,152 @@ KS-100: 8000
 
 #Levels Prefix
 #Needs placeholder %kp-pvp_player_levelprefix% in a tab/chat plugin to get them displayed
+#You can add commands to any level!
+#You can also create new levels adding the number of it like
+#     101:
+ #     Prefix: '&9[%level%]'
+  #    commands:
+  #    - 'givecoins %player% 200'
+  #    - 'effect %player% speed 2 40'
+  #    - 'eco give %killer% 500'
 Levels:
   Levels:
     0:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     1:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     2:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     3:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     4:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     5:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     6:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     7:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     8:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     9:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     10:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     11:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     12:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     13:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     14:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     15:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     16:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     17:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     18:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     19:
       Prefix: '&7[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     20:
       Prefix: '&9[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     21:
       Prefix: '&9[%level%]'
+      commands:
+      - 'givecoins %player% 200'
+      - 'effect %player% speed 2 40'
+      - 'eco give %killer% 500'
     22:
       Prefix: '&9[%level%]'
     23:

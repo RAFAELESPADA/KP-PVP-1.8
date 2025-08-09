@@ -141,7 +141,10 @@ if (!Main.getInstance().getConfig().getBoolean("DisableClickTestItem")) {
 p.getInventory().setItem(Main.getInstance().getConfig().getInt("KitsItemSlot"), kitsr);
 /* 103 */     	if (!Main.getInstance().getConfig().getBoolean("DisableShop")) {
 	p.getInventory().setItem(Main.getInstance().getConfig().getInt("ShopItemSlot"), kits);
-	}	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
+
+if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
+/* 104 */       	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
+/*     */       }
 /*     */       
 /*     */ 
 /* 107 */       p.updateInventory();
@@ -166,6 +169,7 @@ if (Main.getInstance().getConfig().getBoolean("DisableInitialItems")) {
 p.playSound(p.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.1v1")), 5.0F, 5.0F);
 TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), Main.getInstance().getConfig().getString("Title.SumoLeave").replace("&", "§"), "");
 /*     */   }
+}
 /*     */   @EventHandler
 public void onDamage(EntityDamageByEntityEvent event) {
     if (!(event.getEntity() instanceof Player)

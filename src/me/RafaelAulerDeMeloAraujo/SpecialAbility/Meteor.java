@@ -66,18 +66,18 @@ public class Meteor implements Listener {
 				p2.damage(10);
 				Location location = p2.getLocation();
 				 p.playSound(p.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.RyuAbility")), 1.0F, 1.0F);
-				 location.getWorld().playEffect(location, Effect.FLAME, 15);
-				 location.getWorld().playEffect(location, Effect.FLAME, 15);
-				 location.getWorld().playEffect(location, Effect.FLAME, 15);
-				 location.getWorld().playEffect(location, Effect.FLAME, 15);
-				 location.getWorld().playEffect(location, Effect.FLAME, 15);
-				 location.getWorld().playEffect(location, Effect.FLAME, 15);
-				 location.getWorld().playEffect(location, Effect.FLAME, 15);
-				 location.getWorld().playEffect(location, Effect.FLAME, 15);
-				 location.getWorld().playEffect(location, Effect.FLAME, 15);
-				 location.getWorld().playEffect(location, Effect.FLAME, 15);
-				 location.getWorld().playEffect(location, Effect.FLAME, 15);
-				 location.getWorld().playEffect(location, Effect.FLAME, 15);
+				 location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
+				 location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
+				 location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
+				 location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
+				 location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
+				 location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
+				 location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
+				 location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
+				 location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
+				 location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
+				 location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
+				 location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
 				p2.getWorld().strikeLightning(p2.getLocation());
 				p2.setFireTicks(140);
 				Cooldown.addCooldown(p , 40);
@@ -191,14 +191,14 @@ public class Meteor implements Listener {
 			    p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.AnchorHit")), 4.0F, 4.0F);
 	}
 
-	location.getWorld().playEffect(location, Effect.FLAME, 15);
+	location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
 
 	Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable()
 	/*     */       {
 	/*     */         public void run()
 	/*     */         {
 	    p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.AnchorHit")), 4.0F, 4.0F);
-	location.getWorld().playEffect(location, Effect.FLAME, 15);
+	location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
 
 	/*     */         }
 	/* 109 */       }, 20L);
@@ -207,7 +207,7 @@ public class Meteor implements Listener {
 	/*     */         public void run()
 	/*     */         {
 	    p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.AnchorHit")), 4.0F, 4.0F);
-	location.getWorld().playEffect(location, Effect.FLAME, 15);
+	location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
 
 	/*     */         }
 	/* 109 */       }, 40L);
@@ -217,7 +217,7 @@ public class Meteor implements Listener {
 	/*     */         {
 	    p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.AnchorHit")), 4.0F, 4.0F);
 
-	location.getWorld().playEffect(location, Effect.FLAME, 15);
+	location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
 	/*     */         }
 	/* 109 */       }, 60L);
 	Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable()
@@ -235,7 +235,7 @@ public class Meteor implements Listener {
 	/*     */         {
 	    p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.AnchorHit")), 4.0F, 4.0F);
 
-	location.getWorld().playEffect(location, Effect.FLAME, 15);
+	location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
 	/*     */         }
 	/* 109 */       }, 100L);
 	Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable()
@@ -244,7 +244,7 @@ public class Meteor implements Listener {
 	/*     */         {
 	    p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.AnchorHit")), 4.0F, 4.0F);
 
-	location.getWorld().playEffect(location, Effect.FLAME, 15);
+	location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
 	/*     */         }
 	/* 109 */       }, 120L);
 	Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable()
@@ -253,7 +253,7 @@ public class Meteor implements Listener {
 	/*     */         {
 
 	    p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.AnchorHit")), 4.0F, 4.0F);
-	location.getWorld().playEffect(location, Effect.FLAME, 15);
+	location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
 	/*     */         }
 	/* 109 */       }, 130L);
 	Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable()
@@ -262,7 +262,7 @@ public class Meteor implements Listener {
 	/*     */         {
 	    p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.AnchorHit")), 4.0F, 4.0F);
 
-	location.getWorld().playEffect(location, Effect.FLAME, 15);
+	location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
 	/*     */         }
 	/* 109 */       }, 140L);
 	Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable()
@@ -271,7 +271,7 @@ public class Meteor implements Listener {
 	/*     */         {
 	    p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.AnchorHit")), 4.0F, 4.0F);
 
-	location.getWorld().playEffect(location, Effect.FLAME, 15);
+	location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
 	/*     */         }
 	/* 109 */       }, 155L);
 	Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable()
@@ -280,7 +280,7 @@ public class Meteor implements Listener {
 	/*     */         {
 	    p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.AnchorHit")), 4.0F, 4.0F);
 
-	location.getWorld().playEffect(location, Effect.FLAME, 15);
+	location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);
 	/*     */         }
 	/* 109 */       }, 160L);
 	Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable()

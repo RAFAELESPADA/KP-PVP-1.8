@@ -4,16 +4,21 @@ package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
 import org.bukkit.Effect;
+import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
@@ -22,6 +27,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.BlockIterator;
@@ -67,7 +73,7 @@ implements Listener, CommandExecutor
 	        p.updateInventory();
 	        
 	        Location location = p.getEyeLocation();
-	        BlockIterator blocksToAdd = new BlockIterator(location, 0.0D, 40);
+	        BlockIterator blocksToAdd = new BlockIterator(location, 0.0D, Main.kits.getInt("RyuDistance"));
 	        while (blocksToAdd.hasNext())
 	        {
 	          Location blockToAdd = blocksToAdd.next().getLocation();
@@ -139,7 +145,33 @@ implements Listener, CommandExecutor
 			}
 		}
 	}
-	  
+	public static void throwRandomFirework(Player p) {
+	    Firework fw = (Firework) p.getWorld().spawnEntity(p.getLocation(), EntityType.FIREWORK);
+	    FireworkMeta fwm = fw.getFireworkMeta();
+
+	    //Our random generator
+	    Random r = new Random();
+
+	    FireworkEffect.Type type = FireworkEffect.Type.BALL_LARGE;
+
+	    Color c1 = Color.RED;
+	    Color c2 = Color.WHITE;
+	    FireworkEffect effect = FireworkEffect.builder().flicker(r.nextBoolean()).withColor(c1).withFade(c2).with(type).trail(r.nextBoolean()).build();
+
+	    //Then apply the effect to the meta
+	    fwm.addEffect(effect);
+
+	    //Generate some random power and set it
+
+
+	    //Create our effect with this   int rp = r.nextInt(2) + 1;
+	    int rp = r.nextInt(4) + 1;
+	    fwm.setPower(rp);
+
+	    //Then apply this to our rocket
+	    fw.setFireworkMeta(fwm);
+	    
+	}
 	  
 	  @EventHandler
 	  public void dano(EntityDamageByEntityEvent e)
@@ -148,6 +180,7 @@ implements Listener, CommandExecutor
 	    {
 	      Snowball s = (Snowball)e.getDamager();
 	      if (s.hasMetadata("hadouken")) {
+	    	  throwRandomFirework((Player)e.getEntity());
 	        e.setDamage(e.getDamage() + Main.kits.getDouble("RyuDamage"));
 	      }
 	    }

@@ -142,8 +142,10 @@ p.getInventory().setItem(Main.getInstance().getConfig().getInt("KitsItemSlot"), 
 if (!Main.getInstance().getConfig().getBoolean("DisableShop")) {
 	p.getInventory().setItem(Main.getInstance().getConfig().getInt("ShopItemSlot"), kits);
 	}
+
+if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
 /* 104 */       	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
-/*     */       
+/*     */       }
 /*     */ 
 /* 107 */       p.updateInventory();
 

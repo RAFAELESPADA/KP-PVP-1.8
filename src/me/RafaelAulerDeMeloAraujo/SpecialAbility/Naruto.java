@@ -2,12 +2,16 @@
 /*     */ import java.util.HashMap;
 /*     */ import java.util.concurrent.TimeUnit;
 
+import org.bukkit.Bukkit;
 /*     */ import org.bukkit.ChatColor;
+import org.bukkit.Effect;
+import org.bukkit.Location;
 /*     */ import org.bukkit.Material;
 /*     */ import org.bukkit.Sound;
 /*     */ import org.bukkit.command.Command;
 /*     */ import org.bukkit.command.CommandExecutor;
 /*     */ import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 /*     */ import org.bukkit.entity.Player;
 /*     */ import org.bukkit.event.EventHandler;
 /*     */ import org.bukkit.event.Listener;
@@ -17,6 +21,7 @@
 /*     */ import org.bukkit.inventory.meta.ItemMeta;
 /*     */ import org.bukkit.potion.PotionEffectType;
 
+import me.RafaelAulerDeMeloAraujo.Listeners.ServerTimerEvent;
 /*     */ import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
 /*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
 import me.RafaelAulerDeMeloAraujo.main.RTP;
@@ -53,21 +58,40 @@ import me.RafaelAulerDeMeloAraujo.main.RTP;
 /*     */       {
 /*  54 */         e.setCancelled(true);
 /*  55 */         p.updateInventory();
-/*     */         
+/*     */          for (final Entity pertos : p.getNearbyEntities(Main.kits.getDouble("TimelordRadius"), Main.kits.getDouble("TimelordRadius"), Main.kits.getDouble("TimelordRadius"))) {
+	if (pertos instanceof Player) {
+		Player p2 = ((Player)pertos);
+		p2.playSound(p2.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.NarutoAbility")), 1.0F, 1.0F);
+		  /*  62 */       
+	}
 /*  57 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§") + ChatColor.RED + Main.messages.getString("NarutoUse").replace("&", "§")));
 API.darEfeito(p, PotionEffectType.REGENERATION, Main.kits.getInt("NarutoRegenTime"), Main.kits.getInt("NarutoRegenAmplifier"));
 API.darEfeito(p, PotionEffectType.SPEED, Main.kits.getInt("NarutoSpeedTime"), Main.kits.getInt("NarutoSpeedAmplifier"));
+API.darEfeito(p, PotionEffectType.INCREASE_DAMAGE, Main.kits.getInt("NarutoStrenghtTime"), Main.kits.getInt("NarutoStrenghtAmplifier"));
 /*  61 */         p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.NarutoAbility")), 1.0F, 1.0F);
 /*  62 */         cooldown.put(p.getName(), Long.valueOf(System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(Main.kits.getLong("NarutoCooldown"))));
 /*  63 */         return;
 /*     */       }
 /*  65 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§") + ChatColor.RED + " You need to wait " + TimeUnit.MILLISECONDS.toSeconds(((Long)cooldown.get(p.getName())).longValue() - System.currentTimeMillis()) + " seconds to use your ability again."));
 /*     */     }
+}
 /*     */   }
 /*     */   
 /*     */ 
 /*     */ 
-/*     */ 
+/*     */     @EventHandler
+public void onUpdate(ServerTimerEvent event) {
+	if (event.getCurrentTick() % 2 > 0)
+		return;
+	for (Player ghosts : Bukkit.getOnlinePlayers())
+	if (Habilidade.getAbility(ghosts) == "Naruto") {
+	if (cooldown.containsKey(ghosts.getName())) {	
+		Location l = ghosts.getLocation();
+		l.getWorld().playEffect(l, Effect.SMOKE, 20);
+	}
+	}
+}
+
 /*     */ 
 /*     */   public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args)
 /*     */   {

@@ -54,6 +54,10 @@ DisableCompassItem: false
 #If false only players that write /kpeditmode (Needs permission) will be able to build
 EnableBuildingOnKitPvP: false
 
+ThrowFireworksOnKill: true
+
+Disable1v1Item: false
+
 #If this is false the player will leave kitpvp when they change world
 #BungeeMode needs to be false to it works
 DisableWorldLeaveKitPvPEvent: false

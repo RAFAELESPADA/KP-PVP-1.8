@@ -152,8 +152,10 @@ if (!Main.getInstance().getConfig().getBoolean("DisableClickTestItem")) {
 	}
 p.getInventory().setItem(Main.getInstance().getConfig().getInt("KitsItemSlot"), kitsr);
 /* 103 */     	p.getInventory().setItem(Main.getInstance().getConfig().getInt("ShopItemSlot"), kits);
+/* 104 */    
+if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
 /* 104 */       	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
-/*     */       
+/*     */       }   
 /*     */ 
 /* 107 */       p.updateInventory();
 /*     */        p.setAllowFlight(false);

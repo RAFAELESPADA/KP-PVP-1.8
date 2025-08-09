@@ -98,6 +98,9 @@ NarutoSpeedAmplifier: 1
 NarutoRegenAmplifier: 2
 NarutoRegenTime: 15
 NarutoSpeedTime: 15
+NarutoStrenghtTime: 10
+NarutoStrenghtAmplifier: 0
+RyuDistance: 50
 FiremanWeaknessonWaterTime: 3
 FiremanWeaknessonWaterAmplifier: 1
 FiremanRegenonLavaTime: 3

@@ -2,9 +2,12 @@
 
 import java.util.ArrayList;
 /*     */ import java.util.Arrays;
+import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
 import org.bukkit.GameMode;
 /*     */ import org.bukkit.Location;
 /*     */ import org.bukkit.Material;
@@ -13,6 +16,8 @@ import org.bukkit.GameMode;
 /*     */ import org.bukkit.command.Command;
 /*     */ import org.bukkit.command.CommandExecutor;
 /*     */ import org.bukkit.command.CommandSender;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Firework;
 /*     */ import org.bukkit.entity.Player;
 /*     */ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -27,6 +32,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 /*     */ import org.bukkit.event.player.PlayerQuitEvent;
 /*     */ import org.bukkit.inventory.Inventory;
 /*     */ import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.FireworkMeta;
 /*     */ 
 /*     */ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
@@ -46,6 +52,7 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.API;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Gladiator;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.PlayerLevelUPEvent;
 import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
 import me.RafaelAulerDeMeloAraujo.X1.CustomChallenge;
 import me.RafaelAulerDeMeloAraujo.X1.X1;
@@ -90,6 +97,18 @@ private static ItemJoinAPI item; {
 	}
 	}
 
+@EventHandler
+/*  45 */   public void playerdeath(PlayerLevelUPEvent ev) { 
+	   int playerLevel = Level.getLevel(ev.getPlayer());
+	for (Integer level : Level.getXPAllLevels()) {
+		if (playerLevel == level) {
+				  for (String commands : Main.customization.getStringList("Levels.Levels." + playerLevel + ".commands")) {
+				  Bukkit.dispatchCommand(Bukkit.getConsoleSender(), commands.replace("%player%", ev.getPlayer().getName()));
+			}
+		}
+	}
+}
+
 /*     */   @EventHandler
 /*  45 */   public void playerdeath(PlayerDeathEvent ev) { 
 	Player p = ev.getEntity();
@@ -128,6 +147,11 @@ Sun8oxData2.getPvp().addDeaths(1);
 Sun8oxData2.getPvp().setKillstreak(0);
 if (killstreak % Main.customization.getInt("XP-Required-To-LevelUP") == 0 && Level.getLevel(k) != 0) {
 	sendToGame(String.valueOf(API.NomeServer + Main.messages.getString("LevelUP").replaceAll("%player%", k.getName()).replaceAll("%level%", Integer.toString(Level.getLevel(k)))).replaceAll("&", "§"));
+	PlayerLevelUPEvent helixPlayerDeathEvent = new me.RafaelAulerDeMeloAraujo.SpecialAbility.PlayerLevelUPEvent(
+			k
+	);
+	Bukkit.getPluginManager().callEvent(helixPlayerDeathEvent);
+	
 }
 /*  64 */       int kills2 = Sun8oxData2.getPvp().getKillstreak();
 if (kills2 >= 3) {
@@ -137,6 +161,9 @@ if (Main.getInstance().getConfig().getBoolean("Commands-ON-KILL-Enabled")) {
 	  for (String commands : Main.getInstance().getConfig().getStringList("Commands-Executed-On-Kill")) {
 	  Bukkit.dispatchCommand(Bukkit.getConsoleSender(), commands.replace("%killer%", k.getName()).replace("%killed%", p.getName()));
 }
+}
+if (Main.getInstance().getConfig().getBoolean("ThrowFireworksOnKill")) {
+	throwRandomFirework(p);
 }
 p.sendMessage(String.valueOf(API.NomeServer + Main.getInstace().getConfig().getString("Death.Tell").replaceAll("%player%", k.getName())));
 k.sendMessage(String.valueOf(API.NomeServer + Main.getInstace().getConfig().getString("Kill.Tell").replaceAll("%player%", p.getName())));
@@ -317,8 +344,11 @@ new BukkitRunnable() {
 	p.getInventory().setItem(Main.getInstance().getConfig().getInt("KitsItemSlot"), kitsr);
 	/* 103 */     	if (!Main.getInstance().getConfig().getBoolean("DisableShop")) {
 		p.getInventory().setItem(Main.getInstance().getConfig().getInt("ShopItemSlot"), kits);
-		}p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
-	/*     */       
+		}
+
+if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
+/* 104 */       	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
+/*     */       }       
 	/*     */ 
 	/* 107 */       p.updateInventory();	/*     */       
 	if (Main.getInstance().getConfig().getBoolean("DisableInitialItems")) {
@@ -722,8 +752,10 @@ if (Main.getInstance().getConfig().getBoolean("DisableWorldLeaveKitPvPEvent")) {
 	p.getInventory().setItem(Main.getInstance().getConfig().getInt("KitsItemSlot"), kitsr);
 	/* 103 */     	if (!Main.getInstance().getConfig().getBoolean("DisableShop")) {
 		p.getInventory().setItem(Main.getInstance().getConfig().getInt("ShopItemSlot"), kits);
-		}	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
-	/*     */       
+		}	
+	if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
+		/* 104 */       	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
+		/*     */       }       
 	/*     */ 
 	/* 107 */       p.updateInventory();
 	/*     */       p.setAllowFlight(false);
@@ -753,6 +785,43 @@ if (Main.getInstance().getConfig().getBoolean("DisableWorldLeaveKitPvPEvent")) {
 /*     */       
 /*     */     
 /*     */   } 
+public static void throwRandomFirework(Player p) {
+    Firework fw = (Firework) p.getWorld().spawnEntity(p.getLocation(), EntityType.FIREWORK);
+    FireworkMeta fwm = fw.getFireworkMeta();
+
+    //Our random generator
+    Random r = new Random();
+
+    //Get the type
+    int rt = r.nextInt(5) + 1;
+    FireworkEffect.Type type = FireworkEffect.Type.BALL;
+    if (rt == 2) type = FireworkEffect.Type.BALL_LARGE;
+    if (rt == 3) type = FireworkEffect.Type.BURST;
+    if (rt == 4) type = FireworkEffect.Type.CREEPER;
+    if (rt == 5) type = FireworkEffect.Type.STAR;
+
+    //Get our random colours
+    int r1i = r.nextInt(17) + 1;
+    int r2i = r.nextInt(17) + 1;
+    Color c1 = Color.fromRGB(r1i);
+    Color c2 = Color.fromRGB(r2i);
+    FireworkEffect effect = FireworkEffect.builder().flicker(r.nextBoolean()).withColor(c1).withFade(c2).with(type).trail(r.nextBoolean()).build();
+
+    //Then apply the effect to the meta
+    fwm.addEffect(effect);
+
+    //Generate some random power and set it
+
+
+    //Create our effect with this   int rp = r.nextInt(2) + 1;
+    int rp = r.nextInt(2) + 1;
+    fwm.setPower(rp);
+
+    //Then apply this to our rocket
+    fw.setFireworkMeta(fwm);
+    
+}
+
 @EventHandler
 public void onBauKit(PlayerInteractEvent e)
 {

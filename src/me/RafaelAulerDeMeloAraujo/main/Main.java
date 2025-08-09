@@ -209,12 +209,11 @@ SettingsManager settings = SettingsManager.getInstance();
 	 }
 /* 107 */     getLogger().info("KP-PVP plugin is now enable [By zEnderX5_]");
 /* 108 */     getLogger().info("Website: http://bit.ly/2kC345B");
-/* 109 */     Metrics metrics = new Metrics(this);
-
+int pluginId = 50969; // <-- Replace with the id of your plugin!
+Metrics metrics = new Metrics(this, pluginId);
 metrics.addCustomChart(new Metrics.DrilldownPie("serverAddress", () -> {
 	Map<String, Map<String, Integer>> map = new HashMap<>();
 	Map<String, Integer> entry = new HashMap<>();
-	
 	if (getConfig().getBoolean("SendIPAddressData")) entry.put(server.getIp(), 1);
 	else entry.put("Hidden", 1);
 	
