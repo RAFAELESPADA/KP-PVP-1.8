@@ -229,7 +229,7 @@ Habilidade.setAbility(p, "1v1Fight");
 /*     */   }@EventHandler
 /*     */   public void cmfdT(PlayerDropItemEvent  e) {
 	if (e.getItemDrop() == new ItemStack(Material.DIAMOND_SWORD) || e.getItemDrop() == new ItemStack(Material.IRON_SWORD) || e.getItemDrop() == new ItemStack(Material.STONE_SWORD) || e.getItemDrop() == new ItemStack(Material.WOOD_SWORD) || e.getItemDrop() == new ItemStack(Material.GOLD_SWORD)) {
-		if (inx1.contains(e.getPlayer())) {
+		if (lutadores.containsKey(e.getPlayer().getName()) || CustomChallenge.lutadores.containsKey(e.getPlayer().getName())) {
 			e.setCancelled(true);
 		}
 	}
@@ -404,6 +404,7 @@ if (matou != null ) {
 /* 216 */         matou.showPlayer(pp);
 /* 217 */         perdedor.showPlayer(pp);
 lutadores.remove(e.getPlayer().getName());
+CustomChallenge.lutadores.remove(e.getPlayer().getName());
 entrar1v1(matou);
 }}}
 /*     */   }
@@ -420,6 +421,8 @@ if (matou != null ) {
 /* 216 */         matou.showPlayer(pp);
 /* 217 */         perdedor.showPlayer(pp);
 lutadores.remove(e.getPlayer().getName());
+
+CustomChallenge.lutadores.remove(e.getPlayer().getName());
 entrar1v1(matou);
 }}}
 /*     */   }

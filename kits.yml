@@ -39,6 +39,7 @@ MonkLore: '&7Swaps item on enemy inventory'
 FiremanLore: '&7Dont receive damage from fire or lava'
 MilkmanLore: '&7Get stronger with your milk'
 GhastLore: '&7Throw fireballs'
+MeteorLore: '&7Go to the sky and strike your oponnents!'
 
 #Modify the cooldown of some kits
 #They are in seconds
@@ -60,6 +61,7 @@ GhastCooldown: 30
 
 GladiatorDisabled: false
 PhantomDisabled: false
+MeteorDisabled: false
 BomberDisabled: false
 DoubleJumpDisabled: false
 SpidermanDisabled: false

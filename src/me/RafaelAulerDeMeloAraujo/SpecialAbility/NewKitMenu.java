@@ -89,6 +89,12 @@
 /*  88 */           Bukkit.dispatchCommand(p, "gladiator");
 /*  89 */           p.closeInventory();
 /*     */         }
+
+/*  86 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lMeteor"))
+/*     */         {
+/*  88 */           Bukkit.dispatchCommand(p, "kmeteor");
+/*  89 */           p.closeInventory();
+/*     */         }
 /*  86 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPhantom"))
 /*     */         {
 /*  88 */           Bukkit.dispatchCommand(p, "kphantom");
@@ -294,18 +300,7 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lGhast
 /* 228 */       ItemMeta barrier2 = barrier.getItemMeta();
 /* 229 */       barrier2.setDisplayName((Main.messages.getString("CloseKitMenuBottom").replace("&", "§")));
 /* 230 */       barrier.setItemMeta(barrier2);
-/*     */       
-/*     */ 
-/* 233 */       
-/* 234 */       
-/* 235 */       
 
-
-/* 239 */       
-/* 240 */       
-/* 241 */       
-/* 242 */      
-/* 246 */       kits.setItem(40, vidro1);
 /* 247 */       kits.setItem(41, vidro1);
 /* 248 */       kits.setItem(42, vidro1);
 /* 249 */       kits.setItem(43, vidro1);
@@ -579,6 +574,17 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lGhast
 /* 531 */         metapyro.setDisplayName("§7Kit §e§lSpiderman");
 /* 532 */         ArrayList indiob = new ArrayList();
 /* 533 */         indiob.add(Main.kits.getString("SpidermanLore").replace("&", "§"));
+/* 536 */         metapyro.setLore(indiob);
+/* 537 */         pyro.setItemMeta(metapyro);
+/* 538 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       }
+if (p.hasPermission("kitpvp.kit.meteor"))
+/*     */       {
+/* 529 */         ItemStack pyro = new ItemStack(Material.FIREBALL);
+/* 530 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 531 */         metapyro.setDisplayName("§7Kit §e§lMeteor");
+/* 532 */         ArrayList indiob = new ArrayList();
+/* 533 */         indiob.add(Main.kits.getString("MeteorLore").replace("&", "§"));
 /* 536 */         metapyro.setLore(indiob);
 /* 537 */         pyro.setItemMeta(metapyro);
 /* 538 */         kits.addItem(new ItemStack[] { pyro });

@@ -567,13 +567,16 @@ public static void sendToGame(String message) {
 /*     */       {
 	if (CombatLog.emCombate(p)) {
 		p.sendMessage("§cYou are in combat!");
+		e.setCancelled(true);
 		return;
 	}
 	if (X1.lutadores.containsKey(p.getName())) {
 		p.sendMessage("§cYou are in combat!");
+		e.setCancelled(true);
 		return;
 	}
 	if (CustomChallenge.lutadores.containsKey(p.getName())) {
+		e.setCancelled(true);
 		p.sendMessage("§cYou are in combat!");
 		return;
 	}
