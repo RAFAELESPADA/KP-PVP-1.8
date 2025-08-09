@@ -98,13 +98,14 @@ public class Meteor implements Listener {
 		if (Habilidade.getAbility(p) != "Meteor") {
 			return;
 		}
-		
+		if (p.isOnGround()) {
+			return;
+		}
 		if ((e.getPlayer().getItemInHand().getType() != Material.FIREBALL)) {
 			return;
 		}
 		int l = (int)p.getEyeLocation().getDirection().multiply(3.0).add(new Vector(0, 0, 0)).getY();
 		if(p.getLocation().getPitch() >= -90 && p.getLocation().getPitch() <= -10) {
-	        p.sendMessage(ChatColor.RED + "You can only use the meteor looking to the ground!");
 	        return;
 	    }
 		if (Cooldown.add(p))
@@ -167,7 +168,6 @@ public class Meteor implements Listener {
 		 p.sendMessage(ChatColor.RED + "You cannot use the meteor on Spawn!");
 			return;
 		 }
-	if (!subiu.contains(p)) {
 		  if (WaveCooldown.has(p.getName(), "meteor")) {
 			  p.sendMessage(ChatColor.RED + "Wait " + WaveCooldown.getTime(p.getName(), "meteor") +  " to use this again!");
 			  return;
@@ -294,31 +294,7 @@ public class Meteor implements Listener {
 	}
 
 	subiu.add(p);
-	} else {
-		if (Habilidade.getAbility(p) != "Meteor") {
-			return;
-		}
-		if ((e.getPlayer().getItemInHand().getType() != Material.FIREBALL)) {
-			return;
-		}
-		if (Cooldown.add(p))
-		/*     */       {
-			API.MensagemCooldown(p);
-		/*  92 */         return;
-		/*     */       }
-
-	/* 106 */           if (Habilidade.getAbility(p) == "Meteor") {
-	    p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(Main.getInstance().getConfig().getString("Sound.AnchorHit")), 4.0F, 4.0F);
-		/* 107 */           p.sendMessage(ChatColor.RED + "WAIT TO GO UP AGAIN!");
-		Bukkit.getScheduler().runTaskLater(Main.getInstance() , new Runnable() {
-		    @Override
-		    public void run() {
-		   	subiu.remove(p);
-		        }
-		    }
-		, 9 * 20);
-	/* 107 */         }
-	}
+	} 
 
 	/*     */   }
-	}
+	
