@@ -88,7 +88,13 @@ public void onUpdate(ServerTimerEvent event) {
 	if (Habilidade.getAbility(ghosts) == "Naruto") {
 	if (cooldown.containsKey(ghosts.getName())) {	
 		Location l = ghosts.getLocation();
+		Location l2 = new Location(ghosts.getWorld(), ghosts.getLocation().getX(), ghosts.getLocation().getY() + 1, ghosts.getLocation().getZ());
 		l.getWorld().playEffect(l, Effect.SMOKE, 20);
+		;
+		l.getWorld().playEffect(l, Effect.SMOKE, 20);
+		l2.getWorld().playEffect(l, Effect.SMOKE, 20);
+		;
+		l2.getWorld().playEffect(l, Effect.SMOKE, 20);
 	}
 	}
 }
