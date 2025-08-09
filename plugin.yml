@@ -2,9 +2,10 @@ name: KP-PVP
 main: me.RafaelAulerDeMeloAraujo.main.Main
 version: BUILD-145
 author: Rafael_Melo or Rafael Auler
-softdepend: [PlaceholderAPI , MVdWPlaceholderAPI, PlayerPoints, Vault, ItemJoin, KPCore]
+softdepend: [PlaceholderAPI , MVdWPlaceholderAPI, Vault, PlayerPoints, KPCore]
 description: KitPvP Plugin what have much features like kits,shop with Custom Economy Support,A Unique 1v1 system to players fight,Coins System,Scoreboard,Stats kills,deaths,streak,Sponges acts like launchpads,Varius commands, and are very customisable,Support with others Gamemodes like Skywars and have everything to control your KITPVP Server. And the best part its is free to Download. If you want to support the developer subscribe to his channel.
 website: http://bit.ly/2kC345B , http://bit.ly/2j5qvnM
+api-version: 1.20
 #PERMISSIONS ARENT HERE
 #SEE ALL PERMISSIONS HERE: https://pastebin.com/JuMPHpRD
 commands:
@@ -12,73 +13,72 @@ commands:
         description: Main Command
    kp:
         description: Main Command
+   kghast:
    kpsoups:
-        description: Gets Soups
-   kmilkman:     
-   kpsetlevel:
-   kghast:         
+        description: Gets Soups     
    kpeditmode:
         description: Enables or Disables Build on kitpvp
    kpkickall:
         description: Force all players to leave the kitpvp
+   kmeteor:     
    kptpall:
         description: Teleport all kitpvp players to yourself   
    set1v1:
-        description: Set the kitpvp 1vs1 
-   kpopenwarps:
-        description: Open KP Warp Menu
+        description: Set the kitpvp 1vs1
+   setsumo:
+        description: Set the kitpvp Sumo        
    kpsetdeathspawn:
         description: Sets the kitpvp death spawn
    kpsetspawn:
         description: Set the kitpvp spawn
-   setsumo:
-        description: Set the kitpvp sumo
    kpkills:
-        description: Manage player kills        
-   skit:   
-        description: Create a kit with items to give to your players
-   paycoins:   
-        description: Pay coins to your players      
+        description: Manage player kills 
    settopkills:
         description: Set Top Kills
+   kpwarp:
+        description: Go to Warp
+   kpsetwarp:
+        description: Set KP Warp
    updatetopkill:
-        description: Set Top Kills                  
+        description: Update Top Kills    
+   skit:   
+        description: Create a kit with items to give to your players             
    kpvp:
         description: Kit PvP
-   kfireman:
-        description: Kit Fireman
-   kmonk:
-        description: Kit Monk
    kphantom:
         description: Kit Phantom
    kanchor:
         description: Kit Anchor
    kviking:
         description: Kit Viking
-   kpwarp:
-        description: Go to Warp
-   kpsetwarp:
-        description: Set KP Warp
    kposeidon:
         description: Kit Poseidon
    kconfuser:
         description: Kit Confuser
+   kmilkman:
+        description: Kit Milkman     
    kresouper:
         description: Kit Resouper
-   sonic:
-        description: Kit Sonic
    kryu:
-        description: Kit Ryu    
+        description: Kit Ryu
+   sonic:
+        description: Kit Sonic     
    kresouper:
         description: Kit Resouper
    viper:
         description: Kit Viper to poison your enemies
+   kfireman:
+        description: Kit Fireman
+   kmonk:
+        description: Kit Monk
    naruto:
         description: Kit Naruto from anime - Naruto
    gaara:
         description: Kit Gaara from anime - Naruto
    kcamel:
-        description: Kit Camel       
+        description: Kit Camel
+   kpsetlevel:
+        description: SET LEVEL            
    kpkitmenu:
         description: Original command to open the new kit menu
    kthor:
@@ -87,6 +87,10 @@ commands:
         description: My favorite kit from this plugin    
    basic:
         description: A Weaker version of the kit PvP
+   kshielder:
+        description: Gains netherite sword and a shield
+   antistomper:
+        description: Dont receive damage to stompers
    archer:
         description: Kit Archer to shot arrow in your enemies
    pyro:
@@ -164,7 +168,9 @@ commands:
    removecoins:
         description: Manage the coins system
    coins:
-        description: View your coins             
+        description: View your coins        
+   paycoins:
+        description: Pay coins       
    adminmode:
         description: Enter in adminmode to catch cheaters
    kphelp:
@@ -173,7 +179,7 @@ commands:
    kitclear:
         description: Clears yours kit
    setarena:
-        description: Sets Kit Teleport Arena     
+        description: Set the Arena to teleport
   
         
          
