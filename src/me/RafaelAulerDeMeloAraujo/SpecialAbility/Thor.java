@@ -1,11 +1,10 @@
 /*     */ package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 /*     */ 
 /*     */ import java.util.ArrayList;
-/*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
+
 /*     */ import org.bukkit.Bukkit;
 /*     */ import org.bukkit.Location;
 /*     */ import org.bukkit.Material;
-/*     */ import org.bukkit.Server;
 /*     */ import org.bukkit.World;
 /*     */ import org.bukkit.block.Block;
 /*     */ import org.bukkit.entity.Player;
@@ -13,12 +12,10 @@
 /*     */ import org.bukkit.event.Listener;
 /*     */ import org.bukkit.event.block.Action;
 /*     */ import org.bukkit.event.block.BlockIgniteEvent;
-/*     */ import org.bukkit.event.block.BlockIgniteEvent.IgniteCause;
 /*     */ import org.bukkit.event.entity.EntityDamageEvent;
-/*     */ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 /*     */ import org.bukkit.event.player.PlayerInteractEvent;
-/*     */ import org.bukkit.inventory.ItemStack;
-/*     */ import org.bukkit.scheduler.BukkitScheduler;
+
+/*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
 /*     */ 
 /*     */ 
 /*     */ 
@@ -76,8 +73,15 @@
 /*     */       
 /*  77 */       Location loc = w.getHighestBlockAt(b.getLocation()).getLocation();
 /*  78 */       p.getWorld().strikeLightning(loc);
+p.getWorld().strikeLightning(loc);
+/*     */       /*     */       p.getWorld().strikeLightning(loc);
+p.getWorld().strikeLightning(loc);
+/*     */       /*     */       p.getWorld().strikeLightning(loc);
+if (Main.getInstance().getConfig().getBoolean("FullIron")) {
 /*     */       p.getWorld().strikeLightning(loc);
 p.getWorld().strikeLightning(loc);
+p.getWorld().strikeLightning(loc);
+}
 p.getWorld().strikeLightning(loc);
 /*  80 */       Cooldown.add(p, Main.kits.getInt("ThorCooldown"));
 /*  81 */       Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable()
@@ -95,9 +99,12 @@ p.getWorld().strikeLightning(loc);
 /*     */   public void OnBlock(BlockIgniteEvent e)
 /*     */   {
 /*  95 */     if (e.getCause() == BlockIgniteEvent.IgniteCause.LIGHTNING) {
+	  World w = Bukkit.getServer().getWorld(Main.plugin.getConfig().getString("Spawn.World"));
+	  if (e.getBlock().getWorld().equals(w)) {
 /*  96 */       e.setCancelled(true);
-}
 /*     */   }
+}
+}
 /*     */   
 /*     */ 
 /*     */ 
