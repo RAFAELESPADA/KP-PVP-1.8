@@ -40,6 +40,7 @@ FiremanLore: '&7Dont receive damage from fire or lava'
 MilkmanLore: '&7Get stronger with your milk'
 GhastLore: '&7Throw fireballs'
 MeteorLore: '&7Go to the sky and strike your oponnents!'
+TamerLore: '&7Spawn 4 dogs to fight for you!'
 
 #Modify the cooldown of some kits
 #They are in seconds
@@ -55,10 +56,12 @@ RyuCooldown: 25
 NinjaCooldown: 10
 MonkCooldown: 25
 GhastCooldown: 30
+TamerCooldown: 45
 
 
 #Disable kits here
 
+TamerDisabled: false
 GladiatorDisabled: false
 PhantomDisabled: false
 MeteorDisabled: false
@@ -93,12 +96,14 @@ StomperRadius: 2
 RyuDamage: 14
 TimelordRadius: 5
 SonicDamage: 10
+TamerDogsLastsFor: 15
 DeshfireDamage: 10
 NarutoSpeedAmplifier: 1
 NarutoRegenAmplifier: 2
 NarutoRegenTime: 15
 NarutoSpeedTime: 15
 NarutoStrenghtTime: 10
+TamerDogsLastsFor: 15
 NarutoStrenghtAmplifier: 0
 RyuDistance: 50
 FiremanWeaknessonWaterTime: 3

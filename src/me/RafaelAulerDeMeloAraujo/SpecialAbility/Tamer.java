@@ -1,49 +1,131 @@
 package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
+
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 /*    */ import org.bukkit.Material;
 /*    */ import org.bukkit.Sound;
 /*    */ import org.bukkit.command.Command;
 /*    */ import org.bukkit.command.CommandExecutor;
 /*    */ import org.bukkit.command.CommandSender;
+import org.bukkit.entity.EntityType;
 /*    */ import org.bukkit.entity.Player;
+import org.bukkit.entity.Wolf;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 /*    */ import org.bukkit.inventory.ItemStack;
 /*    */ import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.metadata.FixedMetadataValue;
 
 /*    */ import me.RafaelAulerDeMeloAraujo.main.Main;
 import me.RafaelAulerDeMeloAraujo.main.RTP;
 /*    */ 
-/*    */ public class GhastKIT implements CommandExecutor
+/*    */ public class Tamer implements CommandExecutor, Listener
 /*    */ {
 /*    */   private Main main;
 /*    */   static Main plugin;
 /*    */   
-/*    */   public GhastKIT(Main main)
+/*    */   public Tamer(Main main)
 /*    */   {
 /* 23 */     this.main = main;
 /* 24 */     plugin = main;
 /*    */   }
-/*    */   
+/*    */   @EventHandler
+public void dano(EntityDamageByEntityEvent e)
+{
+  if (((e.getEntity() instanceof Wolf)) && ((e.getDamager() instanceof Player)))
+  {
+   Wolf s = (Wolf)e.getEntity();
+    if (s.hasMetadata("GGG2")) {
+      e.setCancelled(true);
+    }
+  }
+}
+/*    */   @EventHandler
+public void dano2(EntityDamageByEntityEvent e)
+{
+  if (((e.getEntity() instanceof Player)) && ((e.getDamager() instanceof Wolf)))
+  {
+   Wolf s = (Wolf)e.getDamager();
+    if (s.hasMetadata("GGG2")) {
+     e.setDamage(e.getDamage() + 1.7);
+    }
+  }
+}
+  @EventHandler(priority = EventPriority.LOW)
+  public void onInteract(PlayerInteractEvent event) {
+  	Player p = event.getPlayer();
+  	if (event.getItem() == null) {
+  		return;
+  	}
+  	if (!(Habilidade.getAbility(p) == "Tamer")) {
+  		return;
+  	}	
+
+  	
+  	if (!event.getAction().equals(Action.RIGHT_CLICK_AIR)) {
+  	return;
+  	}
+  	if ((p.getItemInHand().getType() == Material.BONE) && 
+  			/*  63 */       (Habilidade.getAbility(p) == "Tamer"))
+  			/*     */     {
+  		event.setCancelled(true);
+  		 if (Cooldown.add(p)) {
+               API.MensagemCooldown(p);
+               return;
+           }
+  	      Wolf wolf = (Wolf) p.getWorld().spawnEntity(p.getLocation(), EntityType.WOLF);
+
+  	      Wolf wolf2 = (Wolf) p.getWorld().spawnEntity(p.getLocation(), EntityType.WOLF);
+
+  	      Wolf wolf3 = (Wolf) p.getWorld().spawnEntity(p.getLocation(), EntityType.WOLF);
+
+  	      Wolf wolf4 = (Wolf) p.getWorld().spawnEntity(p.getLocation(), EntityType.WOLF);
+  	    wolf.setOwner(p);
+  	  wolf2.setOwner(p);
+  	 wolf2.setOwner(p);
+  	 wolf4.setOwner(p);
+  	 Cooldown.add(p, Main.kits.getInt("TamerCooldown"));
+  	wolf.setMetadata("GGG2", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+  	wolf2.setMetadata("GGG2", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+  	wolf3.setMetadata("GGG2", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+  	wolf4.setMetadata("GGG2", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+  	Bukkit.getScheduler().runTaskLater(Main.getInstance() , new Runnable() {
+	    @Override
+	    public void run() {
+	   	wolf.remove();
+	   	wolf2.remove();
+	   	wolf3.remove();
+	   	wolf4.remove();
+	        }
+	    }
+	, Main.kits.getInt("TamerDogsLastsFor") * 20);
+  	}
+  }
 /*    */ 
 /*    */   public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
 /*    */   {
 /* 30 */     Player p = (Player)sender;
 /*    */     
-/* 32 */     if (cmd.getName().equalsIgnoreCase("kghast"))
+/* 32 */     if (cmd.getName().equalsIgnoreCase("ktamer"))
 /*    */     {
 /* 34 */       if (!Join.game.contains(p.getName()))
 /*    */       {
 /* 36 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + " §eYou are not in kitpvp to do choose this kit!");
 /* 37 */         return true;
 /*    */       }
-/* 39 */       if (!p.hasPermission("kitpvp.kit.ghast"))
+/* 39 */       if (!p.hasPermission("kitpvp.kit.tamer"))
 /*    */       {
 /* 41 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + this.main.getConfig().getString("Permission").replace("&", "§").replaceAll("%permisson%", commandLabel));
 /* 42 */         p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.NoPermissionMessage")), 1.0F, 1.0F);
 /* 43 */         return true;
 /*    */       }
-if (Main.kits.getBoolean("GhastDisabled")) {
-	p.sendMessage(API.NomeServer + ChatColor.RED + "The Ghast kit is disabled, sorry");
+if (Main.kits.getBoolean("TamerDisabled")) {
+	p.sendMessage(API.NomeServer + ChatColor.RED + "The Tamer kit is disabled, sorry");
 	return true;
 }
 /*    */       
@@ -61,15 +143,15 @@ if (Main.kits.getBoolean("GhastDisabled")) {
 /* 57 */       ItemMeta sopas = sopa.getItemMeta();
 /* 58 */       sopas.setDisplayName("�6Soup");
 /* 59 */       sopa.setItemMeta(sopas);
-/* 60 */       ItemStack especial = new ItemStack(Material.FIREBALL);
+/* 60 */       ItemStack especial = new ItemStack(Material.BONE);
 /* 61 */       ItemMeta especial2 = especial.getItemMeta();
-/* 62 */       especial2.setDisplayName("�cGhast!");
+/* 62 */       especial2.setDisplayName("�cSpawn Wolfs!");
 /* 63 */       especial.setItemMeta(especial2);
 /*    */       
 /* 65 */       
 /*    */       
 /* 78 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Ghast").replace("&", "§"));
-/* 79 */       Habilidade.setAbility(p, "Ghast");
+/* 79 */       Habilidade.setAbility(p, "Tamer");
 /* 80 */       
 /* 81 */       
 /*    */       

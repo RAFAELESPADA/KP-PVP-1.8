@@ -115,6 +115,11 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lMilkMan"
 /* 103 */           Bukkit.dispatchCommand(p, "snail");
 /* 104 */           p.closeInventory();
 /*     */         }
+if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lTamer"))
+/*     */         {
+/* 103 */           Bukkit.dispatchCommand(p, "ktamer");
+/* 104 */           p.closeInventory();
+/*     */         }
 /* 106 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lViper"))
 /*     */         {
 /* 108 */           Bukkit.dispatchCommand(p, "viper");
@@ -300,8 +305,6 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lGhast"))
 /* 228 */       ItemMeta barrier2 = barrier.getItemMeta();
 /* 229 */       barrier2.setDisplayName((Main.messages.getString("CloseKitMenuBottom").replace("&", "§")));
 /* 230 */       barrier.setItemMeta(barrier2);
-
-/* 247 */       kits.setItem(41, vidro1);
 /* 248 */       kits.setItem(42, vidro1);
 /* 249 */       kits.setItem(43, vidro1);
 /* 250 */       kits.setItem(44, vidro1);
@@ -751,6 +754,18 @@ if (p.hasPermission("kitpvp.kit.milkman"))
 /* 557 */         metapyro.setDisplayName("§7Kit §e§lMilkMan");
 /* 558 */         ArrayList indiob = new ArrayList();
 /* 559 */         indiob.add((Main.kits.getString("MilkmanLore")).replace("&", "§"));
+/* 560 */         
+/* 561 */         metapyro.setLore(indiob);
+/* 562 */         pyro.setItemMeta(metapyro);
+/* 563 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       }
+if (p.hasPermission("kitpvp.kit.tamer"))
+/*     */       {
+/* 555 */         ItemStack pyro = new ItemStack(Material.BONE);
+/* 556 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 557 */         metapyro.setDisplayName("§7Kit §e§lTamer");
+/* 558 */         ArrayList indiob = new ArrayList();
+/* 559 */         indiob.add((Main.kits.getString("TamerLore")).replace("&", "§"));
 /* 560 */         
 /* 561 */         metapyro.setLore(indiob);
 /* 562 */         pyro.setItemMeta(metapyro);

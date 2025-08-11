@@ -112,6 +112,7 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Sonic;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Sponge;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Stomper;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.StomperKITCOMMAND;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Tamer;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Thor;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.ThorKITCOMMAND;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.TimeLord;
@@ -442,7 +443,9 @@ getCommand("kresouper").setExecutor(new ResouperCMD(this));
 getCommand("kghast").setExecutor(new GhastKIT(this));
 getCommand("kphantom").setExecutor(new PhantomCMD(this));
 getCommand("sonic").setExecutor(new Sonic());
+getCommand("ktamer").setExecutor(new Tamer(this));
 this.pm.registerEvents(new ClickTest(), this);
+this.pm.registerEvents(new Tamer(this), this);
 /* 246 */     
 /* 247 */     getCommand("set1v1").setExecutor(new SetX1());
 UpdateUtil updateChecker = new UpdateUtil(this, true);

@@ -72,6 +72,7 @@ public class Shop
     createButton(Material.MILK_BUCKET, shop, 38, "§6-> §cMilkMan", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 6000");   
     createButton(Material.GHAST_TEAR, shop, 37, "§6-> §cGhast", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 18000");
     createButton(Material.FIREBALL, shop, 38, "§6-> §cMeteor", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 12000");
+    createButton(Material.BONE, shop, 39, "§6-> §cTamer", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 12000");
     createButton(Material.BARRIER, shop, 53, "§4§l-> §cClose", Main.messages.getString("CloseShopLore").replace("&", "§"));
   }
   
@@ -274,6 +275,31 @@ public class Shop
              }
       	  Coins.perms.playerAdd(p, "kitpvp.kit.meteor");
           p.sendMessage("§6-> §cYou buy the Meteor kit §e-12000 coins");
+          Coins.removeCoins(p, 12000);
+          e.setCancelled(true);
+          p.closeInventory();
+        }
+        else if (Coins.getCoins(p) < 12000)
+        {
+          p.sendMessage(Main.messages.getString("NoFundsShop").replace("&", "§"));
+          e.setCancelled(true);
+          p.closeInventory();
+        }
+      }
+    if ((inv.getName().equals(shop.getName())) && (clicked.getType() == Material.BONE)) {
+        if (Coins.getCoins(p) >= 12000)
+        {
+      	  if (p.hasPermission("kitpvp.kit.tamer")) {
+      		  p.sendMessage("§e[KitPvP] §cYou already have the Kit Tamer!");
+          		p.closeInventory();
+          		return;
+        	}
+      	  if (Main.kits.getBoolean("TamerDisabled")) {
+         	     p.sendMessage(API.NomeServer + ChatColor.RED + "The Tamer kit is disabled, sorry");
+         	     return ;
+             }
+      	  Coins.perms.playerAdd(p, "kitpvp.kit.tamer");
+          p.sendMessage("§6-> §cYou buy the Tamer kit §e-12000 coins");
           Coins.removeCoins(p, 12000);
           e.setCancelled(true);
           p.closeInventory();
