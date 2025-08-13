@@ -33,12 +33,12 @@ import me.RafaelAulerDeMeloAraujo.main.RTP;
 /*    */     {
 /* 34 */       if (!Join.game.contains(p.getName()))
 /*    */       {
-/* 36 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ยง")) + " ยงeYou are not in kitpvp to do choose this kit!");
+/* 36 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ง")) + " งeYou are not in kitpvp to do choose this kit!");
 /* 37 */         return true;
 /*    */       }
 /* 39 */       if (!p.hasPermission("kitpvp.kit.ghast"))
 /*    */       {
-/* 41 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ยง")) + this.main.getConfig().getString("Permission").replace("&", "ยง").replaceAll("%permisson%", commandLabel));
+/* 41 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ง")) + this.main.getConfig().getString("Permission").replace("&", "ง").replaceAll("%permisson%", commandLabel));
 /* 42 */         p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.NoPermissionMessage")), 1.0F, 1.0F);
 /* 43 */         return true;
 /*    */       }
@@ -48,7 +48,7 @@ if (Main.kits.getBoolean("GhastDisabled")) {
 }
 /*    */       
 /* 46 */       if (Habilidade.ContainsAbility(p)) {
-/* 47 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ยง")) + this.main.getConfig().getString("Message.KitUse").replace("&", "ยง"));
+/* 47 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ง")) + this.main.getConfig().getString("Message.KitUse").replace("&", "ง"));
 /* 48 */         p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.KitUse")), 1.0F, 1.0F);
 /* 49 */         return true;
 /*    */       }
@@ -68,7 +68,7 @@ if (Main.kits.getBoolean("GhastDisabled")) {
 /*    */       
 /* 65 */       
 /*    */       
-/* 78 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ยง")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Ghast").replace("&", "ยง"));
+/* 78 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ง")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Ghast").replace("&", "ง"));
 /* 79 */       Habilidade.setAbility(p, "Ghast");
 /* 80 */       
 /* 81 */       

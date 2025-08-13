@@ -65,11 +65,6 @@ public void dano2(EntityDamageByEntityEvent e)
   	if (!(Habilidade.getAbility(p) == "Tamer")) {
   		return;
   	}	
-
-  	
-  	if (!event.getAction().equals(Action.RIGHT_CLICK_AIR)) {
-  	return;
-  	}
   	if ((p.getItemInHand().getType() == Material.BONE) && 
   			/*  63 */       (Habilidade.getAbility(p) == "Tamer"))
   			/*     */     {
@@ -87,7 +82,7 @@ public void dano2(EntityDamageByEntityEvent e)
   	      Wolf wolf4 = (Wolf) p.getWorld().spawnEntity(p.getLocation(), EntityType.WOLF);
   	    wolf.setOwner(p);
   	  wolf2.setOwner(p);
-  	 wolf2.setOwner(p);
+  	 wolf3.setOwner(p);
   	 wolf4.setOwner(p);
   	 Cooldown.add(p, Main.kits.getInt("TamerCooldown"));
   	wolf.setMetadata("GGG2", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
@@ -115,12 +110,12 @@ public void dano2(EntityDamageByEntityEvent e)
 /*    */     {
 /* 34 */       if (!Join.game.contains(p.getName()))
 /*    */       {
-/* 36 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ยง")) + " ยงeYou are not in kitpvp to do choose this kit!");
+/* 36 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ง")) + " งeYou are not in kitpvp to do choose this kit!");
 /* 37 */         return true;
 /*    */       }
 /* 39 */       if (!p.hasPermission("kitpvp.kit.tamer"))
 /*    */       {
-/* 41 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ยง")) + this.main.getConfig().getString("Permission").replace("&", "ยง").replaceAll("%permisson%", commandLabel));
+/* 41 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ง")) + this.main.getConfig().getString("Permission").replace("&", "ง").replaceAll("%permisson%", commandLabel));
 /* 42 */         p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.NoPermissionMessage")), 1.0F, 1.0F);
 /* 43 */         return true;
 /*    */       }
@@ -130,7 +125,7 @@ if (Main.kits.getBoolean("TamerDisabled")) {
 }
 /*    */       
 /* 46 */       if (Habilidade.ContainsAbility(p)) {
-/* 47 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ยง")) + this.main.getConfig().getString("Message.KitUse").replace("&", "ยง"));
+/* 47 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ง")) + this.main.getConfig().getString("Message.KitUse").replace("&", "ง"));
 /* 48 */         p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.KitUse")), 1.0F, 1.0F);
 /* 49 */         return true;
 /*    */       }
@@ -150,7 +145,7 @@ if (Main.kits.getBoolean("TamerDisabled")) {
 /*    */       
 /* 65 */       
 /*    */       
-/* 78 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ยง")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Ghast").replace("&", "ยง"));
+/* 78 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ง")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Tamer").replace("&", "ง"));
 /* 79 */       Habilidade.setAbility(p, "Tamer");
 /* 80 */       
 /* 81 */       
@@ -161,7 +156,7 @@ RTP.TeleportArenaRandom(p);
 /* 85 */       for (int i = 0; i <= 34; i++) {
 /* 86 */         p.getInventory().addItem(new ItemStack[] { sopa });
 /* 87 */         p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.KitUse")), 1.0F, 1.0F);
-/* 88 */         me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Ghast"));
+/* 88 */         me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Tamer"));
 /*    */       }
 p.getInventory().setItem(1, especial);
 /*    */     }

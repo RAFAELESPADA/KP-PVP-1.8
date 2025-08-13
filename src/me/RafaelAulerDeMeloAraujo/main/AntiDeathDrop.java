@@ -1,8 +1,13 @@
 package me.RafaelAulerDeMeloAraujo.main;
 
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -11,8 +16,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ItemDespawnEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.inventory.ItemStack;
 
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.NewKitMenu;
 import net.wavemc.core.bukkit.WaveBukkit;
 import net.wavemc.core.bukkit.account.WavePlayer;
 
@@ -44,15 +51,39 @@ public class AntiDeathDrop
       }}
     }
   
+
   @EventHandler
-  public void onDeatht(PlayerDeathEvent e)
+  public void onDeatht(PlayerDeathEvent event)
   {
-	  Player p = e.getEntity();
+	  Player p = event.getEntity();
 	  if (Join.game.contains(p.getName()))
       {
-		  e.getDrops().clear(); 
+		  List<ItemStack> drops = event.getDrops();
+		  
+		  
+		  
+          event.setKeepLevel(true);
+
+
+
+
+
+      ListIterator<ItemStack> litr = drops.listIterator();
+
+      while(litr.hasNext()){
+
+          ItemStack stack = litr.next();
+
+
+          if (!stack.equals(new ItemStack(Material.MUSHROOM_SOUP))) {
+
+              litr.remove();
+
+          }
       }
-  }
+      }
+			  }
+  
 
     
   

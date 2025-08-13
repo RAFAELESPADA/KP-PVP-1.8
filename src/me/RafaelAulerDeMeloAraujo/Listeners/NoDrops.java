@@ -6,6 +6,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /*    */ import org.bukkit.event.player.PlayerDropItemEvent;
 /*    */ import org.bukkit.event.player.PlayerPickupItemEvent;
 
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 /*    */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
 /*    */ import me.RafaelAulerDeMeloAraujo.main.Main;
 /*    */ 
@@ -32,7 +33,7 @@ if (paramPlayerPickupItemEvent.getItemDrop().getItemStack().getItemMeta().hasDis
 }
 /* 29 */     if (Join.game.contains(paramPlayerPickupItemEvent.getPlayer().getName()) && (Main.getInstace().getConfig().getString("DisableDropsOnKitPvP").equalsIgnoreCase("true")))
 /*    */     {
-/* 31 */       if (paramPlayerPickupItemEvent.getItemDrop().getItemStack().getType() == Material.BOWL)
+/* 31 */       if (paramPlayerPickupItemEvent.getItemDrop().getItemStack().getType() == Material.BOWL || paramPlayerPickupItemEvent.getItemDrop().getItemStack().getType() == Material.MUSHROOM_SOUP)
 /*    */       {
 /* 33 */         paramPlayerPickupItemEvent.setCancelled(false);
 /* 34 */         paramPlayerPickupItemEvent.getPlayer().playSound(paramPlayerPickupItemEvent.getPlayer().getLocation(), org.bukkit.Sound.valueOf(this.main.getConfig().getString("Sound.BowlDrop")), 1.0F, 1.0F);
@@ -47,6 +48,10 @@ if (paramPlayerPickupItemEvent.getItemDrop().getItemStack().getItemMeta().hasDis
 /* 46 */     if (!Join.game.contains(paramPlayerPickupItemEvent.getPlayer().getName()) || (Main.getInstace().getConfig().getString("DisablePickupItemsOnKitPvP").equalsIgnoreCase("false"))) {
 /* 47 */       return;
 /*    */     }
+if (!Habilidade.ContainsAbility(paramPlayerPickupItemEvent.getPlayer()) && Join.game.contains(paramPlayerPickupItemEvent.getPlayer().getName())) {
+	paramPlayerPickupItemEvent.setCancelled(true);
+	return;
+}
 /* 49 */     if (Join.game.contains(paramPlayerPickupItemEvent.getPlayer().getName()) && (Main.getInstace().getConfig().getString("DisablePickupItemsOnKitPvP").equalsIgnoreCase("true")))
 /*    */     {
 /* 51 */       if ((paramPlayerPickupItemEvent.getItem().getItemStack().getType() == Material.MUSHROOM_SOUP))
