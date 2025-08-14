@@ -41,12 +41,17 @@ MilkmanLore: '&7Get stronger with your milk'
 GhastLore: '&7Throw fireballs'
 MeteorLore: '&7Go to the sky and strike your oponnents!'
 TamerLore: '&7Spawn 4 dogs to fight for you!'
+HedgeHogLore: '&7Fire arrows in all directions'
+ZeusLore: '&7Destroy everything near you!'
+PrisonerLore: '&7Jail up your enemies'
 
 #Modify the cooldown of some kits
 #They are in seconds
 
 StomperCooldown: 30
 ThorCooldown: 5
+ZeusCooldown: 35
+HedgeHogCooldown: 30
 TimelordCooldown: 30
 PhantomCooldown: 25
 SonicCooldown: 30
@@ -57,10 +62,14 @@ NinjaCooldown: 10
 MonkCooldown: 25
 GhastCooldown: 30
 TamerCooldown: 45
+PrisonerCooldown: 40
 
 
 #Disable kits here
 
+ZeusDisabled: false
+HedgehogDisabled: false
+PrisonerDisabled: false
 TamerDisabled: false
 GladiatorDisabled: false
 PhantomDisabled: false

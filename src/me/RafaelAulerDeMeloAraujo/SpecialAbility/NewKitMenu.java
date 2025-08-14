@@ -125,6 +125,11 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lTamer"))
 /* 108 */           Bukkit.dispatchCommand(p, "viper");
 /* 109 */           p.closeInventory();
 /*     */         }
+/* 106 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lZeus"))
+/*     */         {
+/* 108 */           Bukkit.dispatchCommand(p, "kzeus");
+/* 109 */           p.closeInventory();
+/*     */         }
 /* 111 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lThor"))
 /*     */         {
 /* 113 */           Bukkit.dispatchCommand(p, "kthor");
@@ -153,6 +158,11 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lTamer"))
 /* 126 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lTimeLord"))
 /*     */         {
 /* 128 */           Bukkit.dispatchCommand(p, "timelord");
+/* 129 */           p.closeInventory();
+/*     */         }
+if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lHedgeHog"))
+/*     */         {
+/* 128 */           Bukkit.dispatchCommand(p, "khedgehog");
 /* 129 */           p.closeInventory();
 /*     */         }
 /* 131 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lDoubleJump"))
@@ -250,6 +260,11 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lGhast"))
 /* 193 */           Bukkit.dispatchCommand(p, "kcamel");
 /* 194 */           p.closeInventory();
 /*     */         }
+if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPrisoner"))
+/*     */         {
+/* 193 */           Bukkit.dispatchCommand(p, "kprisoner");
+/* 194 */           p.closeInventory();
+/*     */         }
 /* 191 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lViking"))
 /*     */         {
 /* 193 */           Bukkit.dispatchCommand(p, "kviking");
@@ -305,8 +320,6 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lGhast"))
 /* 228 */       ItemMeta barrier2 = barrier.getItemMeta();
 /* 229 */       barrier2.setDisplayName((Main.messages.getString("CloseKitMenuBottom").replace("&", "§")));
 /* 230 */       barrier.setItemMeta(barrier2);
-/* 248 */       kits.setItem(42, vidro1);
-/* 249 */       kits.setItem(43, vidro1);
 /* 250 */       kits.setItem(44, vidro1);
 /* 251 */       kits.setItem(45, vidro1);
 /* 252 */       kits.setItem(46, vidro1);
@@ -510,6 +523,39 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lGhast"))
 /* 459 */         ArrayList indiob = new ArrayList();
 /* 460 */         metapyro.setLore(indiob);
 /* 461 */         indiob.add(Main.kits.getString("NinjaLore").replace("&", "§"));
+/* 464 */         metapyro.setLore(indiob);
+/* 465 */         pyro.setItemMeta(metapyro);
+/* 466 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       }
+/* 455 */       if (p.hasPermission("kitpvp.kit.zeus")) {
+/* 456 */         ItemStack pyro = new ItemStack(Material.INK_SACK);
+/* 457 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 458 */         metapyro.setDisplayName("§7Kit §e§lZeus");
+/* 459 */         ArrayList indiob = new ArrayList();
+/* 460 */         metapyro.setLore(indiob);
+/* 461 */         indiob.add(Main.kits.getString("ZeusLore").replace("&", "§"));
+/* 464 */         metapyro.setLore(indiob);
+/* 465 */         pyro.setItemMeta(metapyro);
+/* 466 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       }
+/* 455 */       if (p.hasPermission("kitpvp.kit.hedgehog")) {
+/* 456 */         ItemStack pyro = new ItemStack(Material.ARROW);
+/* 457 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 458 */         metapyro.setDisplayName("§7Kit §e§lHedgeHog");
+/* 459 */         ArrayList indiob = new ArrayList();
+/* 460 */         metapyro.setLore(indiob);
+/* 461 */         indiob.add(Main.kits.getString("HedgeHogLore").replace("&", "§"));
+/* 464 */         metapyro.setLore(indiob);
+/* 465 */         pyro.setItemMeta(metapyro);
+/* 466 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       }
+if (p.hasPermission("kitpvp.kit.prisoner")) {
+/* 456 */         ItemStack pyro = new ItemStack(Material.BEDROCK);
+/* 457 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 458 */         metapyro.setDisplayName("§7Kit §e§lPrisoner");
+/* 459 */         ArrayList indiob = new ArrayList();
+/* 460 */         metapyro.setLore(indiob);
+/* 461 */         indiob.add(Main.kits.getString("PrisonerLore").replace("&", "§"));
 /* 464 */         metapyro.setLore(indiob);
 /* 465 */         pyro.setItemMeta(metapyro);
 /* 466 */         kits.addItem(new ItemStack[] { pyro });
