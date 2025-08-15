@@ -550,6 +550,10 @@ RTP.TeleportArenaRandom(p);
 /* 402 */       Habilidade.setAbility(s, "Tank");
 API.give(p);
 /* 403 */       s.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 999999999, 3));
+/* 403 */       s.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 999999999, 1));
+
+/* 403 */       s.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 999999999, 0));
+
 /* 404 */       s.playSound(s.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.Kit")), 1.0F, 1.0F);
 /*     */       
 /* 406 */       return true;
