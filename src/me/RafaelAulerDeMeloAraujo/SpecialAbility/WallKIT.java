@@ -1,5 +1,7 @@
 package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
+
+
 import org.bukkit.ChatColor;
 /*    */ import org.bukkit.Material;
 /*    */ import org.bukkit.Sound;
@@ -13,12 +15,12 @@ import org.bukkit.ChatColor;
 /*    */ import me.RafaelAulerDeMeloAraujo.main.Main;
 import me.RafaelAulerDeMeloAraujo.main.RTP;
 /*    */ 
-/*    */ public class MeteorKit implements CommandExecutor
+/*    */ public class WallKIT implements CommandExecutor
 /*    */ {
 /*    */   private Main main;
 /*    */   static Main plugin;
 /*    */   
-/*    */   public MeteorKit(Main main)
+/*    */   public WallKIT(Main main)
 /*    */   {
 /* 23 */     this.main = main;
 /* 24 */     plugin = main;
@@ -29,21 +31,21 @@ import me.RafaelAulerDeMeloAraujo.main.RTP;
 /*    */   {
 /* 30 */     Player p = (Player)sender;
 /*    */     
-/* 32 */     if (cmd.getName().equalsIgnoreCase("kmeteor"))
+/* 32 */     if (cmd.getName().equalsIgnoreCase("kwall"))
 /*    */     {
 /* 34 */       if (!Join.game.contains(p.getName()))
 /*    */       {
 /* 36 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + " §eYou are not in kitpvp to do choose this kit!");
 /* 37 */         return true;
 /*    */       }
-/* 39 */       if (!p.hasPermission("kitpvp.kit.meteor"))
+/* 39 */       if (!p.hasPermission("kitpvp.kit.kwall"))
 /*    */       {
 /* 41 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + this.main.getConfig().getString("Permission").replace("&", "§").replaceAll("%permisson%", commandLabel));
 /* 42 */         p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.NoPermissionMessage")), 1.0F, 1.0F);
 /* 43 */         return true;
 /*    */       }
-if (Main.kits.getBoolean("MeteorDisabled")) {
-	p.sendMessage(API.NomeServer + ChatColor.RED + "The Meteor kit is disabled, sorry");
+if (Main.kits.getBoolean("WallDisabled")) {
+	p.sendMessage(API.NomeServer + ChatColor.RED + "The JackHammer kit is disabled, sorry");
 	return true;
 }
 /*    */       
@@ -61,15 +63,15 @@ if (Main.kits.getBoolean("MeteorDisabled")) {
 /* 57 */       ItemMeta sopas = sopa.getItemMeta();
 /* 58 */       sopas.setDisplayName("§6Soup");
 /* 59 */       sopa.setItemMeta(sopas);
-/* 60 */       ItemStack especial = new ItemStack(Material.FIREBALL);
+/* 60 */       ItemStack especial = new ItemStack(Material.COBBLE_WALL);
 /* 61 */       ItemMeta especial2 = especial.getItemMeta();
-/* 62 */       especial2.setDisplayName("§cMeteor!");
+/* 62 */       especial2.setDisplayName("§bWalls");
 /* 63 */       especial.setItemMeta(especial2);
 /*    */       
 /* 65 */       
 /*    */       
-/* 78 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Meteor").replace("&", "§"));
-/* 79 */       Habilidade.setAbility(p, "Meteor");
+/* 78 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Wall").replace("&", "§"));
+/* 79 */       Habilidade.setAbility(p, "Wall");
 /* 80 */       
 /* 81 */       
 /*    */       
@@ -79,7 +81,7 @@ RTP.TeleportArenaRandom(p);
 /* 85 */       for (int i = 0; i <= 34; i++) {
 /* 86 */         p.getInventory().addItem(new ItemStack[] { sopa });
 /* 87 */         p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.KitUse")), 1.0F, 1.0F);
-/* 88 */         me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Meteor"));
+/* 88 */         me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Wall"));
 /*    */       }
 p.getInventory().setItem(1, especial);
 /*    */     }
@@ -87,3 +89,11 @@ p.getInventory().setItem(1, especial);
 /* 92 */     return false;
 /*    */   }
 /*    */ }
+
+
+/* Location:              D:\Desktop\video\Minhas Coisas do Desktop\KP-PVPvB12 (1).jar!\me\RafaelAulerDeMeloAraujo\SpecialAbility\ThorKITCOMMAND.class
+ * Java compiler version: 8 (52.0)
+ * JD-Core Version:       0.7.1
+ */
+
+

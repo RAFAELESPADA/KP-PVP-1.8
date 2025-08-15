@@ -44,6 +44,11 @@ TamerLore: '&7Spawn 4 dogs to fight for you!'
 HedgeHogLore: '&7Fire arrows in all directions'
 ZeusLore: '&7Destroy everything near you!'
 PrisonerLore: '&7Jail up your enemies'
+JackHammerLore: '&7Dig a hole in the ground!'
+AsteroidLore: '&7Create a asteroid storm'
+JinbeiLore: '&7Create a forcefield of water'
+WallLore: '&7Build a huge wall'
+SightLore: '&730% chance of blidness on hit'
 
 #Modify the cooldown of some kits
 #They are in seconds
@@ -52,6 +57,7 @@ StomperCooldown: 30
 ThorCooldown: 5
 ZeusCooldown: 35
 HedgeHogCooldown: 30
+JinbeiCooldown: 25
 TimelordCooldown: 30
 PhantomCooldown: 25
 SonicCooldown: 30
@@ -63,13 +69,22 @@ MonkCooldown: 25
 GhastCooldown: 30
 TamerCooldown: 45
 PrisonerCooldown: 40
+JackHammerCooldown: 35
+AsteroidCooldown: 30
+WallCooldown: 32
+JinbeiCooldown: 30
 
 
 #Disable kits here
 
+JinbeiDisabled: false
+WallDisabled: false
+AsteroidDisabled: false
+JackHammerDisabled: false
 ZeusDisabled: false
 HedgehogDisabled: false
 PrisonerDisabled: false
+JinbeiDisabled: false
 TamerDisabled: false
 GladiatorDisabled: false
 PhantomDisabled: false
@@ -106,10 +121,12 @@ RyuDamage: 14
 TimelordRadius: 5
 SonicDamage: 10
 TamerDogsLastsFor: 15
+SightChance: 30
 DeshfireDamage: 10
 NarutoSpeedAmplifier: 1
 NarutoRegenAmplifier: 2
 NarutoRegenTime: 15
+SightBlidnessTime: 4
 NarutoSpeedTime: 15
 NarutoStrenghtTime: 10
 NarutoStrenghtAmplifier: 0

@@ -100,6 +100,11 @@
 /*  88 */           Bukkit.dispatchCommand(p, "kphantom");
 /*  89 */           p.closeInventory();
 /*     */         }
+if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lJackHammer"))
+/*     */         {
+/*  88 */           Bukkit.dispatchCommand(p, "kjackhammer");
+/*  89 */           p.closeInventory();
+/*     */         }
 /*  91 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lCritical"))
 /*     */         {
 /*  93 */           Bukkit.dispatchCommand(p, "critical");
@@ -235,6 +240,11 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lGhast"))
 /* 183 */           Bukkit.dispatchCommand(p, "wasp");
 /* 184 */           p.closeInventory();
 /*     */         }
+if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lSight"))
+/*     */         {
+/* 183 */           Bukkit.dispatchCommand(p, "ksight");
+/* 184 */           p.closeInventory();
+/*     */         }
 /* 186 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPyro"))
 /*     */         {
 /* 188 */           Bukkit.dispatchCommand(p, "pyro");
@@ -270,9 +280,24 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPrisoner
 /* 193 */           Bukkit.dispatchCommand(p, "kviking");
 /* 194 */           p.closeInventory();
 /*     */         }
+/* 191 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lWall"))
+/*     */         {
+/* 193 */           Bukkit.dispatchCommand(p, "kwall");
+/* 194 */           p.closeInventory();
+/*     */         }
+/* 191 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lJinbei"))
+/*     */         {
+/* 193 */           Bukkit.dispatchCommand(p, "kjinbei");
+/* 194 */           p.closeInventory();
+/*     */         }
 /* 191 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPoseidon"))
 /*     */         {
 /* 193 */           Bukkit.dispatchCommand(p, "kposeidon");
+/* 194 */           p.closeInventory();
+/*     */         }
+/* 191 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lAsteroid"))
+/*     */         {
+/* 193 */           Bukkit.dispatchCommand(p, "kasteroid");
 /* 194 */           p.closeInventory();
 /*     */         }
 /* 191 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lConfuser"))
@@ -320,10 +345,6 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPrisoner
 /* 228 */       ItemMeta barrier2 = barrier.getItemMeta();
 /* 229 */       barrier2.setDisplayName((Main.messages.getString("CloseKitMenuBottom").replace("&", "§")));
 /* 230 */       barrier.setItemMeta(barrier2);
-/* 250 */       kits.setItem(44, vidro1);
-/* 251 */       kits.setItem(45, vidro1);
-/* 252 */       kits.setItem(46, vidro1);
-/* 253 */       kits.setItem(47, vidro1);
 /* 254 */       kits.setItem(48, vidro1);
 /* 255 */       kits.setItem(49, vidro1);
 /* 256 */       kits.setItem(50, vidro1);
@@ -444,6 +465,46 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPrisoner
 /* 385 */         pyro.setItemMeta(metapyro);
 /* 386 */         kits.addItem(new ItemStack[] { pyro });
 /*     */       }
+if (p.hasPermission("kitpvp.kit.jackhammer")) {
+/* 379 */         ItemStack pyro = new ItemStack(Material.STONE_AXE);
+/* 380 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 381 */         metapyro.setDisplayName("§7Kit §e§lJackHammer");
+/* 382 */         ArrayList indiob = new ArrayList();
+/* 383 */         indiob.add((Main.kits.getString("JackHammerLore").replace("&", "§")));
+/* 384 */         metapyro.setLore(indiob);
+/* 385 */         pyro.setItemMeta(metapyro);
+/* 386 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       }
+if (p.hasPermission("kitpvp.kit.jinbei")) {
+/* 379 */         ItemStack pyro = new ItemStack(Material.WATER_LILY);
+/* 380 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 381 */         metapyro.setDisplayName("§7Kit §e§lJinbei");
+/* 382 */         ArrayList indiob = new ArrayList();
+/* 383 */         indiob.add((Main.kits.getString("JinbeiLore").replace("&", "§")));
+/* 384 */         metapyro.setLore(indiob);
+/* 385 */         pyro.setItemMeta(metapyro);
+/* 386 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       }
+if (p.hasPermission("kitpvp.kit.wall")) {
+/* 379 */         ItemStack pyro = new ItemStack(Material.COBBLE_WALL);
+/* 380 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 381 */         metapyro.setDisplayName("§7Kit §e§lWall");
+/* 382 */         ArrayList indiob = new ArrayList();
+/* 383 */         indiob.add((Main.kits.getString("WallLore").replace("&", "§")));
+/* 384 */         metapyro.setLore(indiob);
+/* 385 */         pyro.setItemMeta(metapyro);
+/* 386 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       }
+if (p.hasPermission("kitpvp.kit.sight")) {
+/* 379 */         ItemStack pyro = new ItemStack(Material.MUTTON);
+/* 380 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 381 */         metapyro.setDisplayName("§7Kit §e§lSight");
+/* 382 */         ArrayList indiob = new ArrayList();
+/* 383 */         indiob.add((Main.kits.getString("SightLore").replace("&", "§")));
+/* 384 */         metapyro.setLore(indiob);
+/* 385 */         pyro.setItemMeta(metapyro);
+/* 386 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       }
 /* 388 */       if (p.hasPermission("kitpvp.kit.thor")) {
 /* 389 */         ItemStack pyro = new ItemStack(Material.GOLD_AXE);
 /* 390 */         ItemMeta metapyro = pyro.getItemMeta();
@@ -454,6 +515,17 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPrisoner
 /* 396 */         pyro.setItemMeta(metapyro);
 /* 397 */         kits.addItem(new ItemStack[] { pyro });
 /*     */       }
+/* 388 */       if (p.hasPermission("kitpvp.kit.asteroid")) {
+/* 389 */         ItemStack pyro = new ItemStack(Material.OBSIDIAN);
+/* 390 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 391 */         metapyro.setDisplayName("§7Kit §e§lAsteroid");
+/* 392 */         ArrayList indiob = new ArrayList();
+/* 393 */         indiob.add(Main.kits.getString("AsteroidLore").replace("&", "§"));
+/* 395 */         metapyro.setLore(indiob);
+/* 396 */         pyro.setItemMeta(metapyro);
+/* 397 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       }
+
 /* 399 */       if (p.hasPermission("kitpvp.kit.doublejump")) {
 /* 400 */         ItemStack pyro = new ItemStack(Material.CHAINMAIL_BOOTS);
 /* 401 */         ItemMeta metapyro = pyro.getItemMeta();

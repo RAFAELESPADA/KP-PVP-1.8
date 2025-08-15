@@ -7,6 +7,7 @@ import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
@@ -29,7 +30,14 @@ public class NoExplosion
 	  }
 
 
-
+	  @EventHandler
+	  public void NoExplodeMyMapPlease(BlockExplodeEvent e)
+	  {
+		  World w = Bukkit.getServer().getWorld(Main.plugin.getConfig().getString("Spawn.World"));
+		  if (e.getBlock().getWorld().equals(w)) {
+	    e.setCancelled(true);
+		  }
+	  }
 
 
 }

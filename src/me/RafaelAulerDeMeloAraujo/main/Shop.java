@@ -75,6 +75,10 @@ public class Shop
     createButton(Material.BONE, shop, 39, "§6-> §cTamer", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 12000");
     createButton(Material.INK_SACK, shop, 40, "§6-> §cZeus", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 16000");
     createButton(Material.ARROW, shop, 41, "§6-> §cHedgeHog", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 16000");
+    createButton(Material.WATER_LILY, shop, 42, "§6-> §cJinbei", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 16000");
+    createButton(Material.OBSIDIAN, shop, 43, "§6-> §cAsteroid", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 16000");
+    createButton(Material.STONE_AXE, shop, 44, "§6-> §cJackHammer", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 16000");
+    createButton(Material.MUTTON, shop, 45, "§6-> §cSight", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 7000");
     createButton(Material.BARRIER, shop, 53, "§4§l-> §cClose", Main.messages.getString("CloseShopLore").replace("&", "§"));
   }
   
@@ -379,6 +383,84 @@ public class Shop
           }
       	Coins.perms.playerAdd(p, "kitpvp.kit.hedgehog");
           p.sendMessage("§6-> §cYou buy the Hedgehog kit §e-16000 coins");
+          Coins.removeCoins(p, 16000);
+          e.setCancelled(true);
+          p.closeInventory();
+        }
+        else if (Coins.getCoins(p) < 16000)
+        {
+          p.sendMessage(Main.messages.getString("NoFundsShop").replace("&", "§"));
+          e.setCancelled(true);
+          p.closeInventory();
+          return;
+        }
+      }
+    if ((inv.getName().equals(shop.getName())) && (clicked.getType() == Material.OBSIDIAN)) {
+        if (Coins.getCoins(p) >= 16000)
+        {
+      	  if (p.hasPermission("kitpvp.kit.asteroid")) {
+      		  p.sendMessage("§e[KitPvP] §cYou already have the Kit Asteroid!");
+          		p.closeInventory();
+          		return;
+        	}
+      	 if (Main.kits.getBoolean("AsteroidDisabled")) {
+      	     p.sendMessage(API.NomeServer + ChatColor.RED + "The Asteroid kit is disabled, sorry");
+      	     return ;
+          }
+      	Coins.perms.playerAdd(p, "kitpvp.kit.asteroid");
+          p.sendMessage("§6-> §cYou buy the Asteroid kit §e-16000 coins");
+          Coins.removeCoins(p, 16000);
+          e.setCancelled(true);
+          p.closeInventory();
+        }
+        else if (Coins.getCoins(p) < 16000)
+        {
+          p.sendMessage(Main.messages.getString("NoFundsShop").replace("&", "§"));
+          e.setCancelled(true);
+          p.closeInventory();
+          return;
+        }
+      }
+    if ((inv.getName().equals(shop.getName())) && (clicked.getType() == Material.STONE_AXE)) {
+        if (Coins.getCoins(p) >= 16000)
+        {
+      	  if (p.hasPermission("kitpvp.kit.jackhammer")) {
+      		  p.sendMessage("§e[KitPvP] §cYou already have the Kit JackHammer!");
+          		p.closeInventory();
+          		return;
+        	}
+      	 if (Main.kits.getBoolean("JackHammerDisabled")) {
+      	     p.sendMessage(API.NomeServer + ChatColor.RED + "The JackHammer kit is disabled, sorry");
+      	     return ;
+          }
+      	Coins.perms.playerAdd(p, "kitpvp.kit.jackhammer");
+          p.sendMessage("§6-> §cYou buy the JackHammer kit §e-16000 coins");
+          Coins.removeCoins(p, 16000);
+          e.setCancelled(true);
+          p.closeInventory();
+        }
+        else if (Coins.getCoins(p) < 16000)
+        {
+          p.sendMessage(Main.messages.getString("NoFundsShop").replace("&", "§"));
+          e.setCancelled(true);
+          p.closeInventory();
+          return;
+        }
+      }
+    if ((inv.getName().equals(shop.getName())) && (clicked.getType() == Material.WATER_LILY)) {
+        if (Coins.getCoins(p) >= 16000)
+        {
+      	  if (p.hasPermission("kitpvp.kit.jinbei")) {
+      		  p.sendMessage("§e[KitPvP] §cYou already have the Kit Jinbei!");
+          		p.closeInventory();
+          		return;
+        	}
+      	 if (Main.kits.getBoolean("JinbeiDisabled")) {
+      	     p.sendMessage(API.NomeServer + ChatColor.RED + "The Jinbei kit is disabled, sorry");
+      	     return ;
+          }
+      	Coins.perms.playerAdd(p, "kitpvp.kit.jinbei");
+          p.sendMessage("§6-> §cYou buy the Jinbei kit §e-16000 coins");
           Coins.removeCoins(p, 16000);
           e.setCancelled(true);
           p.closeInventory();
@@ -789,6 +871,27 @@ public class Shop
         p.closeInventory();
       }
     }
+    if ((inv.getName().equals(shop.getName())) && (clicked.getType() == Material.MUTTON)) {
+        if (Coins.getCoins(p) >= 7000)
+        {
+      	  if (p.hasPermission("kitpvp.kit.sight")) {
+      		  p.sendMessage("§e[KitPvP] §cYou already have the Kit Sight!");
+          		p.closeInventory();
+          		return;
+        	}
+      	  Coins.perms.playerAdd(p, "kitpvp.kit.sight");
+          p.sendMessage("§6-> §cYou buy the Sight kit §e-7000 coins");
+          Coins.removeCoins(p, 7000);
+          e.setCancelled(true);
+          p.closeInventory();
+        }
+        else if (Coins.getCoins(p) < 7000)
+        {
+          p.sendMessage(Main.messages.getString("NoFundsShop").replace("&", "§"));
+          e.setCancelled(true);
+          p.closeInventory();
+        }
+      }
     if ((inv.getName().equals(shop.getName())) && (clicked.getType() == Material.GOLD_AXE)) {
       if (Coins.getCoins(p) >= 7000)
       {

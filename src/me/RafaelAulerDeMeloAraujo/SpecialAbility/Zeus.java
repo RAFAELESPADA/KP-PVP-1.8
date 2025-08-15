@@ -6,9 +6,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.material.MaterialData;
 import org.bukkit.plugin.Plugin;
@@ -26,70 +28,69 @@ public class Zeus implements Listener {
     final Player p = e.getPlayer();
     Player g = p;
     if (e.getPlayer().getItemInHand().getType() == Material.INK_SACK && 
-      e.getAction().name().contains("RIGHT") && 
+      e.getAction().equals(Action.RIGHT_CLICK_AIR) && 
       Habilidade.getAbility(p) == "Zeus")
       if (Cooldown.add(p)) {
         e.setCancelled(true);
         p.updateInventory();
         API.sendMessageCooldown(p);
       } else {
+    	  if (p.getLocation().getY() > Main.getInstance().getConfig().getInt("Spawn.Y") - 2) {
+    		  p.sendMessage("DO NOT USE THIS ON SPAWN!");
+				return;
+			 }
         Location location = p.getEyeLocation();
-        final BlockIterator blocksToAdd = new BlockIterator(
-            location, 0.0D, 20);
-        (new BukkitRunnable() {
+       BlockIterator blocksToAdd = new BlockIterator(
+            location, 0.0D, 30);
+       
+       (new BukkitRunnable() {
             
         	Location blockToAdd;
             public void run() {
-              if (blocksToAdd.hasNext()) {
-                this.blockToAdd = blocksToAdd.next().getLocation();
-                for (Player plays : Bukkit.getOnlinePlayers()) {
-                  for (String games : Join.game) {
-                  Player games2 = Bukkit.getPlayer(games); 
-                  if (games2 != null) {
-                  if (games2.getLocation().distance(this.blockToAdd) < 2.0D && 
-                    plays != p) {
-                    p.getWorld().strikeLightning(this.blockToAdd);
-                    p.getWorld().strikeLightning(this.blockToAdd);
-                    p.getWorld().strikeLightning(this.blockToAdd);
-                    p.getWorld().strikeLightning(this.blockToAdd);
-                    p.getWorld().strikeLightning(this.blockToAdd);
-                    cd.put(blockToAdd, blockToAdd.getBlock().getData());
-                    p.getWorld().strikeLightning(this.blockToAdd);
-                    p.getWorld().strikeLightning(this.blockToAdd);
-                    p.getWorld().strikeLightning(this.blockToAdd);
-                    p.getWorld().strikeLightning(this.blockToAdd);
-                    p.getWorld().strikeLightning(this.blockToAdd);
-                    this.blockToAdd.getBlock().setData((byte)cd.get(this.blockToAdd));
-                    cancel();
-                  } 
-                  }
-                  }} 
-                Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 
-                    0.0F, 0.0F, 10, this.blockToAdd, 20.0D);
-                p.getWorld().playEffect(this.blockToAdd, 
-                    Effect.STEP_SOUND, 
-                    Material.DIAMOND_BLOCK, 20);
-                p.getWorld().playEffect(this.blockToAdd, 
-                    Effect.STEP_SOUND, 
-                    Material.DIAMOND_BLOCK, 20);
-              } else {
-                cancel();
-                p.getWorld().strikeLightning(this.blockToAdd);
+              while (blocksToAdd.hasNext() && blocksToAdd.next() != p.getLocation().getBlock() && blocksToAdd != null) {
+            	 
+               blockToAdd = blocksToAdd.next().getLocation();
+               if (blockToAdd == null) {
+            	   cancel();
+            	   return;
+               }
+                p.getWorld().strikeLightning(blockToAdd);
+                p.getWorld().strikeLightning(blockToAdd);
 
-                cd.put(blockToAdd, blockToAdd.getBlock().getData());
-                p.getWorld().strikeLightning(this.blockToAdd);
-                p.getWorld().strikeLightning(this.blockToAdd);
-                p.getWorld().strikeLightning(this.blockToAdd);
-                p.getWorld().strikeLightning(this.blockToAdd);
-                p.getWorld().strikeLightning(this.blockToAdd);
-                p.getWorld().strikeLightning(this.blockToAdd);
-                p.getWorld().strikeLightning(this.blockToAdd);
-  p.getWorld().strikeLightning(this.blockToAdd);
-                p.getWorld().strikeLightning(this.blockToAdd);
-                this.blockToAdd.getBlock().setData((byte)cd.get(this.blockToAdd));
-              }            
+                Particles.FLAME.display(1.3F, 1.3F, 1.3F, 0.25F, 10, blockToAdd, 50.0D);
+                Particles.NOTE.display(1.3F, 1.3F, 1.3F, 0.25F, 10, blockToAdd, 50.0D);
+                Particles.NOTE.display(1.3F, 1.3F, 1.3F, 0.25F, 10, blockToAdd, 50.0D);
+                Particles.NOTE.display(1.3F, 1.3F, 1.3F, 0.25F, 10, blockToAdd, 50.0D);
+                for (Player p4: Bukkit.getOnlinePlayers()) {
+        	        Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, blockToAdd.add(0.0D, 2.0D, 0.0D), p4);
+                    Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, blockToAdd.add(0.0D, 2.0D, 0.0D), p4);
+        	        
+                Particles.HEART.display(1.3F, 1.3F, 1.3F, 0.25F, 10, blockToAdd, 50.0D);
+
+                Particles.HEART.display(1.3F, 1.3F, 1.3F, 0.25F, 10, blockToAdd, 50.0D);Particles.EXPLOSION_HUGE.display(1.3F, 1.3F, 1.3F, 0.25F, 10, blockToAdd, 50.0D);
+
+                Particles.HEART.display(1.3F, 1.3F, 1.3F, 0.25F, 10, blockToAdd, 50.0D);
+                Particles.HEART.display(1.3F, 1.3F, 1.3F, 0.25F, 10, blockToAdd, 50.0D);
+                } Particles.FLAME.display(1.3F, 1.3F, 1.3F, 0.25F, 10, blockToAdd, 50.0D);
+                Particles.FLAME.display(1.3F, 1.3F, 1.3F, 0.25F, 10, blockToAdd, 50.0D);
+                Particles.FLAME.display(1.3F, 1.3F, 1.3F, 0.25F, 10, blockToAdd, 50.0D);
+                for (Entity et : p.getWorld().getNearbyEntities(blockToAdd, 15, 15, 15)) {
+                if (et instanceof Player) {
+                	Player p2 = (Player)et;
+                	if (p != p2) { 
+                		if (!Habilidade.ContainsAbility(p2)) {
+        	return;
+        }
+                	p2.damage(6, p);
+                	
+                et.getWorld().strikeLightning(et.getLocation());
+
+                et.getWorld().strikeLightning(et.getLocation());
+              }   
+                }
             }
-          }).runTaskTimer((Plugin)Main.getInstance(), 0L, 1L);
+                 
+          }}}).runTaskTimer((Plugin)Main.getInstance(), 0L, 10L);
        
         e.setCancelled(true);
         p.updateInventory();
