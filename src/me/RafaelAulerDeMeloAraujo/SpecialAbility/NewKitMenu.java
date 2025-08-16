@@ -215,6 +215,11 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lGhast"))
 /* 168 */           Bukkit.dispatchCommand(p, "spiderman");
 /* 169 */           p.closeInventory();
 /*     */         }
+if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lCreeper"))
+/*     */         {
+/* 168 */           Bukkit.dispatchCommand(p, "kcreeper");
+/* 169 */           p.closeInventory();
+/*     */         }
 /* 166 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lFireman"))
 /*     */         {
 /* 168 */           Bukkit.dispatchCommand(p, "kfireman");
@@ -345,8 +350,6 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPrisoner
 /* 228 */       ItemMeta barrier2 = barrier.getItemMeta();
 /* 229 */       barrier2.setDisplayName((Main.messages.getString("CloseKitMenuBottom").replace("&", "§")));
 /* 230 */       barrier.setItemMeta(barrier2);
-/* 254 */       kits.setItem(48, vidro1);
-/* 255 */       kits.setItem(49, vidro1);
 /* 256 */       kits.setItem(50, vidro1);
 /* 257 */       kits.setItem(51, vidro1);
 /* 258 */       kits.setItem(52, vidro1);
@@ -378,6 +381,16 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPrisoner
 /* 285 */         metapyro.setDisplayName("§7Kit §e§lKangaroo");
 /* 286 */         ArrayList indiob = new ArrayList();
 /* 287 */         indiob.add(API.cor(Main.kits.getString("KangarooLore")));
+/* 289 */         metapyro.setLore(indiob);
+/* 290 */         pyro.setItemMeta(metapyro);
+/* 291 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       }
+/* 282 */       if (p.hasPermission("kitpvp.kit.creeper")) {
+/* 283 */         ItemStack pyro = new ItemStack(Material.REDSTONE_COMPARATOR);
+/* 284 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 285 */         metapyro.setDisplayName("§7Kit §e§lCreeper");
+/* 286 */         ArrayList indiob = new ArrayList();
+/* 287 */         indiob.add(API.cor(Main.kits.getString("CreeperLore")));
 /* 289 */         metapyro.setLore(indiob);
 /* 290 */         pyro.setItemMeta(metapyro);
 /* 291 */         kits.addItem(new ItemStack[] { pyro });

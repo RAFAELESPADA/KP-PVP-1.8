@@ -49,6 +49,7 @@ AsteroidLore: '&7Create a asteroid storm'
 JinbeiLore: '&7Create a forcefield of water'
 WallLore: '&7Build a huge wall'
 SightLore: '&730% chance of blidness on hit'
+CreeperLore: '&7Create a explosion on death'
 
 #Modify the cooldown of some kits
 #They are in seconds
@@ -77,6 +78,7 @@ JinbeiCooldown: 30
 
 #Disable kits here
 
+CreeperDisabled: false
 JinbeiDisabled: false
 WallDisabled: false
 AsteroidDisabled: false

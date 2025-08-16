@@ -80,6 +80,8 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.AsteroidKIT;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Camel;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.ConfuserHability;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Cooldown;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Creeper;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.CreeperK;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Critical;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Deshfire;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.DesifireCMD;
@@ -458,6 +460,8 @@ getCommand("khedgehog").setExecutor(new HedgeHof(this));
 /* 240 */     getCommand("doublejump").setExecutor(new Dublejump(this));
 getCommand("kresouper").setExecutor(new ResouperCMD(this));
 /* 241 */     getCommand("kitclear").setExecutor(new Kits(this));
+
+/* 241 */     getCommand("kcreeper").setExecutor(new CreeperK(this));
 /* 242 */     getCommand("skit").setExecutor(new Skit());
               getCommand("kpkills").setExecutor(new Kills());
 /* 243 */     getCommand("critical").setExecutor(new Critical(this));
@@ -622,7 +626,7 @@ if (Main.getInstace().getConfig().getString("DisableCombatLog").equalsIgnoreCase
 /* 266 */     this.pm.registerEvents(new SoupSign(), this);
 /* 267 */     this.pm.registerEvents(new Deshfire(), this);
 /* 268 */     this.pm.registerEvents(new Thor(this), this);
-
+/* 267 */     this.pm.registerEvents(new Creeper(), this);
 /* 268 */     this.pm.registerEvents(new Ghast(), this);
 /* 268 */     this.pm.registerEvents(new Recraft(), this);
 /* 269 */     this.pm.registerEvents(new Ninja(this), this);
