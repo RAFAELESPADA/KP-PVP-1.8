@@ -50,6 +50,7 @@ JinbeiLore: '&7Create a forcefield of water'
 WallLore: '&7Build a huge wall'
 SightLore: '&730% chance of blidness on hit'
 CreeperLore: '&7Create a explosion on death'
+BerserkerLore: '&7Get strenght and speed effect on each kill'
 
 #Modify the cooldown of some kits
 #They are in seconds
@@ -106,6 +107,7 @@ DeshfireDisabled: false
 SonicDisabled: false
 NarutoDisabled: false
 GhastDisabled: false
+BerserkerDisabled: false
 
 #Edit some kits ability options
 #Edit the chance of the kit working on each hit (Viper , Snail, Vampire , Confuser)

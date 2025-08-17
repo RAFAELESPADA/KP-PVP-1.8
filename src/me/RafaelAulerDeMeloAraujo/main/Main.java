@@ -23,6 +23,7 @@ import org.bukkit.command.ConsoleCommandSender;
 /*     */ import org.bukkit.configuration.file.FileConfiguration;
 /*     */
 /*     */ import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Entity;
 /*     */ import org.bukkit.entity.Player;
 /*     */ import org.bukkit.event.EventHandler;
 /*     */ import org.bukkit.event.Listener;
@@ -77,6 +78,7 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Anchor;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Asteroid;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.AsteroidKIT;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Basic;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.BerserkerKit;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Camel;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.ConfuserHability;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Cooldown;
@@ -424,6 +426,8 @@ getCommand("paycoins").setExecutor(new PayCoins());
 getCommand("kpopenwarps").setExecutor(new OpenWarpMenu());
 /* 217 */     getCommand("bomber").setExecutor(new Kits(this));
 /* 218 */     getCommand("spiderman").setExecutor(new Kits(this));
+
+/* 218 */     getCommand("kberserker").setExecutor(new BerserkerKit(this));
 /* 219 */     getCommand("stats").setExecutor(new Stats());
 /* 220 */     getCommand("kpstats").setExecutor(new KPStats());
 /* 221 */     getCommand("kitmenu").setExecutor(new Menu(this));
@@ -566,6 +570,32 @@ public static void loadTopPlayersHologram() {
 			
 		}
 		}.runTaskTimer(Main.getInstance(), 10 * 20L, 2 * (60 * 20L));
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				for (World w : Bukkit.getWorlds()) {
+					for (Entity e : w.getEntities()) {
+						if (e.hasMetadata("FALLBLAST")) {
+							
+							e.setFallDistance(5f);
+						}
+					}
+				}
+			
+			}}.runTaskTimer(Main.getInstance(), 10L, 10);
+			new BukkitRunnable() {
+				@Override
+				public void run() {
+					for (World w : Bukkit.getWorlds()) {
+						for (Entity e : w.getEntities()) {
+							if (e.hasMetadata("FALLBLAST")) {
+								
+								e.remove();
+							}
+						}
+					}
+				
+				}}.runTaskTimer(Main.getInstance(), 30L, 30);
 }
 
 

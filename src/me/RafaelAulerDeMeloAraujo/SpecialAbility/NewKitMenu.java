@@ -1,8 +1,10 @@
 /*     */ package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 /*     */ 
 /*     */ import java.util.ArrayList;
+import java.util.Random;
 
 /*     */ import org.bukkit.Bukkit;
+import org.bukkit.Location;
 /*     */ import org.bukkit.Material;
 /*     */ import org.bukkit.Sound;
 /*     */ import org.bukkit.command.Command;
@@ -15,6 +17,8 @@
 /*     */ import org.bukkit.inventory.Inventory;
 /*     */ import org.bukkit.inventory.ItemStack;
 /*     */ import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 /*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
 /*     */ 
@@ -60,6 +64,10 @@
 /*     */ 
 /*  60 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPvP")) {
 /*  61 */           Bukkit.dispatchCommand(p, "kpvp");
+/*  62 */           p.closeInventory();
+/*     */         }
+if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lBerserker")) {
+/*  61 */           Bukkit.dispatchCommand(p, "kberserker");
 /*  62 */           p.closeInventory();
 /*     */         }
 /*     */         
@@ -350,9 +358,19 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPrisoner
 /* 228 */       ItemMeta barrier2 = barrier.getItemMeta();
 /* 229 */       barrier2.setDisplayName((Main.messages.getString("CloseKitMenuBottom").replace("&", "§")));
 /* 230 */       barrier.setItemMeta(barrier2);
-/* 256 */       kits.setItem(50, vidro1);
-/* 257 */       kits.setItem(51, vidro1);
-/* 258 */       kits.setItem(52, vidro1);
+(new BukkitRunnable() {
+
+    public void run() {
+    	Random r = new Random();
+    	int id = r.nextInt(14);
+    	ItemStack vidro21 = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short)id);
+    	/* 223 */       ItemMeta vidro212 = vidro1.getItemMeta();
+    	/* 224 */       vidro212.setDisplayName("§a§k========");
+    	/* 225 */       vidro21.setItemMeta(vidro212);
+/* 258 */       kits.setItem(52, vidro21);
+    }
+    
+}).runTaskTimer((Plugin)Main.getInstance(), 0L, 20L);
 /* 259 */       kits.setItem(53, barrier);
 
 /* 272 */        {
@@ -909,6 +927,18 @@ if (p.hasPermission("kitpvp.kit.ghast"))
 /* 557 */         metapyro.setDisplayName("§7Kit §e§lGhast");
 /* 558 */         ArrayList indiob = new ArrayList();
 /* 559 */         indiob.add((Main.kits.getString("GhastLore")).replace("&", "§"));
+/* 560 */         
+/* 561 */         metapyro.setLore(indiob);
+/* 562 */         pyro.setItemMeta(metapyro);
+/* 563 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       }
+if (p.hasPermission("kitpvp.kit.berserker"))
+/*     */       {
+/* 555 */         ItemStack pyro = new ItemStack(Material.GOLDEN_CARROT);
+/* 556 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 557 */         metapyro.setDisplayName("§7Kit §e§lBerserker");
+/* 558 */         ArrayList indiob = new ArrayList();
+/* 559 */         indiob.add((Main.kits.getString("BerserkerLore")).replace("&", "§"));
 /* 560 */         
 /* 561 */         metapyro.setLore(indiob);
 /* 562 */         pyro.setItemMeta(metapyro);

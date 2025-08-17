@@ -17,6 +17,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.potion.PotionEffectType;
 
 import me.RafaelAulerDeMeloAraujo.main.Main;
 
@@ -37,11 +38,25 @@ public void onDamage1(EntityDamageEvent event) {
         }
     }
 }
-@EventHandler
-public void NoExplodeMyMapPlease(EntityExplodeEvent e)
-{
-  e.setCancelled(true);
-	  }
+@EventHandler(priority = EventPriority.MONITOR)
+public void onDeatgh(PlayerDeathEvent event) {
+	final Player morreu = event.getEntity();
+    if (morreu.getKiller() != null) {
+	final Player matou = event.getEntity().getKiller();
+			
+	
+	
+	
+	 if (Habilidade.getAbility(matou) != "Berserker") {
+		 return;
+	 }
+API.darEfeito(matou, PotionEffectType.INCREASE_DAMAGE, 7, 0);
+
+API.darEfeito(matou, PotionEffectType.SPEED, 7, 1);
+		}
+     }
+
+			
 @EventHandler(priority = EventPriority.MONITOR)
 public void onDeath(PlayerDeathEvent event) {
 	final Player morreu = event.getEntity();

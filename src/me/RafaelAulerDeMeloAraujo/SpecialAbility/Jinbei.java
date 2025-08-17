@@ -1,6 +1,7 @@
 package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
 import java.util.HashMap;
+import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
@@ -8,13 +9,17 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -26,6 +31,23 @@ public class Jinbei implements Listener {
 	public static HashMap<String, Long> cooldown = new HashMap<>();
 	  FallingBlock f;
 	  public static HashMap<Entity, Location> loc = new HashMap<>();
+	  @EventHandler(priority=EventPriority.LOWEST)
+	    public void onFallingBlockLand(EntityChangeBlockEvent event) {
+	        Entity ent = event.getEntity();
+	        if (event.getEntityType() == EntityType.FALLING_BLOCK) {
+	        	
+	        	if (ent.hasMetadata("FALLBLAST")) {
+	        		for (Player p4: Bukkit.getOnlinePlayers()) {
+        		        Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(0.0D, 2.0D, 1.0D), p4);
+        	            Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(1.0D, 2.0D, 0.0D), p4);
+        		        }
+	        		 event.setCancelled(true);
+	        	}
+	            
+	        }
+	    }
+	  
+	  
 	  
 	  @EventHandler
 	  public void hadouken(PlayerInteractEvent e) {
@@ -41,6 +63,10 @@ public class Jinbei implements Listener {
 	        final FallingBlock  fallingBlock = g.getWorld().spawnFallingBlock(g.getLocation().add(0.0D, 2.0D, 0.0D), Material.STAINED_GLASS, (byte)0);
 	        final FallingBlock  fallingBlock2 = g.getWorld().spawnFallingBlock(g.getLocation().add(1.0D, 3.0D, 1.0D), Material.STAINED_GLASS, (byte)0);
 	        loc.put(fallingBlock, fallingBlock.getLocation());
+
+	      	fallingBlock.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+
+	      	fallingBlock2.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
 	        FallingBlock ent =  fallingBlock;
 	        fallingBlock.setVelocity(p.getLocation().getDirection().multiply(1.7F));
 	        fallingBlock.setDropItem(false);
@@ -60,8 +86,150 @@ public class Jinbei implements Listener {
             Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
             Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
             Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
-           
-	        
+            (new BukkitRunnable() {
+	            public void run() {
+          int tempo = 20;
+          tempo --;
+          if (tempo < 0) {
+        	  cancel();
+        	  return;
+          }
+                      final FallingBlock  fallingBlock = g.getWorld().spawnFallingBlock(g.getLocation().add(0.0D, 2.0D, 0.0D), Material.STAINED_GLASS, (byte)0);
+          	        final FallingBlock  fallingBlock2 = g.getWorld().spawnFallingBlock(g.getLocation().add(1.0D, 3.0D, 1.0D), Material.STAINED_GLASS, (byte)0);
+          	        loc.put(fallingBlock, fallingBlock.getLocation());
+Random r = new Random();
+float r2 = r.nextFloat();
+          	      	fallingBlock.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+
+          	      	fallingBlock2.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+          	       
+          	        fallingBlock.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.7F));
+          	        fallingBlock.setDropItem(false);
+          	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.4F));
+          	        fallingBlock2.setDropItem(false);
+          	      fallingBlock.getWorld().strikeLightning(Jinbei.loc.get(ent));
+	                 
+                }}).runTaskLater(Main.getInstance(), 20L);
+            (new BukkitRunnable() {
+	            public void run() {
+          int tempo = 20;
+          tempo --;
+          if (tempo < 0) {
+        	  cancel();
+        	  return;
+          }
+                      final FallingBlock  fallingBlock = g.getWorld().spawnFallingBlock(g.getLocation().add(0.0D, 2.0D, 0.0D), Material.STAINED_GLASS, (byte)0);
+          	        final FallingBlock  fallingBlock2 = g.getWorld().spawnFallingBlock(g.getLocation().add(1.0D, 3.0D, 1.0D), Material.STAINED_GLASS, (byte)0);
+          	        loc.put(fallingBlock, fallingBlock.getLocation());
+Random r = new Random();
+float r2 = r.nextFloat();
+          	      	fallingBlock.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+
+          	      	fallingBlock2.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+          	       
+          	        fallingBlock.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.7F));
+          	        fallingBlock.setDropItem(false);
+          	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.4F));
+          	        fallingBlock2.setDropItem(false);
+          	      fallingBlock.getWorld().strikeLightning(Jinbei.loc.get(ent));
+	                 
+                }}).runTaskLater(Main.getInstance(), 40L);
+            (new BukkitRunnable() {
+	            public void run() {
+          int tempo = 20;
+          tempo --;
+          if (tempo < 0) {
+        	  cancel();
+        	  return;
+          }
+                      final FallingBlock  fallingBlock = g.getWorld().spawnFallingBlock(g.getLocation().add(0.0D, 2.0D, 0.0D), Material.STAINED_GLASS, (byte)0);
+          	        final FallingBlock  fallingBlock2 = g.getWorld().spawnFallingBlock(g.getLocation().add(1.0D, 3.0D, 1.0D), Material.STAINED_GLASS, (byte)0);
+          	        loc.put(fallingBlock, fallingBlock.getLocation());
+Random r = new Random();
+float r2 = r.nextFloat();
+          	      	fallingBlock.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+
+          	      	fallingBlock2.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+          	       
+          	        fallingBlock.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.7F));
+          	        fallingBlock.setDropItem(false);
+          	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.4F));
+          	        fallingBlock2.setDropItem(false);
+          	      fallingBlock.getWorld().strikeLightning(Jinbei.loc.get(ent));
+	                 
+                }}).runTaskLater(Main.getInstance(), 60L);
+            (new BukkitRunnable() {
+	            public void run() {
+          int tempo = 20;
+          tempo --;
+          if (tempo < 0) {
+        	  cancel();
+        	  return;
+          }
+                      final FallingBlock  fallingBlock = g.getWorld().spawnFallingBlock(g.getLocation().add(0.0D, 2.0D, 0.0D), Material.STAINED_GLASS, (byte)0);
+          	        final FallingBlock  fallingBlock2 = g.getWorld().spawnFallingBlock(g.getLocation().add(1.0D, 3.0D, 1.0D), Material.STAINED_GLASS, (byte)0);
+          	        loc.put(fallingBlock, fallingBlock.getLocation());
+Random r = new Random();
+float r2 = r.nextFloat();
+          	      	fallingBlock.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+
+          	      	fallingBlock2.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+          	       
+          	        fallingBlock.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.7F));
+          	        fallingBlock.setDropItem(false);
+          	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.4F));
+          	        fallingBlock2.setDropItem(false);
+          	      fallingBlock.getWorld().strikeLightning(Jinbei.loc.get(ent));
+	                 
+                }}).runTaskLater(Main.getInstance(), 80L);
+            (new BukkitRunnable() {
+	            public void run() {
+          int tempo = 20;
+          tempo --;
+          if (tempo < 0) {
+        	  cancel();
+        	  return;
+          }
+                      final FallingBlock  fallingBlock = g.getWorld().spawnFallingBlock(g.getLocation().add(0.0D, 2.0D, 0.0D), Material.STAINED_GLASS, (byte)0);
+          	        final FallingBlock  fallingBlock2 = g.getWorld().spawnFallingBlock(g.getLocation().add(1.0D, 3.0D, 1.0D), Material.STAINED_GLASS, (byte)0);
+          	        loc.put(fallingBlock, fallingBlock.getLocation());
+Random r = new Random();
+float r2 = r.nextFloat();
+          	      	fallingBlock.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+
+          	      	fallingBlock2.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+          	       
+          	        fallingBlock.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.7F));
+          	        fallingBlock.setDropItem(false);
+          	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.4F));
+          	        fallingBlock2.setDropItem(false);
+          	      fallingBlock.getWorld().strikeLightning(Jinbei.loc.get(ent));
+	                 
+                }}).runTaskLater(Main.getInstance(), 120L);
+            (new BukkitRunnable() {
+	            public void run() {
+          int tempo = 20;
+          tempo --;
+          if (tempo < 0) {
+        	  cancel();
+        	  return;
+          }
+                      final FallingBlock  fallingBlock = g.getWorld().spawnFallingBlock(g.getLocation().add(0.0D, 2.0D, 0.0D), Material.STAINED_GLASS, (byte)0);
+          	        final FallingBlock  fallingBlock2 = g.getWorld().spawnFallingBlock(g.getLocation().add(1.0D, 3.0D, 1.0D), Material.STAINED_GLASS, (byte)0);
+          	        loc.put(fallingBlock, fallingBlock.getLocation());
+Random r = new Random();
+float r2 = r.nextFloat();
+          	      	fallingBlock.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+
+          	      	fallingBlock2.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+          	       
+          	        fallingBlock.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.7F));
+          	        fallingBlock.setDropItem(false);
+          	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.4F));
+          	        fallingBlock2.setDropItem(false);
+          	      fallingBlock.getWorld().strikeLightning(Jinbei.loc.get(ent));
+	                 
+                }}).runTaskLater(Main.getInstance(), 140L);
 	        (new BukkitRunnable() {
 	            public void run() {
 	              if (ent.getLocation().add(0.0D, -1.0D, 0.0D).getBlock().getType() == Material.AIR) {
