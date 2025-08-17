@@ -43,7 +43,13 @@ public class Jinbei implements Listener {
         		        }
 	        		 event.setCancelled(true);
 	        	}
-	            
+	        	if (ent.hasMetadata("FALLBLAST2")) {
+	        		for (Player p4: Bukkit.getOnlinePlayers()) {
+        		        Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(0.0D, 2.0D, 1.0D), p4);
+        	            Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(1.0D, 2.0D, 0.0D), p4);
+        		        }
+	        		 event.setCancelled(true);
+	        	}
 	        }
 	    }
 	  

@@ -85,8 +85,9 @@ public class CombatLog implements Listener
 			}
             }
 				
-				Menu.sendToGame("§e[KitPvP] §7 " + p.getName() + "§c logget out in combat and is killed!");
-            }
+		   }
+    		Menu.sendToGame("§e[KitPvP] §7 " + p.getName() + "§c logget out in combat and is killed!");
+            
         }
         
     }

@@ -63,7 +63,7 @@ public class Meteor implements Listener {
 				  else if (p2.getLocation().getY() > Main.getInstance().getConfig().getInt("Spawn.Y")) {
 						return;
 					 }
-				p2.damage(10);
+				p2.damage(10, p);
 				Location location = p2.getLocation();
 				 p.playSound(p.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.RyuAbility")), 1.0F, 1.0F);
 				 location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 15);

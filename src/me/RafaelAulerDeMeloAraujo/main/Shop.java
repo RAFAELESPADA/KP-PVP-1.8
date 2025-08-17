@@ -12,6 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.inventory.Inventory;
@@ -209,6 +210,9 @@ public class Shop
     {
       p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.ShopMenu-Click")), 1.0F, 1.0F);
       e.setCancelled(true);
+    }
+    if (e.getClick() != ClickType.LEFT) {
+    	return;
     }
     ItemStack clicked = e.getCurrentItem();
     if ((inv.getName().equals(shop.getName())) && (e.getCurrentItem() == null)) {

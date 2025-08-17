@@ -989,7 +989,9 @@ RTP.TeleportArenaRandom(p);
 /* 802 */       ItemStack sword9 = new ItemStack(Material.DIAMOND_SWORD);
 ItemStack FISH9 = new ItemStack(Material.FISHING_ROD);
 /* 804 */       FISH9.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
-/* 805 */       
+/* 805 */       ItemMeta r = FISH9.getItemMeta();
+              r.setDisplayName("FISHERMAN ROD!");
+              FISH9.setItemMeta(r);
 /* 806 */       
 /* 807 */       for (int i = 0; i <= 34; i++) {
 /* 808 */         s.getInventory().addItem(new ItemStack[] { sopa });
