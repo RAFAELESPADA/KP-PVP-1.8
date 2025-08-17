@@ -58,6 +58,9 @@ public void onAsteriod(PlayerInteractEntityEvent e) {
         	cancel();
         	return;
         }
+        if (eL.getLocation().getY() > Main.getInstance().getConfig().getInt("Spawn.Y") - 3) {
+			return;
+		 }
         (new BukkitRunnable() {
             public void run() {
             	  for (Entity en2 : p.getNearbyEntities(5.0D, 5.0D, 5.0D)) {
@@ -116,6 +119,8 @@ Particles.FLAME.display(0.1F, 0.1F, 0.1F, 0.0F, 40, en2.getLocation(), 50.0D);
         	  }} 
             if (ent.getLocation().add(0.0D, -1.0D, 0.0D).getBlock().getType() == Material.AIR) {
               Asteroid.loc.put(ent, ent.getLocation());
+            	ent.setMetadata("FALLBLAST2", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+                
           	fallingBlock.setMetadata("FALLBLAST2", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
               Particles.FLAME.display(0.1F, 0.1F, 0.1F, 0.0F, 40, ent.getLocation(), 50.0D);
               Particles.LAVA.display(0.0F, 0.0F, 0.0F, 0.0F, 100, ent.getLocation(), 50.0D);
@@ -150,7 +155,7 @@ Particles.FLAME.display(0.1F, 0.1F, 0.1F, 0.0F, 40, en2.getLocation(), 50.0D);
           	          Material.OBSIDIAN, (byte)0);
             	Asteroid.loc.put(ent, ent.getLocation());
             	ent.setDropItem(false);
-            	fallingBlock.setMetadata("FALLBLAST2", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
+            	ent.setMetadata("FALLBLAST2", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
                 
               Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, 
                   Asteroid.loc.get(ent), 50.0D);

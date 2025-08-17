@@ -72,7 +72,7 @@ GhastCooldown: 30
 TamerCooldown: 45
 PrisonerCooldown: 40
 JackHammerCooldown: 35
-AsteroidCooldown: 30
+AsteroidCooldown: 60
 WallCooldown: 32
 JinbeiCooldown: 30
 
