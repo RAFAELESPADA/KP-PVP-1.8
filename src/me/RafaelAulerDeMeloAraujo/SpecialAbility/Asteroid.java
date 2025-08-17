@@ -58,6 +58,9 @@ public void onAsteriod(PlayerInteractEntityEvent e) {
                   }
                 }).runTaskLater(Main.getInstance(), 1L);
               for (Entity en : ent.getNearbyEntities(15.0D, 15.0D, 15.0D)) {
+            	  if (!(en instanceof Player)) {
+            		  return;
+            	  }
                 if (en != p && en instanceof Player)
                   en.setFireTicks(80); 
                 	Player peni = (Player)en;
