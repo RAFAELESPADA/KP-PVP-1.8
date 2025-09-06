@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/KOMBO-BACKUP-TOTAL/EVENTOS/plugins/Vault.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/KOMBO-BACKUP-TOTAL/VOLTZMC/LOBBY/plugins/PlaceholderAPI-2.11.6 (6).jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/KOMBO-BACKUP-TOTAL/NOVO SURVIVAL SOLGLEEMS 1.21/plugins/PlayerPoints-3.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Downloads/lombok.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/KOMBO-BACKUP-TOTAL/EVENTOS/plugins/DecentHolograms-2.8.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/KOMBO-BACKUP-TOTAL/KITPVP 1.21/plugins/ajLeaderboards-2.9.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/KOMBO-BACKUP-TOTAL/BEDWARS/plugins/ItemJoin (1).jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Downloads/json-simple-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Downloads/spigot-api-1.12.2-R0.1-20180712.012057-156.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/KP-CORE-v4.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/SPRINTMC BACKUP/ARCADE/plugins/TAB v5.2.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
