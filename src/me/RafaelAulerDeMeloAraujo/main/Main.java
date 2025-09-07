@@ -50,6 +50,7 @@ import me.RafaelAulerDeMeloAraujo.Listeners.ArrowMessage;
 import me.RafaelAulerDeMeloAraujo.Listeners.CombatLog;
 /*     */ import me.RafaelAulerDeMeloAraujo.Listeners.CommandsSounds;
 /*     */ import me.RafaelAulerDeMeloAraujo.Listeners.ConfigUtils;
+import me.RafaelAulerDeMeloAraujo.Listeners.CrateInventory;
 import me.RafaelAulerDeMeloAraujo.Listeners.DamageNerf;
 /*     */ import me.RafaelAulerDeMeloAraujo.Listeners.Fisherman;
 /*     */ import me.RafaelAulerDeMeloAraujo.Listeners.JoinSign;
@@ -479,6 +480,7 @@ getCommand("khedgehog").setExecutor(new HedgeHof(this));
 getCommand("kresouper").setExecutor(new ResouperCMD(this));
 /* 241 */     getCommand("kitclear").setExecutor(new Kits(this));
 
+/* 241 */     getCommand("givekitunlocker").setExecutor(new GiveKitUnlocker());
 /* 241 */     getCommand("kcreeper").setExecutor(new CreeperK(this));
 /* 242 */     getCommand("skit").setExecutor(new Skit());
               getCommand("kpkills").setExecutor(new Kills());
@@ -641,6 +643,7 @@ public static void loadTopPlayersHologram() {
               this.pm.registerEvents(new Monk(), this);
               this.pm.registerEvents(new DamageNerf(), this);
               this.pm.registerEvents(new Sumo(this), this);
+              this.pm.registerEvents(new CrateInventory(), this);
               this.pm.registerEvents(new WarpMenu(), this);
               this.pm.registerEvents(new ConfuserHability(this), this);
 /* 256 */     this.pm.registerEvents(new NewKitMenu(this), this);

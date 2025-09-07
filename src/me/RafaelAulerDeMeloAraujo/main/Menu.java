@@ -87,6 +87,9 @@ private static ItemJoinAPI item; {
 @EventHandler(priority = EventPriority.MONITOR)
 /*     */   public void addtoTop2(PlayerJoinEvent e) {
 	Player p = e.getPlayer();
+	if (!p.hasPlayedBefore()) {
+		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "givekitunlocker " + p.getName() + " 1");
+	}
 	UpdateUtil updateChecker = new UpdateUtil(Main.getInstance(), true);
 	if (p.isOp() && !Main.getInstance().getConfig().getBoolean("UpdateCheckerDisabled")) {
 	switch (updateChecker.check()) {

@@ -80,7 +80,8 @@ public class Shop
     createButton(Material.OBSIDIAN, shop, 43, "§6-> §cAsteroid", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 16000");
     createButton(Material.STONE_AXE, shop, 44, "§6-> §cJackHammer", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 16000");
     createButton(Material.MUTTON, shop, 45, "§6-> §cSight", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 7000");
-    createButton(Material.GOLDEN_CARROT , shop, 46, "§6-> §cBerserker", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 12000");    
+    createButton(Material.GOLDEN_CARROT , shop, 46, "§6-> §cBerserker", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 12000"); 
+    createButton(Material.COBBLE_WALL , shop, 47, "§6-> §cWalls", Main.messages.getString("ShopPriceLore").replace("&", "§") + " 12000");      
     createButton(Material.BARRIER, shop, 53, "§4§l-> §cClose", Main.messages.getString("CloseShopLore").replace("&", "§"));
   }
   
@@ -759,6 +760,27 @@ public class Shop
         p.closeInventory();
       }
     }
+    if ((inv.getName().equals(shop.getName())) && (e.getCurrentItem().getItemMeta().getDisplayName().equals("§6-> §cWalls"))) {
+        if (Coins.getCoins(p) >= 12000)
+        {
+      	  if (p.hasPermission("kitpvp.kit.walls")) {
+      		  p.sendMessage("§e[KitPvP] §cYou already have the Kit Walls!");
+          		p.closeInventory();
+          		return;
+        	}
+      	  Coins.perms.playerAdd(p, "kitpvp.kit.walls");
+          p.sendMessage("§6-> §cYou buy the Wasp kit §e-12000 coins");
+          Coins.removeCoins(p, 12000);
+          e.setCancelled(true);
+          p.closeInventory();
+        }
+        else if (Coins.getCoins(p) < 12000)
+        {
+          p.sendMessage(Main.messages.getString("NoFundsShop").replace("&", "§"));
+          e.setCancelled(true);
+          p.closeInventory();
+        }
+      }
     if ((inv.getName().equals(shop.getName())) && (e.getCurrentItem().getItemMeta().getDisplayName().equals("§6-> §cMonk"))) {
         if (Coins.getCoins(p) >= 6000)
         {

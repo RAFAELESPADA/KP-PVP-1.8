@@ -43,10 +43,11 @@ public static void SetLevel(final Player p , int level) {
 			p.sendMessage("This player is offline!");
 			return true;
 		}
-		
-/* 40 */           SetLevel(t, i);
+
+
+SetLevel(p, i);	
 PlayerLevelUPEvent helixPlayerDeathEvent = new me.RafaelAulerDeMeloAraujo.SpecialAbility.PlayerLevelUPEvent(
-		t
+		p
 );
 Bukkit.getPluginManager().callEvent(helixPlayerDeathEvent);
 p.sendMessage(ChatColor.GREEN + "You seted the level: " + i + " to the player: " + t.getName());
