@@ -74,10 +74,6 @@ public class CrateInventory implements Listener {
 
 	@SuppressWarnings("deprecation")
 	public static void Inventario(final Player jogador) {
-		if (cooldown.containsKey(jogador.getName())) {
-			jogador.sendMessage("You are already unlocking a kit!");
-			return;
-		}
 		cooldown.put(jogador.getName(), Long.valueOf(10000l));
 		jogador.getWorld().playSound(jogador.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.KitMenu")), 10F, 10F);
 		final Inventory random = Bukkit.createInventory(jogador, 9, "Unlocking a new kit");
@@ -555,6 +551,10 @@ public void rafaelonBauKit(PlayerInteractEvent e)
     e.setCancelled(true);
     if ((e.getAction() == Action.RIGHT_CLICK_AIR) || (e.getAction() == Action.RIGHT_CLICK_BLOCK))
     {
+    	if (cooldown.containsKey(p.getName())) {
+			p.sendMessage("You are already unlocking a kit!");
+			return;
+		}
       CrateInventory.Inventario(p); 
       
       for (ItemStack item : p.getInventory().getContents()) {

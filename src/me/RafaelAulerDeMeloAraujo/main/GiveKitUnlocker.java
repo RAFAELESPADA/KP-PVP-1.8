@@ -45,20 +45,14 @@ public class GiveKitUnlocker implements CommandExecutor {
 			sender.sendMessage("This player is offline!");
 			return true;
 		}
-		if (!Join.game.contains(t.getName())) {
-			sender.sendMessage("The player needs to be on kitpvp and without any kit selected");
-			return true;
+		if (Join.game.contains(t.getName()) && !Habilidade.ContainsAbility(t)) {
+		    final ItemStack sopas = new ItemStack(Material.CHEST);
+		    final ItemMeta sopasm = sopas.getItemMeta();
+		    sopasm.setDisplayName("§bKit Unlocker");
+		    sopas.setItemMeta(sopasm);
+		    sopas.setAmount(i);
+		    t.getInventory().addItem(sopas);	
 		}
-		if (Habilidade.ContainsAbility(t)) {
-			sender.sendMessage("The player needs to be on kitpvp and without any kit selected");
-			return true;
-		}
-	    final ItemStack sopas = new ItemStack(Material.CHEST);
-	    final ItemMeta sopasm = sopas.getItemMeta();
-	    sopasm.setDisplayName("§bKit Unlocker");
-	    sopas.setItemMeta(sopasm);
-	    sopas.setAmount(i);
-	    t.getInventory().addItem(sopas);
 	    settings.getData().set("crates." + t.getName() + ".amount", settings.getData().getInt("crates." + t.getName() + ".amount") + i);
 sender.sendMessage(ChatColor.GREEN + "You give: " + i + " kitunlockers to the player: " + t.getName());
 /*    */ 	 settings.saveData();
