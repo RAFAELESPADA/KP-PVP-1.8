@@ -34,6 +34,7 @@ import org.bukkit.scheduler.BukkitTask;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
 import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
+import me.RafaelAulerDeMeloAraujo.main.GiveKitUnlocker;
 /*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
 import me.RockinChaos.itemjoin.api.ItemJoinAPI;
 import net.wavemc.core.bukkit.WaveBukkit;
@@ -148,6 +149,7 @@ if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
 /* 104 */       	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
 /*     */       }
 /*     */ 
+GiveKitUnlocker.GiveUnlockers(p);
 /* 107 */       p.updateInventory();
 
 /*     */       
@@ -158,6 +160,8 @@ if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
 /*     */     
     if (Main.getInstance().getConfig().getBoolean("DisableInitialItems")) {
 	 p.getInventory().clear();
+
+		GiveKitUnlocker.GiveUnlockers(p);
 	 if(Bukkit.getPluginManager().getPlugin("ItemJoin") != null){
 	 item.getItems(p);
 		}

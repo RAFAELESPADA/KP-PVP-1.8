@@ -89,17 +89,14 @@ private static String text = "";
 	}
 	}
 	}
+
 @EventHandler
 /*  45 */   public void playerdeath(PlayerLevelUPEvent ev) { 
 	   int playerLevel = Level.getLevel(ev.getPlayer());
-	for (Integer level : Level.getXPAllLevels()) {
-		if (playerLevel == level) {
 				  for (String commands : Main.customization.getStringList("Levels.Levels." + playerLevel + ".commands")) {
 				  Bukkit.dispatchCommand(Bukkit.getConsoleSender(), commands.replace("%player%", ev.getPlayer().getName()));
 			}
-		}
 	}
-}
 
 /*     */   @EventHandler
 /*     */   public void onJoin(PlayerJoinEvent e) {
@@ -237,6 +234,8 @@ if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
 	if (Main.getInstance().getConfig().getBoolean("DisableInitialItems")) {
 		 p.getInventory().clear();
 	 }
+
+	GiveKitUnlocker.GiveUnlockers(p);
 	/* 107 */       p.updateInventory();
 	/*     */           
 	/*     */ 
@@ -725,7 +724,11 @@ if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
 	/*     */ API.tirarEfeitos(p);
 	if (Main.getInstance().getConfig().getBoolean("DisableInitialItems")) {
 		 p.getInventory().clear();
+
+			GiveKitUnlocker.GiveUnlockers(p);
 	 }
+
+	GiveKitUnlocker.GiveUnlockers(p);
 	/* 107 */       p.updateInventory();
 /*     */         
 

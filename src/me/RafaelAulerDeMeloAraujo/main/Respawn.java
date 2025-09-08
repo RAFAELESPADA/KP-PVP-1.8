@@ -127,6 +127,7 @@ public class Respawn implements Listener {
 						} else {
 							/* 191 */       p.getInventory().setArmorContents(null);
 							/*     */       
+							GiveKitUnlocker.GiveUnlockers(p);
 							/* 193 */       p.updateInventory();
 							/* 194 */       Habilidade.removeAbility(p);
 							/* 195 */       Deshfire.Armadura.remove(p);
@@ -291,6 +292,7 @@ public class Respawn implements Listener {
 								p.getInventory().setItem(Main.getInstance().getConfig().getInt("ShopItemSlot"), kits);
 							}p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
 							/*     */       
+							GiveKitUnlocker.GiveUnlockers(p);
 							/*     */ 
 							/* 107 */       p.updateInventory();
 							/*     */       

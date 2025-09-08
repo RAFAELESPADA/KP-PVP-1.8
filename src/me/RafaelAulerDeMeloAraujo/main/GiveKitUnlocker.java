@@ -13,12 +13,14 @@ import org.bukkit.inventory.meta.ItemMeta;
 import me.RafaelAulerDeMeloAraujo.Coins.Commands;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
+import me.RafaelAulerDeMeloAraujo.Warps.SettingsManager;
 
 public class GiveKitUnlocker implements CommandExecutor {
 
 
 
 
+	static SettingsManager settings = SettingsManager.getInstance();
 
 /*    */   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
 /*    */   {
@@ -57,9 +59,9 @@ public class GiveKitUnlocker implements CommandExecutor {
 	    sopas.setItemMeta(sopasm);
 	    sopas.setAmount(i);
 	    t.getInventory().addItem(sopas);
-        
+	    settings.getData().set("crates." + t.getName() + ".amount", settings.getData().getInt("crates." + t.getName() + ".amount") + i);
 sender.sendMessage(ChatColor.GREEN + "You give: " + i + " kitunlockers to the player: " + t.getName());
-/*    */ 	
+/*    */ 	 settings.saveData();
 	        
 	
 /*    */       
@@ -71,5 +73,20 @@ sender.sendMessage(ChatColor.GREEN + "You give: " + i + " kitunlockers to the pl
 
 return false;
 }
-}
 
+public static void GiveUnlockers(Player p) {
+if (settings.getData() == null) {
+	return;
+}
+Integer i = settings.getData().getInt("crates." + p.getName() + ".amount");
+if (i == 0 || i == null) {
+	return;
+}
+    final ItemStack sopas = new ItemStack(Material.CHEST);
+    final ItemMeta sopasm = sopas.getItemMeta();
+    sopasm.setDisplayName("§bKit Unlocker");
+    sopas.setItemMeta(sopasm);
+    sopas.setAmount(i);
+    p.getInventory().addItem(sopas);	
+}
+}

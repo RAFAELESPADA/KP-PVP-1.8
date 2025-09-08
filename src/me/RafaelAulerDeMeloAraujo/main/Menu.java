@@ -107,14 +107,11 @@ private static ItemJoinAPI item; {
 @EventHandler
 /*  45 */   public void playerdeath(PlayerLevelUPEvent ev) { 
 	   int playerLevel = Level.getLevel(ev.getPlayer());
-	for (Integer level : Level.getXPAllLevels()) {
-		if (playerLevel == level) {
 				  for (String commands : Main.customization.getStringList("Levels.Levels." + playerLevel + ".commands")) {
 				  Bukkit.dispatchCommand(Bukkit.getConsoleSender(), commands.replace("%player%", ev.getPlayer().getName()));
 			}
-		}
 	}
-}
+
 
 /*     */   @EventHandler
 /*  45 */   public void playerdeath(PlayerDeathEvent ev) throws IOException { 
@@ -367,6 +364,8 @@ if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
 		 item.getItems(p);
 			}
 	 }
+
+	GiveKitUnlocker.GiveUnlockers(p);
 	/* 107 */       p.updateInventory();
 	/*     */           
 	/*     */ 
@@ -774,6 +773,7 @@ API.BuildScore(p);
 		/* 104 */       	p.getInventory().setItem(Main.getInstance().getConfig().getInt("1v1ItemSlot"), st);
 		/*     */       }       
 	/*     */ 
+	GiveKitUnlocker.GiveUnlockers(p);
 	/* 107 */       p.updateInventory();
 	/*     */       p.setAllowFlight(false);
 	/*     */ p.setHealth(20);
@@ -782,6 +782,8 @@ API.BuildScore(p);
 	/*     */ API.tirarEfeitos(p);
 	if (Main.getInstance().getConfig().getBoolean("DisableInitialItems")) {
 		 p.getInventory().clear();
+
+			GiveKitUnlocker.GiveUnlockers(p);
 		 if(Bukkit.getPluginManager().getPlugin("ItemJoin") != null){
 		 item.getItems(p);
 			}

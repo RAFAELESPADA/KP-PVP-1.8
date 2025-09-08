@@ -29,6 +29,7 @@ import me.RafaelAulerDeMeloAraujo.Listeners.UpdateUtil;
 import me.RafaelAulerDeMeloAraujo.ScoreboardManager.WaveAnimation;
 /*     */ import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
 /*     */ import me.RafaelAulerDeMeloAraujo.X1.X1;
+import me.RafaelAulerDeMeloAraujo.main.GiveKitUnlocker;
 /*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
 import me.RockinChaos.itemjoin.api.ItemJoinAPI;
 import me.neznamy.tab.api.TabAPI;
@@ -282,10 +283,14 @@ if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
 	/*     */ API.tirarEfeitos(p);
 	  if (Main.getInstance().getConfig().getBoolean("DisableInitialItems")) {
 		 p.getInventory().clear();
+
+			GiveKitUnlocker.GiveUnlockers(p);
 		 if(Bukkit.getPluginManager().getPlugin("ItemJoin") != null){
 		 item.getItems(p);
 			}
 	  }
+
+		GiveKitUnlocker.GiveUnlockers(p);
 	/* 107 */       p.updateInventory();
 /*     */         
 
@@ -410,7 +415,8 @@ if (!Main.getInstance().getConfig().getBoolean("Disable1v1Item")) {
 	API.BuildScore(p);
 }
 /* 107 */       p.updateInventory();
-/*     */       
+/*     */   
+GiveKitUnlocker.GiveUnlockers(p);    
 if (Main.getInstance().getConfig().getBoolean("DisableInitialItems")) {
 	 p.getInventory().clear();
 	 if(Bukkit.getPluginManager().getPlugin("ItemJoin") != null){
