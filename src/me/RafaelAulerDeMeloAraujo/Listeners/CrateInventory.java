@@ -569,11 +569,13 @@ public void rafaelonBauKit(PlayerInteractEvent e)
               p.updateInventory(); // Update the player's client-side inventory
               break; // Stop after removing one
           }
-        int y = settings.getData().getInt("crates." + p.getName() + ".amount");  
-  	    settings.getData().set("crates." + p.getName() + ".amount", y--);
+      }
+        int y = settings.getData().getInt("crates." + p.getName() + ".amount");
+        y--;
+  	    settings.getData().set("crates." + p.getName() + ".amount", y);
   	  settings.saveData();
       p.playSound(p.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.ShopMenu")), 12.0F, 1.0F);
     }
   
   }}
-}}
+}
