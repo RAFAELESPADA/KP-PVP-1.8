@@ -27,13 +27,14 @@ import org.bukkit.util.Vector;
 import me.RafaelAulerDeMeloAraujo.Coins.Coins;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
+import me.RafaelAulerDeMeloAraujo.Warps.SettingsManager;
 import me.RafaelAulerDeMeloAraujo.main.Main;
 
 public class CrateInventory implements Listener {
 
 	@SuppressWarnings("unused")
 	private static HashMap<String, Long> cooldown = new HashMap<String, Long>();
-
+	static SettingsManager settings = SettingsManager.getInstance();
 	 public static ArrayList<String> kitdiariofireman = new ArrayList<>();
 	 public static ArrayList<String> kitdiarioninja = new ArrayList<>();
 	 public static ArrayList<String> kitdiarioSonic = new ArrayList<>();
@@ -568,6 +569,8 @@ public void rafaelonBauKit(PlayerInteractEvent e)
               p.updateInventory(); // Update the player's client-side inventory
               break; // Stop after removing one
           }
+  	    settings.getData().set("crates." + p.getName() + ".amount", Math.round(settings.getData().getInt("crates." + p.getName() + ".amount")) - 1);
+  	  settings.saveData();
       p.playSound(p.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.ShopMenu")), 12.0F, 1.0F);
     }
   
