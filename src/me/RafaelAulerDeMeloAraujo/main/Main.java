@@ -301,6 +301,9 @@ new BukkitRunnable() {
 	public void run() {	
 for (Player p : Bukkit.getOnlinePlayers()) {
 if (Join.game.contains(p.getName())) {
+	if (!Bukkit.getPluginManager().getPlugin("TAB").isEnabled()) {
+		return;
+	}
     TabPlayer tabPlayer = TabAPI.getInstance().getPlayer(p.getUniqueId());
     //do something
 
@@ -809,10 +812,11 @@ public void onDisable()
   /* 296 */       Join.game.remove(p.getName());
   /* 297 */       Join.game.remove(p.getName());
 
-  /*     */ 
+  /*     */ if (Bukkit.getPluginManager().getPlugin("TAB").isEnabled()) {
+	
   TabPlayer tabPlayer = TabAPI.getInstance().getPlayer(p.getUniqueId());
 TabAPI.getInstance().getScoreboardManager().resetScoreboard(tabPlayer);
-  /*     */ 
+  /*     */ }
   /*     */ 
   /* 302 */       Cooldown.remove(p);
   /* 303 */       p.sendMessage(ChatColor.RED + "The plugin has been reloaded/disabled so you are forced to leave the game");

@@ -115,8 +115,9 @@ ItemStack stats = Main.getInstance().getConfig().getItemStack("StatsItem");
 /* 227 */           ItemMeta stats2 = kits.getItemMeta();
 /* 228 */           stats2.setDisplayName(Main.messages.getString("StatsItemName").replace("&", "§"));
 /* 229 */           stats.setItemMeta(stats2);
+if (!Main.getInstance().getConfig().getBoolean("DisableStatsItem")) {
 p.getInventory().setItem(Main.getInstance().getConfig().getInt("StatsItemSlot"), stats);
-
+}
 ItemStack stats1 = Main.getInstance().getConfig().getItemStack("ClickTestItem");
 /* 227 */           ItemMeta stats12 = stats1.getItemMeta();
 /* 228 */           stats12.setDisplayName(Main.messages.getString("ClickTestItemName").replace("&", "§"));

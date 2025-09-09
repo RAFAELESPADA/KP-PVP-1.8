@@ -324,8 +324,9 @@ new BukkitRunnable() {
 	/* 227 */           ItemMeta stats2 = kits.getItemMeta();
 	/* 228 */           stats2.setDisplayName(Main.messages.getString("StatsItemName").replace("&", "§"));
 	/* 229 */           stats.setItemMeta(stats2);
-	p.getInventory().setItem(Main.getInstance().getConfig().getInt("StatsItemSlot"), stats);
-
+	if (!Main.getInstance().getConfig().getBoolean("DisableStatsItem")) {
+		p.getInventory().setItem(Main.getInstance().getConfig().getInt("StatsItemSlot"), stats);
+		}
 	ItemStack stats1 = Main.getInstance().getConfig().getItemStack("ClickTestItem");
 	/* 227 */           ItemMeta stats12 = stats1.getItemMeta();
 	/* 228 */           stats12.setDisplayName(Main.messages.getString("ClickTestItemName").replace("&", "§"));
@@ -414,12 +415,13 @@ if (X1.inx1.contains(p)) {
 	/* 296 */       Join.game.remove(p.getName());
 	/* 297 */       Join.game.remove(p.getName());
 
-	/*     */ 
+	/*     */ if (Bukkit.getPluginManager().getPlugin("TAB").isEnabled()) {
 	/*     */ /*     */ /*     */ if (TabAPI.getInstance().getScoreboardManager() != null) {
 		   TabAPI.getInstance().getEventBus().register(PlayerLoadEvent.class, event -> {
 			    TabPlayer tabPlayer = event.getPlayer();
 		TabAPI.getInstance().getScoreboardManager().resetScoreboard(tabPlayer);
 	});
+	}
 	}
 	/*     */ 
 	/* 302 */       Cooldown.remove(p);
@@ -747,8 +749,9 @@ API.BuildScore(p);
 	/* 227 */           ItemMeta stats2 = kits.getItemMeta();
 	/* 228 */           stats2.setDisplayName(Main.messages.getString("StatsItemName").replace("&", "§"));
 	/* 229 */           stats.setItemMeta(stats2);
-	p.getInventory().setItem(Main.getInstance().getConfig().getInt("StatsItemSlot"), stats);
-
+	if (!Main.getInstance().getConfig().getBoolean("DisableStatsItem")) {
+		p.getInventory().setItem(Main.getInstance().getConfig().getInt("StatsItemSlot"), stats);
+		}
 	ItemStack stats1 = Main.getInstance().getConfig().getItemStack("ClickTestItem");
 	/* 227 */           ItemMeta stats12 = stats1.getItemMeta();
 	/* 228 */           stats12.setDisplayName(Main.messages.getString("ClickTestItemName").replace("&", "§"));
@@ -903,9 +906,11 @@ public void onLeaveKit(PlayerInteractEvent e)
     	/* 297 */       Join.game.remove(p.getName());
 
     	/*     */ 
+
+    	/*     */ if (Bukkit.getPluginManager().getPlugin("TAB").isEnabled()) {
 	    TabPlayer tabPlayer = TabAPI.getInstance().getPlayer(p.getUniqueId());
 TabAPI.getInstance().getScoreboardManager().resetScoreboard(tabPlayer);
-    	/*     */ 
+    	/*     */ }
     	/*     */ 
     	/* 302 */       Cooldown.remove(p);
     	/* 303 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + String.valueOf(this.main.getConfig().getString("Message.KitPvpLeave-Message").replace("&", "§")));
