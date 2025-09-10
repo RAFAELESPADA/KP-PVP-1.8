@@ -19,6 +19,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
@@ -38,7 +39,7 @@ public class Jinbei implements Listener {
 	       	  if (event.getBlock().getWorld().equals(w)) {
 	       		  event.setCancelled(true);
 	       	  }
-	        	if (ent.hasMetadata("FALLBLAST")) {
+	       	  if (ent.hasMetadata("FALLBLAST")) {
 	        		for (Player p4: Bukkit.getOnlinePlayers()) {
         		        Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(0.0D, 2.0D, 1.0D), p4);
         	            Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(1.0D, 2.0D, 0.0D), p4);
@@ -54,18 +55,33 @@ public class Jinbei implements Listener {
 	  	                ((Player) bi).setVelocity(v);
 	        			}
 	        		 event.setCancelled(true);
-	        	}
-	        	if (ent.hasMetadata("FALLBLAST2")) {
+	        	}}
+	        		else if (ent.hasMetadata("FALLBLAST2")) {
+	   				 ent.getWorld().strikeLightning(ent.getLocation());
+   				 ent.getWorld().strikeLightning(ent.getLocation());
 	        		for (Player p4: Bukkit.getOnlinePlayers()) {
         		        Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(0.0D, 2.0D, 1.0D), p4);
         	            Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(1.0D, 2.0D, 0.0D), p4);
         		        }
 	        		for (Entity bi : ent.getNearbyEntities(3, 3, 3)) {
 	        			if (bi instanceof Player) {
-	        				((Player) bi).damage(4);
+if (!Habilidade.ContainsAbility(((Player) bi))) {
+	return;
+}
+((Player) bi).damage(3);
+	            	        for (Location loc2 : BlockUtils.sphere(ent.getLocation(), 3, false)) {
+	            	          (new BukkitRunnable() {
+	            	              public void run() {
+	            	                Particles.FLAME.display(0.3F, 0.3F, 0.3F, 0.25F, 10, loc2, 50.0D);
+	            	              }
+	            	            }).runTaskLater((Plugin)Main.getInstance(), 5L);
+	        				
 	        				 Particles.FLAME.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(1.0D, 2.0D, 0.0D), ((Player)bi));
 
-	        				 ((Player) bi).getWorld().strikeLightning(ent.getLocation());
+	        				 ((Player) bi).getWorld().strikeLightning(((Player) bi).getLocation());
+	        				 ((Player) bi).getWorld().strikeLightning(((Player) bi).getLocation());
+	        				 ((Player) bi).getWorld().strikeLightning(((Player) bi).getLocation());
+	        				 ((Player) bi).setFireTicks(40);
 	        			}
 	        		}
 	        		 event.setCancelled(true);
