@@ -137,7 +137,6 @@ Particles.FLAME.display(0.1F, 0.1F, 0.1F, 0.0F, 40, en2.getLocation(), 50.0D);
         		  if (!Habilidade.ContainsAbility((eL2))) {
         			 return; 
         	    	}
-            		int total = 0;
             		if(total > 5) {
                         cancel();
                     }
