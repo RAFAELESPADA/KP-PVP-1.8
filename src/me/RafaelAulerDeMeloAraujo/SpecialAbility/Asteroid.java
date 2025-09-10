@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -21,6 +20,7 @@ import me.RafaelAulerDeMeloAraujo.main.Main;
 
 public class Asteroid implements Listener {
 public static HashMap<Entity, Location> loc = new HashMap<>();
+int total = 0;	
 
 @EventHandler
 public void onAsteriod(PlayerInteractEntityEvent e) {
@@ -49,11 +49,6 @@ public void onAsteriod(PlayerInteractEntityEvent e) {
       loc.put(fallingBlock, fallingBlock.getLocation());
       (new BukkitRunnable() {
           public void run() {
-        if (ent == null) {
-        	cancel();
-     
-        	return;
-        }
         if (Habilidade.getAbility(p) != "Asteroid") {
         	cancel();
         	return;
@@ -61,6 +56,14 @@ public void onAsteriod(PlayerInteractEntityEvent e) {
         if (eL.getLocation().getY() > Main.getInstance().getConfig().getInt("Spawn.Y") - 3) {
 			return;
 		 }
+        if (eL.getLocation().distance(p.getLocation()) > 20) {
+        	cancel();
+        	return;
+        }
+        if(total > 5) {
+        	p.sendMessage(ChatColor.RED + "Your asteroid Rain ended!");
+            cancel();
+        }
         (new BukkitRunnable() {
             public void run() {
             	  for (Entity en2 : p.getNearbyEntities(5.0D, 5.0D, 5.0D)) {
@@ -73,7 +76,7 @@ public void onAsteriod(PlayerInteractEntityEvent e) {
             			 return; 
             	    	}
             		  if (en2 != null) {
-            	int total = 0;	
+            	
             	Player peni = (Player)en2;
             	final FallingBlock ent = p.getWorld().spawnFallingBlock(e.getRightClicked().getLocation().add(0.0D, 10.0D, 0.0D), 
             	          Material.OBSIDIAN, (byte)0);
@@ -93,9 +96,6 @@ Particles.FLAME.display(0.1F, 0.1F, 0.1F, 0.0F, 40, en2.getLocation(), 50.0D);
               p.getWorld().strikeLightning(en2.getLocation());
           	peni.damage(2, p);
               en2.sendMessage(ChatColor.BLUE + " You got hit by a Asteroid! Ouch...");
-              if(7 <= total) {
-                  cancel();
-              }
               total++;
             }}
             }}).runTaskLater(Main.getInstance(), 5L);
@@ -138,7 +138,7 @@ Particles.FLAME.display(0.1F, 0.1F, 0.1F, 0.0F, 40, en2.getLocation(), 50.0D);
         			 return; 
         	    	}
             		int total = 0;
-               	 if(7 <= total) {
+            		if(total > 5) {
                         cancel();
                     }
                     
@@ -176,10 +176,6 @@ Particles.FLAME.display(0.1F, 0.1F, 0.1F, 0.0F, 40, en2.getLocation(), 50.0D);
         		  if (!Habilidade.ContainsAbility((eL2))) {
         			 return; 
         	    	}
-            	  int total = 0;
-            	  if(7 <= total) {
-            		  cancel();
-            	  }
                 if (en != p && en instanceof Player)
                   en.setFireTicks(20); 
                 	Player peni = (Player)en;

@@ -18,13 +18,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import me.RafaelAulerDeMeloAraujo.main.Main;
-import net.wavemc.core.bukkit.WaveBukkit;
 
 public class Jinbei implements Listener {
 
@@ -41,6 +40,16 @@ public class Jinbei implements Listener {
         		        Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(0.0D, 2.0D, 1.0D), p4);
         	            Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(1.0D, 2.0D, 0.0D), p4);
         		        }
+	        		for (Entity bi : ent.getNearbyEntities(3, 3, 3)) {
+	        			if (bi instanceof Player) {
+	        				((Player) bi).damage(2);
+	        				API.darEfeito(((Player) bi), PotionEffectType.POISON, 5, 0);
+	        				Vector v = new Vector();
+	  	                  v.setX(1.5D);
+	  	                  v.setY(0.8D);
+	  	                  v.setZ(1.9D);
+	  	                ((Player) bi).setVelocity(v);
+	        			}
 	        		 event.setCancelled(true);
 	        	}
 	        	if (ent.hasMetadata("FALLBLAST2")) {
@@ -48,8 +57,16 @@ public class Jinbei implements Listener {
         		        Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(0.0D, 2.0D, 1.0D), p4);
         	            Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(1.0D, 2.0D, 0.0D), p4);
         		        }
+	        		for (Entity bi : ent.getNearbyEntities(3, 3, 3)) {
+	        			if (bi instanceof Player) {
+	        				((Player) bi).damage(4);
+	        				 Particles.FLAME.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(1.0D, 2.0D, 0.0D), ((Player)bi));
+	          		       
+	        			}
+	        		}
 	        		 event.setCancelled(true);
 	        	}
+	        }
 	        }
 	    }
 	  
@@ -152,7 +169,29 @@ float r2 = r.nextFloat();
           	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.4F));
           	        fallingBlock2.setDropItem(false);
           	      fallingBlock.getWorld().strikeLightning(Jinbei.loc.get(ent));
-	                 
+          	    Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                 
                 }}).runTaskLater(Main.getInstance(), 20L);
             (new BukkitRunnable() {
 	            public void run() {
@@ -176,7 +215,29 @@ float r2 = r.nextFloat();
           	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.4F));
           	        fallingBlock2.setDropItem(false);
           	      fallingBlock.getWorld().strikeLightning(Jinbei.loc.get(ent));
-	                 
+          	    Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+             
                 }}).runTaskLater(Main.getInstance(), 40L);
             (new BukkitRunnable() {
 	            public void run() {
@@ -200,7 +261,29 @@ float r2 = r.nextFloat();
           	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.4F));
           	        fallingBlock2.setDropItem(false);
           	      fallingBlock.getWorld().strikeLightning(Jinbei.loc.get(ent));
-	                 
+          	    Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                
                 }}).runTaskLater(Main.getInstance(), 60L);
             (new BukkitRunnable() {
 	            public void run() {
@@ -224,7 +307,29 @@ float r2 = r.nextFloat();
           	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.4F));
           	        fallingBlock2.setDropItem(false);
           	      fallingBlock.getWorld().strikeLightning(Jinbei.loc.get(ent));
-	                 
+          	    Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+              
                 }}).runTaskLater(Main.getInstance(), 80L);
             (new BukkitRunnable() {
 	            public void run() {
@@ -248,7 +353,29 @@ float r2 = r.nextFloat();
           	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.4F));
           	        fallingBlock2.setDropItem(false);
           	      fallingBlock.getWorld().strikeLightning(Jinbei.loc.get(ent));
-	                 
+          	    Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+             
                 }}).runTaskLater(Main.getInstance(), 120L);
             (new BukkitRunnable() {
 	            public void run() {
@@ -272,7 +399,29 @@ float r2 = r.nextFloat();
           	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(r2 + 1.4F));
           	        fallingBlock2.setDropItem(false);
           	      fallingBlock.getWorld().strikeLightning(Jinbei.loc.get(ent));
-	                 
+          	    Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+             
                 }}).runTaskLater(Main.getInstance(), 140L);
 	        (new BukkitRunnable() {
 	            public void run() {
@@ -424,7 +573,29 @@ float r2 = r.nextFloat();
 	                          p.getWorld().playSound(Jinbei.loc.get(ent), sound, 1.0F, 1.0F);
 	                          p.getWorld().playSound(Jinbei.loc.get(ent), sound, 3.0F, 1.0F);
 	                          fallingBlock.getWorld().strikeLightning(Jinbei.loc.get(ent));
-	    	                  
+	                          Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	                Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent), 50.0D);
+	      	             
 	                        } 
 	                      } 
 	                    }
