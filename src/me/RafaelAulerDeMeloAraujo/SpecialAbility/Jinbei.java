@@ -137,15 +137,8 @@ Player caster = Asteroid.caster.get(ent);
 	        fallingBlock.setDropItem(false);
 	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(1.4F));
 	        fallingBlock2.setDropItem(false);
-            (new BukkitRunnable() {
-
-				@Override
-				public void run() {
 					loc.put(fallingBlock, fallingBlock.getLocation());
-				}
 
-
-            }).runTaskLater(Main.getInstance(), 40L);
 	        for (Player p4: Bukkit.getOnlinePlayers()) {
 	        Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent).add(0.0D, 2.0D, 0.0D), p4);
             Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent).add(0.0D, 2.0D, 0.0D), p4);

@@ -1,14 +1,15 @@
 package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
-import org.bukkit.event.Listener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.BlockIterator;
@@ -64,7 +65,7 @@ public class Wall implements Listener {
                           b.setData(((Byte)Wall.data.get(b)).byteValue());
                         } 
                       }
-                    }).runTaskLater(Main.getInstace(), 600L);
+                    }).runTaskLater(Main.getInstace(), 360L);
                 } else if (b.getType() == Material.AIR) {
                   Wall.blocks.add(b);
                   Wall.material.put(b, b.getType());
