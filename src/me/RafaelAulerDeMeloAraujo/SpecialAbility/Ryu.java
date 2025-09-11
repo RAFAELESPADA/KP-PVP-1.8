@@ -30,6 +30,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.BlockIterator;
 import org.bukkit.util.Vector;
 
@@ -77,7 +78,7 @@ implements Listener, CommandExecutor
 	        while (blocksToAdd.hasNext())
 	        {
 	          Location blockToAdd = blocksToAdd.next().getLocation();
-	          p.getWorld().playEffect(blockToAdd, Effect.STEP_SOUND, Material.LAVA, 20);
+	          p.getWorld().playEffect(blockToAdd, Effect.STEP_SOUND, Material.DIAMOND_BLOCK, 20);
 	          p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.RyuAbility")), 3.0F, 3.0F);
 	        }
 	        Snowball h = (Snowball)p.launchProjectile(Snowball.class);
@@ -148,26 +149,19 @@ implements Listener, CommandExecutor
 	public static void throwRandomFirework(Player p) {
 	    Firework fw = (Firework) p.getWorld().spawnEntity(p.getLocation(), EntityType.FIREWORK);
 	    FireworkMeta fwm = fw.getFireworkMeta();
-
-	    //Our random generator
 	    Random r = new Random();
-
 	    FireworkEffect.Type type = FireworkEffect.Type.BALL_LARGE;
-
-	    Color c1 = Color.RED;
+	    Color c1 = Color.BLUE;
 	    Color c2 = Color.WHITE;
 	    FireworkEffect effect = FireworkEffect.builder().flicker(r.nextBoolean()).withColor(c1).withFade(c2).with(type).trail(r.nextBoolean()).build();
-
-	    //Then apply the effect to the meta
 	    fwm.addEffect(effect);
-
-	    //Generate some random power and set it
-
-
-	    //Create our effect with this   int rp = r.nextInt(2) + 1;
-	    int rp = r.nextInt(4) + 1;
-	    fwm.setPower(rp);
-
+	    fwm.setPower(0);
+	    new BukkitRunnable() {
+	        @Override
+	        public void run() {
+	          fw.detonate();
+	        }
+	    }.runTaskLater(Main.getInstance(), 2L);
 	    //Then apply this to our rocket
 	    fw.setFireworkMeta(fwm);
 	    

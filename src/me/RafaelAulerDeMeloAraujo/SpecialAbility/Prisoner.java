@@ -2,6 +2,7 @@ package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
 
 import java.util.HashMap;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -65,7 +66,8 @@ public class Prisoner implements Listener {
         } 
               }
          
-        
+      if (s.hasMetadata("prison") && 
+    	        s.getShooter() != e.getEntity()) {
         for (Location loc2 : BlockUtils.sphere(e.getEntity().getLocation(), 2, false)) {
           final Material m = loc2.getBlock().getType();
           final byte data = loc2.getBlock().getData();
@@ -75,7 +77,7 @@ public class Prisoner implements Listener {
                   loc2.getBlock().setType(Material.AIR);
                 Particles.FLAME.display(0.3F, 0.3F, 0.3F, 0.25F, 10, e.getEntity().getLocation(), 50.0D);
               }
-            }).runTaskLater((Plugin)Main.getInstance(), 90L);
+          }).runTaskLater((Plugin)Main.getInstance(), 90L);
        
         (new BukkitRunnable() {
             public void run() {
@@ -85,6 +87,6 @@ public class Prisoner implements Listener {
       } 
        
      
-  }}}
+  }}}}
 
 

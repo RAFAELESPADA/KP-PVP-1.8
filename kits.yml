@@ -80,7 +80,6 @@ JinbeiCooldown: 30
 #Disable kits here
 
 CreeperDisabled: false
-JinbeiDisabled: false
 WallDisabled: false
 AsteroidDisabled: false
 JackHammerDisabled: false
@@ -100,6 +99,7 @@ StomperDisabled: false
 AnchorDisabled: false
 WarperDisabled: false
 KangarooDisabled: false
+NinjaDisabled: false
 TimelordDisabled: false
 SwitcherDisabled: false
 PvPDisabled: false
@@ -107,6 +107,7 @@ DeshfireDisabled: false
 SonicDisabled: false
 NarutoDisabled: false
 GhastDisabled: false
+PyroDisabled: false
 BerserkerDisabled: false
 
 #Edit some kits ability options

@@ -390,8 +390,12 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPriso
 /* 277 */        indiob.add(Main.kits.getString("PvPLore").replace("&", "§"));
 /* 278 */         metapyro.setLore(indiob);
 /* 279 */         pyro.setItemMeta(metapyro);
+if (!Main.getInstance().getConfig().getBoolean("PvPDisabled")) {
 /* 280 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+}
+
+/*     */       
+}
 /* 282 */       if (p.hasPermission("kitpvp.kit.kangaroo")) {
 /* 283 */         ItemStack pyro = new ItemStack(Material.FIREWORK);
 /* 284 */         ItemMeta metapyro = pyro.getItemMeta();
@@ -400,7 +404,10 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPriso
 /* 287 */         indiob.add(API.cor(Main.kits.getString("KangarooLore")));
 /* 289 */         metapyro.setLore(indiob);
 /* 290 */         pyro.setItemMeta(metapyro);
-/* 291 */         kits.addItem(new ItemStack[] { pyro });
+if (!Main.getInstance().getConfig().getBoolean("KangarooDisabled")) {
+/* 280 */         kits.addItem(new ItemStack[] { pyro });
+/*     */       } 
+
 /*     */       }
 /* 282 */       if (p.hasPermission("kitpvp.kit.creeper")) {
 /* 283 */         ItemStack pyro = new ItemStack(Material.REDSTONE_COMPARATOR);
@@ -410,7 +417,10 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPriso
 /* 287 */         indiob.add(API.cor(Main.kits.getString("CreeperLore")));
 /* 289 */         metapyro.setLore(indiob);
 /* 290 */         pyro.setItemMeta(metapyro);
-/* 291 */         kits.addItem(new ItemStack[] { pyro });
+if (!Main.getInstance().getConfig().getBoolean("CreeperDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       /*     */       } 
+	
 /*     */       }
 /* 293 */       if (p.hasPermission("kitpvp.kit.archer")) {
 /* 294 */         ItemStack pyro = new ItemStack(Material.BOW);
@@ -462,8 +472,11 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPriso
 /* 341 */         indiob.add((Main.kits.getString("StomperLore").replace("&", "§")));
 /* 342 */         metapyro.setLore(indiob);
 /* 343 */         pyro.setItemMeta(metapyro);
-/* 344 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+if (!Main.getInstance().getConfig().getBoolean("StomperDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */      }
+	}
+/*     */       
 /* 346 */       if (p.hasPermission("kitpvp.kit.deshfire")) {
 /* 347 */         ItemStack pyro = new ItemStack(Material.REDSTONE_BLOCK);
 /* 348 */         ItemMeta metapyro = pyro.getItemMeta();
@@ -493,7 +506,10 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lPriso
 /* 383 */         indiob.add((Main.kits.getString("GladiatorLore").replace("&", "§")));
 /* 384 */         metapyro.setLore(indiob);
 /* 385 */         pyro.setItemMeta(metapyro);
-/* 386 */         kits.addItem(new ItemStack[] { pyro });
+if (!Main.getInstance().getConfig().getBoolean("GladiatorDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       /*     */       } 
+	
 /*     */       }
 if (p.hasPermission("kitpvp.kit.jackhammer")) {
 /* 379 */         ItemStack pyro = new ItemStack(Material.STONE_AXE);
@@ -503,7 +519,10 @@ if (p.hasPermission("kitpvp.kit.jackhammer")) {
 /* 383 */         indiob.add((Main.kits.getString("JackHammerLore").replace("&", "§")));
 /* 384 */         metapyro.setLore(indiob);
 /* 385 */         pyro.setItemMeta(metapyro);
-/* 386 */         kits.addItem(new ItemStack[] { pyro });
+if (!Main.getInstance().getConfig().getBoolean("JackHammerDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       /*     */       } 
+	
 /*     */       }
 if (p.hasPermission("kitpvp.kit.jinbei")) {
 /* 379 */         ItemStack pyro = new ItemStack(Material.WATER_LILY);
@@ -513,7 +532,10 @@ if (p.hasPermission("kitpvp.kit.jinbei")) {
 /* 383 */         indiob.add((Main.kits.getString("JinbeiLore").replace("&", "§")));
 /* 384 */         metapyro.setLore(indiob);
 /* 385 */         pyro.setItemMeta(metapyro);
-/* 386 */         kits.addItem(new ItemStack[] { pyro });
+if (!Main.getInstance().getConfig().getBoolean("JinbeiDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       /*     */       } 
+	
 /*     */       }
 if (p.hasPermission("kitpvp.kit.wall")) {
 /* 379 */         ItemStack pyro = new ItemStack(Material.COBBLE_WALL);
@@ -523,8 +545,11 @@ if (p.hasPermission("kitpvp.kit.wall")) {
 /* 383 */         indiob.add((Main.kits.getString("WallLore").replace("&", "§")));
 /* 384 */         metapyro.setLore(indiob);
 /* 385 */         pyro.setItemMeta(metapyro);
-/* 386 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+if (!Main.getInstance().getConfig().getBoolean("WallDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       /*     */       } 
+	}
+/*     */       
 if (p.hasPermission("kitpvp.kit.sight")) {
 /* 379 */         ItemStack pyro = new ItemStack(Material.MUTTON);
 /* 380 */         ItemMeta metapyro = pyro.getItemMeta();
@@ -553,8 +578,11 @@ if (p.hasPermission("kitpvp.kit.sight")) {
 /* 393 */         indiob.add(Main.kits.getString("AsteroidLore").replace("&", "§"));
 /* 395 */         metapyro.setLore(indiob);
 /* 396 */         pyro.setItemMeta(metapyro);
-/* 397 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+if (!Main.getInstance().getConfig().getBoolean("AsteroidDisabled")) {
+	   kits.addItem(new ItemStack[] { pyro });
+}
+	}
+/*     */       
 
 /* 399 */       if (p.hasPermission("kitpvp.kit.doublejump")) {
 /* 400 */         ItemStack pyro = new ItemStack(Material.CHAINMAIL_BOOTS);
@@ -564,8 +592,11 @@ if (p.hasPermission("kitpvp.kit.sight")) {
 /* 404 */      indiob.add(Main.kits.getString("DoubleJumpLore").replace("&", "§"));
 /* 406 */         metapyro.setLore(indiob);
 /* 407 */         pyro.setItemMeta(metapyro);
-/* 408 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+if (!Main.getInstance().getConfig().getBoolean("DoubleJumpDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */        } 
+	}
+/*     */       
 /* 410 */       if (p.hasPermission("kitpvp.kit.bomber")) {
 /* 411 */         ItemStack pyro = new ItemStack(Material.TNT);
 /* 412 */         ItemMeta metapyro = pyro.getItemMeta();
@@ -574,8 +605,11 @@ if (p.hasPermission("kitpvp.kit.sight")) {
 /* 415 */         indiob.add(Main.kits.getString("BomberLore").replace("&", "§"));
 /* 417 */         metapyro.setLore(indiob);
 /* 418 */         pyro.setItemMeta(metapyro);
-/* 419 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+if (!Main.getInstance().getConfig().getBoolean("BomberDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */        } 
+	}
+/*     */       
 /* 421 */       if (p.hasPermission("kitpvp.kit.wasp")) {
 /* 422 */         ItemStack pyro = new ItemStack(Material.BLAZE_ROD);
 /* 423 */         ItemMeta metapyro = pyro.getItemMeta();
@@ -605,8 +639,11 @@ if (p.hasPermission("kitpvp.kit.sight")) {
 /* 437 */         indiob.add(Main.kits.getString("AirmanLore").replace("&", "§"));
 /* 439 */         metapyro.setLore(indiob);
 /* 440 */         pyro.setItemMeta(metapyro);
-/* 441 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+if (!Main.getInstance().getConfig().getBoolean("AirmanDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */        } 
+	}
+/*     */       
 /* 443 */       if (p.hasPermission("kitpvp.kit.switcher"))
 /*     */       {
 /* 445 */         ItemStack pyro = new ItemStack(Material.SNOW_BALL, 16);
@@ -616,8 +653,12 @@ if (p.hasPermission("kitpvp.kit.sight")) {
 /* 449 */         indiob.add(Main.kits.getString("SwitcherLore").replace("&", "§"));
 /* 451 */         metapyro.setLore(indiob);
 /* 452 */         pyro.setItemMeta(metapyro);
-/* 453 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+if (!Main.getInstance().getConfig().getBoolean("SwitcherDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        }
+}
+/*     */       
 /* 455 */       if (p.hasPermission("kitpvp.kit.ninja")) {
 /* 456 */         ItemStack pyro = new ItemStack(Material.COAL);
 /* 457 */         ItemMeta metapyro = pyro.getItemMeta();
@@ -627,8 +668,12 @@ if (p.hasPermission("kitpvp.kit.sight")) {
 /* 461 */         indiob.add(Main.kits.getString("NinjaLore").replace("&", "§"));
 /* 464 */         metapyro.setLore(indiob);
 /* 465 */         pyro.setItemMeta(metapyro);
-/* 466 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+if (!Main.getInstance().getConfig().getBoolean("NinjaDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        } 
+}
+/*     */       
 /* 455 */       if (p.hasPermission("kitpvp.kit.zeus")) {
 /* 456 */         ItemStack pyro = new ItemStack(Material.INK_SACK);
 /* 457 */         ItemMeta metapyro = pyro.getItemMeta();
@@ -638,8 +683,12 @@ if (p.hasPermission("kitpvp.kit.sight")) {
 /* 461 */         indiob.add(Main.kits.getString("ZeusLore").replace("&", "§"));
 /* 464 */         metapyro.setLore(indiob);
 /* 465 */         pyro.setItemMeta(metapyro);
-/* 466 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+if (!Main.getInstance().getConfig().getBoolean("ZeusDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        } 
+}
+/*     */       
 /* 455 */       if (p.hasPermission("kitpvp.kit.hedgehog")) {
 /* 456 */         ItemStack pyro = new ItemStack(Material.ARROW);
 /* 457 */         ItemMeta metapyro = pyro.getItemMeta();
@@ -649,7 +698,11 @@ if (p.hasPermission("kitpvp.kit.sight")) {
 /* 461 */         indiob.add(Main.kits.getString("HedgeHogLore").replace("&", "§"));
 /* 464 */         metapyro.setLore(indiob);
 /* 465 */         pyro.setItemMeta(metapyro);
-/* 466 */         kits.addItem(new ItemStack[] { pyro });
+if (!Main.getInstance().getConfig().getBoolean("HedgehogDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        }
+
 /*     */       }
 if (p.hasPermission("kitpvp.kit.prisoner")) {
 /* 456 */         ItemStack pyro = new ItemStack(Material.BEDROCK);
@@ -660,7 +713,12 @@ if (p.hasPermission("kitpvp.kit.prisoner")) {
 /* 461 */         indiob.add(Main.kits.getString("PrisonerLore").replace("&", "§"));
 /* 464 */         metapyro.setLore(indiob);
 /* 465 */         pyro.setItemMeta(metapyro);
-/* 466 */         kits.addItem(new ItemStack[] { pyro });
+if (!Main.getInstance().getConfig().getBoolean("PrisonerDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        } 
+
+/*     */       
 /*     */       }
 /* 468 */       if (p.hasPermission("kitpvp.kit.cactus")) {
 /* 469 */         ItemStack pyro = new ItemStack(Material.CACTUS);
@@ -682,8 +740,13 @@ if (p.hasPermission("kitpvp.kit.prisoner")) {
 /*     */         
 /* 486 */         metapyro.setLore(indiob);
 /* 487 */         pyro.setItemMeta(metapyro);
-/* 488 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+if (!Main.getInstance().getConfig().getBoolean("PyroDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        }
+}
+/*     */      
+/*     */       
 /* 490 */       if (p.hasPermission("kitpvp.kit.jumper")) {
 /* 491 */         ItemStack pyro = new ItemStack(Material.LEATHER_BOOTS);
 /* 492 */         ItemMeta metapyro = pyro.getItemMeta();
@@ -705,8 +768,12 @@ if (p.hasPermission("kitpvp.kit.prisoner")) {
 /* 508 */         indiob.add(Main.kits.getString("TimelordLore").replace("&", "§"));
 /* 511 */         metapyro.setLore(indiob);
 /* 512 */         pyro.setItemMeta(metapyro);
-/* 513 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+/* 513 */        if (!Main.getInstance().getConfig().getBoolean("TimelordDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        } 
+
+}
 /* 515 */       if (p.hasPermission("kitpvp.kit.fisherman"))
 /*     */       {
 /* 517 */         ItemStack pyro = new ItemStack(Material.FISHING_ROD);
@@ -727,7 +794,11 @@ if (p.hasPermission("kitpvp.kit.prisoner")) {
 /* 533 */         indiob.add(Main.kits.getString("SpidermanLore").replace("&", "§"));
 /* 536 */         metapyro.setLore(indiob);
 /* 537 */         pyro.setItemMeta(metapyro);
-/* 538 */         kits.addItem(new ItemStack[] { pyro });
+if (!Main.getInstance().getConfig().getBoolean("SpidermanDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        }
+
 /*     */       }
 if (p.hasPermission("kitpvp.kit.meteor"))
 /*     */       {
@@ -738,8 +809,12 @@ if (p.hasPermission("kitpvp.kit.meteor"))
 /* 533 */         indiob.add(Main.kits.getString("MeteorLore").replace("&", "§"));
 /* 536 */         metapyro.setLore(indiob);
 /* 537 */         pyro.setItemMeta(metapyro);
-/* 538 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+/*     */       if (!Main.getInstance().getConfig().getBoolean("MeteorDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        } 
+
+}
 /* 540 */       if (p.hasPermission("kitpvp.kit.warper"))
 /*     */       {
 /* 542 */         ItemStack pyro = new ItemStack(Material.ENDER_PEARL);
@@ -773,7 +848,11 @@ if (p.hasPermission("kitpvp.kit.meteor"))
 /* 559 */         indiob.add(Main.kits.getString("NarutoLore").replace("&", "§"));
 /* 561 */         metapyro.setLore(indiob);
 /* 562 */         pyro.setItemMeta(metapyro);
-/* 563 */         kits.addItem(new ItemStack[] { pyro });
+if (!Main.getInstance().getConfig().getBoolean("NarutoDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        } 
+
 /*     */       }
 /* 553 */       if (p.hasPermission("kitpvp.kit.sonic"))
 /*     */       {
@@ -785,8 +864,12 @@ if (p.hasPermission("kitpvp.kit.meteor"))
 /* 560 */         
 /* 561 */         metapyro.setLore(indiob);
 /* 562 */         pyro.setItemMeta(metapyro);
-/* 563 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+if (!Main.getInstance().getConfig().getBoolean("SonicDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        } 
+}
+/*     */       
 /* 553 */       if (p.hasPermission("kitpvp.kit.phantom"))
 /*     */       {
 /* 555 */         ItemStack pyro = new ItemStack(Material.BOOK);
@@ -797,8 +880,12 @@ if (p.hasPermission("kitpvp.kit.meteor"))
 /* 560 */         
 /* 561 */         metapyro.setLore(indiob);
 /* 562 */         pyro.setItemMeta(metapyro);
-/* 563 */         kits.addItem(new ItemStack[] { pyro });
-/*     */       }
+if (!Main.getInstance().getConfig().getBoolean("PhantomDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        }
+}
+/*     */       
 /* 553 */       if (p.hasPermission("kitpvp.kit.camel"))
 /*     */       {
 /* 555 */         ItemStack pyro = new ItemStack(Material.SAND);
@@ -845,7 +932,11 @@ if (p.hasPermission("kitpvp.kit.meteor"))
 /* 560 */         
 /* 561 */         metapyro.setLore(indiob);
 /* 562 */         pyro.setItemMeta(metapyro);
-/* 563 */         kits.addItem(new ItemStack[] { pyro });
+if (!Main.getInstance().getConfig().getBoolean("AnchorDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        } 
+
 /*     */       }
 /* 553 */       if (p.hasPermission("kitpvp.kit.resouper"))
 /*     */       {
@@ -917,7 +1008,11 @@ if (p.hasPermission("kitpvp.kit.tamer"))
 /* 560 */         
 /* 561 */         metapyro.setLore(indiob);
 /* 562 */         pyro.setItemMeta(metapyro);
-/* 563 */         kits.addItem(new ItemStack[] { pyro });
+if (!Main.getInstance().getConfig().getBoolean("TamerDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        } 
+
 /*     */       }
 if (p.hasPermission("kitpvp.kit.ghast"))
 /*     */       {
@@ -929,7 +1024,10 @@ if (p.hasPermission("kitpvp.kit.ghast"))
 /* 560 */         
 /* 561 */         metapyro.setLore(indiob);
 /* 562 */         pyro.setItemMeta(metapyro);
-/* 563 */         kits.addItem(new ItemStack[] { pyro });
+if (!Main.getInstance().getConfig().getBoolean("GhastDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });
+	/*     */       
+/*     */        } 
 /*     */       }
 if (p.hasPermission("kitpvp.kit.berserker"))
 /*     */       {
@@ -941,7 +1039,9 @@ if (p.hasPermission("kitpvp.kit.berserker"))
 /* 560 */         
 /* 561 */         metapyro.setLore(indiob);
 /* 562 */         pyro.setItemMeta(metapyro);
-/* 563 */         kits.addItem(new ItemStack[] { pyro });
+if (!Main.getInstance().getConfig().getBoolean("BerserkerDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });      
+/*     */        } 
 /*     */       }
 /*     */       ItemStack[] arrayOfItemStack;
 /* 566 */       int descpyro1 = (arrayOfItemStack = kits.getContents()).length;
@@ -960,7 +1060,3 @@ if (p.hasPermission("kitpvp.kit.berserker"))
 /*     */ }
 
 
-/* Location:              D:\Desktop\video\Minhas Coisas do Desktop\KP-PVPvB12 (1).jar!\me\RafaelAulerDeMeloAraujo\SpecialAbility\NewKitMenu.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       0.7.1
- */

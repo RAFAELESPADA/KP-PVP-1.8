@@ -5,12 +5,16 @@ import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.FallingBlock;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -18,6 +22,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffectType;
@@ -44,8 +49,9 @@ public class Jinbei implements Listener {
         		        Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(0.0D, 2.0D, 1.0D), p4);
         	            Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(1.0D, 2.0D, 0.0D), p4);
         		        }
-	        		for (Entity bi : ent.getNearbyEntities(3, 3, 3)) {
+	        		for (Entity bi : ent.getNearbyEntities(4, 3, 4)) {
 	        			if (bi instanceof Player) {
+	        				if (Habilidade.getAbility(((Player) bi)) != "Jinbei") {
 	        				((Player) bi).damage(2);
 	        				API.darEfeito(((Player) bi), PotionEffectType.POISON, 5, 0);
 	        				Vector v = new Vector();
@@ -54,41 +60,58 @@ public class Jinbei implements Listener {
 	  	                  v.setZ(1.9D);
 	  	                ((Player) bi).setVelocity(v);
 	        			}
+	        			}
 	        		 event.setCancelled(true);
 	        	}}
 	        		else if (ent.hasMetadata("FALLBLAST2")) {
-	   				 ent.getWorld().strikeLightning(ent.getLocation());
-   				 ent.getWorld().strikeLightning(ent.getLocation());
-	        		for (Player p4: Bukkit.getOnlinePlayers()) {
-        		        Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(0.0D, 2.0D, 1.0D), p4);
-        	            Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(1.0D, 2.0D, 0.0D), p4);
-        		        }
-	        		for (Entity bi : ent.getNearbyEntities(3, 3, 3)) {
+	        			throwRandomFirework(ent);
+	        			(new BukkitRunnable() {
+          	              public void run() {
+          	            	  
+          		        		for (Player p4: Bukkit.getOnlinePlayers()) {
+          	        		        Particles.FLAME.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(0.0D, 2.0D, 1.0D), p4);
+          	        	  }
+          	              }
+          	            }).runTaskLater((Plugin)Main.getInstance(), 5L);
+	        		for (Entity bi : ent.getNearbyEntities(4, 4, 4)) {
 	        			if (bi instanceof Player) {
 if (!Habilidade.ContainsAbility(((Player) bi))) {
 	return;
 }
-((Player) bi).damage(3);
-	            	        for (Location loc2 : BlockUtils.sphere(ent.getLocation(), 3, false)) {
-	            	          (new BukkitRunnable() {
-	            	              public void run() {
-	            	                Particles.FLAME.display(0.3F, 0.3F, 0.3F, 0.25F, 10, loc2, 50.0D);
-	            	              }
-	            	            }).runTaskLater((Plugin)Main.getInstance(), 5L);
-	        				
-	        				 Particles.FLAME.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(1.0D, 2.0D, 0.0D), ((Player)bi));
-
-	        				 ((Player) bi).getWorld().strikeLightning(((Player) bi).getLocation());
-	        				 ((Player) bi).getWorld().strikeLightning(((Player) bi).getLocation());
-	        				 ((Player) bi).getWorld().strikeLightning(((Player) bi).getLocation());
+Player caster = Asteroid.caster.get(ent);
+	            	          
+	        				if (((Player) bi) != caster) {
 	        				 ((Player) bi).setFireTicks(40);
+	        				 ((Player) bi).damage(4, caster);
+	        				}
+	        				 ((Player) bi).playSound(((Player) bi).getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.RyuAbility")), 3.0F, 3.0F);
+	        				 Asteroid.caster.remove(((Player) bi));
 	        			}
 	        		}
 	        		 event.setCancelled(true);
 	        	}
 	        }
 	        }
-	    }
+		public static void throwRandomFirework(Entity p) {
+		    Firework fw = (Firework) p.getWorld().spawnEntity(p.getLocation(), EntityType.FIREWORK);
+		    FireworkMeta fwm = fw.getFireworkMeta();
+		    Random r = new Random();
+		    FireworkEffect.Type type = FireworkEffect.Type.BALL_LARGE;
+		    Color c1 = Color.RED;
+		    Color c2 = Color.WHITE;
+		    FireworkEffect effect = FireworkEffect.builder().flicker(r.nextBoolean()).withColor(c1).withFade(c2).with(type).trail(r.nextBoolean()).build();
+		    fwm.addEffect(effect);
+		    fwm.setPower(0);
+		    new BukkitRunnable() {
+		        @Override
+		        public void run() {
+		          fw.detonate();
+		        }
+		    }.runTaskLater(Main.getInstance(), 2L);
+		    //Then apply this to our rocket
+		    fw.setFireworkMeta(fwm);
+		    
+		}
 	  
 	  
 	  
@@ -105,7 +128,6 @@ if (!Habilidade.ContainsAbility(((Player) bi))) {
 				 }
 	        final FallingBlock  fallingBlock = g.getWorld().spawnFallingBlock(g.getLocation().add(0.0D, 2.0D, 0.0D), Material.STAINED_GLASS, (byte)0);
 	        final FallingBlock  fallingBlock2 = g.getWorld().spawnFallingBlock(g.getLocation().add(1.0D, 3.0D, 1.0D), Material.STAINED_GLASS, (byte)0);
-	        loc.put(fallingBlock, fallingBlock.getLocation());
 
 	      	fallingBlock.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
 
@@ -115,6 +137,15 @@ if (!Habilidade.ContainsAbility(((Player) bi))) {
 	        fallingBlock.setDropItem(false);
 	        fallingBlock2.setVelocity(p.getLocation().getDirection().multiply(1.4F));
 	        fallingBlock2.setDropItem(false);
+            (new BukkitRunnable() {
+
+				@Override
+				public void run() {
+					loc.put(fallingBlock, fallingBlock.getLocation());
+				}
+
+
+            }).runTaskLater(Main.getInstance(), 40L);
 	        for (Player p4: Bukkit.getOnlinePlayers()) {
 	        Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent).add(0.0D, 2.0D, 0.0D), p4);
             Particles.FIREWORKS_SPARK.display(0.0F, 0.0F, 0.0F, 0.25F, 100, Jinbei.loc.get(ent).add(0.0D, 2.0D, 0.0D), p4);

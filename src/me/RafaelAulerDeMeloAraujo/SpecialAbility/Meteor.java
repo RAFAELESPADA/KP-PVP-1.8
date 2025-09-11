@@ -114,7 +114,7 @@ public class Meteor implements Listener {
 		/*  92 */         return;
 		/*     */       } p.playSound(p.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.RyuAbility")), 1.0F, 1.0F);
 		
-		/*  76 */       p.setVelocity(p.getEyeLocation().getDirection().multiply(2.0).add(new Vector(0, 0, 0)));
+		/*  76 */       p.setVelocity(p.getEyeLocation().getDirection().multiply(3.0).add(new Vector(0, 0, 0)));
 		danometeor.add(p.getName());
 		subiu.remove(p);
 
@@ -180,7 +180,7 @@ public class Meteor implements Listener {
 	        }
 	    }
 	, 15 * 20);
-	/*  94 */      	 p.setVelocity(new Vector(0, calcMotY(16), 0));
+	/*  94 */      	 p.setVelocity(new Vector(0, calcMotY(24), 0));
 
 	/* 107 */           p.sendMessage(ChatColor.RED + "PRESS SHIFT WHEN YOU ARE IN THE SKY!");
 	/*  98 */       Location loc = p.getLocation();

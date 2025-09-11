@@ -23,6 +23,8 @@ import me.RafaelAulerDeMeloAraujo.main.Main;
 
 public class Asteroid implements Listener {
 public static HashMap<Entity, Location> loc = new HashMap<>();
+
+public static HashMap<Entity, Player> caster = new HashMap<>();
 int total = 0;	
 
 @EventHandler
@@ -55,7 +57,7 @@ public void onAsteriod(PlayerInteractEvent e) {
             	final FallingBlock ent = p.getWorld().spawnFallingBlock(block.getLocation().add(0.0D, 20.0D, 0.0D), 
             	          Material.OBSIDIAN, (byte)0);
             	      ent.setMetadata("FALLBLAST2", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));
-                      
+                      caster.put(ent, p);
             	        for (Location loc2 : BlockUtils.sphere(ent.getLocation(), 3, false)) {
             	          (new BukkitRunnable() {
             	              public void run() {
