@@ -105,6 +105,10 @@ public class Gladiator implements Listener {
         	p.sendMessage("Please dont challenge our npcs to Gladiator");
         	return;
         }
+        if (API.isInRegion(r)) {
+  		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+  		  return;
+  	  }
             p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 110, 5));
             r.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 110, 5));
             p.sendMessage(API.NomeServer + "§7You challenged "  + r.getName() + "! You have five seconds of invencibility!");
