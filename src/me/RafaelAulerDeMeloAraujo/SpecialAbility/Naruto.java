@@ -53,7 +53,11 @@ import me.RafaelAulerDeMeloAraujo.main.RTP;
 /*  49 */       (Habilidade.getAbility(p) == "Naruto") && 
 /*  50 */       (p.getItemInHand().getType() == Material.NETHER_STAR))
 /*     */     {
-
+	  if (API.isInRegion(p)) {
+		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+		  e.setCancelled(true);
+		  return;
+	}
 /*  52 */       if ((!cooldown.containsKey(p.getName())) || (((Long)cooldown.get(p.getName())).longValue() <= System.currentTimeMillis()))
 /*     */       {
 /*  54 */         e.setCancelled(true);

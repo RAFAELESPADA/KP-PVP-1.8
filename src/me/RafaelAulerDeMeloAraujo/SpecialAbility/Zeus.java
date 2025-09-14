@@ -2,8 +2,8 @@ package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
 
 import java.util.HashMap;
+
 import org.bukkit.Bukkit;
-import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
@@ -12,7 +12,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.material.MaterialData;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.BlockIterator;
@@ -39,6 +38,7 @@ public class Zeus implements Listener {
     		  p.sendMessage("DO NOT USE THIS ON SPAWN!");
 				return;
 			 }
+    	  
         Location location = p.getEyeLocation();
        BlockIterator blocksToAdd = new BlockIterator(
             location, 0.0D, 30);

@@ -48,6 +48,10 @@ public class Meteor implements Listener {
 		if (Cooldown.add(p)) {
 			return;
 		}
+		  if (API.isInRegion(p)) {
+    		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+    		  return;
+    	  }
 		if (!(e.getCause() == DamageCause.FALL)) {
 			return;
 		}

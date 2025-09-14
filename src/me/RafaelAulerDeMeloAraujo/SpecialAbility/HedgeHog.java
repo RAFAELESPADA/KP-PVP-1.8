@@ -3,6 +3,7 @@ package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
 import java.util.HashMap;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
@@ -41,6 +42,10 @@ public class HedgeHog implements Listener {
         p.updateInventory();
         API.sendMessageCooldown(p);
       } else {
+    	  if (API.isInRegion(p)) {
+    		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+    		  return;
+    	  }
           Cooldown.add(p, Main.kits.getInt("HedgeHogCooldown"));
         e.setCancelled(true);
         p.updateInventory();

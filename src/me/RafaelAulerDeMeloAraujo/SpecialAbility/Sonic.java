@@ -74,6 +74,11 @@ if (Cooldown.add(p)) {
     API.MensagemCooldown(p);
     return;
 }
+if (API.isInRegion(p)) {
+	  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+	  event.setCancelled(true);
+	  return;
+}
 
 /*  74 */     Cooldown.add(p, Main.kits.getInt("SonicCooldown"));
 /*  75 */       fall.add(p.getName());

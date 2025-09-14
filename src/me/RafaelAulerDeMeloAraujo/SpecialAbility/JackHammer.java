@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -36,6 +37,10 @@ public class JackHammer implements Listener {
 	    	  if (p.getLocation().getY() > Main.getInstance().getConfig().getInt("Spawn.Y")) {
 					return;
 				 }
+	    	  if (API.isInRegion(p)) {
+	    		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+	    		  return;
+	    	  }
 	        p.updateInventory();
 	       Cooldown.add(p, Main.kits.getInt("JackHammerCooldown"));
 	        final Location loc = e.getClickedBlock().getLocation();

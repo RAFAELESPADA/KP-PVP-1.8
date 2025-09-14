@@ -3,6 +3,7 @@
 /*     */ import java.util.ArrayList;
 
 /*     */ import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 /*     */ import org.bukkit.Location;
 /*     */ import org.bukkit.Material;
 /*     */ import org.bukkit.World;
@@ -65,6 +66,11 @@
 /*  68 */         API.MensagemCooldown(p);
 /*  69 */         return;
 /*     */       }
+if (API.isInRegion(p)) {
+	  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+	  e.setCancelled(true);
+	  return;
+}
 
 /*  72 */       e.setCancelled(true);
 /*  73 */       Block b = e.getClickedBlock();

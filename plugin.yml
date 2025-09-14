@@ -1,8 +1,8 @@
 name: KP-PVP
 main: me.RafaelAulerDeMeloAraujo.main.Main
-version: BUILD-171
+version: BUILD-172
 author: Rafael_Melo or Rafael Auler
-softdepend: [PlaceholderAPI , MVdWPlaceholderAPI, PlayerPoints, Vault, ItemJoin, KPCore, TAB]
+softdepend: [PlaceholderAPI , MVdWPlaceholderAPI, PlayerPoints, Vault, ItemJoin, KPCore, TAB, WorldGuard]
 description: KitPvP Plugin what have much features like kits,shop with Custom Economy Support,A Unique 1v1 system to players fight,Coins System,Scoreboard,Stats kills,deaths,streak,Sponges acts like launchpads,Varius commands, and are very customisable,Support with others Gamemodes like Skywars and have everything to control your KITPVP Server. And the best part its is free to Download. If you want to support the developer subscribe to his channel.
 website: http://bit.ly/2kC345B , http://bit.ly/2j5qvnM
 #PERMISSIONS ARENT HERE

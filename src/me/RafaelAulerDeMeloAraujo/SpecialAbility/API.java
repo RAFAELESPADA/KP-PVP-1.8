@@ -16,6 +16,12 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import com.sk89q.worldguard.protection.ApplicableRegionSet;
+import com.sk89q.worldguard.protection.flags.DefaultFlag;
+import com.sk89q.worldguard.protection.managers.RegionManager;
+import com.sk89q.worldguard.protection.regions.ProtectedRegion;
+
 import me.RafaelAulerDeMeloAraujo.Coins.Coins;
 import me.RafaelAulerDeMeloAraujo.Coins.XP;
 import me.RafaelAulerDeMeloAraujo.ScoreboardManager.Level;
@@ -137,7 +143,22 @@ public class API
 	    protected boolean inCooldown(Player player) {
 	        return WaveCooldown2.inCooldown(player, "Kit");
 	    }
+	    public static boolean isInRegion(Player p) {
+	    	 if (Bukkit.getServer().getPluginManager().getPlugin("WorldGuard") != null){
+	    		    WorldGuardPlugin wg = (WorldGuardPlugin) Bukkit.getServer().getPluginManager().getPlugin("WorldGuard");
+	                RegionManager regionManager = wg.getRegionManager(p.getWorld());
+	                ApplicableRegionSet set = regionManager.getApplicableRegions(p.getLocation());
 
+	                for (ProtectedRegion region2 : set) {
+	                    if (region2 != null){
+	                        if (!set.allows(DefaultFlag.PVP)) {
+	                       
+	                            return true;
+	                        }
+	                    }
+	                    }}
+             return false;
+	                }
 	    protected static void sendMessageCooldown(Player player) {
 	    	WaveCooldown2.sendMessage(player, "Kit");
 	    }

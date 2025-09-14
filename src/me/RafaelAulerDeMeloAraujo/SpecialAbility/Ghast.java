@@ -2,6 +2,7 @@ package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Fireball;
@@ -70,6 +71,10 @@ public void onInteract(PlayerInteractEvent event) {
              API.MensagemCooldown(p);
              return;
          }
+		  if (API.isInRegion(p)) {
+    		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+    		  return;
+    	  }
 			new BukkitRunnable() {
 	            int fireballs = 0;
 	            int total = Main.kits.getInt("GhastFireballs"); // total de bolas de fogo

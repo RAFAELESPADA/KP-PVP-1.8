@@ -4,6 +4,7 @@ package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -31,6 +32,11 @@ public class Milkman implements Listener {
             API.MensagemCooldown(p);
             return;
         }
+        if (API.isInRegion(p)) {
+  		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+  		  event.setCancelled(true);
+  		  return;
+  	}
         Cooldown.add(p, 30);
         Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin)Main.getInstance(), (Runnable)new Runnable() {
             @Override

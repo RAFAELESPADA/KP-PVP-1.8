@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -38,6 +39,10 @@ public class Wall implements Listener {
     		  p.sendMessage("DO NOT USE THIS ON SPAWN!");
 				return;
 			 }
+    	  if (API.isInRegion(p)) {
+    		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+    		  return;
+    	  }
         e.setCancelled(true);
         p.updateInventory();
         Cooldown.add(p, Main.kits.getInt("WallCooldown"));
@@ -56,7 +61,7 @@ public class Wall implements Listener {
               public void run() {
                 this.i--;
                 Block b = loc.add(0.0D, -1.0D, 0.0D).getBlock();
-                if (this.i == 0 || b.getType() == Material.BEDROCK) {
+                if (this.i == 0 || b.getType() == Material.BEDROCK || b.getY() > (Main.getInstance().getConfig().getInt("Spawn.Y") - 8)) {
                   cancel();
                   (new BukkitRunnable() {
                       public void run() {

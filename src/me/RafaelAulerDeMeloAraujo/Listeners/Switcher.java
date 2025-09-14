@@ -1,4 +1,5 @@
 /*    */ package me.RafaelAulerDeMeloAraujo.Listeners;
+import org.bukkit.ChatColor;
 /*    */ 
 /*    */ import org.bukkit.Effect;
 /*    */ import org.bukkit.Location;
@@ -9,6 +10,7 @@ import org.bukkit.Material;
 /*    */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.API;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 import me.RafaelAulerDeMeloAraujo.main.Main;
 /*    */ 
@@ -26,6 +28,11 @@ import me.RafaelAulerDeMeloAraujo.main.Main;
 boolean isCitizensNPC = p2.hasMetadata("NPC");
 if (isCitizensNPC) {
 	return;
+}
+if (API.isInRegion(p2)) {
+	  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+	  e.setCancelled(true);
+	  return;
 }
 /* 20 */       p2.playSound(p2.getLocation(), Sound.valueOf(Main.getInstace().getConfig().getString("Sound.Fisherman")), 1.0F, 1.0F);
 /* 21 */       p.playSound(p.getLocation(), Sound.valueOf(Main.getInstace().getConfig().getString("Sound.Fisherman")), 1.0F, 1.0F);

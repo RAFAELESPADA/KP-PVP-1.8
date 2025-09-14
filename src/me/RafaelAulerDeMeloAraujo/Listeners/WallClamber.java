@@ -1,12 +1,8 @@
 /*    */ package me.RafaelAulerDeMeloAraujo.Listeners;
-import me.RafaelAulerDeMeloAraujo.SpecialAbility.API;
-import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
-/*    */ 
-/*    */ import me.RafaelAulerDeMeloAraujo.main.Main;
-
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.List;
 
+import org.bukkit.ChatColor;
 /*    */ 
 /*    */ import org.bukkit.Material;
 /*    */ import org.bukkit.Sound;
@@ -18,6 +14,11 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 /*    */ 
 import org.bukkit.potion.PotionEffectType;
 /*    */ import org.bukkit.util.Vector;
+
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.API;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
+/*    */ 
+/*    */ import me.RafaelAulerDeMeloAraujo.main.Main;
 /*    */ 
 /*    */ public class WallClamber implements org.bukkit.event.Listener
 /*    */ {
@@ -38,8 +39,13 @@ import org.bukkit.potion.PotionEffectType;
 if (!Habilidade.getAbility(p).equalsIgnoreCase("Spiderman")) {
 	return;
 }
-/* 35 */     if ((a.equals(Action.RIGHT_CLICK_BLOCK)) && (p.getItemInHand().getType() == Material.DIAMOND_SWORD) || (p.getItemInHand().getType() == Material.STONE_SWORD)) {
 
+/* 35 */     if ((a.equals(Action.RIGHT_CLICK_BLOCK)) && (p.getItemInHand().getType() == Material.DIAMOND_SWORD) || (p.getItemInHand().getType() == Material.STONE_SWORD)) {
+	  if (API.isInRegion(p)) {
+		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+		  e.setCancelled(true);
+		  return;
+	}
 /* 36 */       Vector v2 = p.getLocation().getDirection().multiply(0.0D).setY(1.0D);
 /* 37 */       API.darEfeito(p, PotionEffectType.REGENERATION, 3, 1);
 /* 38 */       

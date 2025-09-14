@@ -2,6 +2,7 @@
 /*    */ 
 /*    */ import java.util.ArrayList;
 
+import org.bukkit.ChatColor;
 /*    */ import org.bukkit.entity.Entity;
 /*    */ import org.bukkit.entity.Player;
 /*    */ import org.bukkit.event.EventHandler;
@@ -35,7 +36,11 @@
 /* 36 */         API.MensagemCooldown(p);
 /* 37 */         return;
 /*    */       }
-
+if (API.isInRegion(p)) {
+	  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+	  e.setCancelled(true);
+	  return;
+}
 /* 39 */       Cooldown.add(p, Main.kits.getInt("TimelordCooldown"));
 /* 40 */       p.sendMessage(String.valueOf(API.NomeServer) + Main.messages.getString("TimelordUse").replace("&", "§"));
 /* 41 */       for (final Entity pertos : p.getNearbyEntities(Main.kits.getDouble("TimelordRadius"), Main.kits.getDouble("TimelordRadius"), Main.kits.getDouble("TimelordRadius"))) {

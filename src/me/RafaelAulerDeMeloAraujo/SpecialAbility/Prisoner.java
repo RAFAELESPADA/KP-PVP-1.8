@@ -3,6 +3,7 @@ package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
 import java.util.HashMap;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -32,7 +33,11 @@ public class Prisoner implements Listener {
         p.updateInventory();
       API.sendMessageCooldown(p);
       } else {
-        
+    	  if (API.isInRegion(p)) {
+    		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+    		  e.setCancelled(true);
+    		  return;
+    	}
         Cooldown.add(p, Main.kits.getInt("PrisonerCooldown"));
         e.setCancelled(true);
         p.updateInventory();
@@ -50,6 +55,12 @@ public class Prisoner implements Listener {
       Snowball s = (Snowball)e.getDamager();
       if (s.hasMetadata("prison") && 
         s.getShooter() != e.getEntity()) {
+    	  if (API.isInRegion((Player) e.getEntity())) {
+    		  e.setCancelled(true);
+    		 Player si = (Player) s.getShooter();
+    		 si.sendMessage("DONT USE THIS ON PLAYERS ON SPAWN!");
+    		  return;
+    	}
         e.getEntity().teleport(e.getEntity().getLocation().add(0.0D, 2.0D, 0.0D));
         for (Location loc : BlockUtils.sphere(e.getEntity().getLocation(), 3, true)) {
           final Material m = loc.getBlock().getType();

@@ -1,6 +1,7 @@
 /*     */ package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 /*     */ import java.util.Random;
 
+import org.bukkit.ChatColor;
 /*     */ import org.bukkit.GameMode;
 /*     */ import org.bukkit.Material;
 /*     */ import org.bukkit.Sound;
@@ -49,6 +50,11 @@ import me.RafaelAulerDeMeloAraujo.main.RTP;
     if (!Habilidade.ContainsAbility(ent)) {
     	return;
     }
+    if (API.isInRegion(p)) {
+  	  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+  	  e.setCancelled(true);
+  	  return;
+  }
 /*  46 */         Random rand = new Random();
 /*  47 */         int percent = rand.nextInt(100);
 /*  48 */         if (percent <= Main.kits.getInt("ViperChance")) {

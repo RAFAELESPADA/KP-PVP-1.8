@@ -39,6 +39,11 @@ public void onAsteriod(PlayerInteractEvent e) {
     	HashSet<Material> transparent = new HashSet<Material>();
     	transparent.add(Material.AIR);
     	Block block = p.getTargetBlock(transparent, 50);
+    	  if (API.isInRegion(p)) {
+    		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+    		  e.setCancelled(true);
+    		  return;
+    	}
      Cooldown.add(p, Main.kits.getInt("AsteroidCooldown"));
       e.setCancelled(true);
       p.updateInventory();

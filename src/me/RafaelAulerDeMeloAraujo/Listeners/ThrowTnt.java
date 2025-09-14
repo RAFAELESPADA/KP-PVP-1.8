@@ -1,5 +1,6 @@
 /*    */ package me.RafaelAulerDeMeloAraujo.Listeners;
 
+import org.bukkit.ChatColor;
 /*    */ import org.bukkit.Location;
 /*    */ import org.bukkit.Material;
 /*    */ import org.bukkit.World;
@@ -47,6 +48,11 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
      API.MensagemCooldown(p);
      return;
     }
+    if (API.isInRegion(p)) {
+		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+		  event.setCancelled(true);
+		  return;
+	}
 /* 35 */       entity = world.spawn(handLocation, TNTPrimed.class);
 /* 36 */       entity.setVelocity(direction.multiply(speedFactor));
 /* 37 */       player.getInventory().removeItem(new ItemStack[] { new ItemStack(Material.TNT, 1) });

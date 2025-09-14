@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Effect;
 import org.bukkit.FireworkEffect;
@@ -68,7 +69,11 @@ implements Listener, CommandExecutor
 	    	    API.MensagemCooldown(p);
 	    	    return;
 	    	}
-	    
+	    	  if (API.isInRegion(p)) {
+	    		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+	    		  e.setCancelled(true);
+	    		  return;
+	    	}
 	     
 	        e.setCancelled(true);
 	        p.updateInventory();

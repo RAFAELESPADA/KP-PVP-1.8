@@ -46,7 +46,9 @@ import me.RafaelAulerDeMeloAraujo.main.RTP;
 /*  50 */       if (p.getGameMode() == GameMode.CREATIVE) {
 /*  51 */         return;
 /*     */       }
-
+if (API.isInRegion(p)) {
+	  return;
+}
 /*  53 */       e.setCancelled(true);
 /*  54 */       p.setFlying(false);
 /*  55 */       p.setAllowFlight(false);

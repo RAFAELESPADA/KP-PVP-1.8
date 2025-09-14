@@ -66,6 +66,10 @@ import me.RafaelAulerDeMeloAraujo.main.RTP;
 /*     */         
 /*  64 */         Main.darEfeito(p, org.bukkit.potion.PotionEffectType.SPEED, 10, 2);
 /*     */       }
+if (API.isInRegion(p)) {
+	  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+	  return;
+}
 /*     */       else
 /*     */       {
 /*  68 */         event.setCancelled(true);

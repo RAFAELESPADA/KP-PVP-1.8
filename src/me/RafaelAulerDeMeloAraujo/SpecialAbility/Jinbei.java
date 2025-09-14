@@ -44,6 +44,7 @@ public class Jinbei implements Listener {
 	       	  if (event.getBlock().getWorld().equals(w)) {
 	       		  event.setCancelled(true);
 	       	  }
+	       	  
 	       	  if (ent.hasMetadata("FALLBLAST")) {
 	        		for (Player p4: Bukkit.getOnlinePlayers()) {
         		        Particles.WATER_SPLASH.display(0.0F, 0.0F, 0.0F, 0.25F, 100, ent.getLocation().add(0.0D, 2.0D, 1.0D), p4);
@@ -126,7 +127,11 @@ Player caster = Asteroid.caster.get(ent);
 	    		  p.sendMessage("DO NOT USE THIS ON SPAWN!");
 					return;
 				 }
-	        final FallingBlock  fallingBlock = g.getWorld().spawnFallingBlock(g.getLocation().add(0.0D, 2.0D, 0.0D), Material.STAINED_GLASS, (byte)0);
+	    	  if (API.isInRegion(p)) {
+	    		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+	    		  return;
+	    	  }
+	    	  final FallingBlock  fallingBlock = g.getWorld().spawnFallingBlock(g.getLocation().add(0.0D, 2.0D, 0.0D), Material.STAINED_GLASS, (byte)0);
 	        final FallingBlock  fallingBlock2 = g.getWorld().spawnFallingBlock(g.getLocation().add(1.0D, 3.0D, 1.0D), Material.STAINED_GLASS, (byte)0);
 
 	      	fallingBlock.setMetadata("FALLBLAST", new FixedMetadataValue(Main.getInstance(), Boolean.valueOf(true)));

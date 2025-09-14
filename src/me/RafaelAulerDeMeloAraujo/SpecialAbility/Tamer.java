@@ -72,6 +72,10 @@ public void dano2(EntityDamageByEntityEvent e)
                API.MensagemCooldown(p);
                return;
            }
+  		  if (API.isInRegion(p)) {
+    		  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+    		  return;
+    	  }
   	      Wolf wolf = (Wolf) p.getWorld().spawnEntity(p.getLocation(), EntityType.WOLF);
 
   	      Wolf wolf2 = (Wolf) p.getWorld().spawnEntity(p.getLocation(), EntityType.WOLF);

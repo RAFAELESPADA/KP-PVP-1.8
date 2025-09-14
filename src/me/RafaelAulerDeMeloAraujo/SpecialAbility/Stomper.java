@@ -1,26 +1,22 @@
 /*     */ package me.RafaelAulerDeMeloAraujo.SpecialAbility;
-/*     */ 
-/*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
 /*     */ import org.bukkit.Bukkit;
 /*     */ import org.bukkit.ChatColor;
 /*     */ import org.bukkit.Location;
 /*     */ import org.bukkit.Material;
 /*     */ import org.bukkit.Sound;
-/*     */ import org.bukkit.configuration.file.FileConfiguration;
 /*     */ import org.bukkit.entity.Entity;
-/*     */ import org.bukkit.entity.Item;
 /*     */ import org.bukkit.entity.Player;
 /*     */ import org.bukkit.event.EventHandler;
 /*     */ import org.bukkit.event.EventPriority;
 /*     */ import org.bukkit.event.Listener;
 /*     */ import org.bukkit.event.block.Action;
 /*     */ import org.bukkit.event.entity.EntityDamageEvent;
-/*     */ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 /*     */ import org.bukkit.event.player.PlayerDropItemEvent;
 /*     */ import org.bukkit.event.player.PlayerInteractEvent;
-/*     */ import org.bukkit.inventory.ItemStack;
-/*     */ import org.bukkit.scheduler.BukkitScheduler;
 /*     */ import org.bukkit.util.Vector;
+
+/*     */ 
+/*     */ import me.RafaelAulerDeMeloAraujo.main.Main;
 /*     */ 
 /*     */ 
 /*     */ 
@@ -52,6 +48,11 @@
 /*  52 */             Player plr = (Player)ent;
 if (!Habilidade.ContainsAbility(plr)) {
 	return;
+}
+if (API.isInRegion(p)) {
+	  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+	  e.setCancelled(true);
+	  return;
 }
 boolean isCitizensNPC = plr.hasMetadata("NPC");
 if (isCitizensNPC) {
@@ -93,7 +94,10 @@ if (isCitizensNPC) {
 /*  91 */         API.MensagemCooldown(p);
 /*  92 */         return;
 /*     */       }
-
+if (API.isInRegion(p)) {
+	  p.sendMessage(ChatColor.RED + "Leave the NO PVP Zone to use this kit!");
+	  return;
+}
 /*  94 */       Vector vector = p.getEyeLocation().getDirection();
 /*  95 */       vector.multiply(0.0F);
 /*  96 */       vector.setY(10.0F);
