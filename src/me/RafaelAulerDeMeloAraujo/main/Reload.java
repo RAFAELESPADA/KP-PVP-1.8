@@ -28,7 +28,7 @@
 /* 28 */     if (command.getName().equalsIgnoreCase("kitreload"))
 /*    */     {
 /* 30 */       if (!sender.hasPermission("kitpvp.reload")) {
-/* 31 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ง")) + this.main.getConfig().getString("Permission").replace("&", "ง").replaceAll("%permisson%", label));
+/* 31 */         p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ยง")) + this.main.getConfig().getString("Permission").replace("&", "ยง").replaceAll("%permisson%", label));
 /* 32 */         p.playSound(p.getLocation(), org.bukkit.Sound.valueOf(this.main.getConfig().getString("Sound.NoPermissionMessage")), 1.0F, 1.0F);
 /* 33 */         return true;
 /*    */       }
@@ -37,7 +37,7 @@
 /* 37 */       plugin.reloadConfig();
 /* 38 */       p.getServer().getPluginManager().disablePlugin(plugin);
 /* 39 */       p.getServer().getPluginManager().enablePlugin(plugin);
-/* 40 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ง")) + Main.messages.getString("PluginReloaded").replace("&", "ง"));
+/* 40 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "ยง")) + Main.messages.getString("PluginReloaded").replace("&", "ยง"));
 /* 41 */       return true;
 /*    */     }
 /* 43 */     return false;

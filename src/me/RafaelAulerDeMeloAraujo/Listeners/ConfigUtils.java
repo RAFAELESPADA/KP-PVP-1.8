@@ -61,7 +61,7 @@
 /* 61 */       this.pl.getLogger().severe("Could not locate " + key + " in the config.yml inside of the " + Main.pluginName + " folder! (Try generating a new one by deleting the current)");
 /* 62 */       return "errorCouldNotLocateInConfigYml:" + key;
 /*    */     }
-/* 64 */     return this.pl.getConfig().getString(key).replaceAll("&", "ง");
+/* 64 */     return this.pl.getConfig().getString(key).replaceAll("&", "ยง");
 /*    */   }
 /*    */ }
 
