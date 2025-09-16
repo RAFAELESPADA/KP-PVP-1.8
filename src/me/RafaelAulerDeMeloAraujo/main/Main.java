@@ -80,6 +80,8 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Asteroid;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.AsteroidKIT;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Basic;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.BerserkerKit;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Blink;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.BlinkK;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Camel;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.ConfuserHability;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Cooldown;
@@ -88,9 +90,14 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.CreeperK;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Critical;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Deshfire;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.DesifireCMD;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Digger;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Doctor;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.DoctorK;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Dublejump;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Fireman;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.FiremanCMD;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Flash;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.FlashK;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Ghast;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.GhastKIT;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.GladCMD;
@@ -103,15 +110,27 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.JackHammerKIT;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Jinbei;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.JinbeiKIT;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Join;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.KDigger;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.KKombo;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Kangaroo;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Kombo;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Leo;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Leopard;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Mario;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.MarioK;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Meteor;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.MeteorKit;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Milkman;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.MilkmanCMD;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Minato;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.MinatoK;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Monk;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.MonkCMD;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Naruto;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Neutralizer;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.NeutralizerK;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.NewKitMenu;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.NewKitMenu2;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Ninja;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Phantom;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.PhantomCMD;
@@ -122,6 +141,8 @@ import me.RafaelAulerDeMeloAraujo.SpecialAbility.PrisonerKIT;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Resouper;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.ResouperCMD;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Ryu;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Sasuke;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.SasukeK;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Sight;
 /*     */ import me.RafaelAulerDeMeloAraujo.SpecialAbility.Snail;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Sonic;
@@ -148,6 +169,7 @@ import me.RafaelAulerDeMeloAraujo.X1.Sumo;
 import me.neznamy.tab.api.TabAPI;
 import me.neznamy.tab.api.TabPlayer;
 import me.neznamy.tab.api.scoreboard.ScoreboardManager;
+import net.citizensnpcs.api.CitizensAPI;
 import net.wavemc.core.bukkit.WaveBukkit;
 import us.ajg0702.leaderboards.LeaderboardPlugin;
 
@@ -222,7 +244,13 @@ SettingsManager settings = SettingsManager.getInstance();
 		 getServer().getPluginManager().disablePlugin(this);
 	        return;
 	 }
-/* 107 */     getLogger().info("KP-PVP plugin is now enable [By zEnderX5_]");
+	 if (!Bukkit.getPluginManager().isPluginEnabled("Citizens")) {
+		 Bukkit.getConsoleSender().sendMessage("Citizens is not installed! It is required for SOME KITS (MANDATORY)");
+		 Bukkit.getConsoleSender().sendMessage("Disabling KP-PVP");
+		 getServer().getPluginManager().disablePlugin(this);
+	        return;
+	 }
+/* 107 */     getLogger().info("KP-PVP plugin is now enabled [By zEnderX5_]");
 /* 108 */     getLogger().info("Website: http://bit.ly/2kC345B");
 int pluginId = 1955; // <-- Replace with the id of your plugin!
 Metrics metrics = new Metrics(this, pluginId);
@@ -418,21 +446,35 @@ getCommand("kpwarp").setExecutor(new Warp());
 getCommand("kmilkman").setExecutor(new MilkmanCMD(this));
 getCommand("kmeteor").setExecutor(new MeteorKit(this));
 /* 202 */     getCommand("freezer").setExecutor(new Kits(this));
+
+/* 202 */     getCommand("ksasuke").setExecutor(new SasukeK(this));
 /* 203 */     getCommand("basic").setExecutor(new Basic(this));
 getCommand("kposeidon").setExecutor(new Poseidonkit(this));
 getCommand("kcamel").setExecutor(new Camel(this));
 /* 204 */     getCommand("airman").setExecutor(new Kits(this));
+
+/* 204 */     getCommand("kneutralizer").setExecutor(new NeutralizerK(this));
+
+/* 204 */     getCommand("kleopard").setExecutor(new Leopard(this));
+
+/* 204 */     getCommand("kminato").setExecutor(new MinatoK(this));
 /* 205 */     getCommand("fisherman").setExecutor(new Kits(this));
 /* 206 */     getCommand("archer").setExecutor(new Kits(this));
 /* 207 */     getCommand("tank").setExecutor(new Kits(this));
+
+/* 207 */     getCommand("kdoctor").setExecutor(new DoctorK(this));
+/* 207 */     getCommand("kdigger").setExecutor(new KDigger(this));
 /* 208 */     getCommand("pyro").setExecutor(new Kits(this));
 getCommand("kviking").setExecutor(new Kits(this));
 getCommand("kp").setExecutor(new Join(this));
 getCommand("kpsetlevel").setExecutor(new KPSETLEVEL());
 /* 209 */     getCommand("kthor").setExecutor(new ThorKITCOMMAND(this));
+/* 209 */     getCommand("kflash").setExecutor(new FlashK(this));
 getCommand("kvampire").setExecutor(new Vampire(this));
 getCommand("kpsetdeathspawn").setExecutor(new kpsetdeathspawn());
 /* 210 */     getCommand("switcher").setExecutor(new Kits(this));
+/* 210 */     getCommand("kkombo").setExecutor(new KKombo(this));
+/* 210 */     getCommand("kpkitmenu2").setExecutor(new NewKitMenu2(this));
 /* 211 */     getCommand("viper").setExecutor(new Viper(this));
 getCommand("kconfuser").setExecutor(new ConfuserHability(this));
 /* 212 */     getCommand("snail").setExecutor(new Snail(this));
@@ -460,6 +502,8 @@ getCommand("kasteroid").setExecutor(new AsteroidKIT(this));
               getCommand("kpkickall").setExecutor(new KPKICK());
 /* 226 */     getCommand("kpshop").setExecutor(new Shop(this));
 getCommand("kwall").setExecutor(new WallKIT(this));
+getCommand("kmario").setExecutor(new MarioK(this));
+getCommand("kblink").setExecutor(new BlinkK(this));
 getCommand("ksight").setExecutor(new Sight(this));
 /* 227 */     getCommand("kploja").setExecutor(new Shop(this));
 /* 228 */     getCommand("shopmenu").setExecutor(new Shop(this));
@@ -635,6 +679,8 @@ public static void loadTopPlayersHologram() {
               this.pm.registerEvents(new Phantom(), this);
               this.pm.registerEvents(new Camel(this), this);
               this.pm.registerEvents(new Poseidon(), this);
+
+              this.pm.registerEvents(new Minato(), this);
               this.pm.registerEvents(new Anchor(this), this);
               this.pm.registerEvents(new Fireman(), this);
               this.pm.registerEvents(new StatusGUI(), this);
@@ -644,8 +690,14 @@ public static void loadTopPlayersHologram() {
               this.pm.registerEvents(new HedgeHog(), this);
               this.pm.registerEvents(new CustomChallenge(), this);
               this.pm.registerEvents(new Monk(), this);
+              this.pm.registerEvents(new Digger(), this);
+
+              this.pm.registerEvents(new Neutralizer(), this);
               this.pm.registerEvents(new DamageNerf(), this);
               this.pm.registerEvents(new Sumo(this), this);
+
+              this.pm.registerEvents(new Mario(), this);
+              this.pm.registerEvents(new Doctor(), this);
               this.pm.registerEvents(new CrateInventory(), this);
               this.pm.registerEvents(new WarpMenu(), this);
               this.pm.registerEvents(new ConfuserHability(this), this);
@@ -658,6 +710,8 @@ this.pm.registerEvents(new Asteroid(), this);
 this.pm.registerEvents(new Sight(this), this);
 this.pm.registerEvents(new Wall(), this);
 this.pm.registerEvents(new Compass(), this);
+this.pm.registerEvents(new Blink(), this);
+this.pm.registerEvents(new Sasuke(), this);
 /* 259 */     this.pm.registerEvents(new Critical(this), this);
 this.pm.registerEvents(new Resouper(), this);
 this.pm.registerEvents(new Ryu(this), this);
@@ -691,10 +745,15 @@ this.pm.registerEvents(new Sonic(), this);
 /* 274 */     this.pm.registerEvents(new TimeLord(this), this);
 /* 275 */     this.pm.registerEvents(new Soup(this), this);
 /* 276 */     this.pm.registerEvents(new NoDrops(this), this);
+
+/* 276 */     this.pm.registerEvents(new Leo(), this);
+/* 276 */     this.pm.registerEvents(new Kombo(), this);
+this.pm.registerEvents(new Flash(), this);
 /* 277 */     this.pm.registerEvents(new NoHunger(), this);
 /* 278 */     this.pm.registerEvents(new Gladiator(), this);
 /* 279 */     this.pm.registerEvents(new Join(this), this);
 /* 280 */     this.pm.registerEvents(new Shop(this), this);
+/* 280 */     this.pm.registerEvents(new NewKitMenu2(this), this);
 /* 281 */     this.pm.registerEvents(new Stomper(this), this);
 /* 282 */     this.pm.registerEvents(new Snail(this), this);
 /* 283 */     this.pm.registerEvents(new X1(this), this);
@@ -788,7 +847,11 @@ public void onDisable()
   cmd.sendMessage("    §cAuthor: §EzEnderX5_ , Rafael Auler    ");
   cmd.sendMessage("    §cThank you for use the plugin §a=D    ");
   cmd.sendMessage(" ");
-  /*     */ 
+  /*     */ (new BukkitRunnable() {
+        public void run() {
+          CitizensAPI.getNPCRegistry().deregisterAll();
+        }
+      }).runTaskLater((Plugin)this, 20L);
   /*     */ for(Player p: Bukkit.getOnlinePlayers()){
 	  if (Join.game.contains(p.getName()) && !Main.plugin.getConfig().getBoolean("bungeemode")) {
   /* 279 */       Habilidade.removeAbility(p);

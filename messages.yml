@@ -62,6 +62,8 @@ NewBalanceMessage: '&eYou received %coins% extra coins!'
 BalanceUpdated: '&6Your balance got updated!'
 CompassDoNotFoundAnyone: '&cYour compass do not found anyone'
 CompassMessage: '&eYour compass is pointing to &b%player%'
+NextPageBottom: '&7Next Page'
+BackPageBottom: '&7Back'
 
 
 #Modify the plugin Signs below

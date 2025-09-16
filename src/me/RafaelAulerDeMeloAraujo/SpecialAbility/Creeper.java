@@ -1,7 +1,5 @@
 package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
-import org.bukkit.event.Listener;
-
 import java.util.HashMap;
 
 import org.bukkit.Bukkit;
@@ -9,13 +7,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Sound;
-import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.potion.PotionEffectType;
 
@@ -86,6 +83,7 @@ for (Player p : Bukkit.getOnlinePlayers()) {
 			if (pertos instanceof Player) {
 				morreu.getWorld().createExplosion(pertos.getLocation(), 4.0F);
 				morreu.getWorld().strikeLightning(pertos.getLocation());
+				((Player) pertos).damage(16, morreu);
 	}
 }
      }

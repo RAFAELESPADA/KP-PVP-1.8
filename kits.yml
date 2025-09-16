@@ -51,30 +51,46 @@ WallLore: '&7Build a huge wall'
 SightLore: '&730% chance of blidness on hit'
 CreeperLore: '&7Create a explosion on death'
 BerserkerLore: '&7Get strenght and speed effect on each kill'
+KomboLore: '&7Get speed on combos'
+FlashLore: '&7ZUUUM'
+SasukeLore: '&7Summon a shadow clone that attacks other players'
+DiggerLore: '&7Dig a 5x5x5 hole'
+NeutralizerLore: '&7Disable your enemy kit'
+LeopardLore: '&7The more you run, faster you get'
+MinatoLore: '&7create a shadow-clone, that looks like you and fight for you'
+DoctorLore: '&7Heal your friends right-clicking them'
+MarioLore: '&7Press shift when you are falling to create a explosion'
+BlinkLore: '&Jump forward a few blocks'
 
 #Modify the cooldown of some kits
 #They are in seconds
 
 StomperCooldown: 30
 ThorCooldown: 5
+BlinkCooldown: 30
 ZeusCooldown: 35
 HedgeHogCooldown: 30
 JinbeiCooldown: 25
 TimelordCooldown: 30
 PhantomCooldown: 25
+DiggerCooldown: 25
 SonicCooldown: 30
+SasukeCooldown: 40
 DeshfireCooldown: 30
 NarutoCooldown: 40
 RyuCooldown: 25
+NeutralizerCooldown: 40
 NinjaCooldown: 10
 MonkCooldown: 25
 GhastCooldown: 30
 TamerCooldown: 45
+MinatoCooldown: 40
 PrisonerCooldown: 40
 JackHammerCooldown: 35
 AsteroidCooldown: 60
 WallCooldown: 32
 JinbeiCooldown: 30
+FlashCooldown: 40
 
 
 #Disable kits here
@@ -92,22 +108,31 @@ GladiatorDisabled: false
 PhantomDisabled: false
 MeteorDisabled: false
 BomberDisabled: false
+BlinkDisabled: false
 DoubleJumpDisabled: false
 SpidermanDisabled: false
+LeopardDisabled: false
 AirmanDisabled: false
+KomboDisabled: false
+FlashDisabled: false
 StomperDisabled: false
 AnchorDisabled: false
 WarperDisabled: false
+SasukeDisabled: false
+DiggerDisabled: false
 KangarooDisabled: false
 NinjaDisabled: false
 TimelordDisabled: false
+DoctorDisabled: false
 SwitcherDisabled: false
 PvPDisabled: false
 DeshfireDisabled: false
+MinatoDisabled: false
 SonicDisabled: false
 NarutoDisabled: false
 GhastDisabled: false
 PyroDisabled: false
+MarioDisabled: false
 BerserkerDisabled: false
 
 #Edit some kits ability options

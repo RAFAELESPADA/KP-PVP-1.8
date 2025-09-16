@@ -18,6 +18,7 @@
 	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/KP-CORE-v4.0.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/SPRINTMC BACKUP/ARCADE/plugins/TAB v5.2.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/SPRINTMC BACKUP/PVP-KP/plugins/WorldGuard.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Home/Desktop/SPRINTMC BACKUP/PVP-KP/plugins/WorldEdit.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/SPRINTMC BACKUP/PVP-KP/plugins/WorldEdit.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Home/Desktop/SPRINTMC BACKUP/PVP-KP/plugins/Citizens-2.0.30-b2639.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
