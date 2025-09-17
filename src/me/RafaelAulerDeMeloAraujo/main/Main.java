@@ -244,12 +244,6 @@ SettingsManager settings = SettingsManager.getInstance();
 		 getServer().getPluginManager().disablePlugin(this);
 	        return;
 	 }
-	 if (!Bukkit.getPluginManager().isPluginEnabled("Citizens")) {
-		 Bukkit.getConsoleSender().sendMessage("Citizens is not installed! It is required for SOME KITS (MANDATORY)");
-		 Bukkit.getConsoleSender().sendMessage("Disabling KP-PVP");
-		 getServer().getPluginManager().disablePlugin(this);
-	        return;
-	 }
 /* 107 */     getLogger().info("KP-PVP plugin is now enabled [By zEnderX5_]");
 /* 108 */     getLogger().info("Website: http://bit.ly/2kC345B");
 int pluginId = 1955; // <-- Replace with the id of your plugin!

@@ -168,7 +168,17 @@ public class CrateInventory implements Listener {
 		  MILK2.setDisplayName("§eMilkMan");
 		  MILK.setItemMeta(MILK2);
 		  
+
+		  final ItemStack minato = new ItemStack(Material.GOLD_INGOT);
+		  ItemMeta minato2 = minato.getItemMeta();
+		  minato2.setDisplayName("§eMinato");
+		  minato.setItemMeta(minato2);
 		  
+
+		  final ItemStack dc = new ItemStack(Material.SHEARS);
+		  ItemMeta dc2 = dc.getItemMeta();
+		  dc2.setDisplayName("§eDoctor");
+		  dc.setItemMeta(dc2);
 
 		  final ItemStack RY = new ItemStack(Material.BEACON);
 		  ItemMeta RY2 = RY.getItemMeta();
@@ -366,7 +376,7 @@ public class CrateInventory implements Listener {
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.instance, new Runnable() {
 			public void run() {
 				Random r = new Random();
-				int gg = r.nextInt(16);
+				int gg = r.nextInt(18);
 
 				if (gg == 0) {
 					jogador.getWorld().playSound(jogador.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.KitMenu")), 10F, 10F);
@@ -516,6 +526,24 @@ public class CrateInventory implements Listener {
 						kitdiarioDeshFire.add(jogador.getName());
 						jogador.sendMessage(ChatColor.AQUA + "You received the Phantom kit!");
 						Coins.perms.playerAdd(jogador, "kitpvp.kit.phantom");
+
+
+					}
+					if (gg == 17) {
+						jogador.getWorld().playSound(jogador.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.KitMenu")), 10F, 10F);
+						random.setItem(4, minato);
+						kitdiarioDeshFire.add(jogador.getName());
+						jogador.sendMessage(ChatColor.AQUA + "You received the Minato kit!");
+						Coins.perms.playerAdd(jogador, "kitpvp.kit.minato");
+
+
+					}
+					if (gg == 18) {
+						jogador.getWorld().playSound(jogador.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.KitMenu")), 10F, 10F);
+						random.setItem(4, dc);
+						kitdiarioDeshFire.add(jogador.getName());
+						jogador.sendMessage(ChatColor.AQUA + "You received the Doctor kit!");
+						Coins.perms.playerAdd(jogador, "kitpvp.kit.doctor");
 
 
 					}

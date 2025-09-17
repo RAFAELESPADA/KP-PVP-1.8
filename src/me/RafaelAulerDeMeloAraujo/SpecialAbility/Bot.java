@@ -149,33 +149,50 @@ public class Bot {
   }
   
   public void setMaxHealth(double d) {
+	  if (this.bot.isSpawned()) {
     ((Damageable)this.bot.getEntity()).setMaxHealth(d);
+  }
   }
   
   public void setHealth(double d) {
+	  if (this.bot.isSpawned()) {
     ((Damageable)this.bot.getEntity()).setHealth(d);
+  }
   }
   
   public double getMaxHealth() {
+	  if (this.bot.isSpawned()) {
     return ((Damageable)this.bot.getEntity()).getMaxHealth();
+  }
+	  return 20;
   }
   
   public double getHealth() {
+	  if (this.bot.isSpawned()) {
     return ((Damageable)this.bot.getEntity()).getHealth();
+  }
+	  return 20;
   }
   
   public void navigateTo(Location loc) {
+	  if (this.bot.isSpawned()) {
     this.bot.getNavigator().setTarget(loc);
+  }
   }
   
   public void followEntity(Entity e) {
+	  if (this.bot.isSpawned()) {
     this.bot.getNavigator().setTarget(e.getLocation());
+  }
   }
   
   public void attackEntity(LivingEntity e) {
+	  if (this.bot.isSpawned()) {
     this.bot.getNavigator().setTarget(e.getLocation());
     this.bot.getNavigator().setTarget(e, true);
   }
+  } 
+	 
   
   public void summon(Location paramLocation, boolean paramBoolean) {
     this.bot.spawn(paramLocation);
@@ -206,7 +223,9 @@ public class Bot {
   }
   
   public void setItemInHand(ItemStack paramItemStack) {
+	  if (this.bot.isSpawned()) {
     ((LivingEntity)this.bot.getEntity()).getEquipment().setItemInHand(paramItemStack);
+  }
   }
   
   public boolean isSpawned() {

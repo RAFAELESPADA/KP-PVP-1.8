@@ -1,6 +1,7 @@
 package me.RafaelAulerDeMeloAraujo.SpecialAbility;
 
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 /*    */ import org.bukkit.Material;
 /*    */ import org.bukkit.command.Command;
@@ -43,6 +44,10 @@ import me.RafaelAulerDeMeloAraujo.main.RTP;
 if (Main.kits.getBoolean("SasukeDisabled")) {
 	p.sendMessage(API.NomeServer + ChatColor.RED + "The Sasuke kit is disabled, sorry");
 	return true;
+}
+if (!Bukkit.getPluginManager().isPluginEnabled("Citizens")) {
+		p.sendMessage(API.NomeServer + ChatColor.RED + "The Sasuke kit is disabled, sorry");
+       return true;
 }
 /* 39 */       if (!Join.game.contains(p.getName()))
 /*    */       {

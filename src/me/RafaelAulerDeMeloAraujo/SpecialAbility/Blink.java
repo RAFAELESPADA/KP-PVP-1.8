@@ -29,7 +29,7 @@ public class Blink implements Listener {
 	        Cooldown.add(p, Main.kits.getInt("BlinkCooldown"));
 	        float pitch = p.getLocation().getPitch();
 	        float yaw = p.getLocation().getYaw();
-	        BlockIterator blocksToAdd = new BlockIterator(p.getEyeLocation(), 0.0D, 10);
+	        BlockIterator blocksToAdd = new BlockIterator(p.getEyeLocation(), 0.0D, 15);
 	        while (blocksToAdd.hasNext()) {
 	          Sound sound;
 	          Location blockToAdd = blocksToAdd.next().getLocation();

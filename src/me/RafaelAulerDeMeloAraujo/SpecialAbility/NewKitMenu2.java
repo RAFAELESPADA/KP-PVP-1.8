@@ -102,6 +102,10 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lLeopa
 /*  61 */           Bukkit.dispatchCommand(p, "kleopard");
 /*  62 */           p.closeInventory();
 /*     */         }
+if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lDoctor")) {
+/*  61 */           Bukkit.dispatchCommand(p, "kdoctor");
+/*  62 */           p.closeInventory();
+/*     */         }
 if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lFlash")) {
 /*  61 */           Bukkit.dispatchCommand(p, "kflash");
 /*  62 */           p.closeInventory();
@@ -301,6 +305,22 @@ if (p.hasPermission("kitpvp.kit.leopard"))
 /* 561 */         metapyro.setLore(indiob);
 /* 562 */         pyro.setItemMeta(metapyro);
 if (!Main.getInstance().getConfig().getBoolean("LeopardDisabled")) {
+	/* 280 */         kits.addItem(new ItemStack[] { pyro });      
+/*     */        }
+
+}
+
+if (p.hasPermission("kitpvp.kit.doctor"))
+/*     */       {
+/* 555 */         ItemStack pyro = new ItemStack(Material.SHEARS);
+/* 556 */         ItemMeta metapyro = pyro.getItemMeta();
+/* 557 */         metapyro.setDisplayName("§7Kit §e§lDoctor");
+/* 558 */         ArrayList indiob = new ArrayList();
+/* 559 */         indiob.add((Main.kits.getString("DoctorLore")).replace("&", "§"));
+/* 560 */         
+/* 561 */         metapyro.setLore(indiob);
+/* 562 */         pyro.setItemMeta(metapyro);
+if (!Main.getInstance().getConfig().getBoolean("DoctorDisabled")) {
 	/* 280 */         kits.addItem(new ItemStack[] { pyro });      
 /*     */        }
 }
