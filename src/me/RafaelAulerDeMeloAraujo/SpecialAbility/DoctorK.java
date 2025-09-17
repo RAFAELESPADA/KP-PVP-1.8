@@ -71,7 +71,7 @@ for (int i = 0; i <= 34; i++) {
 	/* 76 */         p.getInventory().addItem(new ItemStack[] { sopa });
 }
 
-/* 76 */         p.getInventory().addItem(new ItemStack[] { especial });
+/* 76 */         p.getInventory().setItem(1, especial );
 /* 77 */         me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Creeper"));
 /*    */       }
 /*    */     
