@@ -27,7 +27,6 @@ public void onSprint(ServerTimerEvent e) {
         } else {
           walktime.put(p.getName(), Integer.valueOf(((Integer)walktime.get(p.getName())).intValue() - 1));
           if (((Integer)walktime.get(p.getName())).intValue() <= 0) {
-            p.setWalkSpeed((float) (1));
             API.darEfeito(p, PotionEffectType.SPEED, 5, 1);
             walktime.put(p.getName(), Integer.valueOf(5));
           } 
@@ -38,7 +37,6 @@ public void onSprint(ServerTimerEvent e) {
 
 		l.getWorld().playEffect(l, Effect.SPELL, 20);
       API.tirarEfeitos(p);
-      p.setWalkSpeed(0.2F);
       walktime.put(p.getName(), Integer.valueOf(5));
     } 
   } 
@@ -49,7 +47,6 @@ public void onSprinat(ServerTimerEvent e) {
 	  for (Player p : Bukkit.getOnlinePlayers()) {
     if (walktime.containsKey(p.getName())) {
 if (Habilidade.getAbility(p) != "Leopard") {
-	 p.setWalkSpeed(1F);
 	 walktime.remove(p.getName());
 }
     }
@@ -59,7 +56,6 @@ if (Habilidade.getAbility(p) != "Leopard") {
 public void onSprinaft(PlayerDeathEvent e) {
 
 	  if (Join.game.contains(e.getEntity().getName()))
-	 e.getEntity().setWalkSpeed(1F);
 	 walktime.remove(e.getEntity().getName());
 }
 

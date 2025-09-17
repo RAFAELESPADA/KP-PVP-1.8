@@ -841,11 +841,8 @@ public void onDisable()
   cmd.sendMessage("    §cAuthor: §EzEnderX5_ , Rafael Auler    ");
   cmd.sendMessage("    §cThank you for use the plugin §a=D    ");
   cmd.sendMessage(" ");
-  /*     */ (new BukkitRunnable() {
-        public void run() {
-          CitizensAPI.getNPCRegistry().deregisterAll();
-        }
-      }).runTaskLater((Plugin)this, 20L);
+   CitizensAPI.getNPCRegistry().deregisterAll();
+        
   /*     */ for(Player p: Bukkit.getOnlinePlayers()){
 	  if (Join.game.contains(p.getName()) && !Main.plugin.getConfig().getBoolean("bungeemode")) {
   /* 279 */       Habilidade.removeAbility(p);

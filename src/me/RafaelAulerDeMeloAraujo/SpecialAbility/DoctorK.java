@@ -54,7 +54,7 @@ if (Main.kits.getBoolean("DoctorDisabled")) {
 /*    */       
 /*    */ 
 /* 67 */       Habilidade.setAbility(p, "Doctor");
-/* 68 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Creeper").replace("&", "§"));
+/* 68 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Doctor").replace("&", "§"));
 /*    */       
 /* 70 */       ItemStack sopa = new ItemStack(Material.MUSHROOM_SOUP);
 /* 50 */       ItemMeta sopas = sopa.getItemMeta();
@@ -72,7 +72,7 @@ for (int i = 0; i <= 34; i++) {
 }
 
 /* 76 */         p.getInventory().setItem(1, especial );
-/* 77 */         me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Creeper"));
+/* 77 */         me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Doctor"));
 /*    */       }
 /*    */     
 /*    */     

@@ -57,8 +57,9 @@ public void Atirar2(Player p) {
 	if (block.getType() == Material.SLIME_BLOCK && Join.game.contains(p.getName())) {
 		p.setVelocity(sponge);
 	    p.playEffect(loc, Effect.MOBSPAWNER_FLAMES, (Object)null);
-		this.fall2.remove(p.getName());
+		if (!this.fall2.contains(p.getName())) {
 		this.fall2.add(p.getName());
+	}
 	}
 }
 @EventHandler
@@ -111,15 +112,20 @@ private void Jumps(PlayerMoveEvent e) {
 			e.setCancelled(true);
 
 		}
-		if (e.getCause() == EntityDamageEvent.DamageCause.FALL && this.fall2.contains(p.getName())) 
-		{
+		if (Habilidade.ContainsAbility(p) && this.fall2.contains(p.getName())) {
+			Bukkit.getConsoleSender().sendMessage("PROTECTED " + p.getName() + " from fall damage!");
 			this.fall2.remove(p.getName());
 			e.setCancelled(true);
+			 p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.SpongeUse")), 4.0F, 4.0F);
+		}
+		else if (e.getCause() == EntityDamageEvent.DamageCause.FALL && this.fall2.contains(p.getName())) 
+		{
 			if (!Habilidade.ContainsAbility(p)) {
 				/* 44 */       p.getInventory().clear();
 				   /* 45 */       
 				   /*    */       
-				   /*    */ 
+				this.fall2.remove(p.getName());
+				   /*    */       e.setCancelled(true); 
 				   /* 67 */       Habilidade.setAbility(p, "Basic");
 				   /* 68 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + this.main.getConfig().getString("Message.Kit").replaceAll("%kit%", "Basic").replace("&", "§"));
 				   /*    */       
@@ -132,16 +138,17 @@ private void Jumps(PlayerMoveEvent e) {
 				   	/* 76 */         p.getInventory().addItem(new ItemStack[] { sopa });
 				   }
 				   /* 77 */         me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Basic"));
-				   /*    */       }
-			}
-
+				   /*    */}
 		
-		else if(e.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK)
+		
+			
+		
+		if(e.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK)
 		{
 			this.fall.remove(p.getName());
 
 			this.fall2.remove(p.getName());
 		}
 	}
-	
+	}
 }

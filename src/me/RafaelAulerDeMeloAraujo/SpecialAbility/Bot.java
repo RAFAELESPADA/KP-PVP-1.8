@@ -20,9 +20,11 @@ import me.RafaelAulerDeMeloAraujo.main.Main;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
 import net.citizensnpcs.api.npc.NPCRegistry;
+import net.wavemc.core.bukkit.WaveBukkit;
 
 public class Bot {
   private NPC bot;
+  int i = 0;
   public static HashMap<String, Bot> ownedBot = new HashMap<>();
   
   public static HashMap<String, Player> attackPlayer = new HashMap<>();
@@ -54,40 +56,60 @@ public class Bot {
   public void setGuardienFor(final Player p) {
     final Bot clone = this;
     ownedBot.put(p.getName(), clone);
+
     (new BukkitRunnable() {
-        int i = 0;
-        
         public void run() {
-          this.i++;
-          if (this.i == 1200) {
+     boolean spawned = true;
+
+     i = i + 1;
+          while (i >= 1200) {
+        	  cancel();  
             clone.despawn();
-            cancel();
+             spawned = false;
             Bot.ownedBot.remove(p.getName());
             Bot.attackPlayer.remove(p.getName());
+            return;
           } 
           if (!p.isOnline()) {
             clone.despawn();
+
+            spawned = false;
             Bot.ownedBot.remove(p.getName());
             Bot.attackPlayer.remove(p.getName());
             cancel();
           } 
+          if (Habilidade.getAbility(p) != "Minato") {
+              clone.despawn();
+              spawned = false;
+              Bot.ownedBot.remove(p.getName());
+              Bot.attackPlayer.remove(p.getName());
+              cancel();
+            } 
           if (!Bot.this.bot.isSpawned()) {
             cancel();
+            spawned = false;
             Bot.ownedBot.remove(p.getName());
             Bot.attackPlayer.remove(p.getName());
-          } 
-          if (isThere(p, Position.SPAWN)) {
-            clone.despawn();
-            Bot.ownedBot.remove(p.getName());
-            Bot.attackPlayer.remove(p.getName());
-            cancel();
-          } 
+          }  
           if (p.isDead()) {
             clone.despawn();
+            spawned = false;
             Bot.ownedBot.remove(p.getName());
             Bot.attackPlayer.remove(p.getName());
             cancel();
           } 
+          if (bot.getEntity() == null) {
+              clone.despawn();
+             
+              spawned = false;
+              Bot.ownedBot.remove(p.getName());
+              Bot.attackPlayer.remove(p.getName());
+              cancel();
+            } 
+          
+          if (!spawned) {
+              clone.summon(p.getLocation(), true); 
+          }
           if (Bot.attackPlayer.containsKey(p.getName())) {
             Player attack = Bot.attackPlayer.get(p.getName());
             
@@ -99,14 +121,18 @@ public class Bot {
           } else {
             Bot.this.followEntity((Entity)p);
           } 
+          if (clone.isSpawned()) {
+
+              spawned = true;
           clone.setItemInHand(p.getItemInHand());
           ((LivingEntity)clone.getNPC().getEntity()).getEquipment().setHelmet(p.getInventory().getHelmet());
           ((LivingEntity)clone.getNPC().getEntity()).getEquipment().setBoots(p.getInventory().getBoots());
           ((LivingEntity)clone.getNPC().getEntity()).getEquipment()
             .setChestplate(p.getInventory().getChestplate());
           ((LivingEntity)clone.getNPC().getEntity()).getEquipment().setLeggings(p.getInventory().getLeggings());
-        }
-      }).runTaskTimer((Plugin)Main.getInstance(), 5L, 1L);
+        
+        
+      }}}).runTaskTimer(Main.getInstance(), 0, 1L);
   }
   
   public void setShadow(final Player p, final Player p2) {
@@ -121,18 +147,16 @@ public class Bot {
           this.i++;
           if (this.i == 200) {
             clone.despawn();
+           
             cancel();
           } 
           if (!p.isOnline()) {
             clone.despawn();
             cancel();
           } 
-          if (!Bot.this.bot.isSpawned())
+          if (!Bot.this.bot.isSpawned()) {
             cancel(); 
-          if (isThere(p, Position.SPAWN)) {
-            clone.despawn();
-            cancel();
-          } 
+        }
           if (p.isDead()) {
             clone.despawn();
             cancel();
@@ -202,10 +226,11 @@ public class Bot {
             if (!Bot.this.isSpawned()) {
               cancel();
               Bukkit.getConsoleSender().sendMessage("Bot got removed");
+              return;
             } 
             if (((Damageable)Bot.this.bot.getEntity()).getHealth() < 13.0D) {
               ((Damageable)Bot.this.bot.getEntity())
-                .setHealth(((Damageable)Bot.this.bot.getEntity()).getHealth() + 8.0D);
+                .setHealth(((Damageable)Bot.this.bot.getEntity()).getHealth() + 5.0D);
               if (Math.random() - Math.random() > 0.0D) {
                 Item localItem = Bot.this.bot.getEntity().getWorld().dropItemNaturally(
                     Bot.this.bot.getEntity().getLocation(), new ItemStack(Material.BOWL));
@@ -233,7 +258,22 @@ public class Bot {
   }
   
   public void despawn() {
-    this.bot.destroy();
+	  WaveBukkit.getExecutorService().submit(() -> {
+          new BukkitRunnable() {
+              @Override
+              public void run() {
+            	  if (bot.isSpawned()) {
+                bot.destroy();
+                bot.despawn();
+
+                Bukkit.getConsoleSender().sendMessage("[KP-PVP - DEBUG] NPC BOT REMOVED");
+            	  }};
+          }.runTaskTimer(WaveBukkit.getInstance(), 0, 2 * 20L);
+      });
+    if (this.bot.getEntity() != null) {
+    this.bot.getEntity().remove();
+    Bukkit.getConsoleSender().sendMessage("[KP-PVP - DEBUG] NPC ENTITY REMOVED");
+    }
   }
 }
 
