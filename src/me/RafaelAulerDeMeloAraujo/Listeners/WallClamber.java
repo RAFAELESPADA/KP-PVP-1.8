@@ -24,6 +24,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.API;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.BlockUtils;
+import me.RafaelAulerDeMeloAraujo.SpecialAbility.Cooldown;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Habilidade;
 import me.RafaelAulerDeMeloAraujo.SpecialAbility.Particles;
 /*    */ 
@@ -67,6 +68,10 @@ if (!Habilidade.getAbility(p).equalsIgnoreCase("Spiderman")) {
 		  e.setCancelled(true);
 		  return;
 	}
+	  if (Cooldown.add(p)) {
+		  return;
+	  }
+	  Cooldown.add(p, 40);
 	  Snowball h = (Snowball)p.launchProjectile(Snowball.class);
       Vector velo1 = p.getLocation().getDirection().normalize().multiply(1.88D);
       h.setVelocity(velo1);
