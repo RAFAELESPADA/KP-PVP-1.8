@@ -285,7 +285,7 @@ SendIPAddressData: true
 #It is the amplifier multiplier of sponge boost
 #too high numbers can throw you to minecraft space! 
 #Play around with that number to see what you want in sponge boost
-SpongeBoostAmplifier: 8
+SpongeBoostAmplifier: 4
 
 #Put here the cmds that are be blocked in kitpvp
 #Bypass permission: kitpvp.unblockedcmds

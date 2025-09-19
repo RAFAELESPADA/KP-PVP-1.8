@@ -323,7 +323,12 @@ new BukkitRunnable() {
 	public void run() {	
 for (Player p : Bukkit.getOnlinePlayers()) {
 if (Join.game.contains(p.getName())) {
-	if (!Bukkit.getPluginManager().getPlugin("TAB").isEnabled()) {
+	try {
+		Class.forName("me.neznamy.tab.api.TabAPI");
+	}	catch(ClassNotFoundException e)  {
+		return;	
+	}
+	if (Bukkit.getPluginManager().getPlugin("TAB") == null) {
 		return;
 	}
     TabPlayer tabPlayer = TabAPI.getInstance().getPlayer(p.getUniqueId());

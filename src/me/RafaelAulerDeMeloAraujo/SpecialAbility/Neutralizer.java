@@ -55,18 +55,20 @@ API.sendMessageCooldown(p);
             kit.put(pl.getName(), Habilidade.getAbility(pl));
          
             Habilidade.setAbility(pl, "Neutralized");
-            pl.sendMessage(ChatColor.RED + "Your ability got removed for 45 seconds by " + p.getName());
+            pl.sendMessage(ChatColor.RED + "Your ability got removed for 25 seconds by Neutralizer: " + p.getName());
           } 
           }
         } 
         (new BukkitRunnable() {
             public void run() {
               for (Player pl : Neutralizer.neutralized) {
+            	  if (pl != null) {
                 Habilidade.setAbility(pl, kit.get(pl.getName()));
                 pl.sendMessage(ChatColor.GREEN +"Your ability is available again.");
               } 
+              }
             }
-          }).runTaskLater((Plugin)Main.getInstance(), 900L);
+          }).runTaskLater((Plugin)Main.getInstance(), 500L);
       }  
   }
 }

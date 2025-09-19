@@ -80,9 +80,10 @@ if (Main.kits.getBoolean("WallDisabled")) {
 RTP.TeleportArenaRandom(p);
 /* 85 */       for (int i = 0; i <= 34; i++) {
 /* 86 */         p.getInventory().addItem(new ItemStack[] { sopa });
-/* 87 */         p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.KitUse")), 1.0F, 1.0F);
-/* 88 */         me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Wall"));
+/* 87 */         me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Wall"));
 /*    */       }
+p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.KitUse")), 1.0F, 1.0F);
+/* 88 */       
 p.getInventory().setItem(1, especial);
 /*    */     }
 /*    */     

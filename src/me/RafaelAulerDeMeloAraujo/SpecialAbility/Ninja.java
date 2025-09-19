@@ -121,8 +121,9 @@ p.sendMessage(Main.messages.getString("NinjaTeleport").replace("&", "§").replac
 RTP.TeleportArenaRandom(p);
 /* 137 */       for (int i = 0; i <= 34; i++) {
 /* 138 */         p.getInventory().addItem(new ItemStack[] { sopa });
-/* 139 */         p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.KitUse")), 1.0F, 1.0F);
-/*     */       }
+/* 139 */       }
+p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.KitUse")), 1.0F, 1.0F);
+/* 88 */       
 /*     */     }
 /* 142 */     TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Ninja"));
 /*     */     

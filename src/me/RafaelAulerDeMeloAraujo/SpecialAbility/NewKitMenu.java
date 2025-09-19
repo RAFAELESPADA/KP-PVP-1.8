@@ -243,6 +243,12 @@ if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lCreep
 /* 178 */           Bukkit.dispatchCommand(p, "switcher");
 /* 179 */           p.closeInventory();
 /*     */         }
+
+/* 176 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lDeshfire"))
+/*     */         {
+/* 178 */           Bukkit.dispatchCommand(p, "deshfire");
+/* 179 */           p.closeInventory();
+/*     */         }
 /* 181 */         if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§7Kit §e§lWasp"))
 /*     */         {
 /* 183 */           Bukkit.dispatchCommand(p, "wasp");

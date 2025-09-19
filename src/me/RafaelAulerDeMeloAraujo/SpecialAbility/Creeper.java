@@ -66,6 +66,7 @@ public void onDeath(PlayerDeathEvent event) {
 	 }
      if (morreu.getKiller() != null) {
 		morreu.getLocation().getWorld().playEffect(morreu.getLocation(), Effect.EXPLOSION_HUGE, 40);
+		morreu.getLocation().getWorld().playEffect(morreu.getLocation(), Effect.EXPLOSION_HUGE, 40);
 for (Player p : Bukkit.getOnlinePlayers()) {
         p.playSound(p.getLocation(), Sound.valueOf(Main.getInstance().getConfig().getString("Sound.RyuAbility")), 3.0F, 3.0F);
 }
@@ -75,15 +76,15 @@ for (Player p : Bukkit.getOnlinePlayers()) {
 		morreu.spigot().respawn();
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
 		  public void run() {
-			  morreu.getWorld().createExplosion(saveworld.get(morreu.getKiller().getName()), 20.0F);
+			  morreu.getWorld().createExplosion(saveworld.get(morreu.getName()), 8.0F);
+				morreu.getLocation().getWorld().playEffect(morreu.getLocation(), Effect.EXPLOSION_HUGE, 40);
 		  }
 		}, 1);
-		morreu.getWorld().createExplosion(saveworld.get(morreu.getKiller().getName()), 10.0F);
 		for (final Entity pertos : morreu.getKiller().getNearbyEntities(4.0, 4.0, 4.0)) {
 			if (pertos instanceof Player) {
 				morreu.getWorld().createExplosion(pertos.getLocation(), 4.0F);
 				morreu.getWorld().strikeLightning(pertos.getLocation());
-				((Player) pertos).damage(16, morreu);
+				((Player) pertos).damage(6, morreu);
 	}
 }
      }

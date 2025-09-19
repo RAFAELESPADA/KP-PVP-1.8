@@ -40,8 +40,8 @@ public void Atirar(Player p) {
 	int y = Main.getInstance().getConfig().getInt("SpongeBoostAmplifier");
 	Block block = p.getLocation().getBlock().getRelative(0, -1, 0);
 	if (block.getType() == Material.SPONGE && Join.game.contains(p.getName())) {
-		Vector vector = new Vector(0, y, 0);
-		vector.multiply(y);
+	Vector vector = new Vector(p.getVelocity().getX(), y, p.getVelocity().getZ());
+    vector.clone().add(vector.multiply(2));
 		p.setVelocity(vector);
 		this.fall.remove(p.getName());
 		 p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.SpongeUse")), 4.0F, 4.0F);

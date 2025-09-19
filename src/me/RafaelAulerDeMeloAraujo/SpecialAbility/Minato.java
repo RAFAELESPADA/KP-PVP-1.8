@@ -22,10 +22,17 @@ public class Minato implements Listener {
       } else {
     	  if (API.isInRegion(p)) {
     		  p.sendMessage("DO NOT USE THIS ON NO PVP ZONES!");
+    		  e.setCancelled(true);
     		  return;
     	  }
         Cooldown.add(p, Main.kits.getInt("MinatoCooldown"));
         Bot clone = new Bot();
+        if (clone.isSpawned()) {
+
+  		  p.sendMessage("You already have a clone!");
+  		  e.setCancelled(true);
+  		  return;
+        }
         clone.setName(p.getName());
         clone.setInvincible(false);
         clone.summon(p.getLocation(), true);

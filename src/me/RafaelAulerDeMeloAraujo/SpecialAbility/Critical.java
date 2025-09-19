@@ -110,9 +110,10 @@ import me.RafaelAulerDeMeloAraujo.main.RTP;
 /*     */ 
 /* 117 */       for (int i = 0; i <= 34; i++) {
 /* 118 */         p.getInventory().addItem(new ItemStack[] { sopa });
-/* 119 */         p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.KitUse")), 1.0F, 1.0F);
-/* 120 */         TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Critical"));
+/* 119 */         TitleAPI.sendTitle(p, Integer.valueOf(20), Integer.valueOf(60), Integer.valueOf(20), this.main.getConfig().getString("Title.KitTitle"), this.main.getConfig().getString("Title.KitSubTitle").replaceAll("%kit%", "Critical"));
 /*     */       }
+p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.KitUse")), 1.0F, 1.0F);
+/* 88 */       
 /*     */     }
 /*     */     
 /* 124 */     return false;
