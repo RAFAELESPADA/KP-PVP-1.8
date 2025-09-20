@@ -58,9 +58,6 @@ import me.RafaelAulerDeMeloAraujo.TitleAPI.TitleAPI;
 import me.RafaelAulerDeMeloAraujo.X1.CustomChallenge;
 import me.RafaelAulerDeMeloAraujo.X1.X1;
 import me.RockinChaos.itemjoin.api.ItemJoinAPI;
-import me.neznamy.tab.api.TabAPI;
-import me.neznamy.tab.api.TabPlayer;
-import me.neznamy.tab.api.event.player.PlayerLoadEvent;
 import net.wavemc.core.bukkit.WaveBukkit;
 import net.wavemc.core.bukkit.account.WavePlayer;
 
@@ -416,10 +413,10 @@ if (X1.inx1.contains(p)) {
 	/* 297 */       Join.game.remove(p.getName());
 
 	/*     */ if (Bukkit.getPluginManager().getPlugin("TAB").isEnabled()) {
-	/*     */ /*     */ /*     */ if (TabAPI.getInstance().getScoreboardManager() != null) {
-		   TabAPI.getInstance().getEventBus().register(PlayerLoadEvent.class, event -> {
-			    TabPlayer tabPlayer = event.getPlayer();
-		TabAPI.getInstance().getScoreboardManager().resetScoreboard(tabPlayer);
+	/*     */ /*     */ /*     */ if (me.neznamy.tab.api.TabAPI.getInstance().getScoreboardManager() != null) {
+		   me.neznamy.tab.api.TabAPI.getInstance().getEventBus().register(me.neznamy.tab.api.event.player.PlayerLoadEvent.class, event -> {
+			   me.neznamy.tab.api.TabPlayer tabPlayer = event.getPlayer();
+		me.neznamy.tab.api.TabAPI.getInstance().getScoreboardManager().resetScoreboard(tabPlayer);
 	});
 	}
 	}
@@ -908,8 +905,8 @@ public void onLeaveKit(PlayerInteractEvent e)
     	/*     */ 
 
     	/*     */ if (Bukkit.getPluginManager().getPlugin("TAB").isEnabled()) {
-	    TabPlayer tabPlayer = TabAPI.getInstance().getPlayer(p.getUniqueId());
-TabAPI.getInstance().getScoreboardManager().resetScoreboard(tabPlayer);
+    		me.neznamy.tab.api.TabPlayer tabPlayer = me.neznamy.tab.api.TabAPI.getInstance().getPlayer(p.getUniqueId());
+me.neznamy.tab.api.TabAPI.getInstance().getScoreboardManager().resetScoreboard(tabPlayer);
     	/*     */ }
     	/*     */ 
     	/* 302 */       Cooldown.remove(p);

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -18,6 +19,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import me.RafaelAulerDeMeloAraujo.main.Main;
 import net.citizensnpcs.api.CitizensAPI;
+import net.citizensnpcs.api.npc.MemoryNPCDataStore;
 import net.citizensnpcs.api.npc.NPC;
 import net.citizensnpcs.api.npc.NPCRegistry;
 import net.wavemc.core.bukkit.WaveBukkit;
@@ -30,7 +32,7 @@ public class Bot {
   public static HashMap<String, Player> attackPlayer = new HashMap<>();
   
   public Bot() {
-    NPCRegistry localNPCRegistry = CitizensAPI.getNPCRegistry();
+    NPCRegistry localNPCRegistry = CitizensAPI.createAnonymousNPCRegistry(new MemoryNPCDataStore());
     NPC localNPC = localNPCRegistry.createNPC(EntityType.PLAYER, "SupremeBot");
     this.bot = localNPC;
   }
@@ -167,7 +169,9 @@ public class Bot {
             clone.despawn();
             cancel();
           } 
-          clone.setItemInHand(new ItemStack(Material.WOOD_SWORD));
+          ItemStack espadina = new ItemStack(Material.WOOD_SWORD);
+          espadina.addEnchantment(Enchantment.KNOCKBACK, 1);
+          clone.setItemInHand(espadina);
 
           ((LivingEntity)clone.getNPC().getEntity()).getEquipment().setHelmet(new ItemStack(Material.LEATHER_HELMET));
 

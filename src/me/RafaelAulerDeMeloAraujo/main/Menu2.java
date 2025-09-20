@@ -56,7 +56,6 @@ import me.RafaelAulerDeMeloAraujo.X1.CustomChallenge;
 import me.RafaelAulerDeMeloAraujo.X1.X1;
 import me.neznamy.tab.api.TabAPI;
 import me.neznamy.tab.api.TabPlayer;
-import me.neznamy.tab.api.event.player.PlayerLoadEvent;
 import net.wavemc.core.bukkit.WaveBukkit;
 import net.wavemc.core.bukkit.account.WavePlayer;
 
@@ -265,10 +264,11 @@ if (X1.inx1.contains(p)) {
 /*     */     if (Join.game.contains(p.getName())&& !Main.plugin.getConfig().getBoolean("bungeemode")) {
 	/*     */ 
 	/*     */ if (Bukkit.getPluginManager().getPlugin("TAB").isEnabled()) {
-	 if (TabAPI.getInstance().getScoreboardManager() != null) {
-		   TabAPI.getInstance().getEventBus().register(PlayerLoadEvent.class, event -> {
-			    TabPlayer tabPlayer = event.getPlayer();
-		TabAPI.getInstance().getScoreboardManager().resetScoreboard(tabPlayer);
+	 if (me.neznamy.tab.api.TabAPI.getInstance().getScoreboardManager() != null) {
+		 
+		 me.neznamy.tab.api.TabAPI.getInstance().getEventBus().register(me.neznamy.tab.api.event.player.PlayerLoadEvent.class, event -> {
+			    me.neznamy.tab.api.TabPlayer tabPlayer = event.getPlayer();
+			    me.neznamy.tab.api.TabAPI.getInstance().getScoreboardManager().resetScoreboard(tabPlayer);
 	});
 	}
 	}
@@ -912,9 +912,10 @@ if (Main.getInstance().getConfig().getBoolean("DisableWorldLeaveKitPvPEvent")) {
 
     	/*     */ 
     	/*     */ 
-	    TabPlayer tabPlayer = TabAPI.getInstance().getPlayer(p.getUniqueId());
-TabAPI.getInstance().getScoreboardManager().resetScoreboard(tabPlayer);
-    	/*     */ 
+    	if (Bukkit.getPluginManager().getPlugin("TAB") != null) {
+    	me.neznamy.tab.api.TabPlayer tabPlayer = me.neznamy.tab.api.TabAPI.getInstance().getPlayer(p.getUniqueId());
+	    me.neznamy.tab.api.TabAPI.getInstance().getScoreboardManager().resetScoreboard(tabPlayer);
+    	/*     */ }
     	/* 302 */       Cooldown.remove(p);
     	/* 303 */       p.sendMessage(String.valueOf(this.main.getConfig().getString("Prefix").replace("&", "§")) + String.valueOf(this.main.getConfig().getString("Message.KitPvpLeave-Message").replace("&", "§")));
     	/* 304 */       p.getInventory().clear();
