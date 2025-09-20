@@ -15,6 +15,8 @@ import org.bukkit.Bukkit;
 /*    */ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
 /*    */ import org.bukkit.util.Vector;
 
 /*    */ import me.RafaelAulerDeMeloAraujo.main.Main;
@@ -37,18 +39,29 @@ import org.bukkit.inventory.meta.ItemMeta;
 /*    */   ArrayList<String> fall2 = new ArrayList<>();
 
 public void Atirar(Player p) {
-	int y = Main.getInstance().getConfig().getInt("SpongeBoostAmplifier");
+	
+	double y = Main.getInstance().getConfig().getInt("SpongeBoostAmplifier");
 	Block block = p.getLocation().getBlock().getRelative(0, -1, 0);
 	if (block.getType() == Material.SPONGE && Join.game.contains(p.getName())) {
-	Vector vector = new Vector(p.getVelocity().getX(), y, p.getVelocity().getZ());
-    vector.clone().add(vector.multiply(2));
+		double height = Math.sqrt(2 * 0.08 * y);
+		
+	Vector vector = new Vector(p.getVelocity().getX(), height, p.getVelocity().getZ());
+
+	Vector vector2 = new Vector(p.getVelocity().getX(), 8, p.getVelocity().getZ());
+	(new BukkitRunnable() {
+        public void run() {
 		p.setVelocity(vector);
+        }}).runTaskLater((Plugin)Main.getInstance(), 3L);
+	(new BukkitRunnable() {
+        public void run() {
+		p.setVelocity(vector2);
+        }}).runTaskLater((Plugin)Main.getInstance(), 21L);
+    }
 		this.fall.remove(p.getName());
 		 p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.SpongeUse")), 4.0F, 4.0F);
-		p.getPlayer().getWorld().playEffect(p.getPlayer().getLocation(), Effect.MOBSPAWNER_FLAMES, 10);
 		this.fall.add(p.getName());
 	}
-}
+
 public void Atirar2(Player p) {
 	final Location loc = p.getEyeLocation();
 

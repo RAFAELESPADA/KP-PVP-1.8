@@ -167,7 +167,13 @@ public class Bot {
             clone.despawn();
             cancel();
           } 
-          clone.setItemInHand(new ItemStack(Material.AIR));
+          clone.setItemInHand(new ItemStack(Material.WOOD_SWORD));
+
+          ((LivingEntity)clone.getNPC().getEntity()).getEquipment().setHelmet(new ItemStack(Material.LEATHER_HELMET));
+
+          ((LivingEntity)clone.getNPC().getEntity()).getEquipment().setChestplate(new ItemStack(Material.LEATHER_CHESTPLATE));
+
+          ((LivingEntity)clone.getNPC().getEntity()).getEquipment().setBoots(new ItemStack(Material.LEATHER_BOOTS));
         }
       }).runTaskTimer((Plugin)Main.getInstance(), 5L, 1L);
   }

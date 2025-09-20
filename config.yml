@@ -280,12 +280,13 @@ Kill:
  # Defaults to true
 SendIPAddressData: true
 
-#Change the sponge boost
+#Change the sponge amount of blocks that it goes up
+#default is 48
 #Be careful when changing that number
 #It is the amplifier multiplier of sponge boost
 #too high numbers can throw you to minecraft space! 
 #Play around with that number to see what you want in sponge boost
-SpongeBoostAmplifier: 4
+SpongeBoostAmplifier: 70
 
 #Put here the cmds that are be blocked in kitpvp
 #Bypass permission: kitpvp.unblockedcmds

@@ -31,6 +31,7 @@ public class Sasuke implements Listener {
             i++;
             if (i > 0) {
               b.setShadow(p, (Player)en);
+              b.setShadow(p, (Player)en);
               continue;
             } 
             p.sendMessage("§cThere are no players to attack for your shadow.");
