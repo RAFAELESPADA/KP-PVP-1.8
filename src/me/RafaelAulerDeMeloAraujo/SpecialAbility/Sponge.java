@@ -47,19 +47,21 @@ public void Atirar(Player p) {
 		
 	Vector vector = new Vector(p.getVelocity().getX(), height, p.getVelocity().getZ());
 
+	this.fall.remove(p.getName());
+	this.fall.add(p.getName());
+	 p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.SpongeUse")), 4.0F, 4.0F);
 	Vector vector2 = new Vector(p.getVelocity().getX(), 8, p.getVelocity().getZ());
 	(new BukkitRunnable() {
         public void run() {
 		p.setVelocity(vector);
+
+		
         }}).runTaskLater((Plugin)Main.getInstance(), 3L);
 	(new BukkitRunnable() {
         public void run() {
 		p.setVelocity(vector2);
         }}).runTaskLater((Plugin)Main.getInstance(), 21L);
     }
-		this.fall.remove(p.getName());
-		 p.playSound(p.getLocation(), Sound.valueOf(this.main.getConfig().getString("Sound.SpongeUse")), 4.0F, 4.0F);
-		this.fall.add(p.getName());
 	}
 
 public void Atirar2(Player p) {
