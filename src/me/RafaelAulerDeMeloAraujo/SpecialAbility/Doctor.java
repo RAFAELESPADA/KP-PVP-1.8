@@ -44,9 +44,10 @@ public class Doctor implements Listener {
           clicked.sendMessage(ChatColor.RED + "A player with kit Doctor cured you from your injuries!");
           p1.sendMessage(ChatColor.RED + "You healed the player " + clicked.getName());
           Cooldown.add(p1, 30);
-         API.tirarEfeitos(p1);
-         p1.setHealth(p1.getMaxHealth());
+         API.tirarEfeitos(clicked);
+         clicked.setHealth(clicked.getMaxHealth());
          API.darEfeito(p1, PotionEffectType.REGENERATION, 10, 1);
+         API.darEfeito(clicked, PotionEffectType.REGENERATION, 10, 1);
         }  
     } 
   }}

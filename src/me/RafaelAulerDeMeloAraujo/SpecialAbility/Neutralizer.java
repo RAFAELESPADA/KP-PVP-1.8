@@ -51,6 +51,7 @@ API.sendMessageCooldown(p);
       		  return;
       	  }
             if (Habilidade.getAbility(pl) != "Neutralizer") {
+            	if (pl != p) {
             neutralized.add(pl);
             kit.put(pl.getName(), Habilidade.getAbility(pl));
          
@@ -59,14 +60,17 @@ API.sendMessageCooldown(p);
           } 
           }
         } 
+        }
         (new BukkitRunnable() {
             public void run() {
               for (Player pl : Neutralizer.neutralized) {
             	  if (pl != null) {
+            		  if (pl != p) {
                 Habilidade.setAbility(pl, kit.get(pl.getName()));
                 pl.sendMessage(ChatColor.GREEN +"Your ability is available again.");
               } 
               }
+            }
             }
           }).runTaskLater((Plugin)Main.getInstance(), 500L);
       }  
