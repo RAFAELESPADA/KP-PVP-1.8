@@ -24,6 +24,15 @@ public class Neutralizer implements Listener {
   
   public static List<Player> neutralized = new ArrayList<>();
   
+
+  @EventHandler
+  public void onNeutralizer2(PlayerInteractEvent e) {
+
+	    if (e.getPlayer().getItemInHand().getType() == Material.ARMOR_STAND && Habilidade.getAbility(e.getPlayer()) == "Neutralized") {
+	  e.setCancelled(true);
+	    }
+  }
+  
   @EventHandler
   public void onNeutralizer(PlayerInteractEvent e) {
     final Player p = e.getPlayer();
